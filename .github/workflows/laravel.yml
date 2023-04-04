@@ -19,7 +19,7 @@ jobs:
       with:
         timeout_minutes : 1
         max_attempts : 3
-        username: ${{secrets.ftp-username}}
-        password: ${{secrets.ftp-password}}
-        server: ${{secrets.ftp-server}}
+        username: mina@mina.wecan.work
+        password: ]pvv~zu5rVrE
+        server: ftp.wecan.work
 
