@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AdminLoginRequest extends FormRequest
@@ -11,7 +12,7 @@ class AdminLoginRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,8 @@ class AdminLoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'email'=>'required',
+            'password'=>['required',Password::min(8)],
         ];
     }
 }
