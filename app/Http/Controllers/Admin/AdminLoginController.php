@@ -23,7 +23,7 @@ class AdminLoginController extends Controller
     public function logout(){
         $guard=$this->getGuard();
         $guard->logout();
-        return redirect()->route('admin.login');
+        return redirect()->route("admin.login-page");
     }
 
     public function getGuard(){
