@@ -66,3 +66,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::post('branch-shift-create', [BranchShiftController::class, 'save']);
     Route::get('branchshift/delete/{id}', [BranchShiftController::class, 'delete']);
 
+    //Fingerprint
+    Route::get('fingerprints', [FingerprintController::class, 'list']);
+    Route::post('fingerprint-create', [FingerprintController::class, 'save']);
+    Route::get('fingerprint/{id}', [FingerprintController::class, 'view']);
+    Route::get('fingerprint/delete/{id}', [FingerprintController::class, 'delete']);
+    Route::post('fingerprint/edit/{id}', [FingerprintController::class, 'edit']);
+
+     //BranchShift
+     Route::post('fingerprint-company-create', [FingerprintCompanyController::class, 'save']);
+     Route::get('fingerprintcompany/delete/{id}', [FingerprintCompanyController::class, 'delete']);
