@@ -99,6 +99,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('fingerprint/delete/{id}', [FingerprintController::class, 'delete']);
     Route::post('fingerprint/edit/{id}', [FingerprintController::class, 'edit']);
 
+
      //fingerprint-company
      Route::post('fingerprint-company-create', [FingerprintCompanyController::class, 'save']);
      Route::get('fingerprintcompany/delete/{id}', [FingerprintCompanyController::class, 'delete']);

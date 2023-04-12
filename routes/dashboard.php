@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\CompanyAdminController;
 use App\Http\Controllers\Admin\IntroductionController;
 use App\Http\Controllers\Admin\SubscriptionController;
 
@@ -21,6 +22,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
         Route::resource('admin-pages', AdminPageController::class);
         Route::resource('admins', AdminController::class)->except(['show']);
         Route::resource('companies', CompanyController::class)->except(['create','edit','update']);
+        Route::resource('company-admins', CompanyAdminController::class);
 
     });
 });

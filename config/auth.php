@@ -45,6 +45,13 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+
+
+        'company' => [
+            'driver' => 'session',
+            'provider' => 'company_admins',
+        ],
+
         'api' => [
             'driver' => 'passport', //update this line
             'provider' => 'users',
@@ -77,6 +84,11 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+
+        'company_admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\CompanyAdmin::class,
         ],
 
         // 'users' => [
