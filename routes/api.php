@@ -8,6 +8,13 @@ use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\BranchController;
 use App\Http\Controllers\Api\ShiftController;
 use App\Http\Controllers\Api\BranchShiftController;
+use App\Http\Controllers\Api\FingerprintController;
+use App\Http\Controllers\Api\FingerprintCompanyController;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\SubscriptionController;
+use App\Http\Controllers\Api\MessageController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +30,22 @@ use App\Http\Controllers\Api\BranchShiftController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+    //Auth
+    Route::post('login', [AuthController::class, 'login']);
+
+    Route::post('/user-reg', [AuthController::class, 'store']);
+
+    Route::post('/user-edit/{id}', [AuthController::class, 'updateUser']);
+
+    Route::middleware(['auth:api'])->group(function () {
+
+
+        //view Daily Message
+        Route::get('daily-message', [MessageController::class, 'viewDailyMessage']);
+
+    });
 
 
     //Company
@@ -73,6 +96,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('fingerprint/delete/{id}', [FingerprintController::class, 'delete']);
     Route::post('fingerprint/edit/{id}', [FingerprintController::class, 'edit']);
 
-     //BranchShift
+     //fingerprint-company
      Route::post('fingerprint-company-create', [FingerprintCompanyController::class, 'save']);
      Route::get('fingerprintcompany/delete/{id}', [FingerprintCompanyController::class, 'delete']);
+
+
+
+       //Subscription
+    Route::get('subscriptions', [SubscriptionController::class, 'list']);
+    Route::post('subscription-create', [SubscriptionController::class, 'save']);
+    Route::get('subscription/{id}', [SubscriptionController::class, 'view']);
+    Route::get('subscription/delete/{id}', [SubscriptionController::class, 'delete']);
+    Route::post('subscription/edit/{id}', [SubscriptionController::class, 'edit']);
+
+
+       //Message
+       Route::get('messages', [MessageController::class, 'list']);
+       Route::post('message-create', [MessageController::class, 'save']);
+       Route::get('message/{id}', [MessageController::class, 'view']);
+       Route::get('message/delete/{id}', [MessageController::class, 'delete']);
+       Route::post('message/edit/{id}', [MessageController::class, 'edit']);
