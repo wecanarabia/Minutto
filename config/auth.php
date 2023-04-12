@@ -46,10 +46,12 @@ return [
             'provider' => 'admins',
         ],
 
+
         'company' => [
             'driver' => 'session',
             'provider' => 'company_admins',
         ],
+
         'api' => [
             'driver' => 'passport', //update this line
             'provider' => 'users',

@@ -10,7 +10,9 @@ use Spatie\Translatable\HasTranslations;
 class Company extends Model
 {
     use HasFactory;
+
     use HasTranslations;
+
 
 
     protected $guarded=[];
@@ -19,5 +21,9 @@ class Company extends Model
     public function subscription()
     {
         return $this->belongsTo(Subscription::class);
+    }
+
+    public function branches(){
+        return $this->hasMany(Branch::class);
     }
 }

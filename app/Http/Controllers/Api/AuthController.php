@@ -9,6 +9,7 @@ use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Models\Company;
 use App\Repositories\UserRepository;
 use App\Traits\ResponseTrait;
 use Exception;
@@ -76,9 +77,26 @@ class AuthController extends Controller
         try {
             DB::beginTransaction();
             $user = $this->userRepositry->save($request);
+
+            $company= Company::where('code',$request->code)->first();
+            if($company)
+            {
+
+                $branch_id= $company->branches->first()->id;
+                if($branch_id)
+                {
+
+                $user->update([
+                    'branch_id' => $branch_id,
+                ]);
+
+                }
+            }
+
             // $user->update([
             //     'password' => Hash::make('1234')
             // ]);
+
 
 
             DB::commit();

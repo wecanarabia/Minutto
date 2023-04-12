@@ -29,4 +29,7 @@ class PageController extends ApiController
         return $this->update($id,$request->all());
 
     }
+
+
+
 }

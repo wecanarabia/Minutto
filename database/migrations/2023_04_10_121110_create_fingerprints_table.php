@@ -12,12 +12,10 @@ return new class extends Migration
     public function up(): void
     {
 
-
-        Schema::create('introductions', function (Blueprint $table) {
+=
+        Schema::create('fingerprints', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('image');
-            $table->text('body');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -29,6 +27,8 @@ return new class extends Migration
     {
 
 
-        Schema::dropIfExists('introductions');
+        Schema::dropIfExists('fingerprints');
+
+
     }
 };
