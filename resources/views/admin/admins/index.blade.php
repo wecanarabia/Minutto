@@ -7,7 +7,7 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li>
-                    <h5 class="bc-title">{{ __('Subscriptions') }}</h5>
+                    <h5 class="bc-title">{{ __('Admins') }}</h5>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
@@ -20,9 +20,9 @@
                         </svg>
                         Home </a>
                 </li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Subscriptions') }} </a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Admins') }} </a></li>
             </ol>
-            <a class="text-primary fs-13" href="{{ route('admin.subscriptions.create') }}">+ Add Subscription</a>
+            <a class="text-primary fs-13" href="{{ route('admin.admins.create') }}">+ Add Admin</a>
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -34,33 +34,27 @@
                                     <x-admin-layouts.alerts />
                                     <div class="table-responsive active-projects manage-client">
                                         <div class="tbl-caption">
-                                            <h4 class="heading mb-0"> {{ __('Subscriptions') }}</h4>
+                                            <h4 class="heading mb-0"> {{ __('Admins') }}</h4>
                                         </div>
                                         <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th>name</th>
-                                                    <th>type</th>
-                                                    <th>Employees count</th>
-                                                    <th>amount</th>
+                                                    <th>Email</th>
+
 
                                                     <th>actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @forelse ($data as $subscription)
+                                                @forelse ($data as $admin)
                                                     <tr>
 
-                                                        <td><span>{{ $subscription->name }}</span></td>
+                                                        <td><span>{{ $admin->name }}</span></td>
                                                         <td>
-                                                            <span>{{ $subscription->type }}</span>
+                                                            <span>{{ $admin->email }}</span>
                                                         </td>
-                                                        <td>
-                                                            <span>{{ $subscription->employees_count }}</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-secondary">{{ $subscription->amount }}$</span>
-                                                        </td>
+
 
                                                         <td>
                                                             <div class="dropdown">
@@ -84,11 +78,10 @@
                                                                 </button>
                                                                 <div class="dropdown-menu">
                                                                     <a class="dropdown-item"
-                                                                        href="{{ route('admin.subscriptions.edit', $subscription->id) }}">Edit</a>
-                                                                    <a class="dropdown-item"
-                                                                        href="{{ route('admin.subscriptions.show', $subscription->id) }}">Show</a>
+                                                                        href="{{ route('admin.admins.edit', $admin->id) }}">Edit</a>
+
                                                                     <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                                    data-id="{{ $subscription->id }}" data-name="{{ $subscription->name }}">Delete</button>
+                                                                    data-id="{{ $admin->id }}" data-name="{{ $admin->name }}">Delete</button>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -127,7 +120,7 @@
           <h5 class="modal-title" id="deleteModalLabel">Delete Subscription</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{ route('admin.subscriptions.destroy','test') }}" method="post">
+        <form action="{{ route('admin.admins.destroy','test') }}" method="post">
             {{ method_field('delete') }}
             @csrf
             <div class="modal-body">
