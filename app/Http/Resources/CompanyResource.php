@@ -18,13 +18,21 @@ class CompanyResource extends JsonResource
 
             'id'=>$this->id,
             'name'=>$this->name,
-            'location'=>$this->location,
-            'lat'=>$this?->lat,
-            'long'=>$this?->long,
-            'count_leave'=>$this->count_leave,
-            'count_vacation'=>$this->count_vacation,
-            'count_users'=>$this->count_users,
+            'timezone'=>$this->timezone,
+            // 'lat'=>$this?->lat,
+            // 'long'=>$this?->long,
+            'employees_count'=>$this->employees_count,
+            'leaves_count'=>$this->leaves_count,
+            'holidays_count'=>$this->holidays_count,
             'code'=>$this->code,
+            'advanes_count'=>$this->advanes_count,
+            'advanes_perentage'=>$this->advanes_perentage,
+            'subscription_end_date'=>$this->subscription_end_date,
+            'subscription_id'=>$this->subscription_id,
+
+
         ];
+
+
     }
 }
