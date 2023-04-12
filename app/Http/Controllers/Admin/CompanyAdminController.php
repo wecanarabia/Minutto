@@ -17,7 +17,7 @@ class CompanyAdminController extends Controller
     public function index()
     {
         $data = CompanyAdmin::paginate(5);
-        return view('admin.company-company-admins.index',compact('data'));
+        return view('admin.company-admins.index',compact('data'));
     }
 
     /**
@@ -48,7 +48,7 @@ class CompanyAdminController extends Controller
     public function show(string $id)
     {
         $admin = CompanyAdmin::findOrFail($id);
-        return view('admin.company-company-admins.show',compact('admin'));
+        return view('admin.company-admins.show',compact('admin'));
     }
 
     /**

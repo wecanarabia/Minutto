@@ -16,7 +16,7 @@
                 </li>
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">{{  __('Add Company Admin') }} </a></li>
             </ol>
-            <a class="text-primary fs-13" href="{{ route('admin.caompany-admins.index') }}" >{{  __('Company Admins') }}</a>
+            <a class="text-primary fs-13" href="{{ route('admin.company-admins.index') }}" >{{  __('Company Admins') }}</a>
         </div>
         <div class="container-fluid">
             <div class="row">

@@ -29,4 +29,9 @@ class CompanyAdmin extends Authenticatable
             }
         });
     }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }

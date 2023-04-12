@@ -70,7 +70,7 @@
                                             <label class="form-label">Company<span class="text-danger">*</span></label>
                                             <select class="default-select form-control" name="company_id">
                                                 <option  data-display="Select">Company</option>
-                                                @foreach ($ompanies as $company)
+                                                @foreach ($companies as $company)
                                                 <option value="{{ $company->id }}" @selected($admin->company_id??old('company_id') == $company->id)>{{ $company->getTranslation('name', 'en')  }}</option>
                                                 @endforeach
                                             </select>

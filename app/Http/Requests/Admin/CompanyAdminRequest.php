@@ -24,7 +24,7 @@ class CompanyAdminRequest extends FormRequest
     {
         return [
             'name'=>'required|min:5|max:255',
-            'email'=>'required|min:5|email|max:255|unique:admins,email,'.$this->id,
+            'email'=>'required|min:5|email|max:255|unique:company_admins,email,'.$this->id,
             'password' => ['required_without:id', 'nullable',Password::min(8)],
             'image'=>'required_without:id|mimes:jpg,jpeg,gif,png',
             'company_id'=>'required|exists:companies,id',
