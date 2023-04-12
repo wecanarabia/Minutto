@@ -12,7 +12,6 @@ class Company extends Model
     use HasFactory;
     use HasTranslations;
 
-    
     protected $guarded=[];
     public $translatable = ['name','description'];
 
