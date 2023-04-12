@@ -17,4 +17,8 @@ class Company extends Model
     {
         return $this->belongsTo(Subscription::class);
     }
+
+    public function branches(){
+        return $this->hasMany(Branch::class);
+    }
 }

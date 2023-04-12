@@ -71,6 +71,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('page/delete/{id}', [PageController::class, 'delete']);
     Route::post('page/edit/{id}', [PageController::class, 'edit']);
 
+
+    Route::get('days', [PageController::class, 'getDaysNumber']);
+
     //Branch
     Route::get('branchs', [BranchController::class, 'list']);
     Route::post('branch-create', [BranchController::class, 'save']);
