@@ -236,8 +236,8 @@
 								</svg>
 
                                 </a>
-							</li>	
-							<li class="nav-item align-items-center header-border"><a href="page-login.html" class="btn btn-primary btn-sm">Logout</a></li>	
+							</li>
+							<li class="nav-item align-items-center header-border"><a href="{{ route('admin.logout') }}" class="btn btn-primary btn-sm">Logout</a></li>
 							<li class="nav-item ps-3">
 								<div class="dropdown header-profile2">
 									<a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -249,7 +249,7 @@
 												<h6>Thomas Fleming</h6>
 												<p>info@gmail.com</p>
 											</div>
-											
+
 										</div>
 									</a>
 									<div class="dropdown-menu dropdown-menu-end" style="">
@@ -259,8 +259,8 @@
 													<img src="images/tab/1.jpg" class="avatar avatar-md" alt="">
 													<div>
 														<h6>Thomas Fleming</h6>
-														<span>Web Designer</span>	
-													</div>	
+														<span>Web Designer</span>
+													</div>
 												</div>
 											</div>
 											<div class="card-body px-0 py-2">
@@ -305,11 +305,11 @@
 												</a>
 												<a href="{{ route('admin.logout') }}" class="dropdown-item ai-icon">
 													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-													<span class="ms-2">Logout </span>
+													<span class="ms-2">Logout</span>
 												</a>
 											</div>
 										</div>
-										
+
 									</div>
 								</div>
 							</li>
