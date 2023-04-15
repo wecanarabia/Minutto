@@ -51,7 +51,7 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(adminRequest $request, string $id)
+    public function update(AdminRequest $request, string $id)
     {
         $admin = Admin::findOrFail($id);
         if ($request->password != null) {

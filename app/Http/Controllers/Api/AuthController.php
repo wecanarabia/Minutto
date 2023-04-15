@@ -93,6 +93,11 @@ class AuthController extends Controller
                 }
             }
 
+            // $user->update([
+            //     'password' => Hash::make('1234')
+            // ]);
+
+
 
             DB::commit();
             Auth::login($user);
