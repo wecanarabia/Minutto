@@ -65,4 +65,10 @@ class User extends Authenticatable
         return $this->hasMany(Vacation::class);
     }
 
+
+    public function leaves(){
+        return $this->hasMany(Leave::class);
+    }
+
+
 }

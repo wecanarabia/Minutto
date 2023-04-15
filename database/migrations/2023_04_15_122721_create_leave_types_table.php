@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-
-        Schema::create('fingerprints', function (Blueprint $table) {
+        Schema::create('leave_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('company_id');
             $table->timestamps();
         });
     }
@@ -25,10 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-
-
-        Schema::dropIfExists('fingerprints');
-
-
+        Schema::dropIfExists('leave_types');
     }
 };
