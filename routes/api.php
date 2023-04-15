@@ -14,6 +14,8 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\SubscriptionController;
 use App\Http\Controllers\Api\VacationTypeController;
 use App\Http\Controllers\Api\VacationController;
+use App\Http\Controllers\Api\LeaveTypeController;
+use App\Http\Controllers\Api\LeaveController;
 
 
 
@@ -48,6 +50,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
         //my vacations
         Route::get('my-vacations', [VacationController::class, 'myVacations']);
+
+         //my leaves
+         Route::get('my-leaves', [LeaveController::class, 'myLeaves']);
 
     });
 
@@ -142,4 +147,25 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
          //vacation types for company
          Route::get('vacation-types/{company_id}', [VacationTypeController::class, 'vacTypeByCompany']);
+
+
+
+         //Leave
+         Route::get('leaves', [LeaveController::class, 'list']);
+         Route::post('leave-create', [LeaveController::class, 'save']);
+         Route::get('leave/{id}', [LeaveController::class, 'view']);
+         Route::get('leave/delete/{id}', [LeaveController::class, 'delete']);
+         Route::post('leave/edit/{id}', [LeaveController::class, 'edit']);
+
+
+
+         //LeaveType
+         Route::get('leave-types', [LeaveTypeController::class, 'list']);
+         Route::post('leave-type-create', [LeaveTypeController::class, 'save']);
+         Route::get('leave-type/{id}', [LeaveTypeController::class, 'view']);
+         Route::get('leave-type/delete/{id}', [LeaveTypeController::class, 'delete']);
+         Route::post('leave-type/edit/{id}', [LeaveTypeController::class, 'edit']);
+
+           //leave types for company
+           Route::get('leave-types/{company_id}', [LeaveTypeController::class, 'leavesTypeByCompany']);
 
