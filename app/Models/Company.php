@@ -21,4 +21,8 @@ class Company extends Model
     public function branches(){
         return $this->hasMany(Branch::class);
     }
+
+    public function vactypes(){
+        return $this->hasMany(VacationType::class);
+    }
 }

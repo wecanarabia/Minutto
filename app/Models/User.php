@@ -60,4 +60,9 @@ class User extends Authenticatable
     public function fingerprint(){
         return $this->belongsTo(Fingerprint::class);
     }
+
+    public function vacations(){
+        return $this->hasMany(Vacation::class);
+    }
+
 }

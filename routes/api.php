@@ -12,7 +12,8 @@ use App\Http\Controllers\Api\FingerprintController;
 use App\Http\Controllers\Api\FingerprintCompanyController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\SubscriptionController;
-use App\Http\Controllers\Api\MessageController;
+use App\Http\Controllers\Api\VacationTypeController;
+use App\Http\Controllers\Api\VacationController;
 
 
 
@@ -44,6 +45,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
         //view Daily Message
         Route::get('daily-message', [MessageController::class, 'viewDailyMessage']);
+
+        //my vacations
+        Route::get('my-vacations', [VacationController::class, 'myVacations']);
 
     });
 
@@ -119,3 +123,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
        Route::get('message/{id}', [MessageController::class, 'view']);
        Route::get('message/delete/{id}', [MessageController::class, 'delete']);
        Route::post('message/edit/{id}', [MessageController::class, 'edit']);
+
+
+          //Vacation
+          Route::get('vacations', [VacationController::class, 'list']);
+          Route::post('vacation-create', [VacationController::class, 'save']);
+          Route::get('vacation/{id}', [VacationController::class, 'view']);
+          Route::get('vacation/delete/{id}', [VacationController::class, 'delete']);
+          Route::post('vacation/edit/{id}', [VacationController::class, 'edit']);
+
+         //VacationType
+         Route::get('vacation-types', [VacationTypeController::class, 'list']);
+         Route::post('vacation-type-create', [VacationTypeController::class, 'save']);
+         Route::get('vacation-type/{id}', [VacationTypeController::class, 'view']);
+         Route::get('vacation-type/delete/{id}', [VacationTypeController::class, 'delete']);
+         Route::post('vacation-type/edit/{id}', [VacationTypeController::class, 'edit']);
+
+         //vacation types for company
+         Route::get('vacation-types/{company_id}', [VacationTypeController::class, 'vacTypeByCompany']);
+
