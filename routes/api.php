@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\LeaveController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -51,8 +52,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         //my vacations
         Route::get('my-vacations', [VacationController::class, 'myVacations']);
 
+
          //my leaves
          Route::get('my-leaves', [LeaveController::class, 'myLeaves']);
+
 
     });
 
@@ -149,7 +152,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          Route::get('vacation-types/{company_id}', [VacationTypeController::class, 'vacTypeByCompany']);
 
 
-
          //Leave
          Route::get('leaves', [LeaveController::class, 'list']);
          Route::post('leave-create', [LeaveController::class, 'save']);
@@ -168,4 +170,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
            //leave types for company
            Route::get('leave-types/{company_id}', [LeaveTypeController::class, 'leavesTypeByCompany']);
+
 
