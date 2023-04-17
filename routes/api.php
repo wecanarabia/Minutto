@@ -60,12 +60,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     });
 
 
+    Route::middleware('changeLang')->group(function () {
+
     //Company
     Route::get('companies', [CompanyController::class, 'list']);
     Route::post('company-create', [CompanyController::class, 'save']);
     Route::get('company/{id}', [CompanyController::class, 'view']);
     Route::get('company/delete/{id}', [CompanyController::class, 'delete']);
     Route::post('company/edit/{id}', [CompanyController::class, 'edit']);
+
+    });
 
 
     //faq
