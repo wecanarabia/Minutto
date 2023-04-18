@@ -17,6 +17,10 @@ use App\Http\Controllers\Api\VacationController;
 use App\Http\Controllers\Api\LeaveTypeController;
 use App\Http\Controllers\Api\LeaveController;
 
+use App\Http\Controllers\Api\WorkhourController;
+
+
+
 
 
 
@@ -57,6 +61,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
          //my leaves
          Route::get('my-leaves', [LeaveController::class, 'myLeaves']);
+
+
+         //my workhours
+         Route::get('my-workhours/{year}/{month}', [WorkhourController::class, 'myWorkhours']);
 
 
     });
@@ -176,5 +184,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
            //leave types for company
            Route::get('leave-types/{company_id}', [LeaveTypeController::class, 'leavesTypeByCompany']);
+
+
+
+        //workhour
+         Route::get('workhours', [WorkhourController::class, 'list']);
+         Route::post('workhour-create', [WorkhourController::class, 'save']);
+         Route::get('workhour/{id}', [WorkhourController::class, 'view']);
+         Route::get('workhour/delete/{id}', [WorkhourController::class, 'delete']);
+         Route::post('workhour/edit/{id}', [WorkhourController::class, 'edit']);
 
 
