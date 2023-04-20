@@ -49,6 +49,15 @@ class User extends Authenticatable
         }
     }
 
+    protected static function booted()
+    {
+        static::deleted(function ($user) {
+            if ($user->image  && \Illuminate\Support\Facades\File::exists($user->image)) {
+                unlink($user->image);
+            }
+        });
+    }
+
     public function branch(){
         return $this->belongsTo(Branch::class);
     }
