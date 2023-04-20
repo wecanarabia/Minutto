@@ -39,6 +39,16 @@ class UserResource extends JsonResource
             'branch_id'=>$this->branch_id,
             'shift_id'=>$this->shift_id,
             'fingerprint_id'=>$this->fingerprint_id,
+            'ipan'=>$this?->ipan,
+            'swift_number'=>$this?->swift_number,
+            'nationality'=>$this?->nationality,
+            'addrees'=>$this?->addrees,
+            'national_identity'=>$this?->national_identity,
+            'passport_identity'=>$this?->passport_identity,
+            'gender'=>$this?->gender,
+            'marial_status'=>$this?->marial_status,
+            'emergency_contact'=>$this?->emergency_contact,
+            'description'=>$this?->description,
 
         ];
     }
