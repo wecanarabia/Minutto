@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Company\DepartmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Company\IndexController;
 use App\Http\Controllers\Company\LoginController;
@@ -18,6 +19,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
         Route::get('/home',[IndexController::class, 'home'])->name('home');
         Route::resource('employees', EmployeeController::class)->except(['destroy']);
+        Route::resource('departments', DepartmentController::class)->except(['destroy']);
 
     });
 });

@@ -48,7 +48,7 @@ class User extends Authenticatable
             $this->attributes['image'] =  'img/badges/'.$filename;
         }
     }
-
+    
     protected static function booted()
     {
         static::deleted(function ($user) {
@@ -64,6 +64,10 @@ class User extends Authenticatable
 
     public function shift(){
         return $this->belongsTo(Shift::class);
+    }
+
+    public function department(){
+        return $this->belongsTo(department::class);
     }
 
     public function fingerprint(){

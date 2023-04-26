@@ -68,11 +68,11 @@
                     </ul>
                 </li>
                 <li class="collapsed">
-                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#emp-Components" href="{{ route('company.employees.index') }}"><i
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#emp-Components" href="#"><i
                             class="icofont-users-alt-5"></i> <span>Employees</span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
                     <!-- Menu: Sub menu ul -->
                     <ul class="sub-menu collapse" id="emp-Components">
-                        <li><a class="ms-link" href="members.html"> <span>Members</span></a></li>
+                        <li><a class="ms-link" href="{{ route('company.employees.index') }}"> <span>Members</span></a></li>
                         <li><a class="ms-link" href="employee-profile.html"> <span>Members Profile</span></a></li>
                         <li><a class="ms-link" href="holidays.html"> <span>Holidays</span></a></li>
                         <li><a class="ms-link" href="attendance-employees.html"> <span>Attendance Employees</span></a></li>
