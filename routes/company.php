@@ -5,10 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Company\IndexController;
 use App\Http\Controllers\Company\LoginController;
 use App\Http\Controllers\Company\EmployeeController;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
-Route::group(['prefix' => LaravelLocalization::setLocale(),
+Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
 'as'=>'company.'],function (){
     Route::get('/login',[LoginController::class, 'getLogin'])->name('login-page');
