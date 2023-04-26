@@ -7,18 +7,18 @@ use App\Http\Controllers\Company\LoginController;
 use App\Http\Controllers\Company\EmployeeController;
 
 
-Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
-'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
-'as'=>'company.'],function (){
-    Route::get('/login',[LoginController::class, 'getLogin'])->name('login-page');
-    Route::post('/send-login',[LoginController::class, 'postLogin'])->name('login');
-    Route::get('/',[IndexController::class, 'index'])->name('index');
+// Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
+// 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
+// 'as'=>'company.'],function (){
+//     Route::get('/login',[LoginController::class, 'getLogin'])->name('login-page');
+//     Route::post('/send-login',[LoginController::class, 'postLogin'])->name('login');
+//     Route::get('/',[IndexController::class, 'index'])->name('index');
 
-    Route::group(['middleware'=>'auth:company'],function () {
-        Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
-        Route::get('/home',[IndexController::class, 'home'])->name('home');
-        Route::resource('employees', EmployeeController::class)->except(['destroy']);
-        Route::resource('departments', DepartmentController::class)->except(['destroy']);
+//     Route::group(['middleware'=>'auth:company'],function () {
+//         Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
+//         Route::get('/home',[IndexController::class, 'home'])->name('home');
+//         Route::resource('employees', EmployeeController::class)->except(['destroy']);
+//         Route::resource('departments', DepartmentController::class)->except(['destroy']);
 
-    });
-});
+//     });
+// });
