@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('companies', function (Blueprint $table) {
 
             $table->time('grace_period')->nulable();
-            $table->double('discount_value')->default(0);
+
 
         });
     }

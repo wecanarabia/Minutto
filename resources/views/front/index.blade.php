@@ -140,7 +140,7 @@
                                     <div class="flex-grow-1">
                                         <div class="py-2 d-flex align-items-center border-bottom flex-wrap">
                                             <div class="d-flex align-items-center flex-fill">
-                                                <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/lg/avatar2.jpg" alt="profile">
+                                                <img class="avatar lg rounded-circle img-thumbnail" src="{{ asset('assets/images/lg/avatar2.jpg') }}" alt="profile">
                                                 <div class="d-flex flex-column ps-3">
                                                     <h6 class="fw-bold mb-0 small-14">Natalie Gibson</h6>
                                                     <span class="text-muted">Ui/UX Designer</span>
@@ -152,7 +152,7 @@
                                         </div>
                                         <div class="py-2 d-flex align-items-center border-bottom flex-wrap">
                                             <div class="d-flex align-items-center flex-fill">
-                                                <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/lg/avatar9.jpg" alt="profile">
+                                                <img class="avatar lg rounded-circle img-thumbnail" src="{{ asset('assets/images/lg/avatar9.jpg') }}" alt="profile">
                                                 <div class="d-flex flex-column ps-3">
                                                     <h6 class="fw-bold mb-0 small-14">Peter	Piperg</h6>
                                                     <span class="text-muted">Web Design</span>
@@ -164,7 +164,7 @@
                                         </div>
                                         <div class="py-2 d-flex align-items-center border-bottom flex-wrap">
                                             <div class="d-flex align-items-center flex-fill">
-                                                <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/lg/avatar12.jpg" alt="profile">
+                                                <img class="avatar lg rounded-circle img-thumbnail" src="{{ asset('assets/images/lg/avatar12.jpg') }}" alt="profile">
                                                 <div class="d-flex flex-column ps-3">
                                                     <h6 class="fw-bold mb-0 small-14">Robert Young</h6>
                                                     <span class="text-muted">PHP Developer</span>
@@ -176,7 +176,7 @@
                                         </div>
                                         <div class="py-2 d-flex align-items-center border-bottom flex-wrap">
                                             <div class="d-flex align-items-center flex-fill">
-                                                <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/lg/avatar8.jpg" alt="profile">
+                                                <img class="avatar lg rounded-circle img-thumbnail" src="{{ asset('assets/images/lg/avatar8.jpg') }}" alt="profile">
                                                 <div class="d-flex flex-column ps-3">
                                                     <h6 class="fw-bold mb-0 small-14">Victoria Vbell</h6>
                                                     <span class="text-muted">IOS Developer</span>
@@ -188,7 +188,7 @@
                                         </div>
                                         <div class="py-2 d-flex align-items-center border-bottom flex-wrap">
                                             <div class="d-flex align-items-center flex-fill">
-                                                <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/lg/avatar7.jpg" alt="profile">
+                                                <img class="avatar lg rounded-circle img-thumbnail" src="{{ asset('assets/images/lg/avatar7.jpg') }}" alt="profile">
                                                 <div class="d-flex flex-column ps-3">
                                                     <h6 class="fw-bold mb-0 small-14">Mary Butler</h6>
                                                     <span class="text-muted">Writer</span>
@@ -200,7 +200,7 @@
                                         </div>
                                         <div class="py-2 d-flex align-items-center border-bottom flex-wrap">
                                             <div class="d-flex align-items-center flex-fill">
-                                                <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/lg/avatar3.jpg" alt="profile">
+                                                <img class="avatar lg rounded-circle img-thumbnail" src="{{ asset('assets/images/lg/avatar3.jpg') }}" alt="profile">
                                                 <div class="d-flex flex-column ps-3">
                                                     <h6 class="fw-bold mb-0 small-14">Youn Bel</h6>
                                                     <span class="text-muted">Unity 3d</span>
@@ -212,7 +212,7 @@
                                         </div>
                                         <div class="py-2 d-flex align-items-center  flex-wrap">
                                             <div class="d-flex align-items-center flex-fill">
-                                                <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/lg/avatar2.jpg" alt="profile">
+                                                <img class="avatar lg rounded-circle img-thumbnail" src="{{ asset('assets/images/lg/avatar2.jpg') }}" alt="profile">
                                                 <div class="d-flex flex-column ps-3">
                                                     <h6 class="fw-bold mb-0 small-14">Gibson Butler</h6>
                                                     <span class="text-muted">Networking</span>
@@ -455,5 +455,5 @@
             </div>
             </div>
         </div>
-  
+
 </x-layouts.app>

@@ -29,6 +29,8 @@ use App\Http\Controllers\Api\DiscountController;
 
 
 
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -93,6 +95,33 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
         // getCountersForVacations
        Route::get('count-all-leaves/{year}/{month}', [ReportController::class, 'getCountersForLeaves']);
+
+
+
+
+         //my advances
+         Route::get('my-advances', [AdvanceController::class, 'myAdvances']);
+
+           //my alerts
+           Route::get('my-alerts', [AlertController::class, 'myAlerts']);
+
+
+         //getCountersForLeaves
+         Route::get('count-leaves', [LeaveController::class, 'getCountersForLeaves']);
+
+
+         //getCountersForVacations
+         Route::get('count-vacations', [WorkhourController::class, 'getCountersForVacations']);
+
+         //getCountersForWorkhours
+         Route::get('count-workhours/{year}/{month}', [ReportController::class, 'getCountersForWorkhours']);
+
+        // getCountersForVacations
+        Route::get('count-allvacations/{year}/{month}', [ReportController::class, 'getCountersForVacations']);
+
+        // getCountersForVacations
+       Route::get('count-all-leaves/{year}/{month}', [ReportController::class, 'getCountersForLeaves']);
+
 
 
 
@@ -212,6 +241,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          Route::post('leave-type/edit/{id}', [LeaveTypeController::class, 'edit']);
 
            //leave types for company
+        Route::get('leave-types/{company_id}', [LeaveTypeController::class, 'leavesTypeByCompany']);
         Route::get('leave-types/{company_id}', [LeaveTypeController::class, 'leavesTypeByCompany']);
 
 
