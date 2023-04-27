@@ -29,6 +29,8 @@ use App\Http\Controllers\Api\DiscountController;
 
 
 
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -70,6 +72,30 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
          //my workhours
          Route::get('my-workhours/{year}/{month}', [WorkhourController::class, 'myWorkhours']);
+
+         //my advances
+         Route::get('my-advances', [AdvanceController::class, 'myAdvances']);
+
+           //my alerts
+           Route::get('my-alerts', [AlertController::class, 'myAlerts']);
+
+
+         //getCountersForLeaves
+         Route::get('count-leaves', [LeaveController::class, 'getCountersForLeaves']);
+
+
+         //getCountersForVacations
+         Route::get('count-vacations', [WorkhourController::class, 'getCountersForVacations']);
+
+         //getCountersForWorkhours
+         Route::get('count-workhours/{year}/{month}', [ReportController::class, 'getCountersForWorkhours']);
+
+        // getCountersForVacations
+        Route::get('count-allvacations/{year}/{month}', [ReportController::class, 'getCountersForVacations']);
+
+        // getCountersForVacations
+       Route::get('count-all-leaves/{year}/{month}', [ReportController::class, 'getCountersForLeaves']);
+
 
 
 
@@ -216,6 +242,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
            //leave types for company
         Route::get('leave-types/{company_id}', [LeaveTypeController::class, 'leavesTypeByCompany']);
+        Route::get('leave-types/{company_id}', [LeaveTypeController::class, 'leavesTypeByCompany']);
 
 
 
@@ -260,12 +287,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          Route::post('discount/edit/{id}', [DiscountController::class, 'edit']);
 
 
+
         //workhour
          Route::get('workhours', [WorkhourController::class, 'list']);
          Route::post('workhour-create', [WorkhourController::class, 'save']);
          Route::get('workhour/{id}', [WorkhourController::class, 'view']);
          Route::get('workhour/delete/{id}', [WorkhourController::class, 'delete']);
          Route::post('workhour/edit/{id}', [WorkhourController::class, 'edit']);
+
 
 
 

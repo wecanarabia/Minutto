@@ -48,7 +48,7 @@ class User extends Authenticatable
             $this->attributes['image'] =  'img/badges/'.$filename;
         }
     }
-    
+
     protected static function booted()
     {
         static::deleted(function ($user) {
@@ -86,7 +86,9 @@ class User extends Authenticatable
     }
 
 
+
     public function leaves(){
+
         return $this->hasMany(Leave::class);
 
     }
