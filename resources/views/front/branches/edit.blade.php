@@ -46,7 +46,7 @@
                                          branch head
                                          @endif</option>
                                      @foreach ($employees as $employee)
-                                     <option value="{{ $employee->id }}" @selected($branch->branch_head??old('branch_head') == $employee->id)>{{ $employee->name  }}</option>
+                                     <option value="{{ $employee->id }}" @selected(old('branch_head',$branch->branch_head) == $employee->id)>{{ $employee->name  }}</option>
                                      @endforeach
                                  </select>
                                  @error('branch_head')
@@ -73,7 +73,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
 
-                               </div>>
+                               </div>
 
 
 

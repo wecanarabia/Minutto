@@ -55,6 +55,15 @@
                     </ul>
                 </li>
 
+                <li  class="collapsed">
+                    <a class="m-link"  data-bs-toggle="collapse" data-bs-target="#shift-Components" href="#">
+                        <i class="icofont-clock-time"></i><span>Shifts</span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                    <!-- Menu: Sub menu ul -->
+                    <ul class="sub-menu collapse" id="shift-Components">
+                        <li><a class="ms-link" href="{{ route('company.shifts.index') }}"><span>Shifts</span></a></li>
+                    </ul>
+                </li>
+
                 <li class="collapsed">
                     <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i
                             class="icofont-ticket"></i> <span>Tickets</span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>

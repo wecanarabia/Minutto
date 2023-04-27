@@ -25,14 +25,14 @@
                                 <div class="row g-3 align-items-center">
                                    <div class="col-md-6">
                                        <label for="firstname" class="form-label">English Name</label>
-                                       <input type="text" class="form-control" id="firstname" name="english_name" value="{{ $department->getTranslation('name', 'en')??old('english_name') }}" required>
+                                       <input type="text" class="form-control" id="firstname" name="english_name" value="{{ old('english_name',$department->getTranslation('name', 'en')) }}" required>
                                        @error('english_name')
                                        <div class="text-danger">{{ $message }}</div>
                                        @enderror
                                    </div>
                                    <div class="col-md-6">
                                        <label for="lastname" class="form-label">English Name</label>
-                                       <input type="text" class="form-control" name="arabic_name" value="{{ $department->getTranslation('name', 'ar')??old('arabic_name') }}" id="lastname" required>
+                                       <input type="text" class="form-control" name="arabic_name" value="{{ old('arabic_name',$department->getTranslation('name', 'ar')) }}" id="lastname" required>
                                        @error('arabic_name')
                                        <div class="text-danger">{{ $message }}</div>
                                        @enderror
@@ -40,7 +40,7 @@
 
                                    <div class="col-md-12">
                                        <label for="addnote" class="form-label">English Descritpion</label>
-                                       <textarea  class="form-control" name="english_description" id="addnote" rows="3">{{ $department->getTranslation('description', 'en')??old('english_description') }}</textarea>
+                                       <textarea  class="form-control" name="english_description" id="addnote" rows="3">{{ old('english_description',$department->getTranslation('description', 'en')) }}</textarea>
                                        @error('english_description')
                                        <div class="text-danger">{{ $message }}</div>
                                        @enderror
@@ -48,7 +48,7 @@
 
                                    <div class="col-md-12">
                                        <label for="addnote" class="form-label">Arabic Descritpion</label>
-                                       <textarea  class="form-control" name="arabic_description"  id="addnote" rows="3">{{ $department->getTranslation('description', 'ar')??old('arabic_description') }}</textarea>
+                                       <textarea  class="form-control" name="arabic_description"  id="addnote" rows="3">{{ old('arabic_description',$department->getTranslation('description', 'ar')) }}</textarea>
                                        @error('arabic_description')
                                        <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -64,7 +64,7 @@
                                             Department head
                                             @endif</option>
                                         @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}" @selected($department->department_head??old('department_head') == $employee->id)>{{ $employee->name  }}</option>
+                                        <option value="{{ $employee->id }}" @selected(old('department_head',$department->department_head) == $employee->id)>{{ $employee->name  }}</option>
                                         @endforeach
                                     </select>
                                     @error('department_head')
