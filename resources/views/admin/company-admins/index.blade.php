@@ -62,7 +62,7 @@
                                                         </td>
 
                                                         <td>
-                                                            <span>{{ $admin->company->getTranslation('name', 'en') }}</span>
+                                                            <span>{{ $admin?->company?->getTranslation('name', 'en')??"No Company" }}</span>
                                                         </td>
 
 

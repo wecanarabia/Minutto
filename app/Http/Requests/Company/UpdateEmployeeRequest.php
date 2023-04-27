@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Company;
 
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Foundation\Http\FormRequest;
@@ -40,15 +40,17 @@ class UpdateEmployeeRequest extends FormRequest
             'duration_of_contract'=>'sometimes|integer',
             'contract_expire'=>'sometimes|date',
             'branch_id'=>'sometimes|exists:branches,id',
+            'branch_id'=>'sometimes|exists:departments,id',
             'shift_id'=>'sometimes|exists:shifts,id',
-            'start_work'=>'sometimes|date',
+            'work_start'=>'sometimes|date',
+            'address'=>'sometimes|min:4|max:255',
             'name'=>'sometimes|min:4|max:255',
             'last_name'=>'sometimes|min:4|max:255',
             'phone' => 'sometimes|min:9|regex:/^([0-9\s\-\+\(\)]*)$/|unique:users,phone,'.$this->id,
             'email'=>'sometimes|min:4|max:255|unique:users,email,'.$this->id,
             'password'=>['nullable',Password::min(8)],
-            'image'=>'max:4|mimes:jpg,jpeg,gif,png',
-            'status'=>'sometimes|in:0,1',
+            'image'=>'max:4000|mimes:jpg,jpeg,gif,png',
+            'active'=>'sometimes|in:0,1',
         ];
     }
 }

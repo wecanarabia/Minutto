@@ -39,13 +39,10 @@
                 </li>
                 <li  class="collapsed">
                     <a class="m-link"  data-bs-toggle="collapse" data-bs-target="#project-Components" href="#">
-                        <i class="icofont-briefcase"></i><span>Projects</span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                        <i class="icofont-briefcase"></i><span>Departments</span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
                     <!-- Menu: Sub menu ul -->
                     <ul class="sub-menu collapse" id="project-Components">
-                        <li><a class="ms-link" href="projects.html"><span>Projects</span></a></li>
-                        <li><a class="ms-link" href="task.html"><span>Tasks</span></a></li>
-                        <li><a class="ms-link" href="timesheet.html"><span>Timesheet</span></a></li>
-                        <li><a class="ms-link" href="team-leader.html"><span>Leaders</span></a></li>
+                        <li><a class="ms-link" href="{{ route('company.departments.index') }}"><span>Departments</span></a></li>
                     </ul>
                 </li>
 
