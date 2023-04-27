@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Workhour;
+use App\Models\Workday;
+use App\Models\Discount;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,6 +14,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use DB;
 
 class WorkhourController extends ApiController
 {
@@ -30,13 +33,18 @@ class WorkhourController extends ApiController
         $user=User::find($request->user_id);
         $company=Company::find($user->branch->company->id);
         // dd(company);
+        $currentD=Carbon::today()->format('l');
+        $workday=Workday::where('shift_id',$user->shift_id)
+                        ->where('day',$currentD)
+                        ->where('status',1)
+                        ->first();
 
         if($company)
         {
-            $difference=Carbon::createFromFormat('H:i:s',$model->time_attendance)->diffInMinutes(Carbon::createFromFormat('H:i:s',$user->shift->from));
+            $difference=Carbon::createFromFormat('H:i:s',$model->time_attendance)->diffInMinutes(Carbon::createFromFormat('H:i:s',$workday->from));
             $dif=gmdate('H:i:s',$difference*60);
             // dd($dif);
-            if($difference == 0)
+            if($difference == 0 || $model->time_attendance <= $workday->from )
             {
 
                 $model->status="disciplined";
@@ -44,17 +52,42 @@ class WorkhourController extends ApiController
 
             }
 
-            if($dif <= $company->grace_period && $difference != 0)
+            if($dif <= $company->grace_period && $difference != 0 && $model->time_attendance > $workday->from)
             {
+
+                $late=Carbon::createFromFormat('H:i:s',$company->grace_period)->diffInMinutes(Carbon::createFromFormat('H:i:s',$dif));
+                $delay=gmdate('H:i:s',$difference*60);
                 $model->status="late";
+                $model->delay=$delay;
                 $model->save();
             }
 
-            if($dif > $company->grace_period)
+            if($dif > $company->grace_period && $model->time_attendance > $workday->from)
             {
                 $model->status="late";
                 $late=Carbon::createFromFormat('H:i:s',$dif)->diffInMinutes(Carbon::createFromFormat('H:i:s',$company->grace_period));
-                $model->discount_value=$late * $company->discount_value;
+                $delay=gmdate('H:i:s',$difference*60);
+
+                $discount = Discount::select('from','to',DB::raw('(TIME_TO_SEC(percentage)/60) as total_per'))
+                ->where('company_id',$company->id)
+                ->get();
+
+
+                foreach($discount as $dis) {
+
+
+                    if($dis->from <= $model->time_attendance && $model->time_attendance <= $dis->to){
+
+                        $disminute=($user->hourly_salary) / 60;
+                        $model->discount_value=($dis->total_per) * $disminute;
+                        $model->save();
+
+                    }
+
+                    }
+
+
+                $model->delay=$delay;
                 $model->save();
 
             }
@@ -86,18 +119,6 @@ class WorkhourController extends ApiController
 
             $user=User::find($model->user_id);
 
-            if($model->time_departure)
-            {
-            $difference=Carbon::createFromFormat('H:i:s',$model->time_departure)->diffInMinutes(Carbon::createFromFormat('H:i:s',$user->shift->to));
-            if($difference > 0)
-            {
-
-                $user->extra_value= $user->extra_value + ($user->extra_price * $difference);
-                $user->save();
-
-            }
-
-            }
 
             $today=Carbon::today();
 
@@ -132,6 +153,27 @@ class WorkhourController extends ApiController
 
         return $this->returnData('data',  WorkhourResource::collection( $workhours ), __('Get  succesfully'));
 
+    }
+
+    public function getCountersForVacations()
+    {
+
+        $currentM=Carbon::today()->format('m');
+        $currentY=Carbon::today()->format('Y');
+
+
+        $data = array();
+
+        $data['total'] = User::find(Auth::user()->id)->branch->company->holidays_count;
+
+        $data['taken'] = Workhour::where('user_id', Auth::user()->id)->where('status','vacation')
+        ->orWhere('status','absence')
+        ->whereMonth('created_at', $currentM)
+        ->whereYear('created_at', $currentY)
+        ->get()->count();
+
+
+        return $this->returnData('data', $data, __('Succesfully'));
     }
 
 }
