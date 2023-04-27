@@ -71,4 +71,12 @@ class User extends Authenticatable
     }
 
 
+    public function advances(){
+        return $this->hasMany(Advance::class);
+    }
+
+    public function alerts(){
+        return $this->hasMany(Alert::class);
+    }
+
 }

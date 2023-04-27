@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class WorkhourResource extends JsonResource
+class AlertResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,16 +17,13 @@ class WorkhourResource extends JsonResource
         return [
 
             'id'=>$this->id,
-            'time_attendance'=>$this->time_attendance,
-            'time_departure'=>$this->time_departure,
-            'discount_value'=>$this->discount_value,
+            'type'=>$this->type,
+            'alert_date'=>$this->alert_date,
+            'punishment'=>$this->punishment,
             'note'=>$this->note,
             'file'=>$this->file,
-            'status'=>$this->status,
-            'delay'=>$this->delay,
-            'replay'=>$this->replay,
-            'created_at'=>$this->created_at,
             'user_id'=>$this->user->id,
+
         ];
     }
 }
