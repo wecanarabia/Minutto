@@ -16,13 +16,13 @@ use App\Http\Controllers\Api\VacationTypeController;
 use App\Http\Controllers\Api\VacationController;
 use App\Http\Controllers\Api\LeaveTypeController;
 use App\Http\Controllers\Api\LeaveController;
-
 use App\Http\Controllers\Api\WorkhourController;
 use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\AdvanceController;
 use App\Http\Controllers\Api\AlertController;
 use App\Http\Controllers\Api\WorkdayController;
 use App\Http\Controllers\Api\DiscountController;
+
 
 
 
@@ -71,7 +71,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          //my workhours
          Route::get('my-workhours/{year}/{month}', [WorkhourController::class, 'myWorkhours']);
 
-<<<<<<< HEAD
+
+
          //my advances
          Route::get('my-advances', [AdvanceController::class, 'myAdvances']);
 
@@ -96,8 +97,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
        Route::get('count-all-leaves/{year}/{month}', [ReportController::class, 'getCountersForLeaves']);
 
 
-=======
->>>>>>> c76af8ff4fc18ba5a7a8c8477db9287af6653390
+
 
     });
 
@@ -226,7 +226,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          Route::get('workhour/delete/{id}', [WorkhourController::class, 'delete']);
          Route::post('workhour/edit/{id}', [WorkhourController::class, 'edit']);
 
-<<<<<<< HEAD
+
          //Advance
          Route::get('advances', [AdvanceController::class, 'list']);
          Route::post('advance-create', [AdvanceController::class, 'save']);
@@ -258,6 +258,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          Route::get('discount/{id}', [DiscountController::class, 'view']);
          Route::get('discount/delete/{id}', [DiscountController::class, 'delete']);
          Route::post('discount/edit/{id}', [DiscountController::class, 'edit']);
-=======
 
->>>>>>> c76af8ff4fc18ba5a7a8c8477db9287af6653390
+
+        //workhour
+         Route::get('workhours', [WorkhourController::class, 'list']);
+         Route::post('workhour-create', [WorkhourController::class, 'save']);
+         Route::get('workhour/{id}', [WorkhourController::class, 'view']);
+         Route::get('workhour/delete/{id}', [WorkhourController::class, 'delete']);
+         Route::post('workhour/edit/{id}', [WorkhourController::class, 'edit']);
+
+
+

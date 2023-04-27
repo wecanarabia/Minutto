@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 require __DIR__ . '/dashboard.php';
+require __DIR__ . '/company.php';

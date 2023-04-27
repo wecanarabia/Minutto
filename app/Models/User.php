@@ -48,6 +48,15 @@ class User extends Authenticatable
             $this->attributes['image'] =  'img/badges/'.$filename;
         }
     }
+    
+    protected static function booted()
+    {
+        static::deleted(function ($user) {
+            if ($user->image  && \Illuminate\Support\Facades\File::exists($user->image)) {
+                unlink($user->image);
+            }
+        });
+    }
 
     public function branch(){
         return $this->belongsTo(Branch::class);
@@ -55,6 +64,10 @@ class User extends Authenticatable
 
     public function shift(){
         return $this->belongsTo(Shift::class);
+    }
+
+    public function department(){
+        return $this->belongsTo(department::class);
     }
 
     public function fingerprint(){
@@ -69,6 +82,9 @@ class User extends Authenticatable
 
     public function workhours(){
         return $this->hasMany(Workhour::class);
+
+    }
+
 
     public function leaves(){
         return $this->hasMany(Leave::class);
