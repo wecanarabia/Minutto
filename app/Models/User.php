@@ -66,8 +66,13 @@ class User extends Authenticatable
     }
 
 
+
     public function workhours(){
         return $this->hasMany(Workhour::class);
+
+    public function leaves(){
+        return $this->hasMany(Leave::class);
+
     }
 
 
