@@ -17,7 +17,7 @@ class Authenticate extends Middleware
                 return route('admin.login-page');
             }
             else{
-                return route("login");
+                return route("company.login-page");
             }
         }
 

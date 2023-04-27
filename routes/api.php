@@ -16,13 +16,13 @@ use App\Http\Controllers\Api\VacationTypeController;
 use App\Http\Controllers\Api\VacationController;
 use App\Http\Controllers\Api\LeaveTypeController;
 use App\Http\Controllers\Api\LeaveController;
-
 use App\Http\Controllers\Api\WorkhourController;
 use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\AdvanceController;
 use App\Http\Controllers\Api\AlertController;
 use App\Http\Controllers\Api\WorkdayController;
 use App\Http\Controllers\Api\DiscountController;
+
 
 
 
@@ -71,7 +71,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          //my workhours
          Route::get('my-workhours/{year}/{month}', [WorkhourController::class, 'myWorkhours']);
 
-
          //my advances
          Route::get('my-advances', [AdvanceController::class, 'myAdvances']);
 
@@ -94,6 +93,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
         // getCountersForVacations
        Route::get('count-all-leaves/{year}/{month}', [ReportController::class, 'getCountersForLeaves']);
+
 
 
     });
@@ -223,6 +223,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          Route::get('workhour/delete/{id}', [WorkhourController::class, 'delete']);
          Route::post('workhour/edit/{id}', [WorkhourController::class, 'edit']);
 
+
          //Advance
          Route::get('advances', [AdvanceController::class, 'list']);
          Route::post('advance-create', [AdvanceController::class, 'save']);
@@ -254,3 +255,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          Route::get('discount/{id}', [DiscountController::class, 'view']);
          Route::get('discount/delete/{id}', [DiscountController::class, 'delete']);
          Route::post('discount/edit/{id}', [DiscountController::class, 'edit']);
+

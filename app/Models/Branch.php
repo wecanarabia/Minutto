@@ -14,4 +14,14 @@ class Branch extends Model
     public function company(){
         return $this->belongsTo(Company::class);
     }
+
+    public function employees()
+    {
+        return $this->hasMany(User::class);
+    }
+    
+    public function shifts()
+    {
+        return $this->belongsToMany(Shift::class,'branch_shifts', 'branch_id', 'shift_id');
+    }
 }

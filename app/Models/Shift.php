@@ -9,4 +9,8 @@ class Shift extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    public function branches()
+    {
+        return $this->belongsToMany(Branch::class,'branch_shifts','shift_id', 'branch_id');
+    }
 }
