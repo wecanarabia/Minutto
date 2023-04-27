@@ -286,3 +286,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          Route::get('discount/delete/{id}', [DiscountController::class, 'delete']);
          Route::post('discount/edit/{id}', [DiscountController::class, 'edit']);
 
+
+
+        //workhour
+         Route::get('workhours', [WorkhourController::class, 'list']);
+         Route::post('workhour-create', [WorkhourController::class, 'save']);
+         Route::get('workhour/{id}', [WorkhourController::class, 'view']);
+         Route::get('workhour/delete/{id}', [WorkhourController::class, 'delete']);
+         Route::post('workhour/edit/{id}', [WorkhourController::class, 'edit']);
+
+
+
+

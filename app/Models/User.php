@@ -86,6 +86,10 @@ class User extends Authenticatable
     }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 368975ffb43fe7ce2c70ca2b9153445536a38ec3
     public function leaves(){
 
         return $this->hasMany(Leave::class);
