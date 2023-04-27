@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Company\DepartmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Company\IndexController;
 use App\Http\Controllers\Company\LoginController;
+use App\Http\Controllers\Company\BranchController;
 use App\Http\Controllers\Company\EmployeeController;
+use App\Http\Controllers\Company\DepartmentController;
 
 
 Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
@@ -20,6 +21,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
         Route::resource('employees', EmployeeController::class)->except(['destroy','edit','update','create','store']);
         Route::post('employees/update/{id}',[EmployeeController::class,'updateData']);
         Route::resource('departments', DepartmentController::class)->except(['destroy']);
+        Route::resource('branches', BranchController::class)->except(['destroy']);
 
     });
 });

@@ -20,6 +20,8 @@
                         <form method="post" action="{{ route('company.departments.update',$department->id) }}">
                             @csrf
                             @method('PUT')
+                            <input type="hidden" name="id" value="{{ $department->id }}">
+
                                 <div class="row g-3 align-items-center">
                                    <div class="col-md-6">
                                        <label for="firstname" class="form-label">English Name</label>
@@ -56,7 +58,7 @@
                                        <label for="addnote" class="form-label">Department Head</label>
                                        <select class="default-select form-control" name="department_head">
                                         <option  data-display="Select">
-                                            @if(!$department->head)
+                                            @if($employees->count() == 0)
                                             This department has <b>no</b> employees, please add employees to select head from
                                             @else
                                             Department head
