@@ -82,12 +82,22 @@ class User extends Authenticatable
 
     public function workhours(){
         return $this->hasMany(Workhour::class);
+
     }
+
 
     public function leaves(){
         return $this->hasMany(Leave::class);
 
     }
 
+
+    public function advances(){
+        return $this->hasMany(Advance::class);
+    }
+
+    public function alerts(){
+        return $this->hasMany(Alert::class);
+    }
 
 }
