@@ -71,7 +71,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          //my workhours
          Route::get('my-workhours/{year}/{month}', [WorkhourController::class, 'myWorkhours']);
 
-<<<<<<< HEAD
+
          //my advances
          Route::get('my-advances', [AdvanceController::class, 'myAdvances']);
 
@@ -95,9 +95,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         // getCountersForVacations
        Route::get('count-all-leaves/{year}/{month}', [ReportController::class, 'getCountersForLeaves']);
 
-
-=======
->>>>>>> c76af8ff4fc18ba5a7a8c8477db9287af6653390
 
     });
 
@@ -226,7 +223,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          Route::get('workhour/delete/{id}', [WorkhourController::class, 'delete']);
          Route::post('workhour/edit/{id}', [WorkhourController::class, 'edit']);
 
-<<<<<<< HEAD
          //Advance
          Route::get('advances', [AdvanceController::class, 'list']);
          Route::post('advance-create', [AdvanceController::class, 'save']);
@@ -258,6 +254,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          Route::get('discount/{id}', [DiscountController::class, 'view']);
          Route::get('discount/delete/{id}', [DiscountController::class, 'delete']);
          Route::post('discount/edit/{id}', [DiscountController::class, 'edit']);
-=======
-
->>>>>>> c76af8ff4fc18ba5a7a8c8477db9287af6653390
