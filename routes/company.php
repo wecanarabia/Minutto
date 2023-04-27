@@ -17,7 +17,8 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
     Route::group(['middleware'=>'auth:company'],function () {
         Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
         Route::get('/home',[IndexController::class, 'home'])->name('home');
-        Route::resource('employees', EmployeeController::class)->except(['destroy']);
+        Route::resource('employees', EmployeeController::class)->except(['destroy','edit','update','create','store']);
+        Route::post('employees/update/{id}',[EmployeeController::class,'updateData']);
         Route::resource('departments', DepartmentController::class)->except(['destroy']);
 
     });

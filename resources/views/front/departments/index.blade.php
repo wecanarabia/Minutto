@@ -12,6 +12,12 @@
                         </div>
                     </div>
                 </div> <!-- Row end  -->
+                @if (session()->has('success'))
+                <div class="alert alert-dismissible fade show" role="alert">
+                    <strong><i class="icofont-check-circled m-2 "></i>{{ session()->get('success') }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
                 <div class="row clearfix g-3">
                   <div class="col-sm-12">
                         <div class="card mb-3">
@@ -28,7 +34,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($departments as $department)
+                                        @foreach ($data as $department)
 
                                         <tr>
                                             <td>
@@ -41,14 +47,19 @@
                                             {{ $department->getTranslation('name', 'ar') }}
                                            </td>
                                            <td>
-                                            {{ $department->company->name }}
-                                           </td>
-                                           <td>Airtel Portal</td>
-                                           <td><span class="badge bg-warning">In Progress</span></td>
+                                            @if ($department->head)
+                                            <img class="avatar rounded-circle" src="{{ asset( $department->head->image ) }}" alt="">
+                                            <a href="{{ route('company.employees.show',department->head->id) }}" class="fw-bold text-secondary">
+                                            <span class="fw-bold ms-1">{{ $department->head->name }}</span></a>
+                                            @else
+                                                edit Department to add Head
+                                            @endif
+                                                                                    </td>
+                                           <td>{{ $department?->employees()?->count??"NO Employees added" }}</td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                    <button type="button" class="btn btn-outline-secondary"  data-bs-toggle="modal" data-bs-target="#departmentedit"><i class="icofont-edit text-success"></i></button>
-                                                    <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
+                                                    <a class="btn btn-outline-secondary" href="{{ route('company.departments.edit',$department->id) }}"><i class="icofont-edit text-success"></i></a>
+                                                    <a class="btn btn-outline-secondary" href="{{ route('company.departments.show',$department->id) }}"><i class="icofont-location-arrow"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -62,7 +73,7 @@
             </div>
         </div>
 
-  
+
     </div>
 </div>
 </x-layouts.app>

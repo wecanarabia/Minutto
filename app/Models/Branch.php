@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Branch extends Model
 {
-    use HasFactory;
+    use HasFactory,HasTranslations;
+
+    public $translatable = ['name'];
 
     protected $guarded=[];
 
@@ -19,9 +22,14 @@ class Branch extends Model
     {
         return $this->hasMany(User::class);
     }
-    
+
     public function shifts()
     {
         return $this->belongsToMany(Shift::class,'branch_shifts', 'branch_id', 'shift_id');
+    }
+
+
+    public function head(){
+        return $this->hasOne(user::class,'user_id','branch_head');
     }
 }

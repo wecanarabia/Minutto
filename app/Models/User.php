@@ -82,8 +82,8 @@ class User extends Authenticatable
 
     public function workhours(){
         return $this->hasMany(Workhour::class);
-    }
 
+    }
 
 
 

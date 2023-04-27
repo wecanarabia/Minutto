@@ -10,10 +10,12 @@
 <script src="https://pixelwibes.com/template/my-task/html/js/page/hr.js"></script>
 <!-- Plugin Js-->
 <script src="{{ asset('assets/bundles/dataTables.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/ajax.js') }}"></script>
 
 <script>
     // project data table
     $(document).ready(function() {
+
         $('#myProjectTable')
         .addClass( 'nowrap' )
         .dataTable( {
@@ -22,6 +24,8 @@
                 { targets: [-1, -3], className: 'dt-body-right' }
             ]
         });
+
+  
     });
 </script>
 </body>

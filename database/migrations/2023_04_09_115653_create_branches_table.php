@@ -17,7 +17,8 @@ return new class extends Migration
             $table->double('lat');
             $table->double('long');
             $table->string('location')->nullable();
-            $table->integer('company_id');
+            $table->foreignId('company_id')->constrained('companies')->cascadeOnDelete();
+            $table->foreignId('branch_head')->nullable()->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('shifts', function (Blueprint $table) {
             $table->id();
-            $table->time('from');
-            $table->time('to');
+            $table->string('name')->nullable();
+            $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('ipan')->nullable();
             $table->string('swift_number')->nullable();
             $table->string('nationality')->nullable();
-            $table->string('addrees')->nullable();
+            $table->string('address')->nullable();
             $table->string('national_identity')->nullable();
             $table->string('passport_identity')->nullable();
             $table->enum('gender',['male','female']);
@@ -38,7 +38,7 @@ return new class extends Migration
             $table->dropColumn('national_identity');
             $table->dropColumn('passport_identity');
             $table->dropColumn('gender');
-            $table->dropColumn('marial_status');
+            $table->dropColumn('marital_status');
             $table->dropColumn('emergency_contact');
             $table->dropColumn('description');
         });

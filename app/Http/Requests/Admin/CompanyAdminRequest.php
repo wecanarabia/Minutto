@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Models\Company;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Validation\Rule;
 class CompanyAdminRequest extends FormRequest
 {
     /**
@@ -22,12 +23,14 @@ class CompanyAdminRequest extends FormRequest
      */
     public function rules(): array
     {
+        $companies = Company::pluck('id')->toArray();
+        array_push($companies,'');
         return [
             'name'=>'required|min:5|max:255',
             'email'=>'required|min:5|email|max:255|unique:company_admins,email,'.$this->id,
             'password' => ['required_without:id', 'nullable',Password::min(8)],
             'image'=>'required_without:id|mimes:jpg,jpeg,gif,png',
-            'company_id'=>'nullable|exists:companies,id',
+            'company_id'=>[ 'nullable', Rule::in($companies)],
             'phone' => 'required|min:9|regex:/^([0-9\s\-\+\(\)]*)$/|unique:company_admins,phone,'.$this->id,
 
         ];
