@@ -5,9 +5,9 @@
                 <div class="row align-items-center">
                     <div class="border-0 mb-4">
                         <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-                            <h3 class="fw-bold mb-0">Shifts</h3>
+                            <h3 class="fw-bold mb-0">Workdays</h3>
                             <div class="col-auto d-flex w-sm-100">
-                                <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.shifts.create') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Add shift</a>
+                                <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.workdays.create') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Add Workdays</a>
                             </div>
                         </div>
                     </div>
@@ -26,36 +26,37 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>English Name</th>
-                                            <th>Arabic Name</th>
-                                            <th>Workdays</th>
+                                            <th>Day</th>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>Shift</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $shift)
+                                        @foreach ($data as $workday)
 
                                         <tr>
                                             <td>
-                                                {{ $shift->id }}
+                                                {{ $workday->id }}
                                             </td>
                                             <td>
-                                                {{ $shift->getTranslation('name', 'en') }}
+                                                {{ $workday->day }}
                                            </td>
                                            <td>
-                                            {{ $shift->getTranslation('name', 'ar') }}
-                                           </td>
-                                           <td>
-                                            @if ($shift->workdays->where('status',1)->count()==0)
-                                            <a href="{{ route('company.workdays.create') }}">Add workdays to shift</a>
-                                                @else
-                                            <a href="{{ route('company.workdays.show',$shift->id) }}">{{ $shift->workdays->where('status',1)->count() }} Days</a>
-                                            @endif
+                                            {{ $workday->from }}
                                            </td>
                                             <td>
+                                            {{ $workday->to }}
+                                           </td>
+                                           <td>
+                                            {{ $workday->shift->name }}
+                                           </td>
+                                         
+                                            <td>
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                    <a class="btn btn-outline-secondary" href="{{ route('company.shifts.edit',$shift->id) }}"><i class="icofont-edit text-success"></i></a>
-                                                    <a class="btn btn-outline-secondary" href="{{ route('company.shifts.show',$shift->id) }}"><i class="icofont-location-arrow"></i></a>
+                                                    <a class="btn btn-outline-secondary" href="{{ route('company.workdays.edit',$workday->id) }}"><i class="icofont-edit text-success"></i></a>
+                                                    <a class="btn btn-outline-secondary" href="{{ route('company.workdays.show',$workday->shift->id) }}"><i class="icofont-location-arrow"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

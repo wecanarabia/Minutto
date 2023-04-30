@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('workdays', function (Blueprint $table) {
             $table->id();
-            $table->time('from');
-            $table->time('to');
+            $table->time('from')->nullable();
+            $table->time('to')->nullable();
             $table->string('day');
             $table->boolean('status')->default(0);
             $table->integer('shift_id');

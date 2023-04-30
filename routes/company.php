@@ -7,7 +7,7 @@ use App\Http\Controllers\Company\ShiftController;
 use App\Http\Controllers\Company\BranchController;
 use App\Http\Controllers\Company\EmployeeController;
 use App\Http\Controllers\Company\DepartmentController;
-
+use App\Http\Controllers\Company\WorkDayController;
 
 Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
@@ -24,6 +24,9 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
         Route::resource('departments', DepartmentController::class)->except(['destroy']);
         Route::resource('branches', BranchController::class)->except(['destroy']);
         Route::resource('shifts', ShiftController::class)->except(['destroy']);
+        Route::resource('workdays', WorkDayController::class)->except(['destroy']);
+        Route::get('shifts/workdays/{id}/edit', [WorkDayController::class,'editShiftWorkdays'])->name('shifts.workdays.edit');
+        Route::put('shifts/workdays/{id}/update', [WorkDayController::class,'updateShiftWorkdays'])->name('shifts.workdays.update');
 
     });
 });

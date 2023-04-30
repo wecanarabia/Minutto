@@ -18,4 +18,9 @@ class Shift extends Model
     {
         return $this->belongsToMany(Branch::class,'branch_shifts','shift_id', 'branch_id');
     }
+
+    public function workdays()
+    {
+        return $this->hasMany(Workday::class);
+    }
 }
