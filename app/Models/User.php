@@ -49,6 +49,7 @@ class User extends Authenticatable
         }
     }
 
+
     protected static function booted()
     {
         static::deleted(function ($user) {
