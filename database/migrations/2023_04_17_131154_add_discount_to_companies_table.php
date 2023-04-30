@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('companies', function (Blueprint $table) {
 
-            $table->time('grace_period')->nulable();
+            $table->time('grace_period')->nullable();
 
 
         });
@@ -25,7 +25,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('companies', function (Blueprint $table) {
-            //
+            $table->dropColumn('grace_period');
         });
     }
 };
