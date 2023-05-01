@@ -37,6 +37,7 @@
                     @endforeach
                     </ul>
                 </li>
+                @if (Auth::guard('company')->user()->company_id != null)
                 <li  class="collapsed">
                     <a class="m-link"  data-bs-toggle="collapse" data-bs-target="#department-Components" href="#">
                         <i class="icofont-briefcase"></i><span>Departments</span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
@@ -62,6 +63,21 @@
                     <ul class="sub-menu collapse" id="shift-Components">
                         <li><a class="ms-link" href="{{ route('company.shifts.index') }}"><span>Shifts</span></a></li>
                     </ul>
+                </li>
+                @endif
+                <li  class="collapsed">
+                    <a class="m-link"  data-bs-toggle="collapse" data-bs-target="#company-Components" href="#">
+                        <i class="icofont-settings"></i><span>Company Settings</span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                    <!-- Menu: Sub menu ul -->
+                    @if (Auth::guard('company')->user()->company_id != null)
+                    <ul class="sub-menu collapse" id="company-Components">
+                        <li><a class="ms-link" href="{{ route('company.company-settings.show') }}"><span>Company Details</span></a></li>
+                    </ul>
+                    @else
+                    <ul class="sub-menu collapse" id="company-Components">
+                        <li><a class="ms-link" href="{{ route('company.company-settings.create') }}"><span>Set Company</span></a></li>
+                    </ul>
+                    @endif
                 </li>
 
                 <li class="collapsed">
