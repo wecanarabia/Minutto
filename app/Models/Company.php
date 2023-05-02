@@ -38,5 +38,9 @@ class Company extends Model
         return $this->hasMany(LeaveType::class);
     }
 
+    public function rewardtypes(){
+        return $this->hasMany(RewardType::class);
+    }
+
 
 }
