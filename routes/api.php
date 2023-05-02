@@ -32,6 +32,8 @@ use App\Http\Controllers\Api\RewardTypeController;
 
 
 
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -220,6 +222,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          Route::post('leave-type/edit/{id}', [LeaveTypeController::class, 'edit']);
 
            //leave types for company
+        Route::get('leave-types/{company_id}', [LeaveTypeController::class, 'leavesTypeByCompany']);
         Route::get('leave-types/{company_id}', [LeaveTypeController::class, 'leavesTypeByCompany']);
 
 

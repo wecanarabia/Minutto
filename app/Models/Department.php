@@ -19,6 +19,6 @@ class Department extends Model
     }
 
     public function head(){
-        return $this->hasOne(user::class,'user_id','department_head');
+        return $this->hasOne(user::class,'department_id','department_head');
     }
 }
