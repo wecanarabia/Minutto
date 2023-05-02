@@ -5,9 +5,9 @@
                 <div class="row align-items-center">
                     <div class="border-0 mb-4">
                         <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-                            <h3 class="fw-bold mb-0">Departments</h3>
+                            <h3 class="fw-bold mb-0">Branches</h3>
                             <div class="col-auto d-flex w-sm-100">
-                                <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.departments.create') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Add Department</a>
+                                <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.branches.create') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Add branch</a>
                             </div>
                         </div>
                     </div>
@@ -28,38 +28,42 @@
                                             <th>Id</th>
                                             <th>English Name</th>
                                             <th>Arabic Name</th>
+                                            <th>Location</th>
                                             <th>Head</th>
                                             <th>Employees Number</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $department)
+                                        @foreach ($data as $branch)
 
                                         <tr>
                                             <td>
-                                                {{ $department->id }}
+                                                {{ $branch->id }}
                                             </td>
                                             <td>
-                                                {{ $department->getTranslation('name', 'en') }}
+                                                {{ $branch->getTranslation('name', 'en') }}
                                            </td>
                                            <td>
-                                            {{ $department->getTranslation('name', 'ar') }}
+                                            {{ $branch->getTranslation('name', 'ar') }}
+                                           </td>
+                                            <td>
+                                            {{ $branch->location }}
                                            </td>
                                            <td>
-                                            @if ($department->head)
-                                            <img class="avatar rounded-circle" src="{{ asset( $department->head->image ) }}" alt="">
-                                            <a href="{{ route('company.employees.show',$department->head->id) }}" class="fw-bold text-secondary">
-                                            <span class="fw-bold ms-1">{{ $department->head->name }}</span></a>
+                                            @if ($branch->head)
+                                            <img class="avatar rounded-circle" src="{{ asset( $branch->head->image ) }}" alt="">
+                                            <a href="{{ route('company.employees.show',$branch->head->id) }}" class="fw-bold text-secondary">
+                                            <span class="fw-bold ms-1">{{ $branch->head->name }}</span></a>
                                             @else
-                                                edit Department to add Head
+                                                edit branch to add Head
                                             @endif
                                                                                     </td>
-                                           <td>{{ $department->employees->count()??"NO Employees added" }}</td>
+                                           <td>{{ $branch->employees->count()??"NO Employees added" }}</td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                    <a class="btn btn-outline-secondary" href="{{ route('company.departments.edit',$department->id) }}"><i class="icofont-edit text-success"></i></a>
-                                                    <a class="btn btn-outline-secondary" href="{{ route('company.departments.show',$department->id) }}"><i class="icofont-location-arrow"></i></a>
+                                                    <a class="btn btn-outline-secondary" href="{{ route('company.branches.edit',$branch->id) }}"><i class="icofont-edit text-success"></i></a>
+                                                    <a class="btn btn-outline-secondary" href="{{ route('company.branches.show',$branch->id) }}"><i class="icofont-location-arrow"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

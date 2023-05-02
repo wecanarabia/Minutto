@@ -18,12 +18,12 @@ return new class extends Migration
             $table->string('code');
             $table->string('timezone');
             $table->integer('employees_count');
-            $table->time('leaves_count');
+            $table->time('leaves_count')->nullable();
             $table->integer('holidays_count');
-            $table->integer('advanes_count');
-            $table->double('advanes_perentage');
-            $table->datetime('subscription_end_date');
-            $table->foreignIdFor(\App\Models\Subscription::class)->constrained()->cascadeOnDelete();
+            $table->integer('advanes_count')->nullable();
+            $table->double('advanes_perentage')->nullable();
+            $table->datetime('subscription_end_date')->nullable();
+            $table->foreignId('subscription_id')->nullable()->constrained('companies')->cascadeOnDelete();
             $table->timestamps();
         });
     }

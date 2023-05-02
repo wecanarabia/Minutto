@@ -54,6 +54,9 @@ class DepartmentController extends Controller
     public function show(string $id)
     {
         $department = Department::findOrFail($id);
+        if ($department->company_id!=Auth::user()->company_id) {
+            return abort(404);
+        }
         return view('front.departments.show',compact('department'));
     }
 
@@ -63,6 +66,9 @@ class DepartmentController extends Controller
     public function edit(string $id)
     {
         $department = Department::findOrFail($id);
+        if ($department->company_id!=Auth::user()->company_id) {
+            return abort(404);
+        }
         $employees=User::whereBelongsTo($department)->get();
         return view('front.departments.edit',compact('department','employees'));
     }
@@ -73,6 +79,9 @@ class DepartmentController extends Controller
     public function update(DepartmentRequest $request, string $id)
     {
         $department = Department::findOrFail($id);
+        if ($department->company_id!=Auth::user()->company_id) {
+            return abort(404);
+        }
         $request['name']=['en'=>$request->english_name,'ar'=>$request->arabic_name];
         $request['description']=['en'=>$request->english_description,'ar'=>$request->arabic_description];
         $request['company_id'] = Auth::user()->company_id;
