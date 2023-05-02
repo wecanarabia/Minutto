@@ -21,7 +21,7 @@ return new class extends Migration
             $table->time('leaves_count')->nullable();
             $table->integer('holidays_count');
             $table->integer('advanes_count')->nullable();
-            $table->double('advanes_perentage')->nullable();
+            $table->double('advances_percentage')->nullable();
             $table->datetime('subscription_end_date')->nullable();
             $table->foreignId('subscription_id')->nullable()->constrained('companies')->cascadeOnDelete();
             $table->timestamps();
