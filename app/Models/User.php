@@ -103,4 +103,8 @@ class User extends Authenticatable
         return $this->hasMany(Alert::class);
     }
 
+    public function rewards(){
+        return $this->hasMany(Reward::class);
+    }
+
 }

@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('companies', function (Blueprint $table) {
-
-
-            $table->time('grace_period')->nullable();
-
-
-
+        Schema::create('reward_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->integer('company_id');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('companies', function (Blueprint $table) {
-            $table->dropColumn('grace_period');
-        });
+        Schema::dropIfExists('reward_types');
     }
 };
