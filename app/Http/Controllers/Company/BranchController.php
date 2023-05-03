@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Company\BranchRequest;
+use App\Models\Shift;
 
 class BranchController extends Controller
 {
@@ -25,7 +26,8 @@ class BranchController extends Controller
      */
     public function create()
     {
-        return view('front.branches.create');
+        $shifts = Shift::where('company_id',Auth::user()->company_id)->get();
+        return view('front.branches.create',compact('shifts'));
     }
 
     /**
@@ -35,11 +37,12 @@ class BranchController extends Controller
     {
         $request['name']=['en'=>$request->english_name,'ar'=>$request->arabic_name];
         $request['company_id'] = Auth::user()->company_id;
-        Branch::create($request->except([
+        $branch = Branch::create($request->except([
             'english_name',
             'arabic_name',
+            'shifts',
         ]));
-
+        $branch->shifts->attacch($request['shifts']);
 
         return redirect()->route('company.branches.index')
                         ->with('success','Branch has been added successfully');
@@ -50,7 +53,7 @@ class BranchController extends Controller
      */
     public function show(string $id)
     {
-        $branch = Branch::findOrFail($id);
+        $branch = Branch::with('shifts')->findOrFail($id);
         if ($branch->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
@@ -67,7 +70,8 @@ class BranchController extends Controller
             return abort(404);
         }
         $employees=User::whereBelongsTo($branch)->get();
-        return view('front.branches.edit',compact('branch','employees'));
+        $shifts = Shift::where('company_id',Auth::user()->company_id)->get();
+        return view('front.branches.edit',compact('branch','employees','shifts'));
     }
 
     /**
@@ -84,8 +88,9 @@ class BranchController extends Controller
         $branch->update($request->except([
             'english_name',
             'arabic_name',
-
+            'shifts'
         ]));
+        $branch->shifts()->sync($request['shifts']);
 
 
         return redirect()->route('company.branches.show',$branch->id)

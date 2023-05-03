@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\App;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -25,6 +26,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-  
+        if (Auth::guard('user')) {
+            Config::set('app.timezone',Auth::guard('user')->user()->branch->company->timezone);
+        }
+
+        if (Auth::guard('company')) {
+            Config::set('app.timezone',Auth::guard('company')->user()->branch->company->timezone);
+        }
     }
 }

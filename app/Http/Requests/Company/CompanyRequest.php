@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Company;
 
+use DateTimeZone;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CompanyRequest extends FormRequest
@@ -11,7 +13,7 @@ class CompanyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +23,20 @@ class CompanyRequest extends FormRequest
      */
     public function rules(): array
     {
+        $timezones = DateTimeZone::listIdentifiers();
+
         return [
-            //
+            'english_name' => 'required|min:4|max:255',
+            'arabic_name' => 'required|min:4|max:255',
+            'english_description' => 'required|min:4|max:10000',
+            'arabic_description' => 'required|min:4|max:10000',
+            'employees_count'=>'required|numeric',
+            'leaves_count'=>'required|numeric',
+            'holidays_count'=>'required|numeric',
+            'advances_perentage'=>'required|numeric',
+            'subscription_id'=>'required|exists:subscriptions,id',
+            'timezone'=>['required', Rule::in($timezones)],
+            'grace_period'=>'required|numeric',
         ];
     }
 }

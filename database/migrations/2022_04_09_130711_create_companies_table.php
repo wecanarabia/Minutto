@@ -20,8 +20,7 @@ return new class extends Migration
             $table->integer('employees_count');
             $table->integer('leaves_count')->nullable();
             $table->integer('holidays_count');
-            $table->integer('advanes_count')->nullable();
-            $table->double('advances_percentage')->nullable();
+            $table->double('advances_perentage')->nullable();
             $table->datetime('subscription_end_date')->nullable();
             $table->foreignId('subscription_id')->nullable()->constrained('companies')->cascadeOnDelete();
             $table->timestamps();

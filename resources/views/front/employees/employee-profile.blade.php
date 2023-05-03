@@ -12,7 +12,6 @@
                     </div>
                 </div>
             </div><!-- Row End -->
-            <div class="print-sucess-msg"></div>
 
 
             <div class="row g-3">
@@ -65,24 +64,6 @@
                         </div>
                     </div>
 
-                    @if ($errors->all())
-                    <div class="row g-3">
-                        <div class="col-xl-8 col-lg-12 col-md-12">
-                            <div class="card teacher-card  mb-3">
-                                <div class="card-body bg-info d-flex teacher-fulldeatil">
-                                    @foreach ($errors->all() as $error)
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="row flex-wrap mb-3">
-                                            <div class="col-12">
-                                                <span class="fw-bold">{{ $error }}</span>
-                                            </div>
-                                        </li>
-                                        @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endif
                     <div class="row g-3">
                         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
                             <div class="card mb-3">
@@ -360,6 +341,74 @@
                                         </li>
 
                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row g-3">
+
+
+                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header py-3 d-flex justify-content-between">
+                                    <h6 class="mb-0 fw-bold ">Attendance</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row clearfix g-3">
+                                        <div class="col-sm-12">
+                                              <div class="card mb-3">
+                                                  <div class="card-body">
+                                                      <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                                                          <thead>
+                                                              <tr>
+                                                                  <th>Id</th>
+                                                                  <th>Employee</th>
+                                                                  <th>Attendance Time</th>
+                                                                  <th>Departure Time</th>
+                                                                  <th>Discount</th>
+                                                                  <th>Status</th>
+                                                                  <th>Show</th>
+                                                              </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                              @foreach ($employee->workhours as $attendance)
+
+                                                              <tr>
+                                                                  <td>
+                                                                      {{ $attendance->id }}
+                                                                  </td>
+                                                                 <td>
+                                                                     <img class="avatar rounded-circle" src="{{ asset( $attendance->user->image ) }}" alt="">
+                                                                     <a href="{{ route('company.employees.show',$attendance->user->id) }}" class="fw-bold text-secondary">
+                                                                     <span class="fw-bold ms-1">{{ $attendance->user->name }}</span></a>
+                                                                 </td>
+                                                                 <td>
+                                                                  {{ $attendance->time_attendance }}
+                                                                 </td>
+                                                                 <td>
+                                                                  {{ $attendance->time_departure }}
+                                                                 </td>
+                                                                 <td>
+                                                                  {{ $attendance->discount_value }}
+                                                                 </td>
+                                                                 <td>
+                                                                  {{ $attendance->status }}
+                                                                 </td>
+                                                                 <td>
+                                                                  <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                                      <a class="btn btn-outline-secondary" href="{{ route('company.attendance.show',$attendance->id) }}"><i class="icofont-location-arrow"></i></a>
+                                                                  </div>
+                                                                  </td>
+                                                              </tr>
+
+                                                              @endforeach
+
+                                                          </tbody>
+                                                      </table>
+                                                  </div>
+                                              </div>
+                                        </div>
+                                      </div><!-- Row End -->
                                 </div>
                             </div>
                         </div>
