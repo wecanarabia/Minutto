@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Carbon\Carbon;
 
 
 class Company extends Model
@@ -17,6 +18,14 @@ class Company extends Model
 
     protected $guarded=[];
     public $translatable = ['name','description'];
+
+
+    public function getLeaveHoursAttribute()
+    {
+        return Carbon::createFromFormat('H:i:s', '00:00:00')
+                     ->addSeconds($this->attributes['leaves_count'] * 3600)
+                     ->format('H:i:s');
+    }
 
     public function subscription()
     {
@@ -40,6 +49,10 @@ class Company extends Model
 
     public function rewardtypes(){
         return $this->hasMany(RewardType::class);
+    }
+
+    public function extratypes(){
+        return $this->hasMany(ExtraType::class);
     }
 
 
