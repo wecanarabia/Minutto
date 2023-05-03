@@ -22,6 +22,9 @@ use App\Http\Controllers\Api\AdvanceController;
 use App\Http\Controllers\Api\AlertController;
 use App\Http\Controllers\Api\WorkdayController;
 use App\Http\Controllers\Api\DiscountController;
+use App\Http\Controllers\Api\RewardController;
+use App\Http\Controllers\Api\RewardTypeController;
+
 
 
 
@@ -80,30 +83,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
            Route::get('my-alerts', [AlertController::class, 'myAlerts']);
 
 
-         //getCountersForLeaves
-         Route::get('count-leaves', [LeaveController::class, 'getCountersForLeaves']);
-
-
-         //getCountersForVacations
-         Route::get('count-vacations', [WorkhourController::class, 'getCountersForVacations']);
-
-         //getCountersForWorkhours
-         Route::get('count-workhours/{year}/{month}', [ReportController::class, 'getCountersForWorkhours']);
-
-        // getCountersForVacations
-        Route::get('count-allvacations/{year}/{month}', [ReportController::class, 'getCountersForVacations']);
-
-        // getCountersForVacations
-       Route::get('count-all-leaves/{year}/{month}', [ReportController::class, 'getCountersForLeaves']);
-
-
-
-
-         //my advances
-         Route::get('my-advances', [AdvanceController::class, 'myAdvances']);
-
-           //my alerts
-           Route::get('my-alerts', [AlertController::class, 'myAlerts']);
+             //my rewards
+             Route::get('my-rewards', [RewardController::class, 'myRewards']);
 
 
          //getCountersForLeaves
@@ -119,7 +100,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         // getCountersForVacations
         Route::get('count-allvacations/{year}/{month}', [ReportController::class, 'getCountersForVacations']);
 
-        // getCountersForVacations
+        // getCountersForLeaves
        Route::get('count-all-leaves/{year}/{month}', [ReportController::class, 'getCountersForLeaves']);
 
 
@@ -246,6 +227,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
+
         //workhour
          Route::get('workhours', [WorkhourController::class, 'list']);
          Route::post('workhour-create', [WorkhourController::class, 'save']);
@@ -296,5 +278,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          Route::post('workhour/edit/{id}', [WorkhourController::class, 'edit']);
 
 
+            //Reward
+            Route::get('rewards', [RewardController::class, 'list']);
+            Route::post('reward-create', [RewardController::class, 'save']);
+            Route::get('reward/{id}', [RewardController::class, 'view']);
+            Route::get('reward/delete/{id}', [RewardController::class, 'delete']);
+            Route::post('reward/edit/{id}', [RewardController::class, 'edit']);
+
+
+
+            //RewardType
+            Route::get('reward-types', [RewardTypeController::class, 'list']);
+            Route::post('reward-type-create', [RewardTypeController::class, 'save']);
+            Route::get('reward-type/{id}', [RewardTypeController::class, 'view']);
+            Route::get('reward-type/delete/{id}', [RewardTypeController::class, 'delete']);
+            Route::post('reward-type/edit/{id}', [RewardTypeController::class, 'edit']);
+
+              //reward types for company
+           Route::get('reward-types/{company_id}', [RewardTypeController::class, 'rewTypeByCompany']);
 
 
