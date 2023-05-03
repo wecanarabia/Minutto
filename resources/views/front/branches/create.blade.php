@@ -23,18 +23,34 @@
                                         <div class="col-md-6">
                                             <label for="firstname" class="form-label">English Name</label>
                                             <input type="text" class="form-control" id="firstname" name="english_name" value="{{ old('english_name') }}" required>
-                                            @error('department_head')
+                                            @error('english_name')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="lastname" class="form-label">English Name</label>
+                                            <label for="lastname" class="form-label">Arabic Name</label>
                                             <input type="text" class="form-control" name="arabic_name" value="{{ old('arabic_name') }}" id="lastname" required>
                                             @error('arabic_name')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Shifts</label>
+                                                <br>
+                                                @foreach ($shifts as $shift)
+                                                    
+                                                
+                                                <label class="fancy-checkbox">
+                                                    <input type="checkbox" name="shifts[]" value="{{ $shift->id }}" @checked(collect(old('shifts'))->contains($shift->id)) data-parsley-errors-container="#error-checkbox" data-parsley-multiple="checkbox">
+                                                    <span>{{ $shift->name }}</span>
+                                                </label>
+                                           
+                                                @endforeach
+                                                @error('shifts')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror                                            </div>
+                                        </div>
 
                                         <div class="col-md-12">
                                             <label for="addnote" class="form-label">Location</label>
@@ -48,13 +64,7 @@
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
 
-                                            @error('lat')
-                                            <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-
-                                            @error('long')
-                                            <div class="text-danger">{{ $message }}</div>
-                                            @enderror
+                                  
 
                                        </div>
 

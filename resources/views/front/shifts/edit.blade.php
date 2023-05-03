@@ -30,7 +30,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="lastname" class="form-label">English Name</label>
+                                        <label for="lastname" class="form-label">Arabic Name</label>
                                         <input type="text" class="form-control" name="arabic_name" value="{{ old('arabic_name',$shift->getTranslation('name', 'ar')) }}" id="lastname" required>
                                         @error('arabic_name')
                                         <div class="text-danger">{{ $message }}</div>
