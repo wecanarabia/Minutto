@@ -64,7 +64,8 @@ class LeaveController extends ApiController
         $data = array();
 
         $leave=User::find(Auth::user()->id)->branch->company->leaves_count;
-        $data['total'] = Carbon::parse($leave)->hour;
+        // $data['total'] = Carbon::parse($leave)->hour;
+        $data['total'] = $leave;
 
 
         $data['taken'] = Leave::where('user_id', Auth::user()->id)->where('status','approve')
