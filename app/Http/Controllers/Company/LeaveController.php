@@ -17,7 +17,7 @@ class LeaveController extends Controller
         $branches = Branch::where('company_id', Auth::user()->company_id)?->get();
         $employees = User::whereBelongsTo($branches)->with(['branch','shift'])?->get();
 
-        $data = Leave::whereBelongsTo($employees)?->get();
+        $data = Leave::whereBelongsTo($employees)?->get()??null;
         return view('front.employees.leave-requests',compact('data'));
     }
 
