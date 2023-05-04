@@ -75,8 +75,8 @@
                                    </div>
                                    <div class="col-md-6">
                                        <label class="form-label">Allowed Percentage of Advances</label>
-                                       <input type="number" class="form-control" name="advances_perentage" value="{{ old('advances_perentage',$company->advances_perentage??0) }}" required>
-                                       @error('advances_perentage')
+                                       <input type="number" class="form-control" name="advances_percentage" value="{{ old('advances_percentage',$company->advances_percentage??0) }}" required>
+                                       @error('advances_percentage')
                                        <div class="text-danger">{{ $message }}</div>
                                        @enderror
                                    </div>
