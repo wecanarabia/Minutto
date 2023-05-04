@@ -87,4 +87,55 @@
                         </div>
                     </div>
                 </div>
+                <div class="row clearfix g-3">
+                    <div class="col-sm-12">
+                          <div class="card mb-3">
+                            <div class="card-header py-3 d-flex justify-content-between">
+                                <h6 class="mb-0 fw-bold ">Shifts</h6>
+                            </div>
+                              <div class="card-body">
+                                  <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                                      <thead>
+                                          <tr>
+                                              <th>Id</th>
+                                              <th>English Name</th>
+                                              <th>Arabic Name</th>
+                                              <th>Workdays</th>
+                                              <th>Actions</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          @foreach ($branch->shifts as $shift)
+  
+                                          <tr>
+                                              <td>
+                                                  {{ $shift->id }}
+                                              </td>
+                                              <td>
+                                                  {{ $shift->getTranslation('name', 'en') }}
+                                             </td>
+                                             <td>
+                                              {{ $shift->getTranslation('name', 'ar') }}
+                                             </td>
+                                             <td>
+                                              @if ($shift->workdays->where('status',1)->count()==0)
+                                              <a href="{{ route('company.workdays.create') }}">Add workdays to shift</a>
+                                                  @else
+                                              <a href="{{ route('company.workdays.show',$shift->id) }}">{{ $shift->workdays->where('status',1)->count() }} Days</a>
+                                              @endif
+                                             </td>
+                                              <td>
+                                                  <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                      <a class="btn btn-outline-secondary" href="{{ route('company.shifts.edit',$shift->id) }}"><i class="icofont-edit text-success"></i></a>
+                                                      <a class="btn btn-outline-secondary" href="{{ route('company.shifts.show',$shift->id) }}"><i class="icofont-location-arrow"></i></a>
+                                                  </div>
+                                              </td>
+                                          </tr>
+                                          @endforeach
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                    </div>
+                  </div><!-- Row End -->
 </x-layouts.app>

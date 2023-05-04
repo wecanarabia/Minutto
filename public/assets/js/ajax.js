@@ -36,12 +36,8 @@ $(document).ready(function() {
 
                     // Close the modal
                     modal.modal('hide');
-                    $(".print-sucess-msg").append(`
-                    <div class="alert alert-dismissible fade show" role="alert"><strong><i class="icofont-check-circled m-2 "></i>${data.success}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                setTimeout(function () {
                     location.reload();
-                }, 5000);
+
                 }else{
                     printErrorMsg(data.error);
                 }
@@ -77,12 +73,8 @@ $(document).ready(function() {
                     // Close the modal
                     modal.modal('hide');
 
-                    $(".print-sucess-msg").append(`
-                    <div class="alert alert-dismissible fade show" role="alert"><strong><i class="icofont-check-circled m-2 "></i>${data.success}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                    setTimeout(function () {
-                        location.reload();
-                    }, 5000);
+                    location.reload();
+
                 }else{
                     printErrorMsg(data.error);
                 }
@@ -124,12 +116,8 @@ $(document).ready(function() {
                     // Close the modal
                     modal.modal('hide');
 
-                    $(".print-sucess-msg").append(`
-                    <div class="alert alert-dismissible fade show" role="alert"><strong><i class="icofont-check-circled m-2 "></i>${data.success}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                    setTimeout(function () {
-                        location.reload();
-                    }, 5000);
+                    location.reload();
+
                 }else{
                     printErrorMsg(data.error);
                 }
@@ -172,12 +160,36 @@ $(document).ready(function() {
                     // Close the modal
                     modal.modal('hide');
 
-                    $(".print-sucess-msg").append(`
-                    <div class="alert alert-dismissible fade show" role="alert"><strong><i class="icofont-check-circled m-2 "></i>${data.success}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                    setTimeout(function () {
+                    location.reload();
+
+                }else{
+                    printErrorMsg(data.error);
+                }
+           }
+        });
+
+    });
+
+    $("#attendance-submit").on('click',function(){
+
+
+        var id = $("#id-attendance").val();
+        var status = $("#exampleFormAtgtendanceStatus").val();
+        $.ajax({
+           method:'POST',
+           url:"/attendance/update/"+id,
+           data:{
+            status:status,
+           },
+
+           success:function(data){
+                if($.isEmptyObject(data.error)){
+                    var modal = $('#edit-attendance');
+                    // Close the modal
+                    modal.modal('hide');
+
                         location.reload();
-                    }, 5000);
+
                 }else{
                     printErrorMsg(data.error);
                 }

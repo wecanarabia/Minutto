@@ -31,6 +31,8 @@ class BranchRequest extends FormRequest
             'location' => 'required|min:4|max:255',
             'lat' => 'required|numeric',
             'long' => 'required|numeric',
+            'shifts'=>'array|min:1',
+            'shifts.*'=>'numeric|exists:shifts,id',
             'branch_head' => [ 'nullable', Rule::in($users)],
 
         ];

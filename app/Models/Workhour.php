@@ -4,11 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Workhour extends Model
 {
-    use HasFactory;
+    use HasFactory,HasTranslations;
     protected $guarded=[];
+    public $translatable = ['status'];
+
+    const STATUS = [
+        ['en'=>'disciplined','ar'=>'منضبط'],
+        ['en'=>'late','ar'=>'متأخر'],
+        ['en'=>'absence','ar'=>'غائب'],
+        ['en'=>'vacation','ar'=>'اجازة'],
+    ];
 
     public function setFileAttribute($value){
         if ($value){
@@ -23,5 +32,9 @@ class Workhour extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+    
+    public function leaveRequest(){
+        return $this->hasOne(Leave::class);
     }
 }

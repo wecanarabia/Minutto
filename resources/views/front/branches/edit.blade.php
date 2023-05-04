@@ -30,7 +30,7 @@
                                        @enderror
                                    </div>
                                    <div class="col-md-6">
-                                       <label for="lastname" class="form-label">English Name</label>
+                                       <label for="lastname" class="form-label">Arabic Name</label>
                                        <input type="text" class="form-control" name="arabic_name" value="{{ old('arabic_name',$branch->getTranslation('name', 'ar')) }}" id="lastname" required>
                                        @error('arabic_name')
                                        <div class="text-danger">{{ $message }}</div>
@@ -53,6 +53,23 @@
                                      <div class="text-danger">{{ $message }}</div>
                                  @enderror
                                  </div>
+                                 <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Shifts</label>
+                                        <br>
+                                        @foreach ($shifts as $shift)
+                                            
+                                        
+                                        <label class="fancy-checkbox">
+                                            <input type="checkbox" name="shifts[]" value="{{ $shift->id }}" @checked(collect(old('shifts',$branch->shifts->pluck('id')))->contains($shift->id)) data-parsley-errors-container="#error-checkbox" data-parsley-multiple="checkbox">
+                                            <span>{{ $shift->name }}</span>
+                                        </label>
+                                   
+                                        @endforeach
+                                        @error('shifts')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror                                            </div>
+                                    </div>
                                    <div class="col-md-12">
                                     <label for="addnote" class="form-label">Location</label>
                                     <input type="text" id="address-input" name="location" value="{{  old('location',$branch->location) }}" class="form-control map-input">
@@ -65,13 +82,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
 
-                                    @error('lat')
-                                    <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-
-                                    @error('long')
-                                    <div class="text-danger">{{ $message }}</div>
-                                    @enderror
+                    
 
                                </div>
 

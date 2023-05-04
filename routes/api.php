@@ -60,7 +60,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     Route::post('change-password', [AuthController::class, 'changePassword']);
 
-    Route::middleware(['auth:api'])->group(function () {
+    Route::middleware(['auth:api','timezone'])->group(function () {
 
 
         //view Daily Message

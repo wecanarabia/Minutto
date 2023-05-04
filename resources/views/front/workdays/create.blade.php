@@ -40,25 +40,25 @@
                                         @foreach ($days as $i => $day)
                                         <div class="col-md-4">
                                             <label>
-                                                <input type="checkbox" class="chk-box" name="{{ $day['en'] }}" value="{{ $i+1 }}" @if(collect(old('day'))->contains($i+1)) checked @endif>    {{ $day[Illuminate\Support\Facades\App::getLocale()] }}
+                                                <input type="checkbox" class="chk-box" name="{{ $day['en'] }}" value="{{ $i+1 }}" @if(collect(old($day['en']))->contains($i+1)) checked @endif>    {{ $day[Illuminate\Support\Facades\App::getLocale()] }}
                                             </label><br>
-                                        </div> 
+                                        </div>
                                         <div class="col-md-4">
 
                                         <label class="form-label">From</label>
-                                        <input type="time" class="form-control" name="{{ $day['en'] }}-from" value="{{ old('from') }}" >
+                                        <input type="time" class="form-control" name="{{ $day['en'] }}-from" value="{{ old($day['en'].'-from') }}" >
                                         </div>
-                                        
+
                                         <div class="col-md-4">
 
                                         <label class="form-label">To</label>
-                                        <input type="time" class="form-control" name="{{ $day['en'] }}-to" value="{{ old('to') }}" >
+                                        <input type="time" class="form-control" name="{{ $day['en'] }}-to" value="{{ old($day['en'].'-to') }}" >
                                         </div>
                                         @endforeach
-                                      
 
 
-                                        
+
+
 
                                     </div>
 

@@ -17,7 +17,7 @@ class CheckAdminCompany
     public function handle(Request $request, Closure $next): Response
     {
 
-            if (Auth::guard('company')->user()->company_id != null) {
+            if (Auth::guard('company')->user()->company) {
                 return $next($request);
             }else{
                 return redirect()->back();
