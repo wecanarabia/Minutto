@@ -16,6 +16,7 @@ class LeaveController extends Controller
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->get();
+        dd($employees);
         if ($employees) {
             $data = Leave::whereBelongsTo($employees)->get();
         }else{
