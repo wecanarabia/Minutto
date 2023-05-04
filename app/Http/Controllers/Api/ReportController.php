@@ -104,7 +104,10 @@ class ReportController extends ApiController
         ->select(DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(period))) as total_period'))
         ->get()[0]->total_period;
 
-        $dif=Carbon::createFromFormat('H:i:s',$data['total'])->diffInMinutes(Carbon::createFromFormat('H:i:s',$data['taken']));
+        $tot= User::find(Auth::user()->id)->branch->company->LeaveHours;
+
+
+        $dif=Carbon::createFromFormat('H:i:s',$tot)->diffInMinutes(Carbon::createFromFormat('H:i:s',$data['taken']));
         $data['remaining']=gmdate('H:i:s',$dif*60);
 
         return $this->returnData('data', $data, __('Succesfully'));

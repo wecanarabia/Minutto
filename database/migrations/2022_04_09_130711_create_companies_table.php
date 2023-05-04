@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('code');
             $table->string('timezone');
             $table->integer('employees_count');
-            $table->time('leaves_count')->nullable();
+            $table->integer('leaves_count')->nullable();
             $table->integer('holidays_count');
             $table->double('advances_perentage')->nullable();
             $table->datetime('subscription_end_date')->nullable();

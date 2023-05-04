@@ -24,7 +24,8 @@ use App\Http\Controllers\Api\WorkdayController;
 use App\Http\Controllers\Api\DiscountController;
 use App\Http\Controllers\Api\RewardController;
 use App\Http\Controllers\Api\RewardTypeController;
-
+use App\Http\Controllers\Api\ExtraController;
+use App\Http\Controllers\Api\ExtraTypeController;
 
 
 
@@ -298,3 +299,21 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
            Route::get('reward-types/{company_id}', [RewardTypeController::class, 'rewTypeByCompany']);
 
 
+              //extra
+              Route::get('extras', [ExtraController::class, 'list']);
+              Route::post('extra-create', [ExtraController::class, 'save']);
+              Route::get('extra/{id}', [ExtraController::class, 'view']);
+              Route::get('extra/delete/{id}', [ExtraController::class, 'delete']);
+              Route::post('extra/edit/{id}', [ExtraController::class, 'edit']);
+
+
+
+              //extraType
+              Route::get('extra-types', [ExtraTypeController::class, 'list']);
+              Route::post('extra-type-create', [ExtraTypeController::class, 'save']);
+              Route::get('extra-type/{id}', [ExtraTypeController::class, 'view']);
+              Route::get('extra-type/delete/{id}', [ExtraTypeController::class, 'delete']);
+              Route::post('extra-type/edit/{id}', [ExtraTypeController::class, 'edit']);
+
+                //extra types for company
+             Route::get('extra-types/{company_id}', [ExtraTypeController::class, 'exTypeByCompany']);
