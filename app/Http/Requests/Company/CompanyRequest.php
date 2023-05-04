@@ -33,7 +33,7 @@ class CompanyRequest extends FormRequest
             'employees_count'=>'required|numeric',
             'leaves_count'=>'required|numeric',
             'holidays_count'=>'required|numeric',
-            'advances_perentage'=>'required|numeric',
+            'advances_percentage'=>'required|numeric',
             'subscription_id'=>'required|exists:subscriptions,id',
             'timezone'=>['required', Rule::in($timezones)],
             'grace_period'=>'required|numeric',

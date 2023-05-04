@@ -71,7 +71,7 @@ class CompanyController extends Controller
                  ]));
             $request->session()->put('company', $company);
         }
-return redirect()->route('company.company-settings.branch.create');
+    return redirect()->route('company.company-settings.branch.create');
     }
     public function createBranch(Request $request)
     {
