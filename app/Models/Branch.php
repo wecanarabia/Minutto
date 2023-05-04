@@ -30,6 +30,6 @@ class Branch extends Model
 
 
     public function head(){
-        return $this->hasOne(user::class,'branch_id','id');
+        return $this->hasOne(User::class,'branch_id','id');
     }
 }
