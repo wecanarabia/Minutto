@@ -17,7 +17,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12">
                 <div class="card teacher-card  mb-3">
                     <div class="card-header py-3 d-flex justify-content-between">
-                        <h6 class="mb-0 fw-bold ">{{ $attendance->name }}</h6>
+                        <h6 class="mb-0 fw-bold ">{{ $attendance->user->name }}</h6>
                         <button type="button" class="btn p-0" data-bs-toggle="modal"
                                         data-bs-target="#edit-attendance"><i class="icofont-edit text-primary fs-6"></i></button>
 
@@ -29,7 +29,7 @@
                                 <img src="{{ asset($attendance->user->image) }}" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">
                             </a>
                             <div class="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
-                                <span class="text-muted small">{{ $attendance->user->name }}</span>
+                                <span class="text-muted small">{{ $attendance->user->name." ".$attendance->user->last_name }}</span>
                             </div>
                         </div>
 
@@ -125,7 +125,7 @@
                         </div>
                         <input id="id-attendance" type="hidden" value="{{ $attendance->id }}">
                         <div class="row g-3 mb-3">
-                            <div class="col-6">
+                            <div class="col">
                                 <label for="exampleFormAtgtendanceStatus" class="form-label">Status</label>
                                 <select class="form-select" id="exampleFormAtgtendanceStatus"
                                     aria-label="Default select example">
@@ -136,12 +136,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-6">
-                                <label for="exampleFormAttendanceDiscount" class="form-label">Discount</label>
-                                <input type="number" class="form-control" id="exampleFormAttendanceDiscount"
-                                    value="{{ $attendance->discount_value }}">
 
-                            </div>
                         </div>
 
 

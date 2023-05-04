@@ -175,13 +175,11 @@ $(document).ready(function() {
 
         var id = $("#id-attendance").val();
         var status = $("#exampleFormAtgtendanceStatus").val();
-        var discount_value = $("#exampleFormAttendanceDiscount").val();
         $.ajax({
            method:'POST',
            url:"/attendance/update/"+id,
            data:{
             status:status,
-            discount_value:discount_value
            },
 
            success:function(data){

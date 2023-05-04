@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Company\IndexController;
+use App\Http\Controllers\Company\LeaveController;
 use App\Http\Controllers\Company\LoginController;
 use App\Http\Controllers\Company\ShiftController;
 use App\Http\Controllers\Company\BranchController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Company\WorkDayController;
 use App\Http\Controllers\Company\EmployeeController;
+use App\Http\Controllers\Company\LeaveTypeController;
 use App\Http\Controllers\Company\AttendanceController;
 use App\Http\Controllers\Company\DepartmentController;
 
@@ -34,12 +36,13 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
         Route::get('company-settings/edit', [CompanyController::class,'edit'])->name('company-settings.edit');
         Route::put('company-settings/update', [CompanyController::class,'update'])->name('company-settings.update');
 
-        Route::group(['middleware'=>'CheckCompany'],function () {
+        Route::group(['middleware'=>['CheckCompany','timezone']],function () {
             Route::resource('employees', EmployeeController::class)->except(['destroy','edit','update','create','store']);
             Route::post('employees/update/{id}',[EmployeeController::class,'updateData']);
             Route::resource('departments', DepartmentController::class)->except(['destroy']);
             Route::resource('branches', BranchController::class)->except(['destroy']);
             Route::resource('shifts', ShiftController::class)->except(['destroy']);
+            Route::resource('leave-types', LeaveTypeController::class)->except(['destroy']);
             Route::resource('workdays', WorkDayController::class)->except(['destroy']);
             Route::get('shifts/workdays/{id}/edit', [WorkDayController::class,'editShiftWorkdays'])->name('shifts.workdays.edit');
             Route::put('shifts/workdays/{id}/update', [WorkDayController::class,'updateShiftWorkdays'])->name('shifts.workdays.update');
@@ -47,6 +50,10 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::get('attendance/{id}', [AttendanceController::class,'show'])->name('attendance.show');
             Route::get('attendance/file/{id}', [AttendanceController::class,'openFile'])->name('attendance.file');
             Route::post('attendance/update/{id}', [AttendanceController::class,'update'])->name('attendance.update');
+            Route::get('leaves', [LeaveController::class,'index'])->name('leaves.index');
+            Route::get('leaves/{id}', [LeaveController::class,'show'])->name('leaves.show');
+            Route::get('leaves/file/{id}', [LeaveController::class,'openFile'])->name('leaves.file');
+            Route::post('leaves/update/{id}', [LeaveController::class,'update'])->name('leaves.update');
 
         });
     });

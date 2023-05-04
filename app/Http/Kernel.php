@@ -66,6 +66,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'changeLang'=>\App\Http\Middleware\ChangeLang::class,
         'CheckCompany'=>\App\Http\Middleware\CheckAdminCompany::class,
+        'timezone'=>\App\Http\Middleware\CheckTimezone::class,
         /**** OTHER MIDDLEWARE ****/
         'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
         'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,

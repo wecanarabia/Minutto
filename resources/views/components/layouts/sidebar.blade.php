@@ -109,6 +109,25 @@
                     </ul>
                 </li>
 
+
+                <li class="collapsed">
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#leavs-types-Components" href="#">
+                        <i class="icofont-architecture-alt"></i><span>Leave Types</span> <span
+                            class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                    <!-- Menu: Sub menu ul -->
+                    <ul @class([
+                        'sub-menu',
+                        'collapse',
+                        'show' => Route::currentRouteName() == 'company.shifts.index',
+                    ]) id="leavs-types-Components">
+                        <li><a @class([
+                            'ms-link',
+                            'active' => Route::currentRouteName() == 'company.leave-types.index',
+                        ])
+                                href="{{ route('company.leave-types.index') }}"><span>Leave Types</span></a></li>
+                    </ul>
+                </li>
+
                 <li class="collapsed">
                     <a class="m-link" data-bs-toggle="collapse" data-bs-target="#emp-Components" href="#"><i
                             class="icofont-users-alt-5"></i> <span>Employees</span> <span
@@ -190,7 +209,7 @@
                     <li><a class="ms-link" href="profile.html"> <span>Client Profile</span></a></li>
                 </ul>
             </li>
-      
+
 
             <li class="collapsed">
                 <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-Componentsone" href="#"><i

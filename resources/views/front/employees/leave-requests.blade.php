@@ -5,7 +5,7 @@
             <div class="row align-items-center">
                 <div class="border-0 mb-4">
                     <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-                        <h3 class="fw-bold mb-0">Attendance</h3>
+                        <h3 class="fw-bold mb-0">Leave Requestd</h3>
              
                     </div>
                 </div>
@@ -19,46 +19,45 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Employee</th>
-                                        <th>Attendance Time</th>
-                                        <th>Departure Time</th>
-                                        <th>Discount</th>
+                                        <th>leave Date</th>
+                                        <th>From</th>
+                                        <th>To</th>
                                         <th>Status</th>
+                                        <th>Type</th>
                                         <th>Show</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $attendance)
+                                    @foreach ($data as $leave)
 
                                     <tr>
                                         <td>
-                                            {{ $attendance->id }}
+                                            {{ $leave->id }}
                                         </td>
                                        <td>
-                                           <img class="avatar rounded-circle" src="{{ asset( $attendance->user->image ) }}" alt="">
-                                           <a href="{{ route('company.employees.show',$attendance->user->id) }}" class="fw-bold text-secondary">
-                                           <span class="fw-bold ms-1">{{ $attendance->user->name }}</span></a>
+                                           <img class="avatar rounded-circle" src="{{ asset( $leave->user->image ) }}" alt="">
+                                           <a href="{{ route('company.employees.show',$leave->user->id) }}" class="fw-bold text-secondary">
+                                           <span class="fw-bold ms-1">{{ $leave->user->name }}</span></a>
                                        </td>
                                        <td>
-                                        {{ $attendance->time_attendance }}
+                                        {{ $leave->leave_date }}
                                        </td>
                                        <td>
-                                        {{ $attendance->time_departure }}
+                                        {{ $leave->from }}
                                        </td>
                                        <td>
-                                        {{ $attendance->discount_value }}
+                                        {{ $leave->to }}
                                        </td>
                                        <td>
-                                        <span
-                                            @class(['badge','bg-success'=>$attendance->getTranslation('status','en')=='disciplined',
-                                            'bg-secondary'=>$attendance->getTranslation('status','en')=='late',
-                                            'bg-danger'=>$attendance->getTranslation('status','en')=='absence',
-                                            'bg-info'=>$attendance->getTranslation('status','en')=='vacation',
-                                            ])
-                                        >{{ $attendance->status }}</span>
+                                       {{ $leave->status }}
+                                       </td>
+                                       
+                                       <td>
+                                       {{ $leave->ltype->name }}
                                        </td>
                                        <td>
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                            <a class="btn btn-outline-secondary" href="{{ route('company.attendance.show',$attendance->id) }}"><i class="icofont-location-arrow"></i></a>
+                                            <a class="btn btn-outline-secondary" href="{{ route('company.leave.show',$leave->id) }}"><i class="icofont-location-arrow"></i></a>
                                         </div>
                                         </td>
                                     </tr>
