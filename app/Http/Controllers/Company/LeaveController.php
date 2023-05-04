@@ -19,7 +19,7 @@ class LeaveController extends Controller
         if ($employees->count()>0) {
             $data = Leave::whereBelongsTo($employees)->get();
         }else{
-            $data=null;
+            $data=collect([]);
         }
         return view('front.employees.leave-requests',compact('data'));
     }
