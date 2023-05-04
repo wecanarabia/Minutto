@@ -18,8 +18,11 @@ class AttendanceController extends Controller
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->get();
-
-        $data = Workhour::whereBelongsTo($employees)->get();
+        if ($employees->count()>0) {
+            $data = Workhour::whereBelongsTo($employees)->get();
+        }else{
+            $data=collect([]);
+        }
         return view('front.employees.attendance',compact('data'));
     }
 
