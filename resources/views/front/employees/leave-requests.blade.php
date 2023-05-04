@@ -6,7 +6,7 @@
                 <div class="border-0 mb-4">
                     <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
                         <h3 class="fw-bold mb-0">Leave Requestd</h3>
-             
+
                     </div>
                 </div>
             </div> <!-- Row end  -->
@@ -49,15 +49,19 @@
                                         {{ $leave->to }}
                                        </td>
                                        <td>
-                                       {{ $leave->status }}
+                                        <span @class(['badge','bg-success'=>$leave->getTranslation('status','en')=='approve',
+                                            'bg-danger'=>$leave->getTranslation('status','en')=='rejected',
+                                            'bg-info'=>$leave->getTranslation('status','en')=='waiting',
+                                            ])>
+                                       {{ $leave->status }}</span>
                                        </td>
-                                       
+
                                        <td>
                                        {{ $leave->ltype->name }}
                                        </td>
                                        <td>
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                            <a class="btn btn-outline-secondary" href="{{ route('company.leave.show',$leave->id) }}"><i class="icofont-location-arrow"></i></a>
+                                            <a class="btn btn-outline-secondary" href="{{ route('company.leaves.show',$leave->id) }}"><i class="icofont-location-arrow"></i></a>
                                         </div>
                                         </td>
                                     </tr>

@@ -88,19 +88,72 @@
 
                                 <li class="row flex-wrap mb-3">
                                    <div class="col-4">
+                                       <span class="fw-bold">Leave Time</span>
+                                   </div>
+                                   <div class="col-8">
+                                       <span class="text-muted">{{ $leave->time_leave }}</span>
+                                   </div>
+                                </li>
+
+                                <li class="row flex-wrap mb-3">
+                                   <div class="col-4">
+                                       <span class="fw-bold">Back Time</span>
+                                   </div>
+                                   <div class="col-8">
+                                       <span class="text-muted">{{ $leave->time_back }}</span>
+                                   </div>
+                                </li>
+
+                                <li class="row flex-wrap mb-3">
+                                   <div class="col-4">
+                                       <span class="fw-bold">Discount</span>
+                                   </div>
+                                   <div class="col-8">
+                                       <span class="text-muted">{{ $leave->discount_value }}</span>
+                                   </div>
+                                </li>
+
+                                <li class="row flex-wrap mb-3">
+                                   <div class="col-4">
+                                       <span class="fw-bold">delay period</span>
+                                   </div>
+                                   <div class="col-8">
+                                       <span class="text-muted">{{ $leave->late_period }}</span>
+                                   </div>
+                                </li>
+
+                                <li class="row flex-wrap mb-3">
+                                   <div class="col-4">
+                                       <span class="fw-bold">delay Status</span>
+                                   </div>
+                                   <div class="col-8">
+                                    <span @class(['badge','bg-success'=>$leave->getTranslation('time_status','en')=='disciplined',
+                                        'bg-danger'=>$leave->getTranslation('time_status','en')=='late',
+                                        ])>{{ $leave->time_status }}</span>
+                                   </div>
+                                </li>
+
+
+
+
+                                <li class="row flex-wrap mb-3">
+                                   <div class="col-4">
                                        <span class="fw-bold">Status</span>
                                    </div>
                                    <div class="col-8">
-                                       <span class="text-muted">{{ $leave->status }}</span>
+                                    <span @class(['badge','bg-success'=>$leave->getTranslation('status','en')=='approve',
+                                        'bg-danger'=>$leave->getTranslation('status','en')=='rejected',
+                                        'bg-info'=>$leave->getTranslation('status','en')=='waiting',
+                                        ])>{{ $leave->status }}</span>
                                    </div>
                                 </li>
-                                
+
                                 <li class="row flex-wrap mb-3">
                                    <div class="col-4">
                                        <span class="fw-bold">Leave Type</span>
                                    </div>
                                    <div class="col-8">
-                                       <span class="text-muted">{{ $leave->1type->name }}</span>
+                                       <span class="text-muted">{{ $leave->ltype->name }}</span>
                                    </div>
                                 </li>
 
@@ -109,7 +162,7 @@
                                        <span class="fw-bold">File</span>
                                    </div>
                                    <div class="col-8">
-                                       <a href="{{ route('company.leave.file',$leave->id) }}" class="text-muted">{{ explode('/',$leave->file)[2] }}</a>
+                                       <a href="{{ route('company.leaves.file',$leave->id) }}" class="text-muted">{{ explode('/',$leave->file)[2]??null }}</a>
                                    </div>
                                 </li>
                            </ul>
@@ -134,9 +187,9 @@
                        </div>
                        <input id="id-leave" type="hidden" value="{{ $leave->id }}">
                        <div class="row g-3 mb-3">
-                           <div class="col">
-                               <label for="exampleFormAtgtendanceStatus" class="form-label">Status</label>
-                               <select class="form-select" id="exampleFormAtgtendanceStatus"
+                           <div class="col-sm-6">
+                               <label for="exampleFormleaveStatus" class="form-label">Status</label>
+                               <select class="form-select" id="exampleFormleaveStatus"
                                    aria-label="Default select example">
                                    <option disabled selected>Status</option>
                                    @foreach ($allStatus as $status)
@@ -145,7 +198,21 @@
                                    @endforeach
                                </select>
                            </div>
+                           <div class="col-sm-6">
+                            <label for="exampleFormControlleavediscount" class="form-label">Discount</label>
+                            <input type="text" class="form-control"
+                                id="exampleFormControlleavediscount" value="{{ $leave->discount_value }}">
+                        </div>
+                        <div class="row g-3 mb-3">
 
+
+
+                            <div class="col-sm-6">
+                                <label for="exampleFormControlleavenote" class="form-label">Note</label>
+                                <textarea class="form-control" name="note"
+                                    id="exampleFormControlleavenote">{{ $leave->note }}</textarea>
+                            </div>
+                        </div>
                        </div>
 
 
