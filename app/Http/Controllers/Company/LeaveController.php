@@ -14,10 +14,13 @@ class LeaveController extends Controller
 {
     public function index()
     {
-        $branches = Branch::where('company_id', Auth::user()->company_id)?->get();
-        $employees = User::whereBelongsTo($branches)->with(['branch','shift'])?->get();
-
-        $data = Leave::whereBelongsTo($employees)?->get()??null;
+        $branches = Branch::where('company_id', Auth::user()->company_id)->get();
+        $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->get();
+        if ($employees) {
+            $data = Leave::whereBelongsTo($employees)->get();
+        }else{
+            $data=null;
+        }
         return view('front.employees.leave-requests',compact('data'));
     }
 
