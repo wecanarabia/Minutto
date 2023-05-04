@@ -51,14 +51,21 @@ class AttendanceController extends Controller
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
+        $validator = Validator::make($request->all(), [
+            'discount_value'=>'nulable|numeric',
+            'note'=>'nulable|min:4|max:2000',
+            'departure_time'=>'nulable|date_format:H:i',
+            'status[en]'=>'nulable|in:disciplined,late,absence,vacation',
+        ]);
 
         $attendance = Workhour::find($id);
 
         $allStatus=Workhour::STATUS;
         $request['status'] = json_decode($request['status'],true);
-        if (!in_array($attendance->user->id,$employees)||!in_array($request['status'],$allStatus)) {
+        if ($validator->fails()||!in_array($attendance->user->id,$employees)||!in_array($request['status'],$allStatus)) {
+            dd($validator->errors()->all());
             return response()->json([
-                'error' => "Some thing has been wrong",
+                'error' => $validator->errors()->all(),
             ]);
         }
 

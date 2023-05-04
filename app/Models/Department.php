@@ -15,10 +15,10 @@ class Department extends Model
     public $translatable = ['name','description'];
 
     public function employees(){
-        return $this->hasMany(user::class);
+        return $this->hasMany(User::class);
     }
 
     public function head(){
-        return $this->hasOne(user::class,'department_id','department_head');
+        return $this->hasOne(User::class,'department_id','department_head');
     }
 }
