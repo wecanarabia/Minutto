@@ -32,6 +32,13 @@ class LeaveController extends ApiController
 
 
         if ($model) {
+            $user=User::find($model->user_id);
+            if($user)
+            {
+                $user->is_left = 1 ;
+                $user->save();
+            }
+
             return $this->returnData( 'data' , new $this->resource( $model ), __('Succesfully'));
         }
 
@@ -41,9 +48,51 @@ class LeaveController extends ApiController
     public function edit($id,Request $request){
 
 
-        return $this->update($id,$request->all());
+        // return $this->update($id,$request->all());
+        $model = $this->repositry->getByID($id);
+        $user=User::find($model->user_id);
+
+
+        if ($model) {
+
+            if($model->time_leave && $user->is_left == 1){
+
+                $user->is_left=0;
+                $user->save();
+            }
+
+            $model = $this->repositry->edit( $id,$request->all() );
+            if($model->time_leave && $model->time_leave < $model->from){
+
+                $model->time_status="late";
+                $late=Carbon::createFromFormat('H:i:s',$model->from)->diffInMinutes(Carbon::createFromFormat('H:i:s',$model->time_leave));
+                $delay=gmdate('H:i:s',$late*60);
+                $model->save();
+
+
+            }
+
+            if($model->time_back && $model->time_back > $model->to){
+
+                $model->time_status="late";
+                $late=Carbon::createFromFormat('H:i:s',$model->time_back)->diffInMinutes(Carbon::createFromFormat('H:i:s',$model->to));
+                $delay=gmdate('H:i:s',$late*60);
+                $model->save();
+
+
+            }
+
+
+            return $this->returnData('data', new $this->resource( $model ), __('Updated succesfully'));
+        }
+
+        return $this->returnError(__('Sorry! Failed to get !'));
 
     }
+
+
+
+
 
 
     public function myLeaves()

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('time_status')->nullable();
             $table->integer('late_period')->nullable();
 
+
         });
     }
 
@@ -28,11 +29,13 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('leaves', function (Blueprint $table) {
+
             $table->dropColumn('time_leave');
             $table->dropColumn('time_back');
             $table->dropColumn('discount_value');
             $table->dropColumn('time_status');
             $table->dropColumn('late_period');
+
         });
     }
 };
