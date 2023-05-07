@@ -67,6 +67,7 @@ class LeaveController extends ApiController
                 $model->time_status="late";
                 $late=Carbon::createFromFormat('H:i:s',$model->from)->diffInMinutes(Carbon::createFromFormat('H:i:s',$model->time_leave));
                 $delay=gmdate('H:i:s',$late*60);
+                $model->late_period=$delay;
                 $model->save();
 
 
@@ -77,6 +78,7 @@ class LeaveController extends ApiController
                 $model->time_status="late";
                 $late=Carbon::createFromFormat('H:i:s',$model->time_back)->diffInMinutes(Carbon::createFromFormat('H:i:s',$model->to));
                 $delay=gmdate('H:i:s',$late*60);
+                $model->late_period=$delay;
                 $model->save();
 
 
