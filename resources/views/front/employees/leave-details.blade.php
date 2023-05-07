@@ -207,6 +207,7 @@
                             <input type="text" class="form-control"
                                 id="exampleFormControlleavediscount" value="{{ $leave->discount_value }}">
                         </div>
+                       </div>
                         <div class="row g-3 mb-3">
 
 

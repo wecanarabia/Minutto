@@ -9,9 +9,11 @@ use App\Http\Controllers\Company\BranchController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Company\WorkDayController;
 use App\Http\Controllers\Company\EmployeeController;
+use App\Http\Controllers\Company\VacationController;
 use App\Http\Controllers\Company\LeaveTypeController;
 use App\Http\Controllers\Company\AttendanceController;
 use App\Http\Controllers\Company\DepartmentController;
+use App\Http\Controllers\Company\VacationTypeController;
 
 Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
@@ -43,6 +45,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::resource('branches', BranchController::class)->except(['destroy']);
             Route::resource('shifts', ShiftController::class)->except(['destroy']);
             Route::resource('leave-types', LeaveTypeController::class)->except(['destroy']);
+            Route::resource('vacation-types', VacationTypeController::class)->except(['destroy']);
             Route::resource('workdays', WorkDayController::class)->except(['destroy']);
             Route::get('shifts/workdays/{id}/edit', [WorkDayController::class,'editShiftWorkdays'])->name('shifts.workdays.edit');
             Route::put('shifts/workdays/{id}/update', [WorkDayController::class,'updateShiftWorkdays'])->name('shifts.workdays.update');
@@ -54,6 +57,10 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::get('leaves/{id}', [LeaveController::class,'show'])->name('leaves.show');
             Route::get('leaves/file/{id}', [LeaveController::class,'openFile'])->name('leaves.file');
             Route::post('leaves/update/{id}', [LeaveController::class,'update'])->name('leaves.update');
+            Route::get('vacations', [VacationController::class,'index'])->name('vacations.index');
+            Route::get('vacations/{id}', [VacationController::class,'show'])->name('vacations.show');
+            Route::get('vacations/file/{id}', [VacationController::class,'openFile'])->name('vacations.file');
+            Route::post('vacations/update/{id}', [VacationController::class,'update'])->name('vacations.update');
 
         });
     });

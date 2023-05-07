@@ -235,6 +235,40 @@ $(document).ready(function() {
         });
 
     });
+    
+    $("#vacation-submit").on('click',function(){
+
+
+        var id = $("#id-vacation").val();
+        var status = $("#exampleFormVacationStatus").val();
+        var from = $("#exampleFormControlvacationfrom").val();
+        var to = $("#exampleFormControlvacationto").val();
+        var note = $("#exampleFormControlVacationnote").val();
+        $.ajax({
+           method:'POST',
+           url:"/vacations/update/"+id,
+           data:{
+            status:status,
+            from:from,
+            to:to,
+            note:note,
+           },
+
+           success:function(data){
+                if($.isEmptyObject(data.error)){
+                    var modal = $('#edit-vacation');
+                    // Close the modal
+                    modal.modal('hide');
+
+                        location.reload();
+
+                }else{
+                    printErrorMsg(data.error);
+                }
+           }
+        });
+
+    });
 
 });
 

@@ -136,13 +136,31 @@
                     <ul @class([
                         'sub-menu',
                         'collapse',
-                        'show' => Route::currentRouteName() == 'company.shifts.index',
+                        'show' => Route::currentRouteName() == 'company.leave-types.index',
                     ]) id="leavs-types-Components">
                         <li><a @class([
                             'ms-link',
                             'active' => Route::currentRouteName() == 'company.leave-types.index',
                         ])
                                 href="{{ route('company.leave-types.index') }}"><span>Leave Types</span></a></li>
+                    </ul>
+                </li>
+                
+                <li class="collapsed">
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#vacation-types-Components" href="#">
+                        <i class="icofont-listine-dots"></i><span>Vacation Types</span> <span
+                            class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                    <!-- Menu: Sub menu ul -->
+                    <ul @class([
+                        'sub-menu',
+                        'collapse',
+                        'show' => Route::currentRouteName() == 'company.vacation-types.index',
+                    ]) id="vacation-types-Components">
+                        <li><a @class([
+                            'ms-link',
+                            'active' => Route::currentRouteName() == 'company.vacation-types.index',
+                        ])
+                                href="{{ route('company.vacation-types.index') }}"><span>Vacation Types</span></a></li>
                     </ul>
                 </li>
 
@@ -156,6 +174,7 @@
                         'collapse',
                         'show' => Route::currentRouteName() == 'company.employees.index'||
                                   Route::currentRouteName() == 'company.attendance.index'||
+                                  Route::currentRouteName() == 'company.vacations.index'||
                                   Route::currentRouteName() == 'company.leaves.index',
                     ])  id="emp-Components">
                         <li><a @class([
@@ -163,7 +182,10 @@
                             'active' => Route::currentRouteName() == 'company.employees.index',
                         ]) href="{{ route('company.employees.index') }}"> <span>Members</span></a>
                         </li>
-                        <li><a class="ms-link" href="holidays.html"> <span>Holidays</span></a></li>
+                        <li><a @class([
+                            'ms-link',
+                            'active' => Route::currentRouteName() == 'company.vacations.index',
+                        ])  href="{{ route('company.vacations.index') }}"> <span>Vacations Requests</span></a></li>
                         <li><a @class([
                             'ms-link',
                             'active' => Route::currentRouteName() == 'company.attendance.index',
