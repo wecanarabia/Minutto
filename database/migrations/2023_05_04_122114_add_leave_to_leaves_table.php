@@ -20,6 +20,7 @@ return new class extends Migration
             $table->time('late_period')->nullable();
 
 
+
         });
     }
 
