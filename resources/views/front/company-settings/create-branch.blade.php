@@ -1,3 +1,4 @@
+<x-layouts.header title="Add Main Branch"/>
 <x-layouts.app>
     <!-- Body: Body -->
     <div class="body d-flex py-3">

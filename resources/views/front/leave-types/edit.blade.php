@@ -1,3 +1,4 @@
+<x-layouts.header title="Edit Leave Type"/>
 <x-layouts.app>
     <!-- Body: Body -->
     <div class="body d-flex py-3">
@@ -6,6 +7,10 @@
                <div class="border-0 mb-4">
                    <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
                        <h3 class="fw-bold mb-0">Edit Leave Type</h3>
+                       <div class="col-auto d-flex w-sm-100">
+                        <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.leave-types.index') }}"></i>Leave Types</a>
+                        <a class="btn btn-dark btn-set-task w-sm-100 mx-2 " href="{{ route('company.leave-types.show',$type->id) }}"></i>{{ $type->name }}</a>
+                    </div>
                    </div>
                </div>
            </div> <!-- Row end  -->

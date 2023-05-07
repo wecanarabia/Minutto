@@ -1,3 +1,4 @@
+<x-layouts.header title="Add Branch"/>
 <x-layouts.app>
          <!-- Body: Body -->
          <div class="body d-flex py-3">
@@ -6,6 +7,9 @@
                     <div class="border-0 mb-4">
                         <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
                             <h3 class="fw-bold mb-0">Add Branch</h3>
+                            <div class="col-auto d-flex w-sm-100">
+                                <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.branches.index') }}"></i>Branches</a>
+                            </div>
                         </div>
                     </div>
                 </div> <!-- Row end  -->
@@ -39,13 +43,13 @@
                                                 <label class="form-label">Shifts</label>
                                                 <br>
                                                 @foreach ($shifts as $shift)
-                                                    
-                                                
+
+
                                                 <label class="fancy-checkbox">
                                                     <input type="checkbox" name="shifts[]" value="{{ $shift->id }}" @checked(collect(old('shifts'))->contains($shift->id)) data-parsley-errors-container="#error-checkbox" data-parsley-multiple="checkbox">
                                                     <span>{{ $shift->name }}</span>
                                                 </label>
-                                           
+
                                                 @endforeach
                                                 @error('shifts')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -64,7 +68,7 @@
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
 
-                                  
+
 
                                        </div>
 

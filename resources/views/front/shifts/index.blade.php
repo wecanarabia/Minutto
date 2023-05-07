@@ -1,3 +1,4 @@
+<x-layouts.header title="Shifts"/>
 <x-layouts.app>
           <!-- Body: Body -->
           <div class="body d-flex py-lg-3 py-md-2">

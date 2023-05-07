@@ -1,3 +1,4 @@
+<x-layouts.header title="Workdays"/>
 <x-layouts.app>
           <!-- Body: Body -->
           <div class="body d-flex py-lg-3 py-md-2">
@@ -52,7 +53,7 @@
                                            <td>
                                             {{ $workday->shift->name }}
                                            </td>
-                                         
+
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                     <a class="btn btn-outline-secondary" href="{{ route('company.workdays.edit',$workday->id) }}"><i class="icofont-edit text-success"></i></a>

@@ -1,4 +1,5 @@
-<x-layouts.app>
+<x-layouts.header title="{{$shift->name}} Workdays"/>
+    <x-layouts.app>
     <!-- Body: Body -->
     <div class="body d-flex py-lg-3 py-md-2">
       <div class="container-xxl">
@@ -7,7 +8,8 @@
                   <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
                       <h3 class="fw-bold mb-0">{{ $shift->name }} Workdays</h3>
                       <div class="col-auto d-flex w-sm-100">
-                        <a  class="btn p-0" href="{{ route('company.shifts.workdays.edit',$shift->id) }}"><i class="icofont-edit text-primary fs-6"></i></a>
+                        <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.workdays.index') }}"></i>Workdays</a>
+                        <a  class="btn btn-dark btn-set-task w-sm-100 mx-2" href="{{ route('company.shifts.workdays.edit',$shift->id) }}">Edit {{ $shift->name }} Workdays</a>
                       </div>
                   </div>
               </div>
@@ -51,8 +53,8 @@
                                      <td>
                                       {{ $workday->shift->name }}
                                      </td>
-                                   
-                             
+
+
                                   </tr>
                                   @endforeach
                               </tbody>
