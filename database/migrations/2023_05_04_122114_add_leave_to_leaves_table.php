@@ -17,7 +17,11 @@ return new class extends Migration
             $table->time('time_back')->nullable();
             $table->double('discount_value')->default(0);
             $table->string('time_status')->nullable();
+<<<<<<< HEAD
+            $table->time('late_period')->nullable();
+=======
             $table->integer('late_period')->nullable();
+>>>>>>> 68be95f98b1f78d19ad1787510b0e63ea5a3e133
 
 
         });
