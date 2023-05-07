@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Branch;
 use App\Models\Workhour;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -17,8 +18,11 @@ class AttendanceController extends Controller
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->get();
-
-        $data = Workhour::whereBelongsTo($employees)->get();
+        if ($employees->count()>0) {
+            $data = Workhour::whereBelongsTo($employees)->get();
+        }else{
+            $data=collect([]);
+        }
         return view('front.employees.attendance',compact('data'));
     }
 
@@ -51,19 +55,29 @@ class AttendanceController extends Controller
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
+        $request['status'] = json_decode($request['status'],true);
+        $validator = Validator::make($request->all(), [
+            'discount_value'=>'nullable|numeric|declined_if:status.en,disciplined',
+            'note'=>'nullable|min:4|max:2000',
+            'time_departure'=>'nullable|date_format:H:i',
+            'status.en'=>"required|in:disciplined,late,absence,vacation",
+            'status.ar'=>"required|in:منضبط,متأخر,غائب,اجازة",
+        ]);
 
         $attendance = Workhour::find($id);
 
         $allStatus=Workhour::STATUS;
-        $request['status'] = json_decode($request['status'],true);
-        if (!in_array($attendance->user->id,$employees)||!in_array($request['status'],$allStatus)) {
+        if ($validator->fails()||!in_array($attendance->user->id,$employees)||!in_array($request['status'],$allStatus)) {
             return response()->json([
-                'error' => "Some thing has been wrong",
+                'error' => $validator->errors()->all(),
             ]);
         }
 
         $attendance->update([
             'status'=>$request['status'],
+            'discount_value'=>$request['discount_value'],
+            'note'=>$request['note'],
+            'time_departure'=>$request['time_departure'],
         ]);
         return response()->json(['success' => 'Attendance updated successfully.']);
     }

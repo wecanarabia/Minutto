@@ -175,11 +175,49 @@ $(document).ready(function() {
 
         var id = $("#id-attendance").val();
         var status = $("#exampleFormAtgtendanceStatus").val();
+        var discount_value = $("#exampleFormControlattenddiscount").val();
+        var time_departure = $("#exampleFormControldeparturetime").val();
+        var note = $("#exampleFormControlattendancenote").val();
         $.ajax({
            method:'POST',
            url:"/attendance/update/"+id,
            data:{
             status:status,
+            discount_value:discount_value,
+            time_departure:time_departure,
+            note:note,
+           },
+
+           success:function(data){
+                if($.isEmptyObject(data.error)){
+                    var modal = $('#edit-attendance');
+                    // Close the modal
+                    modal.modal('hide');
+
+                        location.reload();
+
+                }else{
+                    printErrorMsg(data.error);
+                }
+           }
+        });
+
+    });
+
+    $("#leave-submit").on('click',function(){
+
+
+        var id = $("#id-leave").val();
+        var status = $("#exampleFormleaveStatus").val();
+        var discount_value = $("#exampleFormControlleavediscount").val();
+        var note = $("#exampleFormControlleavenote").val();
+        $.ajax({
+           method:'POST',
+           url:"/leaves/update/"+id,
+           data:{
+            status:status,
+            discount_value:discount_value,
+            note:note,
            },
 
            success:function(data){

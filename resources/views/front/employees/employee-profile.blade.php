@@ -232,7 +232,7 @@
                     <div class="row g-3">
 
                         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
-                            <div class="card">
+                            <div class="card mb-3">
                                 <div class="card-header py-3 d-flex justify-content-between">
                                     <h6 class="mb-0 fw-bold ">Bank information</h6>
                                     <button type="button" class="btn p-0" data-bs-toggle="modal"
@@ -288,7 +288,7 @@
                             </div>
                         </div>
                         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
-                            <div class="card">
+                            <div class="card mb-3">
                                 <div class="card-header py-3 d-flex justify-content-between">
                                     <h6 class="mb-0 fw-bold ">Other information</h6>
                                     <button type="button" class="btn p-0" data-bs-toggle="modal"
@@ -345,11 +345,11 @@
                             </div>
                         </div>
                     </div>
-                     <div class="row g-3">
+                    <div class="row g-3">
 
 
-                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
-                            <div class="card">
+                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
+                            <div class="card mb-3">
                                 <div class="card-header py-3 d-flex justify-content-between">
                                     <h6 class="mb-0 fw-bold ">Attendance</h6>
                                 </div>
@@ -418,13 +418,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div> 
-                    
+                    </div>
+
                     <div class="row g-3">
 
 
-                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
-                            <div class="card">
+                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
+                            <div class="card mb-3">
                                 <div class="card-header py-3 d-flex justify-content-between">
                                     <h6 class="mb-0 fw-bold ">Leave Requests</h6>
                                 </div>
@@ -448,7 +448,7 @@
                                                         </thead>
                                                         <tbody>
                                                             @foreach ($employee->leaves as $leave)
-                        
+
                                                             <tr>
                                                                 <td>
                                                                     {{ $leave->id }}
@@ -468,21 +468,26 @@
                                                                 {{ $leave->to }}
                                                                </td>
                                                                <td>
+                                                                <span @class(['badge','bg-success'=>$leave->getTranslation('status','en')=='approve',
+                                                                'bg-danger'=>$leave->getTranslation('status','en')=='rejected',
+                                                                'bg-info'=>$leave->getTranslation('status','en')=='waiting',
+                                                                ])>
                                                                {{ $leave->status }}
+                                                                </span>
                                                                </td>
-                                                               
+
                                                                <td>
                                                                {{ $leave->ltype->name }}
                                                                </td>
                                                                <td>
                                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                                    <a class="btn btn-outline-secondary" href="{{ route('company.leave.show',$leave->id) }}"><i class="icofont-location-arrow"></i></a>
+                                                                    <a class="btn btn-outline-secondary" href="{{ route('company.leaves.show',$leave->id) }}"><i class="icofont-location-arrow"></i></a>
                                                                 </div>
                                                                 </td>
                                                             </tr>
-                        
+
                                                             @endforeach
-                        
+
                                                         </tbody>
                                                     </table>
                                                   </div>
@@ -494,7 +499,7 @@
                         </div>
                     </div>
 
-                    
+
                 </div>
 
             </div><!-- Row End -->

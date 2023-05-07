@@ -8,6 +8,7 @@ use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class LeaveController extends Controller
 {
@@ -15,8 +16,11 @@ class LeaveController extends Controller
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->get();
-
-        $data = Leave::whereBelongsTo($employees)->get();
+        if ($employees->count()>0) {
+            $data = Leave::whereBelongsTo($employees)->get();
+        }else{
+            $data=collect([]);
+        }
         return view('front.employees.leave-requests',compact('data'));
     }
 
@@ -51,17 +55,25 @@ class LeaveController extends Controller
         $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
         $leave = Leave::find($id);
-        ($leave->user->monthly_salary/60)*$leave->period;
-        $allStatus=Leave::STATUS;
         $request['status'] = json_decode($request['status'],true);
-        if (!in_array($leave->user->id,$employees)||!in_array($request['status'],$allStatus)) {
+        $validator = Validator::make($request->all(), [
+            'discount_value'=>'nullable|numeric|declined_if:status.en,approve',
+            'note'=>'nullable|min:4|max:2000',
+            'status.en'=>"required|in:waiting,approve,rejected",
+            'status.ar'=>"required|in:في الانتظار,مقبول,مرفوض",
+        ]);
+
+        $attendance = Leave::find($id);
+        $allStatus=Leave::STATUS;
+        if ($validator->fails()||!in_array($leave->user->id,$employees)||!in_array($request['status'],$allStatus)) {
             return response()->json([
-                'error' => "Some thing has been wrong",
+                'error' => $validator->errors()->all(),
             ]);
         }
-
         $leave->update([
             'status'=>$request['status'],
+            'discount_value'=>$request['discount_value'],
+            'note'=>$request['note'],
         ]);
         return response()->json(['success' => 'Leave Request updated successfully.']);
     }
