@@ -4,11 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Reward extends Model
 {
-    use HasFactory;
+    use HasFactory,HasTranslations;
     protected $guarded=[];
+    public $translatable = ['status'];
+
+    const STATUS = [
+        ['en'=>'waiting','ar'=>'في الانتظار'],
+        ['en'=>'approve','ar'=>'مقبول'],
+        ['en'=>'rejected','ar'=>'مرفوض'],
+    ];
+
 
     public function setFileAttribute($value){
         if ($value){

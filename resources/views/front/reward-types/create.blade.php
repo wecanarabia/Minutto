@@ -1,4 +1,4 @@
-<x-layouts.header title="Add Department"/>
+<x-layouts.header title="Add Reward Type"/>
 <x-layouts.app>
          <!-- Body: Body -->
          <div class="body d-flex py-3">
@@ -6,10 +6,7 @@
                 <div class="row align-items-center">
                     <div class="border-0 mb-4">
                         <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-                            <h3 class="fw-bold mb-0">Add Department</h3>
-                            <div class="col-auto d-flex w-sm-100">
-                                <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.departments.index') }}"></i>Departments</a>
-                            </div>
+                            <h3 class="fw-bold mb-0">Add Reward Type</h3>
                         </div>
                     </div>
                 </div> <!-- Row end  -->
@@ -18,10 +15,13 @@
                     <div class="col-md-12">
                         <div class="card mb-3">
                             <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                                <h6 class="mb-0 fw-bold ">Add Department</h6>
+                                <h6 class="mb-0 fw-bold ">Add Reward Type</h6>
+                                <div class="col-auto d-flex w-sm-100">
+                                    <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.reward-types.index') }}"></i>Reward Types</a>
+                                </div>
                             </div>
                             <div class="card-body">
-                                <form method="post" action="{{ route('company.departments.store') }}">
+                                <form method="post" action="{{ route('company.reward-types.store') }}">
                                     @csrf
                                     <div class="row g-3 align-items-center">
                                         <div class="col-md-6">
@@ -40,21 +40,8 @@
                                         </div>
 
 
-                                        <div class="col-md-12">
-                                            <label for="addnote" class="form-label">English Descritpion</label>
-                                            <textarea  class="form-control" name="english_description" id="addnote" rows="3">{{ old('english_description') }}</textarea>
-                                            @error('english_description')
-                                            <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                       </div>
 
-                                        <div class="col-md-12">
-                                            <label for="addnote" class="form-label">Arabic Descritpion</label>
-                                            <textarea  class="form-control" name="arabic_description"  id="addnote" rows="3">{{ old('arabic_description') }}</textarea>
-                                            @error('arabic_description')
-                                            <div class="text-danger">{{ $message }}</div>
-                                             @enderror
-                                         </div>
+
                                     </div>
 
                                     <input type="submit" value="Submit" class="btn btn-primary mt-4">

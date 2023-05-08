@@ -6,6 +6,7 @@ use App\Http\Controllers\Company\LeaveController;
 use App\Http\Controllers\Company\LoginController;
 use App\Http\Controllers\Company\ShiftController;
 use App\Http\Controllers\Company\BranchController;
+use App\Http\Controllers\Company\RewardController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Company\WorkDayController;
 use App\Http\Controllers\Company\EmployeeController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Company\VacationController;
 use App\Http\Controllers\Company\LeaveTypeController;
 use App\Http\Controllers\Company\AttendanceController;
 use App\Http\Controllers\Company\DepartmentController;
+use App\Http\Controllers\Company\RewardTypeController;
 use App\Http\Controllers\Company\VacationTypeController;
 
 Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
@@ -46,6 +48,9 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::resource('shifts', ShiftController::class)->except(['destroy']);
             Route::resource('leave-types', LeaveTypeController::class)->except(['destroy']);
             Route::resource('vacation-types', VacationTypeController::class)->except(['destroy']);
+            Route::resource('reward-types', RewardTypeController::class)->except(['destroy']);
+            Route::resource('rewards', RewardController::class)->except(['destroy']);
+            Route::get('rewards/file/{id}', [RewardController::class,'openFile'])->name('rewards.file');
             Route::resource('workdays', WorkDayController::class)->except(['destroy']);
             Route::get('shifts/workdays/{id}/edit', [WorkDayController::class,'editShiftWorkdays'])->name('shifts.workdays.edit');
             Route::put('shifts/workdays/{id}/update', [WorkDayController::class,'updateShiftWorkdays'])->name('shifts.workdays.update');
