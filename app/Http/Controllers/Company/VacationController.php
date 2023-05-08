@@ -54,28 +54,28 @@ class VacationController extends Controller
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
-        $leave = Vacation::find($id);
+        $vacation = Vacation::find($id);
         $request['status'] = json_decode($request['status'],true);
         $validator = Validator::make($request->all(), [
             'from'=>'required|date',
             'to'=>'required|date',
-            'note'=>'nullable|min:4|max:2000',
+            'note'=>'required|min:4|max:2000',
+            'replay'=>'required|min:4|max:2000',
             'status.en'=>"required|in:waiting,approve,rejected",
-            'status.ar'=>"required|in:في الانتظار,مقبول,مرفوض",
-        ]);
-
-        $attendance = Vacation::find($id);
+    ]);
         $allStatus=Vacation::STATUS;
-        if ($validator->fails()||!in_array($leave->user->id,$employees)||!in_array($request['status'],$allStatus)) {
+        if ($validator->fails()||!in_array($vacation->user->id,$employees)||!in_array($request['status'],$allStatus)) {
             return response()->json([
                 'error' => $validator->errors()->all(),
             ]);
         }
-        $leave->update([
+
+        $vacation->update([
             'status'=>$request['status'],
             'from'=>$request['from'],
             'to'=>$request['to'],
             'note'=>$request['note'],
+            'replay'=>$request['replay'],
         ]);
         return response()->json(['success' => 'Vacation Request updated successfully.']);
     }

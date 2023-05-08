@@ -73,7 +73,7 @@
                                        <span class="text-muted">{{ $vacation->replay }}</span>
                                    </div>
                                 </li>
-                
+
 
                                 <li class="row flex-wrap mb-3">
                                    <div class="col-4">
@@ -126,7 +126,7 @@
                        </div>
                        <input id="id-vacation" type="hidden" value="{{ $vacation->id }}">
                        <div class="row g-3 mb-3">
-                     
+
                         <div class="col-sm-6">
                             <label for="exampleFormControlvacationfrom" class="form-label">From</label>
                             <input type="date" class="form-control"
@@ -142,6 +142,20 @@
 
 
                             <div class="col-sm-6">
+                                <label for="exampleFormControlVacationreplay" class="form-label">Replay</label>
+                                <textarea class="form-control" name="replay"
+                                    id="exampleFormControlVacationreplay">{{ $vacation->replay }}</textarea>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="exampleFormControlVacationnote" class="form-label">Note</label>
+                                <textarea class="form-control" name="note"
+                                    id="exampleFormControlVacationnote">{{ $vacation->note }}</textarea>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+
+
+                            <div class="col-sm-6">
                                 <label for="exampleFormVacationStatus" class="form-label">Status</label>
                                 <select class="form-select" id="exampleFormVacationStatus"
                                     aria-label="Default select example">
@@ -151,11 +165,6 @@
                                     {{$status[Illuminate\Support\Facades\App::getLocale()] }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="exampleFormControlVacationnote" class="form-label">Note</label>
-                                <textarea class="form-control" name="note"
-                                    id="exampleFormControlVacationnote">{{ $vacation->note }}</textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -167,7 +176,7 @@
 
                    </div>
                </div>
-               
+
            </div>
        </div>
    </div>

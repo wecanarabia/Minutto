@@ -24,11 +24,10 @@ class RewardRequest extends FormRequest
         return [
             'reward_date'=>'required|date',
             'reward_value'=>'required|numeric',
-            'note'=>'nullable|min:5|max:2000',
+            'note'=>'replay|min:5|max:2000',
             'file'=>'mimes:jpg,gif,jpeg,png,mp4,pdf,txt,mkv,flv,docs,doc,3gb,xlsx,pptx|max:4000',
             'status.en'=>"in:waiting,approve,rejected",
-            'status.ar'=>"in:في الانتظار,مقبول,مرفوض",
-            'replay'=>'nullable|min:5|max:2000',
+            'replay'=>'replay|min:5|max:2000',
             'reward_type_id'=>'required|exists:reward_types,id',
             'user_id'=>'required|exists:users,id',
         ];

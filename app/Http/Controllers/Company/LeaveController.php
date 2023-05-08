@@ -58,9 +58,9 @@ class LeaveController extends Controller
         $request['status'] = json_decode($request['status'],true);
         $validator = Validator::make($request->all(), [
             'discount_value'=>'nullable|numeric|declined_if:status.en,approve',
-            'note'=>'nullable|min:4|max:2000',
+            'note'=>'required|min:4|max:2000',
+            'replay'=>'required|min:4|max:2000',
             'status.en'=>"required|in:waiting,approve,rejected",
-            'status.ar'=>"required|in:في الانتظار,مقبول,مرفوض",
         ]);
 
         $attendance = Leave::find($id);
@@ -74,6 +74,7 @@ class LeaveController extends Controller
             'status'=>$request['status'],
             'discount_value'=>$request['discount_value'],
             'note'=>$request['note'],
+            'replay'=>$request['replay'],
         ]);
         return response()->json(['success' => 'Leave Request updated successfully.']);
     }

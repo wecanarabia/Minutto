@@ -178,6 +178,7 @@ $(document).ready(function() {
         var discount_value = $("#exampleFormControlattenddiscount").val();
         var time_departure = $("#exampleFormControldeparturetime").val();
         var note = $("#exampleFormControlattendancenote").val();
+        var replay = $("#exampleFormControlattendancereplay").val();
         $.ajax({
            method:'POST',
            url:"/attendance/update/"+id,
@@ -186,6 +187,7 @@ $(document).ready(function() {
             discount_value:discount_value,
             time_departure:time_departure,
             note:note,
+            replay:replay,
            },
 
            success:function(data){
@@ -211,6 +213,7 @@ $(document).ready(function() {
         var status = $("#exampleFormleaveStatus").val();
         var discount_value = $("#exampleFormControlleavediscount").val();
         var note = $("#exampleFormControlleavenote").val();
+        var replay = $("#exampleFormControlleavereplay").val();
         $.ajax({
            method:'POST',
            url:"/leaves/update/"+id,
@@ -218,6 +221,7 @@ $(document).ready(function() {
             status:status,
             discount_value:discount_value,
             note:note,
+            replay:replay,
            },
 
            success:function(data){
@@ -235,7 +239,7 @@ $(document).ready(function() {
         });
 
     });
-    
+
     $("#vacation-submit").on('click',function(){
 
 
@@ -244,6 +248,7 @@ $(document).ready(function() {
         var from = $("#exampleFormControlvacationfrom").val();
         var to = $("#exampleFormControlvacationto").val();
         var note = $("#exampleFormControlVacationnote").val();
+        var replay = $("#exampleFormControlVacationreplay").val();
         $.ajax({
            method:'POST',
            url:"/vacations/update/"+id,
@@ -252,6 +257,7 @@ $(document).ready(function() {
             from:from,
             to:to,
             note:note,
+            replay:replay,
            },
 
            success:function(data){

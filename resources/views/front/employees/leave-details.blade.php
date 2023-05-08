@@ -213,20 +213,27 @@
 
 
                             <div class="col-sm-6">
+                                <label for="exampleFormControlleavereplay" class="form-label">Replay</label>
+                                <textarea class="form-control" name="replay"
+                                    id="exampleFormControlleavereplay">{{ $leave->replay }}</textarea>
+                            </div>
+
+                            <div class="col-sm-6">
                                 <label for="exampleFormControlleavenote" class="form-label">Note</label>
                                 <textarea class="form-control" name="note"
                                     id="exampleFormControlleavenote">{{ $leave->note }}</textarea>
                             </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button id="leave-submit" class="btn btn-primary">update</button>
                         </div>
                        </div>
 
 
                    </div>
                </div>
-               <div class="modal-footer">
-                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                   <button id="leave-submit" class="btn btn-primary">update</button>
-               </div>
+
            </div>
        </div>
    </div>

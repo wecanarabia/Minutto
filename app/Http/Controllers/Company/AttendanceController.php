@@ -58,10 +58,10 @@ class AttendanceController extends Controller
         $request['status'] = json_decode($request['status'],true);
         $validator = Validator::make($request->all(), [
             'discount_value'=>'nullable|numeric|declined_if:status.en,disciplined',
-            'note'=>'nullable|min:4|max:2000',
+            'note'=>'required|min:4|max:2000',
+            'replay'=>'required|min:4|max:2000',
             'time_departure'=>'nullable|date_format:H:i',
             'status.en'=>"required|in:disciplined,late,absence,vacation",
-            'status.ar'=>"required|in:منضبط,متأخر,غائب,اجازة",
         ]);
 
         $attendance = Workhour::find($id);
@@ -77,6 +77,7 @@ class AttendanceController extends Controller
             'status'=>$request['status'],
             'discount_value'=>$request['discount_value'],
             'note'=>$request['note'],
+            'replay'=>$request['replay'],
             'time_departure'=>$request['time_departure'],
         ]);
         return response()->json(['success' => 'Attendance updated successfully.']);

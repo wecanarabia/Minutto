@@ -130,38 +130,51 @@
 
                 <li class="collapsed">
                     <a class="m-link" data-bs-toggle="collapse" data-bs-target="#leavs-types-Components" href="#">
-                        <i class="icofont-architecture-alt"></i><span>Leave Types</span> <span
+                        <i class="icofont-architecture-alt"></i><span>Leaves</span> <span
                             class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
                     <!-- Menu: Sub menu ul -->
                     <ul @class([
                         'sub-menu',
                         'collapse',
-                        'show' => Route::currentRouteName() == 'company.leave-types.index',
+                        'show' => Route::currentRouteName() == 'company.leave-types.index'||
+                                  Route::currentRouteName() == 'company.leaves.index',
                     ]) id="leavs-types-Components">
                         <li><a @class([
                             'ms-link',
                             'active' => Route::currentRouteName() == 'company.leave-types.index',
                         ])
                                 href="{{ route('company.leave-types.index') }}"><span>Leave Types</span></a></li>
-                    </ul>
+                                <li><a @class([
+                                    'ms-link',
+                                    'active' => Route::currentRouteName() == 'company.leaves.index',
+                                ]) href="{{ route('company.leaves.index') }}"> <span>Leave Request</span></a></li>
+                            </ul>
                 </li>
 
                 <li class="collapsed">
                     <a class="m-link" data-bs-toggle="collapse" data-bs-target="#vacation-types-Components" href="#">
-                        <i class="icofont-listine-dots"></i><span>Vacation Types</span> <span
+                        <i class="icofont-listine-dots"></i><span>Vacations</span> <span
                             class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
                     <!-- Menu: Sub menu ul -->
                     <ul @class([
                         'sub-menu',
                         'collapse',
-                        'show' => Route::currentRouteName() == 'company.vacation-types.index',
+                        'show' => Route::currentRouteName() == 'company.vacation-types.index'||
+                                  Route::currentRouteName() == 'company.vacations.index',
                     ]) id="vacation-types-Components">
                         <li><a @class([
                             'ms-link',
                             'active' => Route::currentRouteName() == 'company.vacation-types.index',
                         ])
                                 href="{{ route('company.vacation-types.index') }}"><span>Vacation Types</span></a></li>
-                    </ul>
+                                <li><a @class([
+                                    'ms-link',
+                                    'active' => Route::currentRouteName() == 'company.vacations.index',
+                                ])  href="{{ route('company.vacations.index') }}"> <span>Vacations Requests</span></a></li>
+
+                            </ul>
+
+
                 </li>
 
                 <li class="collapsed">
@@ -197,9 +210,7 @@
                         'sub-menu',
                         'collapse',
                         'show' => Route::currentRouteName() == 'company.employees.index'||
-                                  Route::currentRouteName() == 'company.attendance.index'||
-                                  Route::currentRouteName() == 'company.vacations.index'||
-                                  Route::currentRouteName() == 'company.leaves.index',
+                                  Route::currentRouteName() == 'company.attendance.index',
                     ])  id="emp-Components">
                         <li><a @class([
                             'ms-link',
@@ -208,19 +219,9 @@
                         </li>
                         <li><a @class([
                             'ms-link',
-                            'active' => Route::currentRouteName() == 'company.vacations.index',
-                        ])  href="{{ route('company.vacations.index') }}"> <span>Vacations Requests</span></a></li>
-                        <li><a @class([
-                            'ms-link',
                             'active' => Route::currentRouteName() == 'company.attendance.index',
                         ])  href="{{ route('company.attendance.index') }}"> <span>Attendance Employees</span></a>
                         </li>
-                        <li><a @class([
-                            'ms-link',
-                            'active' => Route::currentRouteName() == 'company.leaves.index',
-                        ]) href="{{ route('company.leaves.index') }}"> <span>Leave Request</span></a></li>
-                        <li><a class="ms-link" href="department.html"> <span>Department</span></a></li>
-                        <li><a class="ms-link" href="loan.html"> <span>Loan</span></a></li>
                     </ul>
                 </li>
             @endif

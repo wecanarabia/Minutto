@@ -165,10 +165,9 @@
                             <div class="row g-3 mb-3">
 
                                 <div class="col-sm-6">
-                                    <label for="exampleFormControldeparturetime" class="form-label">Departure
-                                        Time</label>
-                                    <input type="time" class="form-control" name="time_departure"
-                                        id="exampleFormControldeparturetime" value="{{ date('H:i',strtotime($attendance->time_departure)) }}">
+                                    <label for="exampleFormControlattendancereplay" class="form-label">Replay</label>
+                                    <textarea class="form-control" name="replay"
+                                        id="exampleFormControlattendancereplay">{{ $attendance->replay }}</textarea>
                                 </div>
 
                                 <div class="col-sm-6">
@@ -176,6 +175,17 @@
                                     <textarea class="form-control" name="note"
                                         id="exampleFormControlattendancenote">{{ $attendance->note }}</textarea>
                                 </div>
+                            </div>
+                            <div class="row g-3 mb-3">
+
+                                <div class="col-sm-6">
+                                    <label for="exampleFormControldeparturetime" class="form-label">Departure
+                                        Time</label>
+                                    <input type="time" class="form-control" name="time_departure"
+                                        id="exampleFormControldeparturetime" value="{{ date('H:i',strtotime($attendance->time_departure)) }}">
+                                </div>
+
+
                             </div>
                         </div>
 
