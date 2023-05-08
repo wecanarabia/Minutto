@@ -82,7 +82,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($data as $leave)
+                                                        @foreach ($type->leaves as $leave)
 
                                                         <tr>
                                                             <td>
