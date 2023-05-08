@@ -58,7 +58,7 @@
                 <div class="row g-3">
 
 
-                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
+                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                         <div class="card">
                             <div class="card-header py-3 d-flex justify-content-between">
                                 <h6 class="mb-0 fw-bold ">Vacation Requests</h6>

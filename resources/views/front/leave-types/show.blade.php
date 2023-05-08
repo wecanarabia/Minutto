@@ -58,10 +58,10 @@
                 <div class="row g-3">
 
 
-                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
+                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                         <div class="card">
                             <div class="card-header py-3 d-flex justify-content-between">
-                                <h6 class="mb-0 fw-bold ">Vation Requests</h6>
+                                <h6 class="mb-0 fw-bold ">leave Requests</h6>
                             </div>
                             <div class="card-body">
                                 <div class="row clearfix g-3">
@@ -73,6 +73,7 @@
                                                         <tr>
                                                             <th>Id</th>
                                                             <th>Employee</th>
+                                                            <th>leave Date</th>
                                                             <th>From</th>
                                                             <th>To</th>
                                                             <th>Status</th>
@@ -81,43 +82,46 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($type->vacations as $vacation)
-                    
+                                                        @foreach ($data as $leave)
+
                                                         <tr>
                                                             <td>
-                                                                {{ $vacation->id }}
+                                                                {{ $leave->id }}
                                                             </td>
                                                            <td>
-                                                               <img class="avatar rounded-circle" src="{{ asset( $vacation->user->image ) }}" alt="">
-                                                               <a href="{{ route('company.employees.show',$vacation->user->id) }}" class="fw-bold text-secondary">
-                                                               <span class="fw-bold ms-1">{{ $vacation->user->name }}</span></a>
+                                                               <img class="avatar rounded-circle" src="{{ asset( $leave->user->image ) }}" alt="">
+                                                               <a href="{{ route('company.employees.show',$leave->user->id) }}" class="fw-bold text-secondary">
+                                                               <span class="fw-bold ms-1">{{ $leave->user->name }}</span></a>
                                                            </td>
                                                            <td>
-                                                            {{ $vacation->from }}
+                                                            {{ $leave->leave_date }}
                                                            </td>
                                                            <td>
-                                                            {{ $vacation->to }}
+                                                            {{ $leave->from }}
                                                            </td>
                                                            <td>
-                                                            <span @class(['badge','bg-success'=>$vacation->getTranslation('status','en')=='approve',
-                                                                'bg-danger'=>$vacation->getTranslation('status','en')=='rejected',
-                                                                'bg-info'=>$vacation->getTranslation('status','en')=='waiting',
+                                                            {{ $leave->to }}
+                                                           </td>
+                                                           <td>
+                                                            <span @class(['badge','bg-success'=>$leave->getTranslation('status','en')=='approve',
+                                                                'bg-danger'=>$leave->getTranslation('status','en')=='rejected',
+                                                                'bg-info'=>$leave->getTranslation('status','en')=='waiting',
                                                                 ])>
-                                                           {{ $vacation->status }}</span>
+                                                           {{ $leave->status }}</span>
                                                            </td>
-                    
+
                                                            <td>
-                                                           {{ $vacation->vtype->name }}
+                                                           {{ $leave->ltype->name }}
                                                            </td>
                                                            <td>
                                                             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                                <a class="btn btn-outline-secondary" href="{{ route('company.vacations.show',$vacation->id) }}"><i class="icofont-location-arrow"></i></a>
+                                                                <a class="btn btn-outline-secondary" href="{{ route('company.leaves.show',$leave->id) }}"><i class="icofont-location-arrow"></i></a>
                                                             </div>
                                                             </td>
                                                         </tr>
-                    
+
                                                         @endforeach
-                    
+
                                                     </tbody>
                                                 </table>
                                               </div>
