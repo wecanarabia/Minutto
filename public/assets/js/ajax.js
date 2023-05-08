@@ -276,6 +276,46 @@ $(document).ready(function() {
 
     });
 
+    $("#advance-submit").on('click',function(){
+
+
+
+
+
+
+        var id = $("#id-advance").val();
+        var status = $("#exampleFormAdvanceStatus").val();
+        var value = $("#exampleFormControladvancevalue").val();
+        var req_date = $("#exampleFormControlreqdate").val();
+        var note = $("#exampleFormControladvancenote").val();
+        var replay = $("#exampleFormControladvancereplay").val();
+        $.ajax({
+           method:'POST',
+           url:"/advances/update/"+id,
+           data:{
+            status:status,
+            value:value,
+            req_date:req_date,
+            note:note,
+            replay:replay,
+           },
+
+           success:function(data){
+                if($.isEmptyObject(data.error)){
+                    var modal = $('#edit-advance');
+                    // Close the modal
+                    modal.modal('hide');
+
+                        location.reload();
+
+                }else{
+                    printErrorMsg(data.error);
+                }
+           }
+        });
+
+    });
+
 });
 
     function printErrorMsg (msg) {

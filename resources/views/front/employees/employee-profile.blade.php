@@ -367,7 +367,6 @@
                                                           <thead>
                                                               <tr>
                                                                   <th>Id</th>
-                                                                  <th>Employee</th>
                                                                   <th>Attendance Time</th>
                                                                   <th>Departure Time</th>
                                                                   <th>Discount</th>
@@ -382,11 +381,6 @@
                                                                   <td>
                                                                       {{ $attendance->id }}
                                                                   </td>
-                                                                 <td>
-                                                                     <img class="avatar rounded-circle" src="{{ asset( $attendance->user->image ) }}" alt="">
-                                                                     <a href="{{ route('company.employees.show',$attendance->user->id) }}" class="fw-bold text-secondary">
-                                                                     <span class="fw-bold ms-1">{{ $attendance->user->name }}</span></a>
-                                                                 </td>
                                                                  <td>
                                                                   {{ $attendance->time_attendance }}
                                                                  </td>
@@ -442,7 +436,6 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>Id</th>
-                                                                <th>Employee</th>
                                                                 <th>leave Date</th>
                                                                 <th>From</th>
                                                                 <th>To</th>
@@ -458,11 +451,7 @@
                                                                 <td>
                                                                     {{ $leave->id }}
                                                                 </td>
-                                                               <td>
-                                                                   <img class="avatar rounded-circle" src="{{ asset( $leave->user->image ) }}" alt="">
-                                                                   <a href="{{ route('company.employees.show',$leave->user->id) }}" class="fw-bold text-secondary">
-                                                                   <span class="fw-bold ms-1">{{ $leave->user->name }}</span></a>
-                                                               </td>
+
                                                                <td>
                                                                 {{ $leave->leave_date }}
                                                                </td>
@@ -522,7 +511,6 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>Id</th>
-                                                                <th>Employee</th>
                                                                 <th>From</th>
                                                                 <th>To</th>
                                                                 <th>Status</th>
@@ -537,11 +525,7 @@
                                                                 <td>
                                                                     {{ $vacation->id }}
                                                                 </td>
-                                                               <td>
-                                                                   <img class="avatar rounded-circle" src="{{ asset( $vacation->user->image ) }}" alt="">
-                                                                   <a href="{{ route('company.employees.show',$vacation->user->id) }}" class="fw-bold text-secondary">
-                                                                   <span class="fw-bold ms-1">{{ $vacation->user->name }}</span></a>
-                                                               </td>
+
                                                                <td>
                                                                 {{ $vacation->from }}
                                                                </td>
@@ -596,7 +580,6 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>Id</th>
-                                                                <th>Employee</th>
                                                                 <th>Reward Date</th>
                                                                 <th>Reward value</th>
                                                                 <th>Status</th>
@@ -611,11 +594,7 @@
                                                                 <td>
                                                                     {{ $reward->id }}
                                                                 </td>
-                                                               <td>
-                                                                   <img class="avatar rounded-circle" src="{{ asset( $reward->user->image ) }}" alt="">
-                                                                   <a href="{{ route('company.employees.show',$reward->user->id) }}" class="fw-bold text-secondary">
-                                                                   <span class="fw-bold ms-1">{{ $reward->user->name }}</span></a>
-                                                               </td>
+
                                                                <td>
                                                                 {{ $reward->reward_date }}
                                                                </td>
@@ -638,6 +617,69 @@
                                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                                     <a class="btn btn-outline-secondary" href="{{ route('company.rewards.edit',$reward->id) }}"><i class="icofont-edit text-success"></i></a>
                                                                     <a class="btn btn-outline-secondary" href="{{ route('company.rewards.show',$reward->id) }}"><i class="icofont-location-arrow"></i></a>
+                                                                </div>
+                                                                </td>
+                                                            </tr>
+
+                                                            @endforeach
+
+                                                        </tbody>
+                                                    </table>
+                                                  </div>
+                                              </div>
+                                        </div>
+                                      </div><!-- Row End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+
+
+                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
+                            <div class="card mb-3">
+                                <div class="card-header py-3 d-flex justify-content-between">
+                                    <h6 class="mb-0 fw-bold ">Advances</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row clearfix g-3">
+                                        <div class="col-sm-12">
+                                              <div class="card mb-3">
+                                                  <div class="card-body">
+                                                    <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Request Date</th>
+                                                                <th>Amount</th>
+                                                                <th>Status</th>
+                                                                <th>Show</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($employee->advances as $advance)
+
+                                                            <tr>
+                                                                <td>
+                                                                    {{ $advance->id }}
+                                                                </td>
+
+                                                               <td>
+                                                                {{ $advance->req_date }}
+                                                               </td>
+                                                               <td>
+                                                                {{ $advance->value }}
+                                                               </td>
+                                                               <td>
+                                                                <span @class(['badge','bg-success'=>$advance->getTranslation('status','en')=='approve',
+                                                                    'bg-danger'=>$advance->getTranslation('status','en')=='rejected',
+                                                                    'bg-info'=>$advance->getTranslation('status','en')=='waiting',
+                                                                    ])>{{ $advance->status }}</span>
+                                                               </td>
+                                                               <td>
+                                                                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                                    <a class="btn btn-outline-secondary" href="{{ route('company.advances.show',$advance->id) }}"><i class="icofont-location-arrow"></i></a>
                                                                 </div>
                                                                 </td>
                                                             </tr>

@@ -139,8 +139,6 @@
                         </div>
                        </div>
                         <div class="row g-3 mb-3">
-
-
                             <div class="col-sm-6">
                                 <label for="exampleFormControlVacationreplay" class="form-label">Replay</label>
                                 <textarea class="form-control" name="replay"

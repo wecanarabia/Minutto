@@ -7,6 +7,7 @@ use App\Http\Controllers\Company\LoginController;
 use App\Http\Controllers\Company\ShiftController;
 use App\Http\Controllers\Company\BranchController;
 use App\Http\Controllers\Company\RewardController;
+use App\Http\Controllers\Company\AdvanceController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Company\WorkDayController;
 use App\Http\Controllers\Company\EmployeeController;
@@ -66,6 +67,10 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::get('vacations/{id}', [VacationController::class,'show'])->name('vacations.show');
             Route::get('vacations/file/{id}', [VacationController::class,'openFile'])->name('vacations.file');
             Route::post('vacations/update/{id}', [VacationController::class,'update'])->name('vacations.update');
+            Route::get('advances', [AdvanceController::class,'index'])->name('advances.index');
+            Route::get('advances/{id}', [AdvanceController::class,'show'])->name('advances.show');
+            Route::get('advances/file/{id}', [AdvanceController::class,'openFile'])->name('advances.file');
+            Route::post('advances/update/{id}', [AdvanceController::class,'update'])->name('advances.update');
 
         });
     });

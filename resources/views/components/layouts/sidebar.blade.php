@@ -129,6 +129,23 @@
 
 
                 <li class="collapsed">
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#advances-Components" href="#">
+                        <i class="icofont-dollar-minus"></i><span>Advanes</span> <span
+                            class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                    <!-- Menu: Sub menu ul -->
+                    <ul @class([
+                        'sub-menu',
+                        'collapse',
+                        'show' =>Route::currentRouteName() == 'company.advances.index',
+                    ]) id="advances-Components">
+                        <li><a @class([
+                                    'ms-link',
+                                    'active' => Route::currentRouteName() == 'company.advances.index',
+                                ]) href="{{ route('company.advances.index') }}"> <span>Advane Requests</span></a></li>
+                            </ul>
+                </li>
+
+                <li class="collapsed">
                     <a class="m-link" data-bs-toggle="collapse" data-bs-target="#leavs-types-Components" href="#">
                         <i class="icofont-architecture-alt"></i><span>Leaves</span> <span
                             class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
