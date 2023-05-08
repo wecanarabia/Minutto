@@ -73,7 +73,6 @@
                                                         <tr>
                                                             <th>Id</th>
                                                             <th>Employee</th>
-                                                            <th>leave Date</th>
                                                             <th>From</th>
                                                             <th>To</th>
                                                             <th>Status</th>
@@ -82,36 +81,37 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($type->leaves as $leave)
+                                                        @foreach ($type->vacations as $vacation)
 
                                                         <tr>
                                                             <td>
-                                                                {{ $leave->id }}
+                                                                {{ $vacation->id }}
                                                             </td>
                                                            <td>
-                                                               <img class="avatar rounded-circle" src="{{ asset( $leave->user->image ) }}" alt="">
-                                                               <a href="{{ route('company.employees.show',$leave->user->id) }}" class="fw-bold text-secondary">
-                                                               <span class="fw-bold ms-1">{{ $leave->user->name }}</span></a>
+                                                               <img class="avatar rounded-circle" src="{{ asset( $vacation->user->image ) }}" alt="">
+                                                               <a href="{{ route('company.employees.show',$vacation->user->id) }}" class="fw-bold text-secondary">
+                                                               <span class="fw-bold ms-1">{{ $vacation->user->name }}</span></a>
                                                            </td>
                                                            <td>
-                                                            {{ $leave->leave_date }}
+                                                            {{ $vacation->from }}
                                                            </td>
                                                            <td>
-                                                            {{ $leave->from }}
+                                                            {{ $vacation->to }}
                                                            </td>
                                                            <td>
-                                                            {{ $leave->to }}
-                                                           </td>
-                                                           <td>
-                                                           {{ $leave->status }}
+                                                            <span @class(['badge','bg-success'=>$vacation->getTranslation('status','en')=='approve',
+                                                                'bg-danger'=>$vacation->getTranslation('status','en')=='rejected',
+                                                                'bg-info'=>$vacation->getTranslation('status','en')=='waiting',
+                                                                ])>
+                                                           {{ $vacation->status }}</span>
                                                            </td>
 
                                                            <td>
-                                                           {{ $leave->ltype->name }}
+                                                           {{ $vacation->vtype->name }}
                                                            </td>
                                                            <td>
                                                             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                                <a class="btn btn-outline-secondary" href="{{ route('company.leaves.show',$leave->id) }}"><i class="icofont-location-arrow"></i></a>
+                                                                <a class="btn btn-outline-secondary" href="{{ route('company.vacations.show',$vacation->id) }}"><i class="icofont-location-arrow"></i></a>
                                                             </div>
                                                             </td>
                                                         </tr>
