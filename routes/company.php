@@ -17,6 +17,7 @@ use App\Http\Controllers\Company\ExtraTypeController;
 use App\Http\Controllers\Company\LeaveTypeController;
 use App\Http\Controllers\Company\AttendanceController;
 use App\Http\Controllers\Company\DepartmentController;
+use App\Http\Controllers\Company\OfficialVacationController;
 use App\Http\Controllers\Company\RewardTypeController;
 use App\Http\Controllers\Company\VacationTypeController;
 
@@ -56,6 +57,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::get('rewards/file/{id}', [RewardController::class,'openFile'])->name('rewards.file');
             Route::resource('workdays', WorkDayController::class)->except(['destroy']);
             Route::resource('extra-types', ExtraTypeController::class)->except(['destroy']);
+            Route::resource('official-vacations', OfficialVacationController::class)->except(['destroy']);
             Route::get('shifts/workdays/{id}/edit', [WorkDayController::class,'editShiftWorkdays'])->name('shifts.workdays.edit');
             Route::put('shifts/workdays/{id}/update', [WorkDayController::class,'updateShiftWorkdays'])->name('shifts.workdays.update');
             Route::get('attendance', [AttendanceController::class,'index'])->name('attendance.index');

@@ -44,7 +44,7 @@
                                    </div>
 
                                    <div class="col-md-12">
-                                       <label for="addnote" class="form-label">English Descritpion</label>
+                                       <label for="addnote" class="form-label">English Description</label>
                                        <textarea  class="form-control" name="english_description" id="addnote" rows="3">{{ old('english_description',$department->getTranslation('description', 'en')) }}</textarea>
                                        @error('english_description')
                                        <div class="text-danger">{{ $message }}</div>
@@ -52,7 +52,7 @@
                                   </div>
 
                                    <div class="col-md-12">
-                                       <label for="addnote" class="form-label">Arabic Descritpion</label>
+                                       <label for="addnote" class="form-label">Arabic Description</label>
                                        <textarea  class="form-control" name="arabic_description"  id="addnote" rows="3">{{ old('arabic_description',$department->getTranslation('description', 'ar')) }}</textarea>
                                        @error('arabic_description')
                                        <div class="text-danger">{{ $message }}</div>

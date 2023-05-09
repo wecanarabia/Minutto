@@ -1,4 +1,4 @@
-<x-layouts.header title="Add Department"/>
+<x-layouts.header title="Add Official Vacation"/>
 <x-layouts.app>
          <!-- Body: Body -->
          <div class="body d-flex py-3">
@@ -6,9 +6,9 @@
                 <div class="row align-items-center">
                     <div class="border-0 mb-4">
                         <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-                            <h3 class="fw-bold mb-0">Add Department</h3>
+                            <h3 class="fw-bold mb-0">Add Official Vacation</h3>
                             <div class="col-auto d-flex w-sm-100">
-                                <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.departments.index') }}"></i>Departments</a>
+                                <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.official-vacations.index') }}"></i>Official Vacations</a>
                             </div>
                         </div>
                     </div>
@@ -18,10 +18,10 @@
                     <div class="col-md-12">
                         <div class="card mb-3">
                             <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                                <h6 class="mb-0 fw-bold ">Add Department</h6>
+                                <h6 class="mb-0 fw-bold ">Add Official Vacation</h6>
                             </div>
                             <div class="card-body">
-                                <form method="post" action="{{ route('company.departments.store') }}">
+                                <form method="post" action="{{ route('company.official-vacations.store') }}">
                                     @csrf
                                     <div class="row g-3 align-items-center">
                                         <div class="col-md-6">
@@ -38,20 +38,35 @@
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label class="form-label">From</label>
+                                            <input type="date" class="form-control" name="from" value="{{ old('from') }}" required>
+                                            @error('from')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">To</label>
+                                            <input type="date" class="form-control" name="to" value="{{ old('to') }}" required>
+                                            @error('to')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
 
 
                                         <div class="col-md-12">
-                                            <label for="addnote" class="form-label">English Description</label>
-                                            <textarea  class="form-control" name="english_description" id="addnote" rows="3">{{ old('english_description') }}</textarea>
-                                            @error('english_description')
+                                            <label for="addnote" class="form-label">English Note</label>
+                                            <textarea  class="form-control" name="english_note" id="addnote" rows="3">{{ old('english_note') }}</textarea>
+                                            @error('english_note')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                        </div>
 
                                         <div class="col-md-12">
-                                            <label for="addnote" class="form-label">Arabic Description</label>
-                                            <textarea  class="form-control" name="arabic_description"  id="addnote" rows="3">{{ old('arabic_description') }}</textarea>
-                                            @error('arabic_description')
+                                            <label for="addnote" class="form-label">Arabic Note</label>
+                                            <textarea  class="form-control" name="arabic_note"  id="addnote" rows="3">{{ old('arabic_note') }}</textarea>
+                                            @error('arabic_note')
                                             <div class="text-danger">{{ $message }}</div>
                                              @enderror
                                          </div>

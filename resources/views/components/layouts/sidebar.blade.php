@@ -240,6 +240,22 @@
                             </ul>
                 </li>
                 <li class="collapsed">
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#official-vaations-Components" href="#">
+                        <i class="icofont-heart-eyes"></i><span>Official Vacations</span> <span
+                            class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                    <!-- Menu: Sub menu ul -->
+                    <ul @class([
+                        'sub-menu',
+                        'collapse',
+                        'show' =>Route::currentRouteName() == 'company.official-vacations.index',
+                    ]) id="official-vaations-Components">
+                        <li><a @class([
+                                    'ms-link',
+                                    'active' => Route::currentRouteName() == 'company.official-vacations.index',
+                                ]) href="{{ route('company.official-vacations.index') }}"> <span>Official Vacations</span></a></li>
+                            </ul>
+                </li>
+                <li class="collapsed">
                     <a class="m-link" data-bs-toggle="collapse" data-bs-target="#emp-Components" href="#"><i
                             class="icofont-users-alt-5"></i> <span>Employees</span> <span
                             class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
