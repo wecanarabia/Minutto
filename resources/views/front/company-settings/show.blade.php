@@ -86,7 +86,7 @@
                                         <span class="fw-bold">allowed leaves count</span>
                                     </div>
                                     <div class="col-8">
-                                        <span class="text-muted">{{ $company->leaves_count }}</span>
+                                        <span class="text-muted">{{ $company->leaves_count }} Hours</span>
                                     </div>
                                  </li>
 
@@ -95,16 +95,34 @@
                                         <span class="fw-bold">allowed holidays count</span>
                                     </div>
                                     <div class="col-8">
-                                        <span class="text-muted">{{ $company->holidays_count }}</span>
+                                        <span class="text-muted">{{ $company->holidays_count }} days</span>
                                     </div>
                                  </li>
 
                                  <li class="row flex-wrap mb-3">
                                     <div class="col-4">
-                                        <span class="fw-bold">allowed percentage advances</span>
+                                        <span class="fw-bold">Allowed Sick Leaves</span>
+                                    </div>
+                                    <div class="col-8">
+                                        <span class="text-muted">{{ $company->sick_leaves }} days</span>
+                                    </div>
+                                 </li>
+
+                                 <li class="row flex-wrap mb-3">
+                                    <div class="col-4">
+                                        <span class="fw-bold">percentage of advances</span>
                                     </div>
                                     <div class="col-8">
                                         <span class="text-muted">{{ $company->advances_percentage }}%</span>
+                                    </div>
+                                 </li>
+
+                                 <li class="row flex-wrap mb-3">
+                                    <div class="col-4">
+                                        <span class="fw-bold">Overtime Rate</span>
+                                    </div>
+                                    <div class="col-8">
+                                        <span class="text-muted">{{ $company->extra_rate }}</span>
                                     </div>
                                  </li>
 

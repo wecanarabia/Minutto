@@ -33,10 +33,12 @@ class CompanyRequest extends FormRequest
             'employees_count'=>'required|numeric',
             'leaves_count'=>'required|numeric',
             'holidays_count'=>'required|numeric',
+            'sick_leaves'=>'required|numeric',
             'advances_percentage'=>'required|numeric',
+            'extra_rate'=>'required|numeric',
             'subscription_id'=>'required|exists:subscriptions,id',
             'timezone'=>['required', Rule::in($timezones)],
-            'grace_period'=>'required|numeric',
+            'grace_period'=>'required|date_format:H:i:s',
         ];
     }
 }

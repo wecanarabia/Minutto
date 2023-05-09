@@ -697,6 +697,78 @@
                         </div>
                     </div>
 
+                    <div class="row g-3">
+
+
+                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
+                            <div class="card mb-3">
+                                <div class="card-header py-3 d-flex justify-content-between">
+                                    <h6 class="mb-0 fw-bold ">Advances</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row clearfix g-3">
+                                        <div class="col-sm-12">
+                                              <div class="card mb-3">
+                                                  <div class="card-body">
+                                                    <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Extra Date</th>
+                                                                <th>From</th>
+                                                                <th>To</th>
+                                                                <th>Status</th>
+                                                                <th>Type</th>
+                                                                <th>Show</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($employee->extras as $extra)
+
+                                                            <tr>
+                                                                <td>
+                                                                    {{ $extra->id }}
+                                                                </td>
+                                                               <td>
+                                                                {{ $extra->extra_date }}
+                                                               </td>
+                                                               <td>
+                                                                {{ $extra->from }}
+                                                               </td>
+                                                               <td>
+                                                                {{ $extra->to }}
+                                                               </td>
+                                                               <td>
+                                                                <span @class(['badge','bg-success'=>$extra->getTranslation('status','en')=='approve',
+                                                                    'bg-danger'=>$extra->getTranslation('status','en')=='rejected',
+                                                                    'bg-info'=>$extra->getTranslation('status','en')=='waiting',
+                                                                    ])>
+                                                               {{ $extra->status }}</span>
+                                                               </td>
+
+                                                               <td>
+                                                               {{ $extra->extype->name }}
+                                                               </td>
+                                                               <td>
+                                                                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                                    <a class="btn btn-outline-secondary" href="{{ route('company.leaves.show',$extra->id) }}"><i class="icofont-location-arrow"></i></a>
+                                                                </div>
+                                                                </td>
+                                                            </tr>
+
+                                                            @endforeach
+
+                                                        </tbody>
+                                                    </table>
+                                                  </div>
+                                              </div>
+                                        </div>
+                                      </div><!-- Row End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
 

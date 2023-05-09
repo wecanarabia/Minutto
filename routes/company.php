@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Company\ExtraController;
 use App\Http\Controllers\Company\IndexController;
 use App\Http\Controllers\Company\LeaveController;
 use App\Http\Controllers\Company\LoginController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Company\WorkDayController;
 use App\Http\Controllers\Company\EmployeeController;
 use App\Http\Controllers\Company\VacationController;
+use App\Http\Controllers\Company\ExtraTypeController;
 use App\Http\Controllers\Company\LeaveTypeController;
 use App\Http\Controllers\Company\AttendanceController;
 use App\Http\Controllers\Company\DepartmentController;
@@ -53,6 +55,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::resource('rewards', RewardController::class)->except(['destroy']);
             Route::get('rewards/file/{id}', [RewardController::class,'openFile'])->name('rewards.file');
             Route::resource('workdays', WorkDayController::class)->except(['destroy']);
+            Route::resource('extra-types', ExtraTypeController::class)->except(['destroy']);
             Route::get('shifts/workdays/{id}/edit', [WorkDayController::class,'editShiftWorkdays'])->name('shifts.workdays.edit');
             Route::put('shifts/workdays/{id}/update', [WorkDayController::class,'updateShiftWorkdays'])->name('shifts.workdays.update');
             Route::get('attendance', [AttendanceController::class,'index'])->name('attendance.index');
@@ -71,6 +74,10 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::get('advances/{id}', [AdvanceController::class,'show'])->name('advances.show');
             Route::get('advances/file/{id}', [AdvanceController::class,'openFile'])->name('advances.file');
             Route::post('advances/update/{id}', [AdvanceController::class,'update'])->name('advances.update');
+            Route::get('extras', [ExtraController::class,'index'])->name('extras.index');
+            Route::get('extras/{id}', [ExtraController::class,'show'])->name('extras.show');
+            Route::get('extras/file/{id}', [ExtraController::class,'openFile'])->name('extras.file');
+            Route::post('extras/update/{id}', [ExtraController::class,'update'])->name('extras.update');
 
         });
     });

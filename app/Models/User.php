@@ -99,6 +99,10 @@ class User extends Authenticatable
         return $this->hasMany(Advance::class);
     }
 
+    public function extras(){
+        return $this->hasMany(Extra::class);
+    }
+
     public function alerts(){
         return $this->hasMany(Alert::class);
     }

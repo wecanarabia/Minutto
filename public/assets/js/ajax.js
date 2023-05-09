@@ -316,6 +316,50 @@ $(document).ready(function() {
 
     });
 
+    $("#extra-submit").on('click',function(){
+
+
+
+
+
+
+
+
+
+
+        var id = $("#id-extra").val();
+        var status = $("#exampleFormextraStatus").val();
+        var from = $("#exampleFormControlextrafrom").val();
+        var to = $("#exampleFormControlextrato").val();
+        var note = $("#exampleFormControlextranote").val();
+        var replay = $("#exampleFormControlextrareplay").val();
+        $.ajax({
+           method:'POST',
+           url:"/extras/update/"+id,
+           data:{
+            status:status,
+            from:from,
+            to:to,
+            note:note,
+            replay:replay,
+           },
+
+           success:function(data){
+                if($.isEmptyObject(data.error)){
+                    var modal = $('#edit-extra');
+                    // Close the modal
+                    modal.modal('hide');
+
+                        location.reload();
+
+                }else{
+                    printErrorMsg(data.error);
+                }
+           }
+        });
+
+    });
+
 });
 
     function printErrorMsg (msg) {

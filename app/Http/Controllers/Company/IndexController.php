@@ -22,13 +22,4 @@ class IndexController extends Controller
         return ;
     }
 
-    public function locale(Request $request)
-    {
-        $lang = $request->locale;
-        App::setLocale($lang);
-        Session::put('locale', $lang);
-        LaravelLocalization::setLocale($lang);
-        $url = LaravelLocalization::getLocalizedURL(App::getLocale(), URL::previous());
-        return Redirect::to($url);
-    }
 }

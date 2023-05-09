@@ -23,7 +23,7 @@ class CompanyController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('CheckCompany')->only(['edit', 'update','show']);
+        $this->middleware(['CheckCompany','timezone'])->only(['edit', 'update','show']);
     }
 
 
@@ -249,7 +249,7 @@ class CompanyController extends Controller
      */
     public function show()
     {
-        $company = Company::with('branches')->find(Auth::guard('company')->user()->company_id);
+$company = Company::with('branches')->find(Auth::guard('company')->user()->company_id);
         return view('front.company-settings.show',compact('company'));
     }
 
@@ -272,7 +272,12 @@ class CompanyController extends Controller
         $company = Company::find(Auth::guard('company')->user()->company_id);
         $request['name']=['en'=>$request->english_name,'ar'=>$request->arabic_name];
         $request['description']=['en'=>$request->english_description,'ar'=>$request->arabic_description];
-        $company->update($request->all());
+        $company->update($request->except([
+            'english_name',
+            'arabic_name',
+            'english_description',
+            'arabic_description',
+             ]));
         return redirect()->route('company.company-settings.show')->with(['success'=>'Company settings has been Updated Successfully']);
 
     }

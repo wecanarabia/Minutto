@@ -164,7 +164,7 @@
                                 <li><a @class([
                                     'ms-link',
                                     'active' => Route::currentRouteName() == 'company.leaves.index',
-                                ]) href="{{ route('company.leaves.index') }}"> <span>Leave Request</span></a></li>
+                                ]) href="{{ route('company.leaves.index') }}"> <span>Leave Requests</span></a></li>
                             </ul>
                 </li>
 
@@ -217,7 +217,28 @@
                                 href="{{ route('company.rewards.index') }}"><span>Rewards</span></a></li>
                     </ul>
                 </li>
-
+                <li class="collapsed">
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#extra-types-Components" href="#">
+                        <i class="icofont-meeting-add"></i><span>Extras</span> <span
+                            class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                    <!-- Menu: Sub menu ul -->
+                    <ul @class([
+                        'sub-menu',
+                        'collapse',
+                        'show' => Route::currentRouteName() == 'company.extra-types.index'||
+                                  Route::currentRouteName() == 'company.extras.index',
+                    ]) id="extra-types-Components">
+                        <li><a @class([
+                            'ms-link',
+                            'active' => Route::currentRouteName() == 'company.extra-types.index',
+                        ])
+                                href="{{ route('company.extra-types.index') }}"><span>Extra Types</span></a></li>
+                                <li><a @class([
+                                    'ms-link',
+                                    'active' => Route::currentRouteName() == 'company.extras.index',
+                                ]) href="{{ route('company.extras.index') }}"> <span>Extra Requests</span></a></li>
+                            </ul>
+                </li>
                 <li class="collapsed">
                     <a class="m-link" data-bs-toggle="collapse" data-bs-target="#emp-Components" href="#"><i
                             class="icofont-users-alt-5"></i> <span>Employees</span> <span
