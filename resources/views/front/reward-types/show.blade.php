@@ -7,9 +7,9 @@
             <div class="col-md-12">
                 <div class="card border-0 mb-4 no-bg">
                     <div class="card-header py-3 px-0 d-flex align-items-center  justify-content-between border-bottom">
-                        <h3 class=" fw-bold flex-fill mb-0">Reward Type</h3>
+                        <h3 class=" fw-bold flex-fill mb-0">{{ $reward->name }}</h3>
                         <div class="col-auto d-flex w-sm-100">
-                            <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.reward-types.index') }}"></i>Reward Types</a>
+                            <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.reward-types.index') }}"></i>Incentives Types</a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                     <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                         <div class="card">
                             <div class="card-header py-3 d-flex justify-content-between">
-                                <h6 class="mb-0 fw-bold ">Reward Requests</h6>
+                                <h6 class="mb-0 fw-bold ">Incentives</h6>
                             </div>
                             <div class="card-body">
                                 <div class="row clearfix g-3">
@@ -73,16 +73,17 @@
                                                         <tr>
                                                             <th>Id</th>
                                                             <th>Employee</th>
-                                                            <th>Reward Date</th>
-                                                            <th>Reward value</th>
-                                                            <th>Status</th>
                                                             <th>Type</th>
+                                                            <th>Incentive Date</th>
+                                                            <th>type's value</th>
+                                                            <th>Status</th>
+                                                            
                                                             <th>Actions</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($reward->rewards as $reward)
-
+                    
                                                         <tr>
                                                             <td>
                                                                 {{ $reward->id }}
@@ -93,12 +94,15 @@
                                                                <span class="fw-bold ms-1">{{ $reward->user->name }}</span></a>
                                                            </td>
                                                            <td>
+                                                            {{ $reward->rtype->name }}
+                                                            </td>
+                                                           <td>
                                                             {{ $reward->reward_date }}
                                                            </td>
                                                            <td>
                                                             {{ $reward->reward_value }}
                                                            </td>
-
+                    
                                                            <td>
                                                             <span @class(['badge','bg-success'=>$reward->getTranslation('status','en')=='approve',
                                                                 'bg-danger'=>$reward->getTranslation('status','en')=='rejected',
@@ -106,10 +110,7 @@
                                                                 ])>
                                                            {{ $reward->status }}</span>
                                                            </td>
-
-                                                           <td>
-                                                           {{ $reward->rtype->name }}
-                                                           </td>
+                    
                                                            <td>
                                                             <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                                 <a class="btn btn-outline-secondary" href="{{ route('company.rewards.edit',$reward->id) }}"><i class="icofont-edit text-success"></i></a>
@@ -117,9 +118,9 @@
                                                             </div>
                                                             </td>
                                                         </tr>
-
+                    
                                                         @endforeach
-
+                    
                                                     </tbody>
                                                 </table>
                                               </div>

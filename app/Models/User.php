@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Carbon\Carbon;
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -77,6 +78,14 @@ class User extends Authenticatable
 
     public function vacations(){
         return $this->hasMany(Vacation::class);
+    }
+    
+    public function UserVacations(){
+        return $this->hasMany(EmployeeVacation::class);
+    }
+    
+    public function userVacation(){
+        return $this->hasOne(EmployeeVacation::class)->whereYear('created_at', '=', Carbon::now()->year);
     }
 
 

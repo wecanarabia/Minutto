@@ -47,12 +47,11 @@ class RewardController extends Controller
     */
    public function store(RewardRequest $request)
    {
-    $request['status'] = json_decode($request['status'],true);
+    
 
        $reward = Reward::create($request->all());
-
        return redirect()->route('company.rewards.index')
-                       ->with('success','Reward has been added successfully');
+                       ->with('success','Incentive has been added successfully');
    }
 
    /**
@@ -91,7 +90,7 @@ class RewardController extends Controller
     */
    public function update(RewardRequest $request, string $id)
    {
-    $request['status'] = json_decode($request['status'],true);
+    
 
     $reward = Reward::with('user')->findOrFail($id);
     if ($request->has('file')&&$reward->file&&File::exists($reward->file)) {
@@ -105,7 +104,7 @@ class RewardController extends Controller
 
 
        return redirect()->route('company.rewards.show',$reward->id)
-                       ->with('success','Reward has been updated successfully');
+                       ->with('success','Incentive has been updated successfully');
    }
    public function openFile($id)
    {

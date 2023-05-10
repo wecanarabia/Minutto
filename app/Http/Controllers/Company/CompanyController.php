@@ -8,6 +8,7 @@ use App\Models\Branch;
 use App\Models\Company;
 use App\Models\Workday;
 use App\Models\Department;
+use App\Models\RewardType;
 use App\Models\CompanyAdmin;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
@@ -198,6 +199,12 @@ class CompanyController extends Controller
         $branch->shifts()->attach($shift->id);
         CompanyAdmin::find(Auth::guard('company')->user()->id)->update(['company_id'=>$company->id]);
         $days=Workday::WORKDAYS;
+        foreach (RewardType::DEFAULTTYPES as $value) {
+            RewardType::create([
+                'company_id'=>$company->id,
+                'name'=>$value,
+            ]);
+        }
     foreach ($days as $i => $day) {
         if ($request[$day['en']]) {
             $validator = Validator::make([

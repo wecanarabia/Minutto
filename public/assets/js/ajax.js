@@ -169,6 +169,46 @@ $(document).ready(function() {
         });
 
     });
+    
+    
+
+
+
+
+
+    $("#btn5-sub").on('click',function(){
+
+
+        var id = $("#id5").val();
+        var monthly_salary = $("#exampleFormControlInput1115").val();
+        var daily_salary = $("#exampleFormControlInput2225").val();
+        var hourly_salary = $("#exampleFormControlInput3335").val();
+      
+        $.ajax({
+           method:'POST',
+           url:"/employees/update/"+id,
+           data:{
+            monthly_salary:monthly_salary,
+            daily_salary:daily_salary,
+            hourly_salary:hourly_salary,
+           },
+         
+           success:function(data){
+                if($.isEmptyObject(data.error)){
+                    var modal = $('#edit4');
+
+                    // Close the modal
+                    modal.modal('hide');
+
+                    location.reload();
+
+                }else{
+                    printErrorMsg(data.error);
+                }
+           }
+        });
+
+    });
 
     $("#attendance-submit").on('click',function(){
 
@@ -347,6 +387,44 @@ $(document).ready(function() {
            success:function(data){
                 if($.isEmptyObject(data.error)){
                     var modal = $('#edit-extra');
+                    // Close the modal
+                    modal.modal('hide');
+
+                        location.reload();
+
+                }else{
+                    printErrorMsg(data.error);
+                }
+           }
+        });
+
+    }); 
+    
+    $("#evacation-submit").on('click',function(){
+
+
+
+
+
+
+
+
+
+
+        var id = $("#id-evacation").val();
+        var vacation_balance = $("#exampleFormControlevacationbalance").val();
+  
+        $.ajax({
+           method:'POST',
+           url:"/employee-vacations/update/"+id,
+           data:{
+            vacation_balance:vacation_balance,
+          
+           },
+
+           success:function(data){
+                if($.isEmptyObject(data.error)){
+                    var modal = $('#edit-evacation');
                     // Close the modal
                     modal.modal('hide');
 

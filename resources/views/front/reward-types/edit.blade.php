@@ -1,4 +1,4 @@
-<x-layouts.header title="Edit Reward Type"/>
+<x-layouts.header title="Edit Incentive Type"/>
 <x-layouts.app>
     <!-- Body: Body -->
     <div class="body d-flex py-3">
@@ -6,9 +6,9 @@
            <div class="row align-items-center">
                <div class="border-0 mb-4">
                    <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-                       <h3 class="fw-bold mb-0">Edit Reward Type</h3>
+                       <h3 class="fw-bold mb-0">Edit Incentive Type</h3>
                        <div class="col-auto d-flex w-sm-100">
-                        <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.reward-types.index') }}"></i>Reward Types</a>
+                        <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.reward-types.index') }}"></i>Incentives Types</a>
                         <a class="btn btn-dark btn-set-task w-sm-100 mx-2 " href="{{ route('company.reward-types.show',$reward->id) }}"></i>{{ $reward->name }}</a>
                     </div>
                    </div>
@@ -19,7 +19,7 @@
                <div class="col-md-12">
                    <div class="card mb-3">
                        <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                           <h6 class="mb-0 fw-bold ">Edit Reward Type</h6>
+                           <h6 class="mb-0 fw-bold ">Edit Incentive Type</h6>
                        </div>
                        <div class="card-body">
                         <form method="post" action="{{ route('company.reward-types.update',$reward->id) }}">

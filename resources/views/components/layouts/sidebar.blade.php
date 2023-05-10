@@ -196,7 +196,7 @@
 
                 <li class="collapsed">
                     <a class="m-link" data-bs-toggle="collapse" data-bs-target="#reward-types-Components" href="#">
-                        <i class="icofont-coins"></i><span>Rewards</span> <span
+                        <i class="icofont-coins"></i><span>Incentives</span> <span
                             class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
                     <!-- Menu: Sub menu ul -->
                     <ul @class([
@@ -209,12 +209,12 @@
                             'ms-link',
                             'active' => Route::currentRouteName() == 'company.reward-types.index',
                         ])
-                                href="{{ route('company.reward-types.index') }}"><span>Reward Types</span></a></li>
+                                href="{{ route('company.reward-types.index') }}"><span>Incentive Types</span></a></li>
                         <li><a @class([
                             'ms-link',
                             'active' => Route::currentRouteName() == 'company.rewards.index',
                         ])
-                                href="{{ route('company.rewards.index') }}"><span>Rewards</span></a></li>
+                                href="{{ route('company.rewards.index') }}"><span>Incentives</span></a></li>
                     </ul>
                 </li>
                 <li class="collapsed">
@@ -255,6 +255,25 @@
                                 ]) href="{{ route('company.official-vacations.index') }}"> <span>Official Vacations</span></a></li>
                             </ul>
                 </li>
+                
+                <li class="collapsed">
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#alerts-Components" href="#">
+                        <i class="icofont-warning"></i><span>Alerts</span> <span
+                            class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                    <!-- Menu: Sub menu ul -->
+                    <ul @class([
+                        'sub-menu',
+                        'collapse',
+                        'show' =>Route::currentRouteName() == 'company.alerts.index',
+                    ]) id="alerts-Components">
+                        <li><a @class([
+                                    'ms-link',
+                                    'active' => Route::currentRouteName() == 'company.alerts.index',
+                                ]) href="{{ route('company.alerts.index') }}"> <span>Alerts</span></a></li>
+                            </ul>
+                </li>
+                
+           
                 <li class="collapsed">
                     <a class="m-link" data-bs-toggle="collapse" data-bs-target="#emp-Components" href="#"><i
                             class="icofont-users-alt-5"></i> <span>Employees</span> <span
@@ -264,7 +283,8 @@
                         'sub-menu',
                         'collapse',
                         'show' => Route::currentRouteName() == 'company.employees.index'||
-                                  Route::currentRouteName() == 'company.attendance.index',
+                                  Route::currentRouteName() == 'company.attendance.index'||
+                                  Route::currentRouteName() == 'company.employee-vacations.index',
                     ])  id="emp-Components">
                         <li><a @class([
                             'ms-link',
@@ -276,6 +296,11 @@
                             'active' => Route::currentRouteName() == 'company.attendance.index',
                         ])  href="{{ route('company.attendance.index') }}"> <span>Attendance Employees</span></a>
                         </li>
+                        <li><a @class([
+                            'ms-link',
+                            'active' => Route::currentRouteName() == 'company.employee-vacations.index',
+                        ]) href="{{ route('company.employee-vacations.index') }}"> <span>Employee Vacations</span></a></li>
+       
                     </ul>
                 </li>
             @endif

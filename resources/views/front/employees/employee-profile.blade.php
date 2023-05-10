@@ -295,7 +295,7 @@
                         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
                             <div class="card mb-3">
                                 <div class="card-header py-3 d-flex justify-content-between">
-                                    <h6 class="mb-0 fw-bold ">Other information</h6>
+                                    <h6 class="mb-0 fw-bold ">Other Important information</h6>
                                     <button type="button" class="btn p-0" data-bs-toggle="modal"
                                         data-bs-target="#edit4"><i class="icofont-edit text-primary fs-6"></i></button>
                                 </div>
@@ -344,6 +344,48 @@
                                                     }}</span>
                                             </div>
                                         </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
+                            <div class="card mb-3">
+                                <div class="card-header py-3 d-flex justify-content-between">
+                                    <h6 class="mb-0 fw-bold ">Salary information</h6>
+                                    <button type="button" class="btn p-0" data-bs-toggle="modal"
+                                        data-bs-target="#edit5"><i class="icofont-edit text-primary fs-6"></i></button>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="row flex-wrap mb-3">
+                                            <div class="col-6">
+                                                <span class="fw-bold">Monthly Salary</span>
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="text-muted">{{ $employee->monthly_salary }}</span>
+                                            </div>
+                                        </li>
+                                        <li class="row flex-wrap mb-3">
+                                            <div class="col-6">
+                                                <span class="fw-bold">Daily Salary</span>
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="text-muted">{{ $employee->daily_salary }}</span>
+                                            </div>
+                                        </li>
+
+                                        <li class="row flex-wrap mb-3">
+                                            <div class="col-6">
+                                                <span class="fw-bold">Hourly</span>
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="text-muted">{{ $employee->hourly_salary }}</span>
+                                            </div>
+                                        </li>
+
+
 
                                     </ul>
                                 </div>
@@ -569,7 +611,7 @@
                         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                             <div class="card mb-3">
                                 <div class="card-header py-3 d-flex justify-content-between">
-                                    <h6 class="mb-0 fw-bold ">Rewards</h6>
+                                    <h6 class="mb-0 fw-bold ">Incentives</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="row clearfix g-3">
@@ -580,28 +622,36 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>Id</th>
-                                                                <th>Reward Date</th>
-                                                                <th>Reward value</th>
-                                                                <th>Status</th>
+                                                                <th>Employee</th>
                                                                 <th>Type</th>
+                                                                <th>Incentive Date</th>
+                                                                <th>type's value</th>
+                                                                <th>Status</th>
                                                                 <th>Actions</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             @foreach ($employee->rewards as $reward)
-
+                        
                                                             <tr>
                                                                 <td>
                                                                     {{ $reward->id }}
                                                                 </td>
-
+                                                               <td>
+                                                                   <img class="avatar rounded-circle" src="{{ asset( $reward->user->image ) }}" alt="">
+                                                                   <a href="{{ route('company.employees.show',$reward->user->id) }}" class="fw-bold text-secondary">
+                                                                   <span class="fw-bold ms-1">{{ $reward->user->name }}</span></a>
+                                                               </td>
+                                                               <td>
+                                                                {{ $reward->rtype->name }}
+                                                                </td>
                                                                <td>
                                                                 {{ $reward->reward_date }}
                                                                </td>
                                                                <td>
                                                                 {{ $reward->reward_value }}
                                                                </td>
-
+                        
                                                                <td>
                                                                 <span @class(['badge','bg-success'=>$reward->getTranslation('status','en')=='approve',
                                                                     'bg-danger'=>$reward->getTranslation('status','en')=='rejected',
@@ -609,10 +659,8 @@
                                                                     ])>
                                                                {{ $reward->status }}</span>
                                                                </td>
-
-                                                               <td>
-                                                               {{ $reward->rtype->name }}
-                                                               </td>
+                        
+                                                            
                                                                <td>
                                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                                     <a class="btn btn-outline-secondary" href="{{ route('company.rewards.edit',$reward->id) }}"><i class="icofont-edit text-success"></i></a>
@@ -620,9 +668,9 @@
                                                                 </div>
                                                                 </td>
                                                             </tr>
-
+                        
                                                             @endforeach
-
+                        
                                                         </tbody>
                                                     </table>
                                                   </div>
@@ -703,7 +751,7 @@
                         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                             <div class="card mb-3">
                                 <div class="card-header py-3 d-flex justify-content-between">
-                                    <h6 class="mb-0 fw-bold ">Advances</h6>
+                                    <h6 class="mb-0 fw-bold ">Extra</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="row clearfix g-3">
@@ -767,6 +815,138 @@
                                 </div>
                             </div>
                         </div>
+                    </div>   
+                    
+                    <div class="row g-3">
+
+
+                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
+                            <div class="card mb-3">
+                                <div class="card-header py-3 d-flex justify-content-between">
+                                    <h6 class="mb-0 fw-bold ">Alerts</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row clearfix g-3">
+                                        <div class="col-sm-12">
+                                              <div class="card mb-3">
+                                                  <div class="card-body">
+                                                    <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Employee</th>
+                                                                <th>Alert Type</th>
+                                                                <th>Alert Date</th>
+                                                                <th>type's value</th>
+                                                                
+                                                                <th>Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($employee->alerts as $alert)
+                        
+                                                            <tr>
+                                                                <td>
+                                                                    {{ $alert->id }}
+                                                                </td>
+                                                               <td>
+                                                                   <img class="avatar rounded-circle" src="{{ asset( $alert->user->image ) }}" alt="">
+                                                                   <a href="{{ route('company.employees.show',$alert->user->id) }}" class="fw-bold text-secondary">
+                                                                   <span class="fw-bold ms-1">{{ $alert->user->name }}</span></a>
+                                                               </td>
+                                                               <td>
+                                                                {{ $alert->type }}
+                                                                </td>
+                                                               <td>
+                                                                {{ $alert->alert_date }}
+                                                               </td>
+                                                               <td>
+                                                                {{ $alert->punishment }}
+                                                               </td>
+                        
+                                                        
+                        
+                                                               <td>
+                                                                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                                    <a class="btn btn-outline-secondary" href="{{ route('company.alerts.edit',$alert->id) }}"><i class="icofont-edit text-success"></i></a>
+                                                                    <a class="btn btn-outline-secondary" href="{{ route('company.alerts.show',$alert->id) }}"><i class="icofont-location-arrow"></i></a>
+                                                                </div>
+                                                                </td>
+                                                            </tr>
+                        
+                                                            @endforeach
+                        
+                                                        </tbody>
+                                                    </table>
+                                                  </div>
+                                              </div>
+                                        </div>
+                                      </div><!-- Row End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row g-3">
+
+
+                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
+                            <div class="card mb-3">
+                                <div class="card-header py-3 d-flex justify-content-between">
+                                    <h6 class="mb-0 fw-bold ">Employee Vacation Balance</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row clearfix g-3">
+                                        <div class="col-sm-12">
+                                              <div class="card mb-3">
+                                                  <div class="card-body">
+                                                    <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Employee</th>
+                                                                <th>Vacation Balance</th>
+                                                                <th>Year</th>
+                                                                <th>Show</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($employee->UserVacations as $vacation)
+                        
+                                                            <tr>
+                                                                <td>
+                                                                    {{ $vacation->id }}
+                                                                </td>
+                                                               <td>
+                                                                   <img class="avatar rounded-circle" src="{{ asset( $vacation->user->image ) }}" alt="">
+                                                                   <a href="{{ route('company.employees.show',$vacation->user->id) }}" class="fw-bold text-secondary">
+                                                                   <span class="fw-bold ms-1">{{ $vacation->user->name }}</span></a>
+                                                               </td>
+                                                               <td>
+                                                                {{ $vacation->vacation_balance }}
+                                                               </td>
+                                                               <td>
+                                                                {{ $vacation->year }}
+                                                               </td>
+                                                               
+                                                               <td>
+                                                                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                                    <a class="btn btn-outline-secondary" href="{{ route('company.employee-vacations.show',$vacation->id) }}"><i class="icofont-location-arrow"></i></a>
+                                                                </div>
+                                                                </td>
+                                                            </tr>
+                        
+                                                            @endforeach
+                        
+                                                        </tbody>
+                                                    </table>
+                                                  </div>
+                                              </div>
+                                        </div>
+                                      </div><!-- Row End -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -780,7 +960,7 @@
 
 
 
-    <!-- Edit Employee Personal Info-->
+    <!-- Edit Personal Info-->
     <div class="modal fade" id="edit1" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
             <div class="modal-content">
@@ -878,7 +1058,7 @@
         </div>
     </div>
 
-    <!-- Edit Bank Personal Info-->
+    <!-- Edit Bank Info-->
     <div class="modal fade" id="edit2" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
             <div class="modal-content">
@@ -1041,7 +1221,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title  fw-bold" id="edit4Label"> Other information</h5>
+                    <h5 class="modal-title  fw-bold" id="edit4Label"> Other Important information</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -1117,6 +1297,52 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button id="btn4-sub" class="btn btn-primary">update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Edit Salary Info-->
+    <div class="modal fade" id="edit5" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title  fw-bold" id="edit5Label">Salary information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="deadline-form">
+                        <div class="alert alert-danger print-error-msg" style="display:none">
+                            <ul></ul>
+                        </div>
+                        <input type="hidden" id="id5" value="{{ $employee->id }}">
+                        <div class="row g-3 mb-3">
+                            <div class="col">
+                                <label for="exampleFormControlInput1115" class="form-label">Monthly Salary</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1115"
+                                    value="{{ $employee->monthly_salary }}">
+
+                            </div>
+                            <div class="col">
+                                <label for="exampleFormControlInput2225" class="form-label">Daily Salary</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput2225"
+                                    value="{{ $employee->daily_salary }}">
+
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col">
+                                <label for="exampleFormControlInput3335" class="form-label">Hourly Salary</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput3335"
+                                    value="{{ $employee->hourly_salary }}">
+
+                            </div>
+                            
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="btn5-sub" class="btn btn-primary">update</button>
                 </div>
             </div>
         </div>

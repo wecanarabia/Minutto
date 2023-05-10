@@ -19,6 +19,8 @@ class Reward extends Model
     ];
 
 
+
+
     public function setFileAttribute($value){
         if ($value){
             $file = $value;

@@ -1,4 +1,4 @@
-<x-layouts.header title="Reward Types"/>
+<x-layouts.header title="Incentives Types"/>
 <x-layouts.app>
           <!-- Body: Body -->
           <div class="body d-flex py-lg-3 py-md-2">
@@ -6,9 +6,9 @@
                 <div class="row align-items-center">
                     <div class="border-0 mb-4">
                         <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-                            <h3 class="fw-bold mb-0">Reward Types</h3>
+                            <h3 class="fw-bold mb-0">Incentives Types</h3>
                             <div class="col-auto d-flex w-sm-100">
-                                <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.reward-types.create') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Add Reward Type</a>
+                                <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.reward-types.create') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Add Incentive Type</a>
                             </div>
                         </div>
                     </div>

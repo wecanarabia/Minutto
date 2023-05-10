@@ -4,7 +4,7 @@ namespace App\Http\Requests\Company;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RewardRequest extends FormRequest
+class AlertRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,16 +21,13 @@ class RewardRequest extends FormRequest
      */
     public function rules(): array
     {
-        $this['status'] = json_decode($this->status,true);
-
+        $this['type'] = json_decode($this->type,true);
         return [
-            'reward_date'=>'required|date',
-            'reward_value'=>'required|integer',
+            'alert_date'=>'required|date',
+            'punishment'=>'required|integer|declined_if:type.en,attention',
             'note'=>'required|min:5|max:2000',
             'file'=>'mimes:jpg,gif,jpeg,png,mp4,pdf,txt,mkv,flv,docs,doc,3gb,xlsx,pptx|max:4000',
-            'status.en'=>"in:waiting,approve,rejected",
-            'replay'=>'required|min:5|max:2000',
-            'reward_type_id'=>'required|exists:reward_types,id',
+            'type.en'=>"in:amount,attention,vacation days,Salary number of working days",
             'user_id'=>'required|exists:users,id',
         ];
     }

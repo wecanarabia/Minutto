@@ -15,7 +15,7 @@ class RewardTypeController extends Controller
      */
     public function index()
     {
-        $data = RewardType::where('company_id',Auth::user()->company_id)->get();
+        $data = RewardType::where('company_id',Auth::user()->company_id)->get();        
         return view('front.reward-types.index',compact('data'));
     }
 
@@ -41,7 +41,7 @@ class RewardTypeController extends Controller
 
 
         return redirect()->route('company.reward-types.index')
-                        ->with('success','Reward type has been added successfully');
+                        ->with('success','Incentive type has been added successfully');
     }
 
     /**
@@ -86,6 +86,6 @@ class RewardTypeController extends Controller
 
 
         return redirect()->route('company.reward-types.show',$reward->id)
-                        ->with('success','Reward type has been updated successfully');
+                        ->with('success','Incentive type has been updated successfully');
     }
 }
