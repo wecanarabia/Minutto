@@ -47,9 +47,15 @@ class RewardController extends Controller
     */
    public function store(RewardRequest $request)
    {
-    
+
 
        $reward = Reward::create($request->all());
+       if ($reward->getTranslation('status','en')=='approve'&&$reward->rtype->getTranslation('name','en')=='vacation days') {
+        if ($reward->user->userVacation->vacation_balance>=$reward->reward_value) {
+
+            $reward->user->userVacation()->update(['vacation_balance'=>($reward->user->userVacation->vacation_balance+$reward->reward_value)]);
+        }
+   }
        return redirect()->route('company.rewards.index')
                        ->with('success','Incentive has been added successfully');
    }
@@ -90,7 +96,7 @@ class RewardController extends Controller
     */
    public function update(RewardRequest $request, string $id)
    {
-    
+
 
     $reward = Reward::with('user')->findOrFail($id);
     if ($request->has('file')&&$reward->file&&File::exists($reward->file)) {
@@ -99,9 +105,18 @@ class RewardController extends Controller
     if ($reward->user->branch->company_id!=Auth::user()->company_id) {
            return abort(404);
        }
+       if ($reward->getTranslation('status','en')=='approve'&&$reward->rtype->getTranslation('name','en')=='vacation days') {
 
+        $sub=(int)$reward->user->userVacation->vacation_balance-(int)$reward->reward_value;
+        $reward->user->userVacation()->update(['vacation_balance'=>(int)$sub]);
+
+        }
        $reward->update($request->all());
+       if ($reward->getTranslation('status','en')=='approve'&&$reward->rtype->getTranslation('name','en')=='vacation days'&&$reward->user->userVacation->vacation_balance>=$reward->reward_value) {
 
+        $reward->user->userVacation()->update(['vacation_balance'=>(int)$sub+(int)$reward->reward_value]);
+
+}
 
        return redirect()->route('company.rewards.show',$reward->id)
                        ->with('success','Incentive has been updated successfully');

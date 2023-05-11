@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company;
 use App\Models\User;
 use App\Models\Branch;
 use App\Models\Vacation;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -64,12 +65,38 @@ class VacationController extends Controller
             'status.en'=>"required|in:waiting,approve,rejected",
     ]);
         $allStatus=Vacation::STATUS;
-        if ($validator->fails()||!in_array($vacation->user->id,$employees)||!in_array($request['status'],$allStatus)) {
-            return response()->json([
-                'error' => $validator->errors()->all(),
-            ]);
+        if ($request['status.en']=='approve') {
+            $period = CarbonPeriod::create($request['from'], $request['to']);
+            $workdays=$vacation->user->shift->workdays->where('status',1)->map(function ($model) {
+                return json_decode($model->getRawOriginal('day'), true)['en'];
+            })->toArray();
+            $days=[];
+            foreach ($period as $day) {
+                $day=$day->format('l');
+                if(in_array($day,$workdays)){
+                    array_push($days,$day);
+                }
+            }
+            if ($vacation->user->userVacation->vacation_balance<count($days)) {
+                $errors[]='Something went wrong, please try again';
+                return response()->json([
+                    'error' => $errors,
+                ]);
+            }else{
+                $num=count($days);
+            }
         }
 
+
+
+        if (in_array($vacation->getTranslation('status','en'),['approve','rejected'])||$validator->fails()||!in_array($vacation->user->id,$employees)||!in_array($request['status'],$allStatus)) {
+            $errors[]='Something went wrong, please try again';
+            $errors[]=$validator->errors()->all();
+            return response()->json([
+                'error' => $errors,
+            ]);
+        }
+        $vacation->user->userVacation()->update(['vacation_balance'=>($vacation->user->userVacation->vacation_balance-$num)]);
         $vacation->update([
             'status'=>$request['status'],
             'from'=>$request['from'],

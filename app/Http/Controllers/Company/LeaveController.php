@@ -57,7 +57,7 @@ class LeaveController extends Controller
         $leave = Leave::find($id);
         $request['status'] = json_decode($request['status'],true);
         $validator = Validator::make($request->all(), [
-            'discount_value'=>'nullable|numeric|declined_if:status.en,approve',
+            'discount_value'=>'nullable|numeric|declined_if:status.en,approve|min:0',
             'note'=>'required|min:4|max:2000',
             'replay'=>'required|min:4|max:2000',
             'status.en'=>"required|in:waiting,approve,rejected",

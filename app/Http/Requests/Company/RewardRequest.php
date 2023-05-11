@@ -25,7 +25,7 @@ class RewardRequest extends FormRequest
 
         return [
             'reward_date'=>'required|date',
-            'reward_value'=>'required|numeric',
+            'reward_value'=>'required|numeric|min:0',
             'note'=>'required|min:5|max:2000',
             'file'=>'mimes:jpg,gif,jpeg,png,mp4,pdf,txt,mkv,flv,docs,doc,3gb,xlsx,pptx|max:4000',
             'status.en'=>"in:waiting,approve,rejected",

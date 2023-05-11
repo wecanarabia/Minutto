@@ -91,7 +91,7 @@ class EmployeeVacationController extends Controller
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
         $validator = Validator::make($request->all(), [
-            'vacation_balance'=>'required|numeric',
+            'vacation_balance'=>'required|numeric|min:0',
 
         ]);
 

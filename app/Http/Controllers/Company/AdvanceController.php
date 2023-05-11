@@ -55,7 +55,7 @@ class AdvanceController extends Controller
         $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
         $request['status'] = json_decode($request['status'],true);
         $validator = Validator::make($request->all(), [
-            'value'=>'required|numeric|declined_if:status.en,disciplined',
+            'value'=>'required|numeric|declined_if:status.en,disciplined|min:0',
             'note'=>'required|min:4|max:2000',
             'replay'=>'required|min:4|max:2000',
             'req_date'=>'required|date',

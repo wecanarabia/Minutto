@@ -22,9 +22,11 @@
                <div class="card teacher-card  mb-3">
                    <div class="card-header py-3 d-flex justify-content-between">
                        <h6 class="mb-0 fw-bold ">{{ $vacation->user->name }}</h6>
+                       @if (!in_array($vacation->getTranslation('status','en'),['approve','rejected']))
+
                        <button type="button" class="btn p-0" data-bs-toggle="modal"
                                        data-bs-target="#edit-vacation"><i class="icofont-edit text-primary fs-6"></i></button>
-
+                        @endif
                    </div>
                    <div class="card-body  d-flex teacher-fulldeatil">
 
@@ -110,6 +112,7 @@
                </div>
            </div>
        </div>
+       @if (!in_array($vacation->getTranslation('status','en'),['approve','rejected']))
 
     <!-- Edit Employee Info-->
     <div class="modal fade" id="edit-vacation" tabindex="-1" aria-hidden="true">
@@ -178,4 +181,5 @@
            </div>
        </div>
    </div>
+   @endif
            </x-layouts.app>

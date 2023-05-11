@@ -48,6 +48,11 @@ class AlertController extends Controller
 
 
        $alert = Alert::create($request->all());
+       if ($alert->getTranslation('type','en')=='vacation days') {
+            if ($alert->user->userVacation->vacation_balance>=$alert->punishment) {
+                $alert->user->userVacation()->update(['vacation_balance'=>($alert->user->userVacation->vacation_balance-$alert->punishment)]);
+            }
+       }
        return redirect()->route('company.alerts.index')
                        ->with('success','Alert has been added successfully');
    }
@@ -87,7 +92,6 @@ class AlertController extends Controller
     */
    public function update(AlertRequest $request, string $id)
    {
-    $request['type'] = json_decode($request['type'],true);
 
     $alert = Alert::with('user')->findOrFail($id);
     if ($request->has('file')&&$alert->file&&File::exists($alert->file)) {
@@ -96,10 +100,19 @@ class AlertController extends Controller
     if ($alert->user->branch->company_id!=Auth::user()->company_id) {
            return abort(404);
        }
+       if ($alert->getTranslation('type','en')=='vacation days') {
 
-       $alert->update($request->all());
+        $sum=(int)$alert->user->userVacation->vacation_balance+(int)$alert->punishment;
+        $alert->user->userVacation()->update(['vacation_balance'=>(int)$sum]);
 
+        }
+        $alert->update($request->all());
 
+       if ($alert->getTranslation('type','en')=='vacation days'&&$alert->user->userVacation->vacation_balance>=$alert->punishment) {
+
+                $alert->user->userVacation()->update(['vacation_balance'=>(int)$sum-(int)$alert->punishment]);
+
+        }
        return redirect()->route('company.alerts.show',$alert->id)
                        ->with('success','Alert has been updated successfully');
    }

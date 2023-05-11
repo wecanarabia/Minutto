@@ -22,7 +22,7 @@ class EmployeeVacationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'vacation_balance'=>'required|numeric',
+            'vacation_balance'=>'required|numeric|min:0',
             'user_id'=>'required|exists:users,id',
 
         ];
