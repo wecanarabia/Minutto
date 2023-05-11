@@ -108,7 +108,7 @@ class EmployeeController extends Controller
             'swift_number'=>'sometimes|min:4|max:255',
             'career'=>'sometimes|min:4|max:255',
             'description'=>'sometimes|min:4|max:2000',
-            'duration_of_contract'=>'sometimes|integer',
+            'duration_of_contract'=>'sometimes|min:4|max:255',
             'monthly_salary'=>'sometimes|numeric',
             'daily_salary'=>'sometimes|numeric',
             'hourly_salary'=>'sometimes|numeric',

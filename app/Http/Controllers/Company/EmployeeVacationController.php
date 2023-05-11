@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Company;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Branch;
-use Illuminate\Http\Request;
 use App\Models\EmployeeVacation;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\Company\EmployeeVacationRequest;
 
 class EmployeeVacationController extends Controller
 {
@@ -18,10 +20,57 @@ class EmployeeVacationController extends Controller
         $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
             $data = EmployeeVacation::whereBelongsTo($employees)->get();
+            $vacationsOfYear = EmployeeVacation::where('year',Carbon::now()->year)->whereBelongsTo($employees)->get();
+            $employeesHasNoVacation = User::whereBelongsTo($branches)->with(['branch','shift'])->whereDoesntHave('userVacation')->get();
         }else{
             $data=collect([]);
         }
-        return view('front.employee-vacations.index',compact('data'));
+        return view('front.employee-vacations.index',compact('data',"vacationsOfYear",'employeesHasNoVacation'));
+    }
+
+    public function generate()
+    {
+        $branches = Branch::where('company_id', Auth::user()->company_id)->get();
+        $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->get();
+        if ($employees->count()>0) {
+            $vacationsOfYear = EmployeeVacation::where('year',Carbon::now()->year)->whereBelongsTo($employees)->get();
+            if (count($vacationsOfYear)==0) {
+                foreach ($employees as $employee) {
+                    $vacation = new EmployeeVacation(['year' => Carbon::now()->year,'vacation_balance'=>(Auth::user()->company->sick_leaves+Auth::user()->company->holidays_count)]);
+                    $employee->userVacation()->save($vacation);
+                }
+            }
+        }
+        return redirect()->route('company.employee-vacations.index')
+        ->with('success','Vacations of this year has been generated successfully');
+    }
+
+
+     /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $branches = Branch::where('company_id', Auth::user()->company_id)->get();
+        $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->whereDoesntHave('userVacation')->get();
+        return view('front.employee-vacations.create',compact('employees'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(EmployeeVacationRequest $request)
+    {
+        $request['year']=Carbon::now()->year;
+        $branches = Branch::where('company_id', Auth::user()->company_id)->get();
+        $employee = User::whereBelongsTo($branches)->with(['branch','shift'])->whereDoesntHave('userVacation')->find($request['user_id']);
+        if ($employee) {
+            EmployeeVacation::create($request->all());
+        }else {
+            return redirect()->back();
+        }
+        return redirect()->route('company.employee-vacations.index')
+                        ->with('success','Employee Vacation has been added successfully');
     }
 
     public function show($id)
@@ -43,7 +92,7 @@ class EmployeeVacationController extends Controller
         $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
         $validator = Validator::make($request->all(), [
             'vacation_balance'=>'required|numeric',
-            
+
         ]);
 
         $vacation = EmployeeVacation::find($id);

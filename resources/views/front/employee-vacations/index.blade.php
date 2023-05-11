@@ -8,7 +8,16 @@
                 <div class="border-0 mb-4">
                     <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
                         <h3 class="fw-bold mb-0">Employee Vacations</h3>
-
+                        @if (count($vacationsOfYear)==0)
+                        <div class="col-auto d-flex w-sm-100">
+                            <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.employee-vacations.generate') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Generate Vacations of this Year</a>
+                        </div>
+                        @endif
+                         @if (count($employeesHasNoVacation)>0)
+                        <div class="col-auto d-flex w-sm-100">
+                            <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.employee-vacations.create') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Add Vacation</a>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div> <!-- Row end  -->
@@ -44,7 +53,7 @@
                                        <td>
                                         {{ $vacation->year }}
                                        </td>
-                                       
+
                                        <td>
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                                             <a class="btn btn-outline-secondary" href="{{ route('company.employee-vacations.show',$vacation->id) }}"><i class="icofont-location-arrow"></i></a>

@@ -632,7 +632,7 @@
                                                         </thead>
                                                         <tbody>
                                                             @foreach ($employee->rewards as $reward)
-                        
+
                                                             <tr>
                                                                 <td>
                                                                     {{ $reward->id }}
@@ -651,7 +651,7 @@
                                                                <td>
                                                                 {{ $reward->reward_value }}
                                                                </td>
-                        
+
                                                                <td>
                                                                 <span @class(['badge','bg-success'=>$reward->getTranslation('status','en')=='approve',
                                                                     'bg-danger'=>$reward->getTranslation('status','en')=='rejected',
@@ -659,8 +659,8 @@
                                                                     ])>
                                                                {{ $reward->status }}</span>
                                                                </td>
-                        
-                                                            
+
+
                                                                <td>
                                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                                     <a class="btn btn-outline-secondary" href="{{ route('company.rewards.edit',$reward->id) }}"><i class="icofont-edit text-success"></i></a>
@@ -668,9 +668,9 @@
                                                                 </div>
                                                                 </td>
                                                             </tr>
-                        
+
                                                             @endforeach
-                        
+
                                                         </tbody>
                                                     </table>
                                                   </div>
@@ -815,8 +815,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>   
-                    
+                    </div>
+
                     <div class="row g-3">
 
 
@@ -838,13 +838,13 @@
                                                                 <th>Alert Type</th>
                                                                 <th>Alert Date</th>
                                                                 <th>type's value</th>
-                                                                
+
                                                                 <th>Actions</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             @foreach ($employee->alerts as $alert)
-                        
+
                                                             <tr>
                                                                 <td>
                                                                     {{ $alert->id }}
@@ -863,9 +863,9 @@
                                                                <td>
                                                                 {{ $alert->punishment }}
                                                                </td>
-                        
-                                                        
-                        
+
+
+
                                                                <td>
                                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                                     <a class="btn btn-outline-secondary" href="{{ route('company.alerts.edit',$alert->id) }}"><i class="icofont-edit text-success"></i></a>
@@ -873,9 +873,9 @@
                                                                 </div>
                                                                 </td>
                                                             </tr>
-                        
+
                                                             @endforeach
-                        
+
                                                         </tbody>
                                                     </table>
                                                   </div>
@@ -886,7 +886,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row g-3">
 
 
@@ -912,7 +912,7 @@
                                                         </thead>
                                                         <tbody>
                                                             @foreach ($employee->UserVacations as $vacation)
-                        
+
                                                             <tr>
                                                                 <td>
                                                                     {{ $vacation->id }}
@@ -928,16 +928,16 @@
                                                                <td>
                                                                 {{ $vacation->year }}
                                                                </td>
-                                                               
+
                                                                <td>
                                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                                     <a class="btn btn-outline-secondary" href="{{ route('company.employee-vacations.show',$vacation->id) }}"><i class="icofont-location-arrow"></i></a>
                                                                 </div>
                                                                 </td>
                                                             </tr>
-                        
+
                                                             @endforeach
-                        
+
                                                         </tbody>
                                                     </table>
                                                   </div>
@@ -1147,7 +1147,7 @@
                         <div class="row g-3 mb-3">
                             <div class="col">
                                 <label for="exampleFormControlInput33_3" class="form-label">Duration Of Contract</label>
-                                <input type="number" class="form-control" id="exampleFormControlInput33_3"
+                                <input type="text" class="form-control" id="exampleFormControlInput33_3"
                                     value="{{ $employee->duration_of_contract }}">
 
                             </div>
@@ -1301,7 +1301,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Edit Salary Info-->
     <div class="modal fade" id="edit5" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
@@ -1337,7 +1337,7 @@
                                     value="{{ $employee->hourly_salary }}">
 
                             </div>
-                            
+
                     </div>
                 </div>
                 <div class="modal-footer">
