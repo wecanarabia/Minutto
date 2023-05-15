@@ -20,7 +20,7 @@ class RewardController extends Controller
    public function index()
    {
     $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-    $employees = User::whereBelongsTo($branches)->get();
+    $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->get();
     if ($employees->count()>0) {
         $data = Reward::whereBelongsTo($employees)->get();
     }else{
@@ -35,7 +35,7 @@ class RewardController extends Controller
    public function create()
    {
     $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-    $employees = User::whereBelongsTo($branches)->get();
+    $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->get();
     $types = RewardType::where('company_id', Auth::user()->company_id)->get();
     $allStatus=Reward::STATUS;
 
@@ -84,7 +84,7 @@ class RewardController extends Controller
 
 
        $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-       $employees = User::whereBelongsTo($branches)->get();
+       $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->get();
        $types = RewardType::where('company_id', Auth::user()->company_id)->get();
        $allStatus=Reward::STATUS;
 

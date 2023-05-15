@@ -19,7 +19,7 @@ class AlertController extends Controller
    public function index()
    {
     $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-    $employees = User::whereBelongsTo($branches)->get();
+    $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->get();
     if ($employees->count()>0) {
         $data = Alert::whereBelongsTo($employees)->get();
     }else{
@@ -34,7 +34,7 @@ class AlertController extends Controller
    public function create()
    {
     $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-    $employees = User::whereBelongsTo($branches)->get();
+    $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->get();
     $types=Alert::TYPES;
 
     return view('front.alerts.create',compact('employees','types'));
@@ -81,7 +81,7 @@ class AlertController extends Controller
 
 
        $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-       $employees = User::whereBelongsTo($branches)->get();
+       $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->get();
        $types=Alert::TYPES;
 
        return view('front.alerts.edit',compact('alert','employees','types'));

@@ -9,6 +9,7 @@ use App\Http\Controllers\Company\LoginController;
 use App\Http\Controllers\Company\ShiftController;
 use App\Http\Controllers\Company\BranchController;
 use App\Http\Controllers\Company\RewardController;
+use App\Http\Controllers\Company\SalaryController;
 use App\Http\Controllers\Company\AdvanceController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Company\WorkDayController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\Company\LeaveTypeController;
 use App\Http\Controllers\Company\AttendanceController;
 use App\Http\Controllers\Company\DepartmentController;
 use App\Http\Controllers\Company\RewardTypeController;
+use App\Http\Controllers\Company\CompanyAdminController;
 use App\Http\Controllers\Company\VacationTypeController;
 use App\Http\Controllers\Company\EmployeeVacationController;
 use App\Http\Controllers\Company\OfficialVacationController;
@@ -60,6 +62,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::resource('workdays', WorkDayController::class)->except(['destroy']);
             Route::resource('extra-types', ExtraTypeController::class)->except(['destroy']);
             Route::resource('official-vacations', OfficialVacationController::class)->except(['destroy']);
+            Route::resource('admins', CompanyAdminController::class)->except(['destroy']);
 
             //files
             Route::get('rewards/file/{id}', [RewardController::class,'openFile'])->name('rewards.file');
@@ -107,6 +110,12 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
              Route::get('employee-vacations/{id}', [EmployeeVacationController::class,'show'])->name('employee-vacations.show');
              Route::post('employee-vacations/update/{id}', [EmployeeVacationController::class,'update'])->name('employee-vacations.update');
 
+             //salaries
+             Route::get('salaries', [SalaryController::class,'index'])->name('salaries.index');
+             Route::get('salaries/generate', [SalaryController::class,'generate'])->name('salaries.generate');
+             Route::get('salaries/create', [SalaryController::class,'create'])->name('salaries.create');
+             Route::post('salaries/store', [SalaryController::class,'store'])->name('salaries.store');
+             Route::get('salaries/{id}', [SalaryController::class,'show'])->name('salaries.show');
         });
     });
 });

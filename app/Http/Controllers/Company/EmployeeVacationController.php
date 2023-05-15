@@ -17,11 +17,11 @@ class EmployeeVacationController extends Controller
     public function index()
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->get();
+        $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
             $data = EmployeeVacation::whereBelongsTo($employees)->get();
             $vacationsOfYear = EmployeeVacation::where('year',Carbon::now()->year)->whereBelongsTo($employees)->get();
-            $employeesHasNoVacation = User::whereBelongsTo($branches)->with(['branch','shift'])->whereDoesntHave('userVacation')->get();
+            $employeesHasNoVacation = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->whereDoesntHave('userVacation')->get();
         }else{
             $data=collect([]);
         }
@@ -31,7 +31,7 @@ class EmployeeVacationController extends Controller
     public function generate()
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->get();
+        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
             $vacationsOfYear = EmployeeVacation::where('year',Carbon::now()->year)->whereBelongsTo($employees)->get();
             if (count($vacationsOfYear)==0) {
@@ -52,7 +52,7 @@ class EmployeeVacationController extends Controller
     public function create()
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->whereDoesntHave('userVacation')->get();
+        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->whereDoesntHave('userVacation')->get();
         return view('front.employee-vacations.create',compact('employees'));
     }
 
@@ -63,7 +63,7 @@ class EmployeeVacationController extends Controller
     {
         $request['year']=Carbon::now()->year;
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employee = User::whereBelongsTo($branches)->with(['branch','shift'])->whereDoesntHave('userVacation')->find($request['user_id']);
+        $employee = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->whereDoesntHave('userVacation')->find($request['user_id']);
         if ($employee) {
             EmployeeVacation::create($request->all());
         }else {
@@ -76,7 +76,7 @@ class EmployeeVacationController extends Controller
     public function show($id)
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
+        $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
         $vacation = EmployeeVacation::find($id);
         if (!in_array($vacation->user->id,$employees)) {
@@ -89,7 +89,7 @@ class EmployeeVacationController extends Controller
     public function update(Request $request,$id)
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
+        $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
         $validator = Validator::make($request->all(), [
             'vacation_balance'=>'required|numeric|min:0',
 

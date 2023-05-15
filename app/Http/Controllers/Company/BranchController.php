@@ -69,7 +69,7 @@ class BranchController extends Controller
         if ($branch->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        $employees=User::whereBelongsTo($branch)->get();
+        $employees=User::active()->hasSalary()->hasVacation()->whereBelongsTo($branch)->get();
         $shifts = Shift::where('company_id',Auth::user()->company_id)->get();
         return view('front.branches.edit',compact('branch','employees','shifts'));
     }

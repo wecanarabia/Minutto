@@ -69,7 +69,7 @@ class DepartmentController extends Controller
         if ($department->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        $employees=User::whereBelongsTo($department)->get();
+        $employees=User::active()->hasSalary()->hasVacation()->whereBelongsTo($department)->get();
         return view('front.departments.edit',compact('department','employees'));
     }
 

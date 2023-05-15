@@ -79,13 +79,21 @@ class User extends Authenticatable
     public function vacations(){
         return $this->hasMany(Vacation::class);
     }
-    
+
     public function UserVacations(){
         return $this->hasMany(EmployeeVacation::class);
     }
-    
+
     public function userVacation(){
         return $this->hasOne(EmployeeVacation::class)->whereYear('created_at', '=', Carbon::now()->year);
+    }
+
+    public function salaries(){
+        return $this->hasMany(Salary::class);
+    }
+
+    public function salary(){
+        return $this->hasOne(Salary::class)->where('month', '=', Carbon::now()->month);
     }
 
 
@@ -118,6 +126,18 @@ class User extends Authenticatable
 
     public function rewards(){
         return $this->hasMany(Reward::class);
+    }
+
+    public function scopeActive($query){
+        return $query->where('active',1);
+    }
+
+    public function scopeHasVacation($query){
+        return $query->whereHas('userVacation');
+    }
+
+    public function scopeHasSalary($query){
+        return $query->whereHas('salary');
     }
 
 }

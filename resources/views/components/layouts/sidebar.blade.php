@@ -255,7 +255,7 @@
                                 ]) href="{{ route('company.official-vacations.index') }}"> <span>Official Vacations</span></a></li>
                             </ul>
                 </li>
-                
+
                 <li class="collapsed">
                     <a class="m-link" data-bs-toggle="collapse" data-bs-target="#alerts-Components" href="#">
                         <i class="icofont-warning"></i><span>Alerts</span> <span
@@ -272,8 +272,25 @@
                                 ]) href="{{ route('company.alerts.index') }}"> <span>Alerts</span></a></li>
                             </ul>
                 </li>
-                
-           
+
+                <li class="collapsed">
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#admins-Components" href="#">
+                        <i class="icofont-business-man-alt-1"></i><span>Admins</span> <span
+                            class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                    <!-- Menu: Sub menu ul -->
+                    <ul @class([
+                        'sub-menu',
+                        'collapse',
+                        'show' =>Route::currentRouteName() == 'company.admins.index',
+                    ]) id="admins-Components">
+                        <li><a @class([
+                                    'ms-link',
+                                    'active' => Route::currentRouteName() == 'company.admins.index',
+                                ]) href="{{ route('company.admins.index') }}"> <span>Admins</span></a></li>
+                            </ul>
+                </li>
+
+
                 <li class="collapsed">
                     <a class="m-link" data-bs-toggle="collapse" data-bs-target="#emp-Components" href="#"><i
                             class="icofont-users-alt-5"></i> <span>Employees</span> <span
@@ -300,7 +317,7 @@
                             'ms-link',
                             'active' => Route::currentRouteName() == 'company.employee-vacations.index',
                         ]) href="{{ route('company.employee-vacations.index') }}"> <span>Employee Vacations</span></a></li>
-       
+
                     </ul>
                 </li>
             @endif

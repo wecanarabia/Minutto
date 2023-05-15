@@ -15,7 +15,7 @@ class LeaveController extends Controller
     public function index()
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->get();
+        $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
             $data = Leave::whereBelongsTo($employees)->get();
         }else{
@@ -27,7 +27,7 @@ class LeaveController extends Controller
     public function show($id)
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
+        $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
         $leave = Leave::find($id);
         if (!in_array($leave->user->id,$employees)) {
@@ -40,7 +40,7 @@ class LeaveController extends Controller
     public function openFile($id)
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
+        $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
         $leave = Leave::find($id);
         if (!in_array($leave->user->id,$employees)) {
@@ -52,7 +52,7 @@ class LeaveController extends Controller
     public function update(Request $request,$id)
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
+        $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
         $leave = Leave::find($id);
         $request['status'] = json_decode($request['status'],true);
