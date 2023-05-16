@@ -301,6 +301,7 @@
                         'collapse',
                         'show' => Route::currentRouteName() == 'company.employees.index'||
                                   Route::currentRouteName() == 'company.attendance.index'||
+                                  Route::currentRouteName() == 'company.salaries.index'||
                                   Route::currentRouteName() == 'company.employee-vacations.index',
                     ])  id="emp-Components">
                         <li><a @class([
@@ -317,6 +318,10 @@
                             'ms-link',
                             'active' => Route::currentRouteName() == 'company.employee-vacations.index',
                         ]) href="{{ route('company.employee-vacations.index') }}"> <span>Employee Vacations</span></a></li>
+                        <li><a @class([
+                            'ms-link',
+                            'active' => Route::currentRouteName() == 'company.salaries.index',
+                        ]) href="{{ route('company.salaries.index') }}"> <span>Salaries</span></a></li>
 
                     </ul>
                 </li>

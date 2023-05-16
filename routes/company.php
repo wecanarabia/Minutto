@@ -113,6 +113,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
              //salaries
              Route::get('salaries', [SalaryController::class,'index'])->name('salaries.index');
              Route::get('salaries/generate', [SalaryController::class,'generate'])->name('salaries.generate');
+             Route::get('salaries/update', [SalaryController::class,'update'])->name('salaries.update');
              Route::get('salaries/create', [SalaryController::class,'create'])->name('salaries.create');
              Route::post('salaries/store', [SalaryController::class,'store'])->name('salaries.store');
              Route::get('salaries/{id}', [SalaryController::class,'show'])->name('salaries.show');

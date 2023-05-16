@@ -8,16 +8,21 @@
                 <div class="border-0 mb-4">
                     <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
                         <h3 class="fw-bold mb-0">Salaries</h3>
-                        @if (count($data['salaries'])==0)
+                        @if (count($data)==0||count($data['salaries'])==0))
                         <div class="col-auto d-flex w-sm-100">
                             <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.salaries.generate') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Generate Salaries this Month</a>
                         </div>
-                        @endif
-                         @if (count($employeesNoSalary)>0)
+                        @else
                         <div class="col-auto d-flex w-sm-100">
+                            <a class="btn btn-dark btn-set-task w-sm-100 mx-2" href="{{ route('company.salaries.update') }}">Update Salaries</a>
+                            @if (count($employeesNoSalary)>0)
                             <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.salaries.create') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Add Salary</a>
+                            @endif
                         </div>
+
                         @endif
+
+
                     </div>
                 </div>
             </div> <!-- Row end  -->
@@ -38,7 +43,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data['salaries'] as $salary)
+                                    @foreach ($data['salaries']??null as $salary)
 
                                     <tr>
                                         <td>

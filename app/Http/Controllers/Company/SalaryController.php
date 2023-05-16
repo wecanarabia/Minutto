@@ -22,9 +22,10 @@ class SalaryController extends Controller
 {
     public function index()
     {
+        $now = Carbon::now();
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->get();
-        if ($employees) {
+        $employees = User::active()->hasSalary()->whereBelongsTo($branches)->get();
+        if (count($employees)>0) {
             $data['leaves'] = Leave::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employees)->get()->sum('discount_value');
             $data['workhours'] = Workhour::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employees)->get()->sum('discount_value');
             $data['advances'] = Advance::whereMonth('created_at', Carbon::now()->month)->where('value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employees)->get()->sum('value');
@@ -38,16 +39,19 @@ class SalaryController extends Controller
             $data['alerts'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', '!=', 'Salary number of working days')->where('type->en', '!=', 'vacation days')->whereBelongsTo($employees)->get()->sum('punishment');
             $data['salaries'] = Salary::whereMonth('created_at', Carbon::now()->month)->whereBelongsTo($employees)->get();
 
+        }else{
+            $data['salaries'] = collect([]);
         }
-        $employeesNoSalary = User::active()->whereDoesntHave('salary')->whereBelongsTo($branches)->get();
+        $employeesNoSalary = User::active()->whereDoesntHave('salary')->thisMonth($now)->whereBelongsTo($branches)->get();
         return view('front.salaries.index',compact('data','employeesNoSalary'));
 
     }
 
     public function generate()
     {
+        $now = Carbon::now();
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->get();
+        $employees = User::active()->whereBelongsTo($branches)->notOfThisMonth($now)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
             $salaryOfMonth = Salary::whereMonth('created_at', Carbon::now()->month)->whereBelongsTo($employees)->get();
             if (count($salaryOfMonth)==0) {
@@ -69,6 +73,7 @@ class SalaryController extends Controller
                         'discounts'=>(int)$data['workhours']+(int)$data['leaves']+(int)$data['alerts']+(int)$data['alerts_in_days'],
                         'advances'=>(int)$data['advances'],
                         'incentives_and_extra'=>(int)$data['rewards']+(int)$data['extras'],
+                        'net_salary'=>((int)$data['rewards']+(int)$data['extras']+$employee->monthly_salary)-($data['advances']+(int)$data['workhours']+(int)$data['leaves']+(int)$data['alerts']+(int)$data['alerts_in_days']),
                     ]);
                     $employee->salary()->save($salary);
                 }
@@ -84,8 +89,9 @@ class SalaryController extends Controller
      */
     public function create()
     {
+        $now = Carbon::now();
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->whereDoesntHave('salary')->get();
+        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->thisMonth($now)->whereDoesntHave('salary')->get();
         return view('front.salaries.create',compact('employees'));
     }
 
@@ -94,9 +100,10 @@ class SalaryController extends Controller
      */
     public function store(SalaryRequest $request)
     {
-        $request['year']=Carbon::now()->year;
+        $now = Carbon::now();
+
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employee = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->whereDoesntHave('salary')->find($request['user_id']);
+        $employee = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->thisMonth($now)->whereDoesntHave('salary')->find($request['user_id']);
         if ($employee) {
             Salary::create($request->all());
         }else {
@@ -121,8 +128,9 @@ class SalaryController extends Controller
 
     public function update()
     {
+        $now = Carbon::now();
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->get();
+        $employees = User::active()->hasSalary()->notOfThisMonth($now)->whereBelongsTo($branches)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
             $salaryOfMonth = Salary::whereMonth('created_at', Carbon::now()->month)->whereBelongsTo($employees)->get();
             if (count($salaryOfMonth)>0) {
@@ -139,13 +147,13 @@ class SalaryController extends Controller
                     })->sum('salary');
                     $data['alerts'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', '!=', 'Salary number of working days')->where('type->en', '!=', 'vacation days')->whereBelongsTo($employees)->get()->sum('punishment');
 
-                    $salary = new Salary([
+                    $employee->salary()->update([
                         'actual_salary'=>$employee->monthly_salary,
                         'discounts'=>(int)$data['workhours']+(int)$data['leaves']+(int)$data['alerts']+(int)$data['alerts_in_days'],
                         'advances'=>(int)$data['advances'],
                         'incentives_and_extra'=>(int)$data['rewards']+(int)$data['extras'],
+                        'net_salary'=>((int)$data['rewards']+(int)$data['extras']+$employee->monthly_salary)-($data['advances']+(int)$data['workhours']+(int)$data['leaves']+(int)$data['alerts']+(int)$data['alerts_in_days']),
                     ]);
-                    $employee->salary()->update($salary);
                 }
             }
         }
