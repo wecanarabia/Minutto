@@ -56,9 +56,7 @@
                                     </div>
                                     <div class="col-8">
                                         @foreach ($role->permissions as $name)
-
-
-                                        <span class="text-muted d-block">- {{$name}}</span>
+                                            <span class="text-muted d-block">- {{$name}}</span>
                                         @endforeach
                                     </div>
                                  </li>
