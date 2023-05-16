@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <script src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
       <!-- FAVICON -->
-      <link rel="icon" href="{{ asset('img/favicon/favicon-150x150.png') }}" sizes="32x32" />
       <link rel="icon" href="{{ asset('img/favicon/favicon.png') }}" sizes="192x192" />
 </head>
 <body class="{{ app()->getLocale()==='ar'?'rtl_mode':'' }}">

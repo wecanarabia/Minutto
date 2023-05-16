@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Company\RoleController;
 use App\Http\Controllers\Company\AlertController;
 use App\Http\Controllers\Company\ExtraController;
 use App\Http\Controllers\Company\IndexController;
@@ -63,6 +64,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::resource('extra-types', ExtraTypeController::class)->except(['destroy']);
             Route::resource('official-vacations', OfficialVacationController::class)->except(['destroy']);
             Route::resource('admins', CompanyAdminController::class)->except(['destroy']);
+            Route::resource('roles', RoleController::class)->except(['destroy']);
 
             //files
             Route::get('rewards/file/{id}', [RewardController::class,'openFile'])->name('rewards.file');

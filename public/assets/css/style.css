@@ -11,6 +11,10 @@
     color: #B2DCBC;
 }
 
+.menu-list .collapsed .ms-link:hover{
+    color: #B2DCBC;
+}
+
 .ms-link.active span{
     color: #B2DCBC;
 }
