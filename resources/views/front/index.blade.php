@@ -1,4 +1,5 @@
 <x-layouts.app>
+    <x-layouts.header title="Home"/>
 
     <!-- main body area -->
 
