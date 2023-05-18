@@ -43,7 +43,7 @@
                                             @foreach (config('global.permissions') as $name => $value)
                                                 <div class="form-group col-sm-4">
                                                     <label class="checkbox-inline">
-                                                        <input type="checkbox" class="chk-box" name="permissions[]" value="{{ $name }}" data-parsley-errors-container="#error-checkbox" data-parsley-multiple="checkbox">  {{ $value }}
+                                                        <input type="checkbox" class="chk-box" name="permissions[]" value="{{ $name }}" data-parsley-errors-container="#error-checkbox" data-parsley-multiple="checkbox">  {{ $value[Illuminate\Support\Facades\App::getLocale()] }}
                                                     </label>
                                                 </div>
                                             @endforeach

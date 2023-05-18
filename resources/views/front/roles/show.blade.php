@@ -7,9 +7,9 @@
             <div class="col-md-12">
                 <div class="card border-0 mb-4 no-bg">
                     <div class="card-header py-3 px-0 d-flex align-items-center  justify-content-between border-bottom">
-                        <h3 class=" fw-bold flex-fill mb-0">Extra Type</h3>
+                        <h3 class=" fw-bold flex-fill mb-0">Role</h3>
                         <div class="col-auto d-flex w-sm-100">
-                            <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.roles.index') }}"></i>Extra Types</a>
+                            <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.roles.index') }}"></i>Roles</a>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="col-8">
                                         @foreach ($role->permissions as $name)
-                                            <span class="text-muted d-block">- {{$name}}</span>
+                                            <span class="text-muted d-block">- {{config('global.permissions')[$name][Illuminate\Support\Facades\App::getLocale()]}}</span>
                                         @endforeach
                                     </div>
                                  </li>

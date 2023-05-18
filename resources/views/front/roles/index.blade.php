@@ -29,6 +29,7 @@
                                             <th>Id</th>
                                             <th>English Name</th>
                                             <th>Arabic Name</th>
+                                            <th>Permissions</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -47,8 +48,15 @@
                                            </td>
 
                                            <td>
-                                            {{ implode(', ',$role->permissions) }}
-                                           </td>
+                                            @foreach (config('global.permissions') as $name => $value)
+                                                @if(in_array($name,$role->permissions))
+                                                    @php
+                                                        $array[$name]= $value[Illuminate\Support\Facades\App::getLocale()]
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+                                            {{implode(' - ', $array)}}
+                                            </td>
 
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">

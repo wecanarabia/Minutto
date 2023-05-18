@@ -18,6 +18,7 @@
                                 <h6 class="mb-0 fw-bold ">Edit Role</h6>
                                 <div class="col-auto d-flex w-sm-100">
                                     <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.roles.index') }}"></i>Roles</a>
+                                    <a class="btn btn-dark btn-set-task w-sm-100 mx-2 " href="{{ route('company.roles.show',$role->id) }}"></i>{{ $role->name }}</a>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -45,7 +46,7 @@
                                             @foreach (config('global.permissions') as $name => $value)
                                                 <div class="form-group col-sm-4">
                                                     <label class="checkbox-inline">
-                                                        <input type="checkbox" class="chk-box" name="permissions[]" @checked(in_array($name, $role->permissions)) value="{{ $name }}" data-parsley-errors-container="#error-checkbox" data-parsley-multiple="checkbox">  {{ $value }}
+                                                        <input type="checkbox" class="chk-box" name="permissions[]" @checked(in_array($name, $role->permissions)) value="{{ $name }}" data-parsley-errors-container="#error-checkbox" data-parsley-multiple="checkbox">  {{ $value[Illuminate\Support\Facades\App::getLocale()] }}
                                                     </label>
                                                 </div>
                                             @endforeach
