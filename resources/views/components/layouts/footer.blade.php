@@ -6,19 +6,21 @@
 <script src="{{ asset('assets/bundles/apexcharts.bundle.js') }}"></script>
 
 <!-- Jquery Page Js -->
-{{-- <script src="https://pixelwibes.com/template/my-task/html/js/template.js"></script> --}}
+{{-- <script src="https://pixelwibes.com/template/my-task/html/js/template.js"></script>--}}
 <script src="https://pixelwibes.com/template/my-task/html/js/page/hr.js"></script>
 <!-- Plugin Js-->
 <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initialize" async defer></script>
 
 <script src="{{ asset('assets/bundles/dataTables.bundle.js') }}"></script>
+
 <script src="{{ asset('assets/js/ajax.js') }}"></script>
 <script src="{{ asset('assets/js/map.js') }}"></script>
+<script src="{{ asset('assets/js/task.js') }}"></script>
 
 <script>
     // project data table
     $(document).ready(function() {
-
+        $('.chatlist-toggle').remove()
         $('#myProjectTable')
         .addClass( 'nowrap' )
         .dataTable( {
@@ -33,6 +35,5 @@
 </script>
 </body>
 
-<!-- Mirrored from pixelwibes.com/template/my-task/html/dist/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Apr 2023 02:58:10 GMT -->
 
 </html>
