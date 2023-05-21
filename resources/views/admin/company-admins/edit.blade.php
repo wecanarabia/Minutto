@@ -85,8 +85,20 @@
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-
-
+                                        @if ($roles) 
+                                        <div class="col-xl-8 mb-3">
+                                            <label class="form-label">Role<span class="text-danger">*</span></label>
+                                            <select class="default-select form-control" name="role_id">
+                                                <option value="" data-display="Select">Role</option>
+                                                @foreach ($roles as $role)
+                                                <option value="{{ $role->id }}" @selected($admin->role_id??old('role_id') == $role->id)>{{ $role->getTranslation('name', 'en')  }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('role_id')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        @endif
                                     <div class="col-xl-8 mb-3">
                                         <input type="submit" class="btn btn-primary me-1" value='Update Subscription'>
                                     </div>

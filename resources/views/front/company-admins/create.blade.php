@@ -63,6 +63,19 @@
                                             @enderror
                                         </div>
 
+                                        <div class="col-md-6">
+                                            <label class="form-label">Role</label>
+                                            <select class="default-select form-control" name="role_id">
+                                             <option Selected disabled>Role</option>
+                                             @foreach ($roles as $role)
+                                             <option value="{{ $role->id }}" @selected(old('role_id') == $role->id)>{{ $role->name  }}</option>
+                                             @endforeach
+                                            </select>
+                                            @error('role_id')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
 
 
 

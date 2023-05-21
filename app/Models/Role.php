@@ -18,6 +18,12 @@ class Role extends Model
     {
         return $this->hasMany(CompanyAdmin::class);
     }
+    
+    
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 
 
     public function getPermissionsAttribute($permission)

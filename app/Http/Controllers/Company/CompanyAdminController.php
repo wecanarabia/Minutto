@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\Company\CompanyAdminRequest;
+use App\Models\Role;
 
 class CompanyAdminController extends Controller
 {
@@ -25,7 +26,8 @@ class CompanyAdminController extends Controller
      */
     public function create()
     {
-        return view('front.company-admins.create');
+        $roles = Role::where('company_id',Auth::user()->company_id)->get();
+        return view('front.company-admins.create','roles');
     }
 
     /**
@@ -57,7 +59,8 @@ class CompanyAdminController extends Controller
     public function edit(string $id)
     {
         $admin = CompanyAdmin::where('company_id',Auth::user()->company_id)->findOrFail($id);
-        return view('front.company-admins.edit',compact('admin'));
+        $roles = $admin->company->roles;
+        return view('front.company-admins.edit',compact('admin','roles'));
     }
 
     /**

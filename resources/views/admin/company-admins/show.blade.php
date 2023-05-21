@@ -31,6 +31,7 @@
                                     <p class="mb-3"><strong>Email: </strong> {{ $admin->email }}</p>
                                     <p class="mb-3"><strong>Phone: </strong> {{ $admin->phone }}</p>
                                     <p class="mb-3"><strong>Company :</strong> {{ $admin->company->getTranslation('name', 'en')??"No Company"  }}</p>
+                                    <p class="mb-3"><strong>Role :</strong> {{ $admin->role->getTranslation('name', 'en')??"No Company"  }}</p>
 
 
                                 </div>

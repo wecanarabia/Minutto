@@ -30,6 +30,7 @@
                                             <th>Admin</th>
                                             <th>Email</th>
                                             <th>Phone</th>
+                                            <th>Role</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -50,6 +51,9 @@
                                            </td>
                                            <td>
                                             {{ $admin->phone }}
+                                           </td>
+                                           <td>
+                                            {{ $admin?->role?->name }}
                                            </td>
 
                                             <td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Company;
 
 use DateTimeZone;
+use App\Models\Role;
 use App\Models\Shift;
 use App\Models\Branch;
 use App\Models\Company;
@@ -24,7 +25,7 @@ class CompanyController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['CheckCompany','timezone'])->only(['edit', 'update','show']);
+        $this->middleware(['CheckCompany','timezone','can:company'])->only(['edit', 'update','show']);
     }
 
 
@@ -197,7 +198,12 @@ class CompanyController extends Controller
         $department->company_id=$company->id;
         $department->save();
         $branch->shifts()->attach($shift->id);
-        CompanyAdmin::find(Auth::guard('company')->user()->id)->update(['company_id'=>$company->id]);
+        $role = Role::create([
+            'name'=>['en'=>'admin','ar'=>'مسؤل'],
+            'company_id'=>$company->id,
+            'permissions'=>json_encode(array_keys(config('global.permissions'))),
+        ]);
+        CompanyAdmin::find(Auth::guard('company')->user()->id)->update(['company_id'=>$company->id,'role_id',$role->id]);
         $days=Workday::WORKDAYS;
         foreach (RewardType::DEFAULTTYPES as $value) {
             RewardType::create([

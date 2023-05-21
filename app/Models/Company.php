@@ -58,6 +58,10 @@ class Company extends Model
     public function extratypes(){
         return $this->hasMany(ExtraType::class);
     }
+    
+    public function roles(){
+        return $this->hasMany(Role::class);
+    }
 
 
 }

@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class CompanyAdmin extends Authenticatable
 {
     use HasFactory;
-    protected $fillable =['name','email','password','phone','company_id','image'];
+    protected $fillable =['name','email','password','phone','company_id','image','role_id'];
     protected $hidden =['password'];
 
     public function setImageAttribute($value){
@@ -33,5 +33,27 @@ class CompanyAdmin extends Authenticatable
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class,'role_id');//one to one
+    }
+
+    public function hasAbility($permissions)//get permission from provider & check it
+    {
+        $role=$this->role;//get & check relation
+        if(!$role){
+            return false;
+        }
+        foreach ($role->permissions as $permission)
+        {
+            if(is_array($permissions) && in_array($permission,$permissions)){
+                return true;
+            }elseif (is_string($permissions) && strcmp($permissions,$permission) == 0){
+                return true;
+            }
+        }
+        return false;
     }
 }

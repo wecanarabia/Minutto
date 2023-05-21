@@ -43,6 +43,7 @@
                                                     <th>Email</th>
                                                     <th>Phone</th>
                                                     <th>Company</th>
+                                                    <th>Role</th>
 
 
                                                     <th>actions</th>
@@ -63,6 +64,10 @@
 
                                                         <td>
                                                             <span>{{ $admin?->company?->getTranslation('name', 'en')??"No Company" }}</span>
+                                                        </td>
+                                                        
+                                                        <td>
+                                                            <span>{{ $admin?->role?->getTranslation('name', 'en')??"No Role" }}</span>
                                                         </td>
 
 

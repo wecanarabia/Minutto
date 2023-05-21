@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Role;
 use App\Models\Company;
 use App\Models\CompanyAdmin;
 use Illuminate\Http\Request;
@@ -58,7 +59,9 @@ class CompanyAdminController extends Controller
     {
         $companies = Company::all();
         $admin = CompanyAdmin::findOrFail($id);
-        return view('admin.company-admins.edit',compact('admin','companies'));
+            $roles = $admin?->company?->roles;
+      
+        return view('admin.company-admins.edit',compact('admin','companies','roles'));
     }
 
     /**

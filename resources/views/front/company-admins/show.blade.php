@@ -38,7 +38,7 @@
                                 </a>
                                 <div
                                     class="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
-                                    <h6 class="mb-0 fw-bold d-block fs-6">{{ $admin->carrer }}</h6>
+                                    <h6 class="mb-0 fw-bold d-block fs-6">{{ $admin?->role?->name }}</h6>
                                     <span class="text-muted small">Admin Id : {{ $admin->id }}</span>
                                 </div>
                             </div>
