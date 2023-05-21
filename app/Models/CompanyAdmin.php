@@ -56,4 +56,10 @@ class CompanyAdmin extends Authenticatable
         }
         return false;
     }
+
+
+    public function logs()
+    {
+        return $this->hasMany(Log::class);
+    }
 }

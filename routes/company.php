@@ -130,6 +130,11 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::get('salaries/filter', [SalaryController::class, 'filter'])->name('salaries.filter');
                 Route::get('salaries/{id}', [SalaryController::class, 'show'])->name('salaries.show');
             });
+
+            //logs
+            Route::get('logs', [LogController::class, 'index'])->name('logs.index')->middleware('can:logs');
+            Route::get('logs/{id}', [LogController::class, 'show'])->name('logs.show')->middleware('can:logs');
+
         });
     });
 });
