@@ -252,7 +252,21 @@
                 </ul>
             </li>
             @endcan
-            @if (Auth::user()->can('admins')||Auth::user()->can('roles'))
+
+            @can('logs')
+            <li class="collapsed">
+                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#logs-Components" href="#">
+                    <i class="icofont-list"></i><span>Logs</span> <span
+                        class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                <!-- Menu: Sub menu ul -->
+                <ul @class([ 'sub-menu' , 'collapse' , 'show'=>Route::currentRouteName() == 'company.logs.index',
+                    ]) id="logs-Components">
+                    <li><a @class([ 'ms-link' , 'active'=> Route::currentRouteName() == 'company.logs.index',
+                            ]) href="{{ route('company.logs.index') }}"> <span>Logs</span></a></li>
+                </ul>
+            </li>
+            @endcan
+            @if (Auth::user()->can('admins')||Auth::user()->can('roles'))c
             <li class="collapsed">
                 <a class="m-link" data-bs-toggle="collapse" data-bs-target="#admins-Components" href="#">
                     <i class="icofont-business-man-alt-1"></i><span>Admins</span> <span

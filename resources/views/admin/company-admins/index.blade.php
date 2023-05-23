@@ -65,7 +65,7 @@
                                                         <td>
                                                             <span>{{ $admin?->company?->getTranslation('name', 'en')??"No Company" }}</span>
                                                         </td>
-                                                        
+
                                                         <td>
                                                             <span>{{ $admin?->role?->getTranslation('name', 'en')??"No Role" }}</span>
                                                         </td>
@@ -134,7 +134,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Delete Subscription</h5>
+          <h5 class="modal-title" id="deleteModalLabel">Delete Company Admin</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form action="{{ route('admin.company-admins.destroy','test') }}" method="post">
