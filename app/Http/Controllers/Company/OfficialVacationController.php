@@ -15,7 +15,7 @@ class OfficialVacationController extends Controller
      */
     public function index()
     {
-        $data = OfficialVacation::where('company_id',Auth::user()->company_id)->get();
+        $data = OfficialVacation::where('company_id',Auth::user()->company_id)->orderByDesc('created_at')->get();
         return view('front.official-vacations.index',compact('data'));
     }
 

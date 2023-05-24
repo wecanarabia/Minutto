@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Models\Log;
 use App\Models\User;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Log;
 use Illuminate\Support\Facades\Auth;
 
 class LogController extends Controller
@@ -15,12 +16,18 @@ class LogController extends Controller
      */
     public function index()
     {
-        $data = Auth::user()->company->users->logs;
+        $branches = Branch::where('company_id', Auth::user()->company_id)->get();
+        $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->get();
+        if ($employees->count()>0) {
+            $data = Log::with('admin','user')->whereBelongsTo($employees)->orderByDesc('created_at')->get();
+        }else{
+            $data=collect([]);
+        }
         return view('front.logs.index',compact('data'));
     }
 
 
-    
+
     /**
      * Display the specified resource.
      */

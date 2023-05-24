@@ -16,7 +16,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $data = Department::where('company_id',Auth::user()->company_id)->get();
+        $data = Department::where('company_id',Auth::user()->company_id)->orderByDesc('created_at')->get();
         return view('front.departments.index',compact('data'));
     }
 

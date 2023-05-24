@@ -15,7 +15,7 @@ class VacationTypeController extends Controller
      */
     public function index()
     {
-        $data = VacationType::where('company_id',Auth::user()->company_id)->get();
+        $data = VacationType::where('company_id',Auth::user()->company_id)->orderByDesc('created_at')->get();
         return view('front.vacation-types.index',compact('data'));
     }
 

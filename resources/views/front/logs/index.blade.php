@@ -16,7 +16,7 @@
               <div class="col-sm-12">
                     <div class="card mb-3">
                         <div class="card-body">
-                            <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                            <table class="table table-hover align-middle mb-0" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
@@ -24,6 +24,7 @@
                                         <th>Admin</th>
                                         <th>Title</th>
                                         <th>Log</th>
+                                        <th>Created At</th>
                                         <th>Show</th>
                                     </tr>
                                 </thead>
@@ -47,11 +48,13 @@
                                        <td>
                                         {{ $log->on }}
                                        </td>
-                                       
+
                                        <td>
                                         {{ $log->log }}
                                        </td>
-
+                                       <td>
+                                        {{ $log->created_at }}
+                                       </td>
                                        <td>
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                                             <a class="btn btn-outline-secondary" href="{{ route('company.logs.show',$log->id) }}"><i class="icofont-location-arrow"></i></a>

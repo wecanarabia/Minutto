@@ -72,5 +72,76 @@
                     </div>
                 </div>
 
+                @can('logs')
+                <div class="row g-3">
+
+
+                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
+                        <div class="card mb-3">
+                            <div class="card-header py-3 d-flex justify-content-between">
+                                <h6 class="mb-0 fw-bold ">Admin Logs</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row clearfix g-3">
+                                    <div class="col-sm-12">
+                                          <div class="card mb-3">
+                                            <table class="table table-hover align-middle mb-0" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Employee</th>
+                                                        <th>Admin</th>
+                                                        <th>Title</th>
+                                                        <th>Log</th>
+                                                        <th>Created At</th>
+                                                        <th>Show</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($admin->logs as $log)
+
+                                                    <tr>
+                                                        <td>
+                                                            {{ $log->id }}
+                                                        </td>
+                                                       <td>
+                                                           <img class="avatar rounded-circle" src="{{ asset( $log->user->image ) }}" alt="">
+                                                           <a href="{{ route('company.employees.show',$log->user->id) }}" class="fw-bold text-secondary">
+                                                           <span class="fw-bold ms-1">{{ $log->user->name }}</span></a>
+                                                       </td>
+                                                       <td>
+                                                        <img class="avatar rounded-circle" src="{{ asset( $log->admin->image ) }}" alt="">
+                                                        <a href="{{ route('company.admins.show',$log->admin->id) }}" class="fw-bold text-secondary">
+                                                        <span class="fw-bold ms-1">{{ $log->admin->name }}</span></a>
+                                                        </td>
+                                                       <td>
+                                                        {{ $log->on }}
+                                                       </td>
+
+                                                       <td>
+                                                        {{ $log->log }}
+                                                       </td>
+                                                       <td>
+                                                        {{ $log->created_at }}
+                                                       </td>
+                                                       <td>
+                                                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                            <a class="btn btn-outline-secondary" href="{{ route('company.logs.show',$log->id) }}"><i class="icofont-location-arrow"></i></a>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+
+                                                    @endforeach
+
+                                                </tbody>
+                                            </table>
+                                          </div>
+                                    </div>
+                                  </div><!-- Row End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endcan
 
 </x-layouts.app>

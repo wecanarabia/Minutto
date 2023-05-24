@@ -1,30 +1,31 @@
 <?php
 
-use App\Http\Controllers\Company\AdvanceController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Company\LogController;
+use App\Http\Controllers\Company\RoleController;
 use App\Http\Controllers\Company\AlertController;
-use App\Http\Controllers\Company\AttendanceController;
-use App\Http\Controllers\Company\BranchController;
-use App\Http\Controllers\Company\CompanyAdminController;
-use App\Http\Controllers\Company\CompanyController;
-use App\Http\Controllers\Company\DepartmentController;
-use App\Http\Controllers\Company\EmployeeController;
-use App\Http\Controllers\Company\EmployeeVacationController;
 use App\Http\Controllers\Company\ExtraController;
-use App\Http\Controllers\Company\ExtraTypeController;
 use App\Http\Controllers\Company\IndexController;
 use App\Http\Controllers\Company\LeaveController;
-use App\Http\Controllers\Company\LeaveTypeController;
 use App\Http\Controllers\Company\LoginController;
-use App\Http\Controllers\Company\OfficialVacationController;
-use App\Http\Controllers\Company\RewardController;
-use App\Http\Controllers\Company\RewardTypeController;
-use App\Http\Controllers\Company\RoleController;
-use App\Http\Controllers\Company\SalaryController;
 use App\Http\Controllers\Company\ShiftController;
-use App\Http\Controllers\Company\VacationController;
-use App\Http\Controllers\Company\VacationTypeController;
+use App\Http\Controllers\Company\BranchController;
+use App\Http\Controllers\Company\RewardController;
+use App\Http\Controllers\Company\SalaryController;
+use App\Http\Controllers\Company\AdvanceController;
+use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Company\WorkDayController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Company\EmployeeController;
+use App\Http\Controllers\Company\VacationController;
+use App\Http\Controllers\Company\ExtraTypeController;
+use App\Http\Controllers\Company\LeaveTypeController;
+use App\Http\Controllers\Company\AttendanceController;
+use App\Http\Controllers\Company\DepartmentController;
+use App\Http\Controllers\Company\RewardTypeController;
+use App\Http\Controllers\Company\CompanyAdminController;
+use App\Http\Controllers\Company\VacationTypeController;
+use App\Http\Controllers\Company\EmployeeVacationController;
+use App\Http\Controllers\Company\OfficialVacationController;
 
 Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],

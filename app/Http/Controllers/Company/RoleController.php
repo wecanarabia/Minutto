@@ -12,7 +12,7 @@ class RoleController extends Controller
 {
     public function index()
     {
-       $data=Role::where('company_id',Auth::guard('company')->user()->company_id)->get();
+       $data=Role::where('company_id',Auth::guard('company')->user()->company_id)->orderByDesc('created_at')->get();
         return view('front.roles.index', compact('data'));
     }
 

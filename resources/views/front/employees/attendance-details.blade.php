@@ -37,10 +37,7 @@
                                 </a>
                                 <div
                                     class="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
-                                    <span class="text-muted small">{{ $attendance->user->name .
-                                        "
-                                        " .
-                                        $attendance->user->last_name }}</span>
+                                    <span class="text-muted small">{{ $attendance->user->namE." ".$attendance->user->last_name }}</span>
                                 </div>
                             </div>
 

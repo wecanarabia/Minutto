@@ -10,9 +10,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\Company\AlertRequest;
+use App\Traits\LogTrait;
 
 class AlertController extends Controller
 {
+    use LogTrait;
       /**
     * Display a listing of the resource.
     */
@@ -21,7 +23,7 @@ class AlertController extends Controller
     $branches = Branch::where('company_id', Auth::user()->company_id)->get();
     $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->get();
     if ($employees->count()>0) {
-        $data = Alert::whereBelongsTo($employees)->get();
+        $data = Alert::whereBelongsTo($employees)->orderByDesc('created_at')->get();
     }else{
         $data=collect([]);
     }
@@ -48,6 +50,7 @@ class AlertController extends Controller
 
 
        $alert = Alert::create($request->all());
+       $this->addLog($alert->user->id,'Add Alert','إضافة مخالفة','Alert has been added to employee','تم إضافة مخالفة على موظف',$alert->note);
        if ($alert->getTranslation('type','en')=='vacation days') {
             if ($alert->user->userVacation->vacation_balance>=$alert->punishment) {
                 $alert->user->userVacation()->update(['vacation_balance'=>($alert->user->userVacation->vacation_balance-$alert->punishment)]);
@@ -107,7 +110,7 @@ class AlertController extends Controller
 
         }
         $alert->update($request->all());
-
+        $this->addLog($alert->user->id,'Update Alert','تحديث مخالفة','Alert has been updated on employee','تم تحديث مخالفة على موظف',$alert->note);
        if ($alert->getTranslation('type','en')=='vacation days'&&$alert->user->userVacation->vacation_balance>=$alert->punishment) {
 
                 $alert->user->userVacation()->update(['vacation_balance'=>(int)$sum-(int)$alert->punishment]);

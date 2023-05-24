@@ -7,17 +7,19 @@ use App\Models\Branch;
 use App\Models\Advance;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Traits\LogTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AdvanceController extends Controller
 {
+    use LogTrait;
     public function index()
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
-            $data = Advance::whereBelongsTo($employees)->get();
+            $data = Advance::whereBelongsTo($employees)->orderByDesc('created_at')->get();
         }else{
             $data=collect([]);
         }
@@ -55,7 +57,7 @@ class AdvanceController extends Controller
         $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
         $request['status'] = json_decode($request['status'],true);
         $validator = Validator::make($request->all(), [
-            'value'=>'required|numeric|declined_if:status.en,waiting|declined_if:status.en,rejected|min:0',
+            'value'=>'required_if:status.en,approve|numeric|min:0|declined_if:status.en,waiting|declined_if:status.en,rejected',
             'note'=>'required|min:4|max:2000',
             'replay'=>'required|min:4|max:2000',
             'req_date'=>'required|date',
@@ -70,7 +72,13 @@ class AdvanceController extends Controller
                 'error' => $validator->errors()->all(),
             ]);
         }
-
+        if ($advance->getTranslation('status','en')!==$request['status.en']) {
+            if($request['status.en'] == 'approve'){
+                $this->addLog($advance->user->id,'Update advance request','تحديث طلب السلفة','Advance request has been approved','تم الموافقة على طلب السلفة',$request['note']);
+            }else if($request['status.en'] == 'rejected'){
+                $this->addLog($advance->user->id,'Update advance request','تحديث طلب السلفة','Advance request has been rejected','تم رفض على طلب السلفة',$request['note']);
+            };
+        };
         $advance->update([
             'status'=>$request['status'],
             'value'=>$request['value'],

@@ -60,6 +60,6 @@ class CompanyAdmin extends Authenticatable
 
     public function logs()
     {
-        return $this->hasMany(Log::class);
+        return $this->hasMany(Log::class,'company_admin_id');
     }
 }

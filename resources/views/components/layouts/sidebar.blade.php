@@ -266,7 +266,7 @@
                 </ul>
             </li>
             @endcan
-            @if (Auth::user()->can('admins')||Auth::user()->can('roles'))c
+            @if (Auth::user()->can('admins')||Auth::user()->can('roles'))
             <li class="collapsed">
                 <a class="m-link" data-bs-toggle="collapse" data-bs-target="#admins-Components" href="#">
                     <i class="icofont-business-man-alt-1"></i><span>Admins</span> <span

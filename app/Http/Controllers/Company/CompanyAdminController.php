@@ -17,7 +17,7 @@ class CompanyAdminController extends Controller
      */
     public function index()
     {
-        $data = CompanyAdmin::where('company_id',Auth::user()->company_id)->get();
+        $data = CompanyAdmin::where('company_id',Auth::user()->company_id)->orderByDesc('created_at')->get();
         return view('front.company-admins.index',compact('data'));
     }
 

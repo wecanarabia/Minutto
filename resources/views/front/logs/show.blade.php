@@ -26,7 +26,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12">
                 <div class="card teacher-card  mb-3">
                     <div class="card-header py-3 d-flex justify-content-between">
-                        <h6 class="mb-0 fw-bold ">{{ $log->user->name }} Incentive</h6>
+                        <h6 class="mb-0 fw-bold ">{{ $log->user->name }} Log</h6>
                     </div>
                     <div class="card-body  d-flex teacher-fulldeatil">
                         @if ($log->user)
@@ -50,10 +50,10 @@
                                         <span class="fw-bold">Admin</span>
                                     </div>
                                     <div class="col-8">
-                                        <span class="text-muted"><a href="{{ route('company.admins.show',$log->admin->id) }}">{{ $log->admin }}</a></span>
+                                        <span class="text-muted"><a href="{{ route('company.admins.show',$log->admin->id) }}">{{ $log->admin->name }}</a></span>
                                     </div>
                                 </li>
-                                
+
                                 <li class="row flex-wrap mb-3">
                                     <div class="col-4">
                                         <span class="fw-bold">English Title</span>
@@ -62,7 +62,7 @@
                                         <span class="text-muted">{{ $log->getTranslation('on','en') }}</span>
                                     </div>
                                 </li>
-                                
+
                                 <li class="row flex-wrap mb-3">
                                     <div class="col-4">
                                         <span class="fw-bold">Arabic Title</span>
@@ -79,7 +79,7 @@
                                         <span class="text-muted">{{ $log->getTranslation('log','en') }}</span>
                                     </div>
                                 </li>
-                                
+
                                 <li class="row flex-wrap mb-3">
                                     <div class="col-4">
                                         <span class="fw-bold">Arabic Log</span>
@@ -88,7 +88,7 @@
                                         <span class="text-muted">{{ $log->getTranslation('log','ar') }}</span>
                                     </div>
                                 </li>
-                                
+
                                  <li class="row flex-wrap mb-3">
                                     <div class="col-4">
                                         <span class="fw-bold">Note</span>
@@ -98,7 +98,16 @@
                                     </div>
                                  </li>
 
-                                
+                                 <li class="row flex-wrap mb-3">
+                                    <div class="col-4">
+                                        <span class="fw-bold">created_at</span>
+                                    </div>
+                                    <div class="col-8">
+                                        <span class="text-muted">{{ $log->created_at }}</span>
+                                    </div>
+                                 </li>
+
+
                             </ul>
                         </div>
                     </div>

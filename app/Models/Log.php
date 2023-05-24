@@ -13,10 +13,10 @@ class Log extends Model
     public $translatable = ['log','on'];
 
     public function admin(){
-        return $this->belongsTo(CompanyAdmin::class);
+        return $this->belongsTo(CompanyAdmin::class,'company_admin_id');
     }
-    
+
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'employee_id');
     }
 }

@@ -174,7 +174,7 @@
                         <h6 class="mb-0 fw-bold ">Branches</h6>
                     </div>
                       <div class="card-body">
-                          <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                          <table class="table table-hover align-middle mb-0" style="width:100%">
                               <thead>
                                   <tr>
                                       <th>Id</th>

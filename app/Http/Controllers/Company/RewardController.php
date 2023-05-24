@@ -22,7 +22,7 @@ class RewardController extends Controller
     $branches = Branch::where('company_id', Auth::user()->company_id)->get();
     $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->get();
     if ($employees->count()>0) {
-        $data = Reward::whereBelongsTo($employees)->get();
+        $data = Reward::whereBelongsTo($employees)->orderByDesc('created_at')->get();
     }else{
         $data=collect([]);
     }

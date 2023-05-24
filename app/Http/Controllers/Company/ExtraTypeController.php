@@ -15,7 +15,7 @@ class ExtraTypeController extends Controller
      */
     public function index()
     {
-        $data = ExtraType::where('company_id',Auth::user()->company_id)->get();
+        $data = ExtraType::where('company_id',Auth::user()->company_id)->orderByDesc('created_at')->get();
         return view('front.extra-types.index',compact('data'));
     }
 

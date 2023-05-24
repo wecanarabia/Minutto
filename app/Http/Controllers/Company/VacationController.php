@@ -18,7 +18,7 @@ class VacationController extends Controller
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
-            $data = Vacation::whereBelongsTo($employees)->get();
+            $data = Vacation::whereBelongsTo($employees)->orderByDesc('created_at')->get();
         }else{
             $data=collect([]);
         }

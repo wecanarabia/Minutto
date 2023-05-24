@@ -15,7 +15,7 @@
               <div class="col-sm-12">
                     <div class="card mb-3">
                         <div class="card-body">
-                            <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                            <table class="table table-hover align-middle mb-0" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
@@ -40,10 +40,10 @@
                                            <span class="fw-bold ms-1">{{ $attendance->user->name }}</span></a>
                                        </td>
                                        <td>
-                                        {{ $attendance->time_attendance->setTimezone(Auth::user()) }}
+                                        {{ $attendance->time_attendance }}
                                        </td>
                                        <td>
-                                        {{ $attendance->time_departure->setTimezone(Auth::user()) }}
+                                        {{ $attendance->time_departure }}
                                        </td>
                                        <td>
                                         {{ $attendance->discount_value }}
