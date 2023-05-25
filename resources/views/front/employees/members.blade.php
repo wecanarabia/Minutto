@@ -45,13 +45,13 @@
                                         {{ $employee->phone }}
                                        </td>
                                        <td>
-                                        {{ $employee->branch->name }}
+                                        {{ $employee?->branch?->name }}
                                        </td>
                                        <td>
-                                        {{ $employee->shift->name }}
+                                        {{ $employee?->shift?->name }}
                                        </td>
                                        <td>
-                                        {{ $employee->shift->name }}
+                                        {{ $employee?->shift?->name }}
                                        </td>
                                     </tr>
 
