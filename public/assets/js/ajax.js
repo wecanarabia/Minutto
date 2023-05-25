@@ -291,7 +291,7 @@ $(document).ready(function() {
         var replay = $("#exampleFormControlVacationreplay").val();
         $.ajax({
            method:'POST',
-           url:"/vacations/update/"+id,
+           url:"/vacation-requests/update/"+id,
            data:{
             status:status,
             from:from,

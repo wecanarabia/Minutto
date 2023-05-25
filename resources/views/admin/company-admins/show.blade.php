@@ -20,7 +20,7 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-12">
+                <div class="col-xl-8">
                     <div class="card">
                         <div class="card-body p-0">
                             <div class="offcanvas-body">
@@ -35,7 +35,7 @@
 
 
                                 </div>
-                                <img class="card-img-bottom img-fluid" src="{{ asset( $admin->image ) }}" alt="{{ $admin->name }}">
+                                <img class="card-img-bottom img-thumbnail" src="{{ asset( $admin->image ) }}" alt="{{ $admin->name }}">
 
                         </div>
                         </div>

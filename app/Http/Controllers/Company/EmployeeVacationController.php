@@ -11,9 +11,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Company\EmployeeVacationRequest;
+use App\Traits\LogTrait;
 
 class EmployeeVacationController extends Controller
 {
+    use LogTrait;
     public function index()
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
@@ -65,7 +67,8 @@ class EmployeeVacationController extends Controller
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employee = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->whereDoesntHave('userVacation')->find($request['user_id']);
         if ($employee) {
-            EmployeeVacation::create($request->all());
+            $vacation = EmployeeVacation::create($request->all());
+            $this->addLog($vacation->user->id, 'Add Employee Vacation', 'إضافة أجازة لموظف', 'Employee vacations\' balance has been added', 'تم إضافة رصيد أجازات لموظف');
         }else {
             return redirect()->back();
         }
@@ -102,7 +105,7 @@ class EmployeeVacationController extends Controller
                 'error' => $validator->errors()->all(),
             ]);
         }
-
+        $this->addLog($vacation->user->id, 'Update Employee vacation', 'تحديث رصيد إجازة لموظف', 'Employee vacations\' balance has been updated', 'تم تحديث رصيد الأجازات لموظف');
         $vacation->update($request->all());
         return response()->json(['success' => 'Advance updated successfully.']);
     }

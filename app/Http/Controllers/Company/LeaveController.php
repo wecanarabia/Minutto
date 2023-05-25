@@ -7,11 +7,13 @@ use App\Models\Leave;
 use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Traits\LogTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class LeaveController extends Controller
 {
+    use LogTrait;
     public function index()
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
@@ -63,12 +65,23 @@ class LeaveController extends Controller
             'status.en'=>"required|in:waiting,approve,rejected",
         ]);
 
-        $attendance = Leave::find($id);
         $allStatus=Leave::STATUS;
         if ($validator->fails()||!in_array($leave->user->id,$employees)||!in_array($request['status'],$allStatus)) {
             return response()->json([
                 'error' => $validator->errors()->all(),
             ]);
+        }
+        if ($leave->getTranslation('status','en')!==$request['status.en']) {
+            if($request['status.en'] == 'approve'){
+                $this->addLog($leave->user->id,'Update leave request','تحديث طلب المغادرة','Leave request has been approved','تم الموافقة على طلب المغادرة',$request['note']);
+            }else if($request['status.en'] == 'rejected'){
+                $this->addLog($leave->user->id,'Update leave request','تحديث طلب المغادرة','Leave request has been rejected','تم رفض طلب المغادرة',$request['note']);
+            };
+        };
+
+        if ($leave->discount_value!==$request['discount_value']) {
+
+            $this->addLog($leave->user->id, 'Update leave request', 'تحديث طلب المغادرة', 'Leave request Discount has been updated', 'تم تحديث قيمة خصم طلب المغادرة لموظف', $request['note']);
         }
         $leave->update([
             'status'=>$request['status'],

@@ -15,7 +15,7 @@ return [
         'alerts'=>['en'=>'Alerts','ar'=>'الجزاءات'],
         'extra'=>['en'=>'Extras','ar'=>'الإضافي'],
         'advances'=>['en'=>'Advances','ar'=>'السلف'],
-        'salries'=>['en'=>'Salries','ar'=>'الرواتب'],
+        'salaries'=>['en'=>'Salaries','ar'=>'الرواتب'],
         'logs'=>['en'=>'Logs','ar'=>'السجلات'],
         'official-vacations'=>['en'=>'Official Vacations','ar'=>'الأجازات الرسمية'],
     ]

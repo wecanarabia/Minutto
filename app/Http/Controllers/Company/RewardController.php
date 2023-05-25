@@ -11,9 +11,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\Company\RewardRequest;
+use App\Traits\LogTrait;
 
 class RewardController extends Controller
 {
+    use LogTrait;
     /**
     * Display a listing of the resource.
     */
@@ -50,12 +52,13 @@ class RewardController extends Controller
 
 
        $reward = Reward::create($request->all());
+       $this->addLog($reward->user->id, 'Add Employee incentive', 'إضافة حافز لموظف', 'Employee Incentive has been added', 'تم إضافة حافز لموظف',$request['note']);
        if ($reward->getTranslation('status','en')=='approve'&&$reward->rtype->getTranslation('name','en')=='vacation days') {
         if ($reward->user->userVacation->vacation_balance>=$reward->reward_value) {
 
             $reward->user->userVacation()->update(['vacation_balance'=>($reward->user->userVacation->vacation_balance+$reward->reward_value)]);
         }
-   }
+        }
        return redirect()->route('company.rewards.index')
                        ->with('success','Incentive has been added successfully');
    }
@@ -111,6 +114,16 @@ class RewardController extends Controller
         $reward->user->userVacation()->update(['vacation_balance'=>(int)$sub]);
 
         }
+        if ($reward->getTranslation('status','en')!==$request['status.en']) {
+            if($request['status.en'] == 'approve'){
+                $this->addLog($reward->user->id,'Update Employee incentive','تحديث حافز لموظف','Employee Incentive has been approved','تم الموافقة على طلب حافز',$request['note']);
+            }else if($request['status.en'] == 'rejected'){
+                $this->addLog($reward->user->id,'Update Employee incentive','تحديث حافز لموظف','Employee Incentive has been rejected','تم رفض  طلب حافز',$request['note']);
+            };
+        }else{
+            $this->addLog($reward->user->id, 'Update Employee incentive', 'تحديث حافز لموظف', 'Employee Incentive has been updated', 'تم تحديث حافز لموظف',$request['note']);
+        }
+
        $reward->update($request->all());
        if ($reward->getTranslation('status','en')=='approve'&&$reward->rtype->getTranslation('name','en')=='vacation days'&&$reward->user->userVacation->vacation_balance>=$reward->reward_value) {
 

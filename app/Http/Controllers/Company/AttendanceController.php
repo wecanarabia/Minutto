@@ -78,8 +78,8 @@ class AttendanceController extends Controller
 
             $this->addLog($attendance->user->id, 'Update Attendance', 'تحديث الحضور', 'Attendance Status has been updated', 'تم تحديث حالة الحضور لموظف', $request['note']);
         }
-        
-        if ($attendance->discount_value!==$request['discount_value.en']) {
+
+        if ($attendance->discount_value!==$request['discount_value']) {
 
             $this->addLog($attendance->user->id, 'Update Attendance', 'تحديث الحضور', 'Attendance Discount has been updated', 'تم تحديث قيمة خصم الحضور لموظف', $request['note']);
         }

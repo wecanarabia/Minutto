@@ -122,7 +122,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::post('employee-vacations/update/{id}', [EmployeeVacationController::class, 'update'])->name('employee-vacations.update');
             });
             //salaries
-            Route::group(['middleware' => 'can:salries'], function () {
+            Route::group(['middleware' => 'can:salaries'], function () {
                 Route::get('salaries', [SalaryController::class, 'index'])->name('salaries.index');
                 Route::get('salaries/generate', [SalaryController::class, 'generate'])->name('salaries.generate');
                 Route::get('salaries/update', [SalaryController::class, 'update'])->name('salaries.update');

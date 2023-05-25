@@ -36,6 +36,9 @@
             ]
         });
         }else{
+            if (!$('table').hasClass('data-table')) {
+
+
         $('table')
         .addClass( 'nowrap' )
         .dataTable( {
@@ -45,6 +48,7 @@
                 { targets: [-1, -3], className: 'dt-body-right' }
             ]
         });
+    }
     }
 
     });

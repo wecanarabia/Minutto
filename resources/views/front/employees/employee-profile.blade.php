@@ -964,7 +964,7 @@
                     </div>
                     @endcan
 
-                    @can('salries')
+                    @can('salaries')
                     <div class="row g-3">
 
 

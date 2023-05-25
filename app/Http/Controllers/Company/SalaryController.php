@@ -17,9 +17,11 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Company\SalaryRequest;
+use App\Traits\LogTrait;
 
 class SalaryController extends Controller
 {
+    use LogTrait;
     public function index()
     {
         $now = Carbon::now();
@@ -105,7 +107,8 @@ class SalaryController extends Controller
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employee = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->thisMonth($now)->whereDoesntHave('salary')->find($request['user_id']);
         if ($employee) {
-            Salary::create($request->all());
+            $salary = Salary::create($request->all());
+            $this->addLog($salary->user->id, 'Add Employee salary', 'إضافة راتب لموظف', 'Employee salary has been added', 'تم إضافة راتب لموظف');
         }else {
             return redirect()->back();
         }

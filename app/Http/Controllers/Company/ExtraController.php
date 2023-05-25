@@ -7,12 +7,14 @@ use App\Models\Extra;
 use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Traits\LogTrait;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ExtraController extends Controller
 {
+    use LogTrait;
     public function index()
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
@@ -78,6 +80,13 @@ class ExtraController extends Controller
         }else{
             $mount=0;
         }
+        if ($extra->getTranslation('status','en')!==$request['status.en']) {
+            if($request['status.en'] == 'approve'){
+                $this->addLog($extra->user->id,'Update extra request','تحديث طلب الإضافي','Extra request has been approved','تم الموافقة على طلب الإضافي',$request['note']);
+            }else if($request['status.en'] == 'rejected'){
+                $this->addLog($extra->user->id,'Update extra request','تحديث طلب الإضافي','Extra request has been rejected','تم رفض على طلب الإضافي',$request['note']);
+            };
+        };
         $extra->update([
             'status'=>$request['status'],
             'from'=>$request['from'],

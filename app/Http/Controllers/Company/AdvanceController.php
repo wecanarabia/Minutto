@@ -76,7 +76,7 @@ class AdvanceController extends Controller
             if($request['status.en'] == 'approve'){
                 $this->addLog($advance->user->id,'Update advance request','تحديث طلب السلفة','Advance request has been approved','تم الموافقة على طلب السلفة',$request['note']);
             }else if($request['status.en'] == 'rejected'){
-                $this->addLog($advance->user->id,'Update advance request','تحديث طلب السلفة','Advance request has been rejected','تم رفض على طلب السلفة',$request['note']);
+                $this->addLog($advance->user->id,'Update advance request','تحديث طلب السلفة','Advance request has been rejected','تم رفض طلب السلفة',$request['note']);
             };
         };
         $advance->update([

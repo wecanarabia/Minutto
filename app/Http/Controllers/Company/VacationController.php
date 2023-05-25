@@ -8,11 +8,13 @@ use App\Models\Vacation;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Traits\LogTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class VacationController extends Controller
 {
+    use LogTrait;
     public function index()
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
@@ -85,8 +87,9 @@ class VacationController extends Controller
             }else{
                 $num=count($days);
             }
+        }else{
+            $num = 0;
         }
-
 
 
         if (in_array($vacation->getTranslation('status','en'),['approve','rejected'])||$validator->fails()||!in_array($vacation->user->id,$employees)||!in_array($request['status'],$allStatus)) {
@@ -96,6 +99,13 @@ class VacationController extends Controller
                 'error' => $errors,
             ]);
         }
+        if ($vacation->getTranslation('status','en')!==$request['status.en']) {
+            if($request['status.en'] == 'approve'){
+                $this->addLog($vacation->user->id,'Update vacation request','تحديث طلب الإجازة','vacation request has been approved','تم الموافقة على طلب الإجازة',$request['note']);
+            }else if($request['status.en'] == 'rejected'){
+                $this->addLog($vacation->user->id,'Update vacation request','تحديث طلب الإجازة','vacation request has been rejected','تم رفض طلب الإجازة',$request['note']);
+            };
+        };
         $vacation->user->userVacation()->update(['vacation_balance'=>($vacation->user->userVacation->vacation_balance-$num)]);
         $vacation->update([
             'status'=>$request['status'],
