@@ -20,14 +20,22 @@
 <script>
     // project data table
     $(document).ready(function() {
-        $('.chatlist-toggle').remove()
         if ($('table').hasClass('table-attendance')||$('table').hasClass('table-leaves')
         ||$('table').hasClass('table-rewards')||$('table').hasClass('table-advances')
         ||$('table').hasClass('table-extra')||$('table').hasClass('table-alerts')
         ||$('table').hasClass('table-vacations')||$('table').hasClass('table-vacations2')
         ||$('table').hasClass('table-salaries')||$('table').hasClass('table-logs')) {
 
-            $('.table-attendance, .table-leaves, .table-rewards, .table-advances, .table-extra, .table-alerts, .table-vacations, .table-vacations2, .table-salaries, .table-logs')
+            $('.table-attendance')
+            .addClass( 'nowrap' )
+        .dataTable( {
+            responsive: true,
+            order:[[0, 'desc']],
+            columnDefs: [
+                { targets: [-1, -3], className: 'dt-body-right' }
+            ]
+        });
+            $(' .table-leaves, .table-rewards, .table-advances, .table-extra, .table-alerts, .table-vacations, .table-vacations2, .table-salaries, .table-logs')
         .addClass( 'nowrap' )
         .dataTable( {
             responsive: true,
@@ -37,23 +45,22 @@
             ]
         });
 
-        }
-    //     else{
+        }else{
 
-    //         if (!$('table').hasClass('data-table')) {
+            if (!$('table').hasClass('data-table')) {
 
 
-    //     $('table')
-    //     .addClass( 'nowrap' )
-    //     .dataTable( {
-    //         responsive: true,
-    //         order:[[0, 'desc']],
-    //         columnDefs: [
-    //             { targets: [-1, -3], className: 'dt-body-right' }
-    //         ]
-    //     });
-    // }
-    // }
+        $('table')
+        .addClass( 'nowrap' )
+        .dataTable( {
+            responsive: true,
+            order:[[0, 'desc']],
+            columnDefs: [
+                { targets: [-1, -3], className: 'dt-body-right' }
+            ]
+        });
+    }
+    }
 
     });
 </script>
