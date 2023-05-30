@@ -43,6 +43,7 @@
         &&!$('table').hasClass('table-vacations')&&!$('table').hasClass('table-vacations2')
         &&!$('table').hasClass('table-salries')&&!$('table').hasClass('table-logs')) {
         {
+            console.log('object');
             if (!$('table').hasClass('data-table')) {
 
 
