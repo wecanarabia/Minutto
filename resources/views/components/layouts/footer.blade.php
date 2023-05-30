@@ -35,8 +35,7 @@
                 { targets: [-1, -3], className: 'dt-body-right' }
             ]
         });
-        }else{
-            if (!$('table').hasClass('data-table')) {
+        }else if (!$('table').hasClass('data-table')) {
 
 
         $('table')
