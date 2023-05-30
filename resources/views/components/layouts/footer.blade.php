@@ -25,7 +25,7 @@
         ||$('table').hasClass('table-rewards')||$('table').hasClass('table-advances')
         ||$('table').hasClass('table-extra')||$('table').hasClass('table-alerts')
         ||$('table').hasClass('table-vacations')||$('table').hasClass('table-vacations2')
-        ||$('table').hasClass('table-salries')||$('table').hasClass('table-logs')) {
+        ||$('table').hasClass('table-salaries')||$('table').hasClass('table-logs')) {
 
             $('.table-attendance, .table-leaves, .table-rewards, .table-advances, .table-extra, .table-alerts, .table-vacations, .table-vacations2, .table-salaries, .table-logs')
         .addClass( 'nowrap' )
@@ -37,13 +37,8 @@
             ]
         });
 
-        }else if (!$('table').hasClass('table-attendance')&&!$('table').hasClass('table-leaves')
-        &&!$('table').hasClass('table-rewards')&&!$('table').hasClass('table-advances')
-        &&!$('table').hasClass('table-extra')&&!$('table').hasClass('table-alerts')
-        &&!$('table').hasClass('table-vacations')&&!$('table').hasClass('table-vacations2')
-        &&!$('table').hasClass('table-salries')&&!$('table').hasClass('table-logs')) {
-        
-            console.log('object');
+        }else{
+
             if (!$('table').hasClass('data-table')) {
 
 
