@@ -27,7 +27,7 @@
         ||$('table').hasClass('table-vacations')||$('table').hasClass('table-vacations2')
         ||$('table').hasClass('table-salries')||$('table').hasClass('table-logs')) {
 
-            $(' .table-leaves, .table-rewards, .table-advances, .table-extra, .table-alerts, .table-vacations, .table-vacations2, .table-salaries, .table-logs')
+            $('.table-attendance, .table-leaves, .table-rewards, .table-advances, .table-extra, .table-alerts, .table-vacations, .table-vacations2, .table-salaries, .table-logs')
         .addClass( 'nowrap' )
         .dataTable( {
             responsive: true,
