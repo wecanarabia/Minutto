@@ -539,7 +539,7 @@
                     </div>
                     @endcan
 
-                    {{-- @can('vacations')
+                    @can('vacations')
                     <div class="row g-3">
 
 
@@ -828,7 +828,7 @@
                     </div>
                     @endcan
 
-                    @can('alerts')
+                    {{-- @can('alerts')
                     <div class="row g-3">
 
 
