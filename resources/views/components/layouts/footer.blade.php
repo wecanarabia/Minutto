@@ -26,7 +26,8 @@
         ||$('table').hasClass('table-extra')||$('table').hasClass('table-alerts')
         ||$('table').hasClass('table-vacations')||$('table').hasClass('table-vacations2')
         ||$('table').hasClass('table-salries')||$('table').hasClass('table-logs')) {
-            $('table')
+
+            $('.table-attendance, .table-leaves, .table-rewards, .table-advances, .table-extra, .table-alerts, .table-vacations, .table-vacations2, .table-salaries, .table-logs')
         .addClass( 'nowrap' )
         .dataTable( {
             responsive: true,
@@ -35,7 +36,7 @@
                 { targets: [-1, -3], className: 'dt-body-right' }
             ]
         });
-            $('.table-leaves, .table-rewards, .table-advances, .table-extra, .table-alerts, .table-vacations, .table-vacations2, .table-salaries, .table-logs')
+        $('table')
         .addClass( 'nowrap' )
         .dataTable( {
             responsive: true,
