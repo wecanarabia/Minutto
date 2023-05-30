@@ -26,7 +26,7 @@
         ||$('table').hasClass('table-extra')||$('table').hasClass('table-alerts')
         ||$('table').hasClass('table-vacations')||$('table').hasClass('table-vacations2')
         ||$('table').hasClass('table-salries')||$('table').hasClass('table-logs')) {
-           4('#DataTables_Table_0_wrapper').remove()
+           $('#DataTables_Table_0_wrapper').remove()
             $('.table-attendance, .table-leaves, .table-rewards, .table-advances, .table-extra, .table-alerts, .table-vacations, .table-vacations2, .table-salaries, .table-logs')
         .addClass( 'nowrap' )
         .dataTable( {
