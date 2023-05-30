@@ -37,11 +37,11 @@
             ]
         });
 
-        }else if (!$('table').hasClass('table-attendance')||!$('table').hasClass('table-leaves')
-        ||!$('table').hasClass('table-rewards')||!$('table').hasClass('table-advances')
-        ||!$('table').hasClass('table-extra')||!$('table').hasClass('table-alerts')
-        ||!$('table').hasClass('table-vacations')||!$('table').hasClass('table-vacations2')
-        ||!$('table').hasClass('table-salries')||!$('table').hasClass('table-logs')) {
+        }else if (!$('table').hasClass('table-attendance')&&!$('table').hasClass('table-leaves')
+        &&!$('table').hasClass('table-rewards')&&!$('table').hasClass('table-advances')
+        &&!$('table').hasClass('table-extra')&&!$('table').hasClass('table-alerts')
+        &&!$('table').hasClass('table-vacations')&&!$('table').hasClass('table-vacations2')
+        &&!$('table').hasClass('table-salries')&&!$('table').hasClass('table-logs')) {
         {
             if (!$('table').hasClass('data-table')) {
 
