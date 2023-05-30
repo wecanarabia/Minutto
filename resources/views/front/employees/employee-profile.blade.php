@@ -1073,14 +1073,14 @@
                             <div class="col">
                                 <label for="exampleFormControlInput2222" class="form-label">Gender</label>
                                 <div class="form-check">
-                                    <input class="form-check-input flexRadioDefault1" type="radio" value="male"
+                                    <input class="form-check-input flexRadioDefault1" name="gender" type="radio" value="male"
                                         @checked($employee->gender=='male')>
                                     <label class="form-check-label" for="flexRadioDefault1">
                                         Male
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input flexRadioDefault1" type="radio" value="female"
+                                    <input class="form-check-input flexRadioDefault1" type="radio" name="gender" value="female"
                                         @checked($employee->gender=='female')>
                                     <label class="form-check-label" for="flexRadioDefault2">
                                         Female
@@ -1364,14 +1364,14 @@
                                 <div class="col">
                                     <label for="exampleFormControlInput977" class="form-label">Status</label>
                                     <div class="form-check">
-                                        <input class="form-check-input flexRadioDefault44" type="radio" value="1"
+                                        <input class="form-check-input flexRadioDefault44" name="status" type="radio" value="1"
                                             @checked($employee->active==1)>
                                         <label class="form-check-label">
                                             Active
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input flexRadioDefault44" type="radio" value="0"
+                                        <input class="form-check-input flexRadioDefault44" name="status" type="radio" value="0"
                                             @checked($employee->active==0)>
                                         <label class="form-check-label">
                                             In Active
