@@ -463,7 +463,7 @@
                     </div>
                     @endcan
 
-                    @can('leaves')
+                    {{-- @can('leaves')
                     <div class="row g-3">
 
 
@@ -1106,7 +1106,7 @@
                             </div>
                         </div>
                     </div>
-                    @endcan
+                    @endcan --}}
                 </div>
 
             </div><!-- Row End -->
