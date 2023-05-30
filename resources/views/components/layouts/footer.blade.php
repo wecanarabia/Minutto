@@ -23,11 +23,11 @@
         if ($('table').hasClass('table-attendance')||$('table').hasClass('table-leaves')
         ||$('table').hasClass('table-rewards')||$('table').hasClass('table-advances')
         ||$('table').hasClass('table-extra')||$('table').hasClass('table-alerts')
-        ||$('table').hasClass('table-vacations')||$('table').hasClass('table-vacations2')
+        ||$('table').hasClass('table-vacations')||$('table').hasClass('table-vacation-e')
         ||$('table').hasClass('table-salaries')||$('table').hasClass('table-logs')) {
 
-   
-            $('.table-attendance, .table-leaves, .table-rewards, .table-advances, .table-extra, .table-alerts, .table-vacations, .table-vacations2, .table-salaries, .table-logs')
+
+            $('.table-attendance, .table-leaves, .table-rewards, .table-advances, .table-extra, .table-alerts, .table-vacations, .table-vacation-e, .table-salaries, .table-logs')
         .addClass( 'nowrap' )
         .dataTable( {
             responsive: true,

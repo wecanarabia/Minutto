@@ -828,7 +828,7 @@
                     </div>
                     @endcan
 
-                    {{-- @can('alerts')
+                     @can('alerts')
                     <div class="row g-3">
 
 
@@ -914,7 +914,7 @@
                                         <div class="col-sm-12">
                                               <div class="card mb-3">
                                                   <div class="card-body">
-                                                    <table class="table table-vacations2 table-hover align-middle mb-0" style="width:100%">
+                                                    <table class="table table-vacation-e table-hover align-middle mb-0" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th>Id</th>
@@ -1106,7 +1106,7 @@
                             </div>
                         </div>
                     </div>
-                    @endcan --}}
+                    @endcan
                 </div>
 
             </div><!-- Row End -->
