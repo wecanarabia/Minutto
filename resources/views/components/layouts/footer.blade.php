@@ -36,15 +36,7 @@
                 { targets: [-1, -3], className: 'dt-body-right' }
             ]
         });
-        $('table')
-        .addClass( 'nowrap' )
-        .dataTable( {
-            responsive: true,
-            order:[[0, 'desc']],
-            columnDefs: [
-                { targets: [-1, -3], className: 'dt-body-right' }
-            ]
-        });
+
         }else if (!$('table').hasClass('data-table')) {
 
 
@@ -58,7 +50,7 @@
             ]
         });
     }
-    }
+    // }
 
     });
 </script>
