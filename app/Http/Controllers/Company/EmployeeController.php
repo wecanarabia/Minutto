@@ -129,7 +129,7 @@ class EmployeeController extends Controller
             'daily_salary'=>'sometimes|numeric|min:0',
             'hourly_salary'=>'sometimes|numeric|min:0',
             'contract_expire'=>'sometimes|date',
-            'branch_id'=>'sometimes|exists:branches,id',
+            'department_id'=>'sometimes|exists:branches,id',
             'branch_id'=>'sometimes|exists:departments,id',
             'shift_id'=>'sometimes|exists:shifts,id',
             'work_start'=>'sometimes|date',
