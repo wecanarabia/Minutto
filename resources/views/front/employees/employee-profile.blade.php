@@ -1221,18 +1221,19 @@
                         <input id="id3" type="hidden" value="{{ $employee->id }}">
                         <div class="row g-3 mb-3">
                             <div class="col">
+                                <label for="exampleFormWorkStart" class="form-label">Working Start Date</label>
+                                <input type="date" class="form-control" id="exampleFormWorkStart"
+                                    value="{{ $employee->work_start }}">
+
+                            </div>
+                            <div class="col">
                                 <label for="exampleFormControlInput1131" class="form-label">Career</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1131"
                                     value="{{ $employee->career }}">
 
                             </div>
 
-                            <div class="col">
-                                <label for="exampleFormWorkStart" class="form-label">Working Start Date</label>
-                                <input type="date" class="form-control" id="exampleFormWorkStart"
-                                    value="{{ $employee->work_start }}">
 
-                            </div>
                         </div>
                         <div class="row g-3 mb-3">
                             <div class="col">
