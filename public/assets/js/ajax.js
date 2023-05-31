@@ -28,7 +28,8 @@ $(document).ready(function() {
             passport_identity:PassportNo,
             national_identity:nationalId,
             emergency_contact:eContact,
-            address:address
+            address:address,
+
             },
            success:function(data){
                 if($.isEmptyObject(data.error)){
@@ -51,7 +52,7 @@ $(document).ready(function() {
 
         var id = $("#id2").val();
         var bank_name = $("#exampleFormControlInput1211").val();
-        var account_number = $(".exampleFormControlInput2_22").val();
+        var account_number = $("#exampleFormControlInput2_22").val();
         var bank_branch = $("#exampleFormControlInput3233").val();
         var ipan = $("#exampleFormControlInput4244").val();
         var swift_number = $("#exampleFormControlInput5255").val();
@@ -89,7 +90,7 @@ $(document).ready(function() {
 
         var id = $("#id3").val();
         var career = $("#exampleFormControlInput1131").val();
-        var work_start = $(".exampleFormControlInput2232").val();
+        var work_start = $("#exampleFormControlInput2232").val();
         var duration_of_contract = $("#exampleFormControlInput33_3").val();
         var contract_expire = $("#exampleFormControlInput4434").val();
         var branch_id = $("#exampleFormControlInput5535").val();

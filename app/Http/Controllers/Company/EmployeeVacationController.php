@@ -26,6 +26,8 @@ class EmployeeVacationController extends Controller
             $employeesHasNoVacation = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->whereDoesntHave('userVacation')->get();
         }else{
             $data=collect([]);
+            $vacationsOfYear=collect([]);
+            $employeesHasNoVacation=collect([]);
         }
         return view('front.employee-vacations.index',compact('data',"vacationsOfYear",'employeesHasNoVacation'));
     }

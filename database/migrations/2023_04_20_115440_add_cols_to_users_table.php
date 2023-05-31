@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('national_identity')->nullable();
             $table->string('passport_identity')->nullable();
             $table->enum('gender',['male','female']);
-            $table->string('marial_status')->nullable();
+            $table->string('marital_status')->nullable();
             $table->string('emergency_contact')->nullable();
             $table->string('description')->nullable();
         });
