@@ -71,9 +71,9 @@ class EmployeeController extends Controller
      */
     public function updateData(Request $request, string $id)
     {
-        dd($request);
+        // dd($request);
         $user = User::findOrFail($id);
-
+        dd($user);
         if ($request['image']=='undefined') {
             unset($request['image']);
         };
