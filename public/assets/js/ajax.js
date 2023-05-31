@@ -90,7 +90,7 @@ $(document).ready(function() {
 
         var id = $("#id3").val();
         var career = $("#exampleFormControlInput1131").val();
-        var work_start = $("#exampleFormWorkStart").val();
+        var workstart = $("#exampleFormWorkStart").val();
         var duration_of_contract = $("#exampleFormControlInput33_3").val();
         var contract_expire = $("#exampleFormControlInput4434").val();
         var branch_id = $("#exampleFormControlInput5535").val();
@@ -106,7 +106,7 @@ $(document).ready(function() {
             contract_expire:contract_expire,
             branch_id:branch_id,
             shift_id:shift_id,
-            work_start:work_start,
+            work_start:workstart,
             department_id:department_id,
             description:description
             },
