@@ -87,7 +87,6 @@ $(document).ready(function() {
 
     $("#btn3-submit").on('click',function(){
 
-        console.log($("#exampleFormWorkStart").val());
         var id = $("#id3").val();
         var career = $("#exampleFormControlInput1131").val();
         var workstart = $("#exampleFormWorkStart").val();
@@ -97,33 +96,33 @@ $(document).ready(function() {
         var shift_id = $("#exampleFormControlInput6636").val();
         var department_id = $("#exampleFormControlInput7737").val();
         var description = $("#exampleFormControlInput8838").val();
-        // $.ajax({
-        //    method:'POST',
-        //    url:"/employees/update/"+id,
-        //    data:{
-        //     career:career,
-        //     duration_of_contract:duration_of_contract,
-        //     contract_expire:contract_expire,
-        //     branch_id:branch_id,
-        //     shift_id:shift_id,
-        //     work_start:workstart,
-        //     department_id:department_id,
-        //     description:description
-        //     },
-        //    success:function(data){
-        //         if($.isEmptyObject(data.error)){
-        //             var modal = $('#edit3');
+        $.ajax({
+           method:'POST',
+           url:"/employees/update/"+id,
+           data:{
+            career:career,
+            duration_of_contract:duration_of_contract,
+            contract_expire:contract_expire,
+            branch_id:branch_id,
+            shift_id:shift_id,
+            work_start:workstart,
+            department_id:department_id,
+            description:description
+            },
+           success:function(data){
+                if($.isEmptyObject(data.error)){
+                    var modal = $('#edit3');
 
-        //             // Close the modal
-        //             modal.modal('hide');
+                    // Close the modal
+                    modal.modal('hide');
 
-        //             location.reload();
+                    location.reload();
 
-        //         }else{
-        //             printErrorMsg(data.error);
-        //         }
-        //    }
-        // });
+                }else{
+                    printErrorMsg(data.error);
+                }
+           }
+        });
 
     });
 
