@@ -1166,6 +1166,7 @@
                                 <input type="text" class="form-control" id="exampleFormControlInput1211"
                                     value="{{ $employee->bank_name }}">
                             </div>
+
                             <div class="col">
                                 <label for="exampleFormControlInput2_22" class="form-label">Account No.</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput2_22"
@@ -1225,6 +1226,7 @@
                                     value="{{ $employee->career }}">
 
                             </div>
+                   
                             <div class="col">
                                 <label for="exampleFormControlInput2232" class="form-label">Working Start Date</label>
                                 <input type="date" class="form-control" id="exampleFormControlInput2232"
