@@ -1225,7 +1225,7 @@
                                     value="{{ $employee->career }}">
 
                             </div>
-                            <div class="col-6">
+                            <div class="col">
                                 <label for="exampleFormControlInput2232" class="form-label">Working Start Date</label>
                                 <input type="date" class="form-control" id="exampleFormControlInput2232"
                                     value="{{ $employee->work_start }}">
