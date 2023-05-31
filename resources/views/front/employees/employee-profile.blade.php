@@ -1168,8 +1168,8 @@
                             </div>
 
                             <div class="col">
-                                <label for="exampleFormControlInput2_22" class="form-label">Account No.</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput2_22"
+                                <label for="exampleInputAccount" class="form-label">Account No.</label>
+                                <input type="text" class="form-control" id="exampleInputAccount"
                                     value="{{ $employee->account_number }}">
 
                             </div>
@@ -1226,10 +1226,10 @@
                                     value="{{ $employee->career }}">
 
                             </div>
-                   
+
                             <div class="col">
-                                <label for="exampleFormControlInput2232" class="form-label">Working Start Date</label>
-                                <input type="date" class="form-control" id="exampleFormControlInput2232"
+                                <label for="exampleFormWorkStart" class="form-label">Working Start Date</label>
+                                <input type="date" class="form-control" id="exampleFormWorkStart"
                                     value="{{ $employee->work_start }}">
 
                             </div>
