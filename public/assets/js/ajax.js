@@ -97,6 +97,7 @@ $(document).ready(function() {
         var shift_id = $("#exampleFormControlInput6636").val();
         var department_id = $("#exampleFormControlInput7737").val();
         var description = $("#exampleFormControlInput8838").val();
+        console.log(work_start);
         $.ajax({
            method:'POST',
            url:"/employees/update/"+id,
