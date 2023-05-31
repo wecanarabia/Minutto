@@ -87,7 +87,7 @@ $(document).ready(function() {
 
     $("#btn3-submit").on('click',function(){
 
-        console.log($("#id3").val());
+        console.log($("#exampleFormWorkStart").val());
         var id = $("#id3").val();
         var career = $("#exampleFormControlInput1131").val();
         var workstart = $("#exampleFormWorkStart").val();
