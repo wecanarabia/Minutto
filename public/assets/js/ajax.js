@@ -62,9 +62,9 @@ $(document).ready(function() {
            url:"/employees/update/"+id,
            data:{
             bank_name:bank_name,
-            account_number:account_number,
             bank_branch:bank_branch,
             ipan:ipan,
+            account_number:account_number,
             swift_number:swift_number
             },
            success:function(data){
@@ -97,17 +97,16 @@ $(document).ready(function() {
         var shift_id = $("#exampleFormControlInput6636").val();
         var department_id = $("#exampleFormControlInput7737").val();
         var description = $("#exampleFormControlInput8838").val();
-        console.log(work_start);
         $.ajax({
            method:'POST',
            url:"/employees/update/"+id,
            data:{
             career:career,
-            work_start:work_start,
             duration_of_contract:duration_of_contract,
             contract_expire:contract_expire,
             branch_id:branch_id,
             shift_id:shift_id,
+            work_start:work_start,
             department_id:department_id,
             description:description
             },
