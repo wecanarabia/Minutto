@@ -39,6 +39,8 @@ class WorkhourController extends ApiController
                         ->where('status',1)
                         ->first();
 
+
+            return $workday;
         if($company)
         {
             return $workday->from;
