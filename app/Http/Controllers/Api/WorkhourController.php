@@ -40,7 +40,6 @@ class WorkhourController extends ApiController
                         ->first();
 
 
-            return $workday;
         if($company)
         {
             return $workday->from;
