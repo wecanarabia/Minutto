@@ -35,7 +35,7 @@ class WorkhourController extends ApiController
         // dd(company);
         $currentD=Carbon::today()->format('l');
         $workday=Workday::where('shift_id',$user->shift_id)
-                        ->where('day','like',$currentD)
+                        ->where('day', 'like', '%' . $currentD . '%')
                         ->where('status',1)
                         ->first();
 
