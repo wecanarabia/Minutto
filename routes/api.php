@@ -26,6 +26,8 @@ use App\Http\Controllers\Api\RewardController;
 use App\Http\Controllers\Api\RewardTypeController;
 use App\Http\Controllers\Api\ExtraController;
 use App\Http\Controllers\Api\ExtraTypeController;
+use App\Http\Controllers\Api\MessageController;
+
 
 
 

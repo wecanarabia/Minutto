@@ -14,11 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-    //   $user = new User();
-    //         $user->name = 'aya';
-    //         $user->email = 'aya@gmail.com';
-    //         $user->password = Hash::make(123456789);
-    //         $user->save();
+      $user = new User();
+            $user->name = 'aya';
+            $user->email = 'aya@gmail.com';
+            $user->password = Hash::make(123456789);
+            $user->save();
     $this->call([
         AdminSeeder::class,
     ]);
