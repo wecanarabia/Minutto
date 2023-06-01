@@ -42,6 +42,7 @@ class WorkhourController extends ApiController
 
         if($company)
         {
+            return $workday->from;
             $difference=Carbon::createFromFormat('H:i:s',$model->time_attendance)->diffInMinutes(Carbon::createFromFormat('H:i:s',$workday->from));
             $dif=gmdate('H:i:s',$difference*60);
             // dd($dif);
