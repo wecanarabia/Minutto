@@ -38,11 +38,11 @@ class AuthController extends Controller
 
         $user=User::where('email',$request->email)->first();
         // dd ($user->active);
-        if($user){
-            if($user->active == 0){
-                return $this->returnError('Sorry! This account is not active');
-            }
-        }
+        // if($user){
+        //     if($user->active == 0){
+        //         return $this->returnError('Sorry! This account is not active');
+        //     }
+        // }
 
         $auth = Auth::attempt(
             $request->only([
