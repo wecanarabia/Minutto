@@ -1,0 +1,388 @@
+------------------------------------GIT-------------------------------------------
+Git is a DevOps tool used for source code management, Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency,Git is used to tracking تتبع changes in the source code, recording and storing this changes, and reference المرجعي changes as nedded, enabling multiple developers to work together. 
+------------------------------------- VCS -------------------------------------
+software tools that help software teams manage changes to source code over time. version control systems help software teams work faster and smarter. They are especially useful for DevOps teams since they help them to reduce development time and increase successful deployments.
+
+Version control software keeps track of every modification to the code in a special kind of database.
+------------------------------------ GIT workflow -----------------------------
+-working directory(working tree) where you do all work of creating, editing, deleting and organizing files 
+-The staging area stores information about what will go, into your next commit. 
+-A repository is a file structure where git stores all the project-based files(changes).
+-Tracked files are files that were in the last snapshot, as well as any newly staged files, In short, tracked files are files that Git knows about.
+------------------------------------ .gitignore ----------------------------------
+-A local .gitignore file is usually placed in the root directory of a project. You can also create a global .gitignore file and any entries in that file will be ignored in all of your Git repositories.
+PATTERN FORMAT
+-A blank line matches no files.
+-A line starting with # serves as a comment. Put a backslash ("\") for skipping next character.
+-Trailing spaces are ignored unless they are quoted with backslash ("\").
+-An optional prefix "!" which negates the pattern.
+--------------------------head vs tree index?-------------------------------------
+HEAD is the pointer to the current branch reference.
+
+tree index This is where your files reside يقيم and where you can try changes out before committing them to your staging area.
+------------------------------------Tagging----------------------------------------
+-Git has the ability to tag specific points in a repository’s history as being important. Typically, people use this functionality to mark release points (v1.0, v2.0 and so on)
+-lightweight tag is very much like a branch that doesn’t change - it’s just a pointer to a specific commit.
+-Annotated tags, however, are stored as full objects in the Git database. (used)
+------------------------------------Branching----------------------------------------
+-Branching means you diverge تباعد from the main line of development and continue to do work without messing العبث with that main line.
+-The default branch name in Git is master, As you start making commits, you’re given a master branch that points to the last commit you made. Every time you commit, the master branch pointer moves forward automatically.
+-Basic Merge Conflicts
+If you changed the same part of the same file differently in the two branches you’re merging, Git won’t be able to merge them cleanly.
+------------------------------------stash----------------------------------------
+git stash temporarily stashes أخفى changes you've made to your working copy so you can work on something else, and then come back and re-apply them later on.
+------------------------------------Merging vs. Rebasing--------------------------
+-The major benefit of rebasing is that you get a much cleaner project history. First, it eliminates the unnecessary merge commits required by git merge. Second, rebasing also results in a perfectly linear project history
++git rebas origin			-->merge changes 
++git rebase --continue		-->to continue during rebasing
+-Rebasing
+In Git, there are two main ways to integrate changes from one branch into another: the merge and the rebase.
+-git rebase is used to:
+1-edit previous commit messages
+2-combine multible commits into one
+3-delete unnecessary commits 
+-->don't rebase public history to avoid other users conflict history
+------------------------------------GITHUB----------------------------------------
+-GitHub is a code hosting platform منصةfor version control and collaboration تعاون. It lets you and others work together on projects from anywhere.
+-Remote repositories are versions of your project that are hosted on the Internet.
+---------------------------------Can you explain head in terms of git and also tell the number of heads that can be present in a repository?
+A head is a reference to the last commit object of a branch.
+For every repository, there will always be a default head referred to as “master” or now “main” (as per GitHub) but there is no restriction to the count of heads available. In other words, it can have any number of heads
+------------------------------What is a conflict?
+Git usually handles feature merges automatically but sometimes while working in a team environment, there might be cases of conflicts such as:
+for example
+-When two separate branches have changes to the same line in a file.
+-A file is deleted in one branch but has been modified in the other.
+ 
+These conflicts have to be solved manually after discussion with the team as git will not be able to predict what and whose changes have to be given precedence.
+------------------------------What is the functionality of git ls-tree?
++git ls-tree
+This command returns a tree object representation of the current repository along with the mode and the name of each item and the SHA-1 value of the blob
+------------------------------Define “Index”.
+Before making commits to the changes done, the developer format and review the files and make innovations to them. All these are done in the common area which is known as ‘Index’ or ‘Staging Area’.
+------------------------------What differentiates between the commands git remote and git clone?
+git remote command creates an entry in git config that specifies a name for a particular URL(remote server). Whereas git clone creates a new git repository by copying an existing one located at the URL.
+------------------------------Differentiate between git pull and git fetch.
+git pull 	
+This command pulls new changes from the currently working branch located in the remote central repository.	
+git fetch:- This command is also used for a similar purpose but it follows a two step process: 
+1. Pulls all commits and changes from desired branch and stores them in a new branch of the local repository. 
+2. For changes to be reflected ينعكس in the current branch, git fetch should be followed by git merge command.
+----------------------------- Can you give differences between “pull request” and “branch”?
+pull request	This process is done when there is a need to put a developer’s change into another person’s code branch.
+branch:- A branch is nothing but a separate version of the code. 
+----------------------------- What do the git diff and git status commands do? 
+The two commands can give similar results
+git diff:- This shows the changes between commits, branches, individual files and more.
+git status:- Is specifically for the status of the working tree.
+-----------------------------What is a detached HEAD and what causes this and how to avoid this?
+Detached HEAD indicates that the currently checked-out repository المستودع الذي تم سحبه حاليًا is not a local branch. This can be caused by the following scenarios:
+
+When a branch is a read-only branch and we try to create a commit to that branch, then the commits can be termed as “free-floating” commits not connected to any branch. They would be in a detached state.
+When we checkout a tag or a specific commit and then we try to perform a new commit, then again the commits would not be connected to any branch. When we now try to checkout a branch, these new commits would be automatically placed at the top.
+---------------------------What consists of a commit object?
+A commit object consists of the following components:
+
+A set of files that represents the state of a project at a given point in time.
+Reference to parent commit objects.
+A 40 character string termed as SHA-1 name uniquely identifies the commit object.
+--------------------------How would you recover a branch that has already pushed changes in the central repository but has been accidentally deleted from every team member’s local machines?
+We can recover this by checking out the latest commit of this branch in the reflog and then checking it out as a new branch.
+--------------------------If you recover a deleted branch, what work is restored?
+The files that were stashed and saved in the stashed index can be recovered. The files that were untracked will be lost. Hence, it's always a good idea to stage and commit your work or stash them. 
+--------------------------How do you resolve conflicts in Git?
+Here are the steps that will help you resolve conflicts in Git:
+
+Identify the files responsible for the conflicts.
+Implement the desired changes to the files 
+Add the files using the git add command.
+The last step is to commit the changes in the file with the help of the git commit command.
+-------------------------What does the git reset --mixed and git merge --abort commands do?
+git reset --mixed is used to undo changes made in the working directory and staging area.
+
+git merge --abort helps stop the merge process and return back to the state before the merging began
+-------------------------What is the functionality of git clean command? 
+The git clean command removes the untracked files from the working directory.
+----------------------------------How can you discover if a branch has already been merged or not?
+There are two commands to determine these two different things.
+
+git branch --merged - Returns the list of branches that have been merged into the current branch.
+
+git branch --no-merged - Returns the list of branches that have not been merged.
+--------------------------------How can you fix a broken commit?
+In order to fix any broken commit, use the command “git commit --amend”. When you run this command, you can fix the broken commit message in the editor.
+--------------------------------
+==========================================================================================================
+*****----------install git
+--> set configuration options for defining the behavior of the repository, user information and preferences, git installation-based configura
++git config --global user.name "my userName"	-->add data
++git config --global user.email "mt email"
++git config --global user.name 		-->get data
++git config --global user.email 
++git config --global unset user.name "my userName"	-->delete dat
++git config --global unset user.email "mt email"
++git config --global --edit		-->edit data
++git config	-l --show origin	-->git source of config with list
++git config --global init.defaultBranch main -->rename deafult branch name
+----------------------
+--in project file --RC--> git pash here
+*+git init		 -->intialize .git repository or .git file turn local file to a repository
+*+git status			-->git status
+****--------------------------
+-->This command adds files and changes to the index of the existing directory.
++git add index.html	 --->add (tracking) specific file to file stage area
++git add --all 		--->add  (tracking) all files
++git add * 		--->add  (tracking) all files
+**--------------------------
++git commit -m "First release of Hello World!"		--->adding clear messages to each commit, it is easy for yourself (and others) to see what has changed and when.
++git status		-->check status if you want
+--> showing the difference between the working directory and the index which is helpful for understanding git in-depth and also keep track of the tracked and non-tracked changes.
+----------------------------
++any comand --help 		-->show command options
+*+git log	-->show logs(commits)
++Q key in keyboard quite
++git log oneline	-->
+****----------------------------
++git diff 		-->show different for unstaged files
++git diff index.html	-->show different for unstaged specific file
++git diff --staged		-->show different for staged files after add 
++git diff --staged index.html	-->show different for staged specific file
++git diff remote/branch 	-->show different between local and server
+***---------------------------
++git rm index.html		--->remove files from a Git repository
++git rm -f index.html		--->force remove files from a Git repository
++git commit -m"msg"
+***--------------------------
++git mv	oldname newname		-->rename file after commit in stage area
++git commit -m"msg"
+--------------------------
++git checkout index.html 	-->undo changes in code before add to stage area
++git commit -m"msg"		
+--------------------------
+*+git reset head index.html 	--->return from stage to unstage area oppesite of git add
+--------------------------
+**+git commit --amend -m"msg"	-->change msg of last commit And add last changes to last commit
+**+git commit -a 				-->execute git add <file> & git commit togeather
+**+git commit -a -m"commit"				-->execute git add <file> & git commit togeather
+--------------------------
+**-+git log --oneline	-->git all commits
+**+git checkout (commitID) index.html		-->return back to specific commit in specific file
+--------------------------
++git reset --soft commitID	-->abbriviation num of commits to one commit or move pointer
++git commit...
+--------------------------
++git reset --mixed commitID
+or+git reset commitID	-->unstage file without deleting any code made after staging
++git add.
++git commit....
+****--------------------------
++git remote
++git remote -v			//get remote servers if your project uploaded on multiple remote servers(github-gitlap)
+
++git remote show <remote>		//git info about specific remote
++git remote rename <old> <new> 		//rename specific remote
++git remote remove 				//rename specific remote
+--------------------------
+-->if you have a conflict go to a conflict file make your changes then commit and push 
+--------------------------
++git reset --hard commitID	-->delete code before commit(delete last commit with it's changes)
+--------------------------
++git add file
++git clean -m	-->delete added from stage area
++git clean -f	-->delete file from project folder on PC
+--------------------------
++ls	-la 	-->list files
++git log -oneline			-->git commits
++git log -oneline -num		-->git last number of commits commits
++git log commitID--commitID	-->git commits between them
++git log --state 			-->git commits status
+****-------------------------
+--baranch used in case of hading change in code & you wannot to merge if it need to be finished
+--branches used for testing and maintainance
++git baranch 		--> get branch list
++git baranch -v 		--> get branch list
++git baranch <name> 	-->cretae new baranch
++git checkout (branch name)	-->move to specific branch
++git switch (branch name)	-->move to specific branch
++git coomit...		-->make commits & changes related to it's branch
++git log --graph --oneline --decorate --all		-->git all branches & it's all commits
++git diff master --(branchName) 	-->git difference between branches
++git branch -m (oldname) (newName)	-->rename branch
++git branch -m (newName)	-->rename branch tand onin case of I stand on
++git baranch -d (branch name)	-->delete baranch on local project
++git push origin delete <branch-name> -->delete baranch on remote
++git baranch -D (branch name)	-->force delete baranch
++git merge (baranch name) 	-->merge baranch with master branch
++git checkout -b (branch name)	-->make & move to specific branch
+or+git switch -c (branch name)	-->make & move to specific branch
++git checkout master			-->move to master
++git merge (baranch name) 	-->merge baranch with master branch
++git merge  --no-ff(baranch name) 	-->merge baranch for second time with master branch
++git branch --move <old-name> <new-name> -->rename branch on local project
++git push --set-upstream origin <new-name> -->rename branch on remote
++git push --all <remote> -->push all branches
+-->push the content in a local repository to a remote repository. After a local repository has been modified
+------------------------------------------------
++git stach 		-->save uncommited changes if you want to move on anther branch
++git stach list 	-->get list of staches
++git stach 			-->apply last stach to make you complete work
++git stach <stach-code>			-->apply specific stach to make you complete work
+------------------------------------------------
+========== Repasing ===========
+-->type of merging allows to take a branch changes and apply it on another branch with commit
+-->keep history linear
++git repase <branch> 	-->then merge
+------------------------------------------------
+*+git remote add origin (github link)-->add remote
++git push 	-->upload project
++github -u (github username)(baranch)-->set branch in github
+-------------------------------------------------
++git add 
++git commit
++git pash	-->push after update code
+***--------------------------------------------------
+-->The command creates a copy (or clone) of an existing git repository. Generally, it is used to get a copy of the remote repository to the local repository.
+
++git clone	(download link) -->download project
++git remote origin
+-------------------------------------------------
++git fetch <remote>		//get information about changes which made in remote repository
+//origin -->is default remote name
+
++git fetch origin	-->put changes in diff baranches
++git merge master origine/master	-->merge master & origin
+
++git pull origin 	-->fetch & merge in one step
+-->The git pull origin master fetches all the changes from the master branch onto the origin and integrates them into the local branch.
+==========================================================================================
+******VII*****
+--Tags-->used for releases
++git tag -d (tagName)	-->delete tag on git
++git push origin --delete (tagName)		-->delete tag from remote
++git tag	-->list tags
++git tag -a (tagName) -m"msg"	-->make annotated tag & msg in the same step
++git tag (tagName)-lw 		-->make light weight tag
++git commit..
++git checkout tagName 		-->stand on specific tag
++git checkout master	-->stand on master branch
++git sheckout tags/(tagName)	-->stand on tag
++git swithch - 		-->stand on or return defaults (previous branch or previous tag) position of the project 
+-->must enter branch to enter tag
++git push origin (tagName)		-->push remote & tag
++git push origin -tag		-->push all tags
+==========================================================================================
++git tag -1 "v1.*"		-->git all versions of the same number(v1.1-v1.2-v1.3) 
++git add -f (filename)	-->add file even if it ignored
+--------------------------------
+*+git config -l		-->git list of configration
++git help config	-->open help page
+--------------------------------
++ssh-keygen -t rsa -b 4096 -c "email"	-->set public key
++cat (file name of public key)	-->git public key
+***github-->settings-->ssh and gpg-->new secure shell -->add title & key-->add
++ssh -T git@github.com
++key password		-->to contact with git hub without username & password
++git config --glopal alias.(appriviation) "(command)"-->make command appriviation
+****--------------------------------
++git stash 					-->save un committed (in working directory) files(changes) in stash
++git stash pop	(stash id) 	-->delete stash
++git stash pop
++git stash drop				-->delete last stash
++git stash drop	(stash id) 	-->delete specific stash
++git stash list 			-->list stash
++git stash apply			-->git files out of stash without delete it--> apply stash modification in project to be commited
+--> bringing the works back to the working directory from the stack where the changes were stashed using git stash command.
+This helps the developers to resume their work where they had last left their work before switching to other branches.
++git stash show				-->git files name of stash
++git stash clear			-->clear stash
++stah @						-->get
+-----------------------------------------------
+**+git restore --staged (filename)	-->unstage file
+**+git restore --staged *				-->unstage all files
+**+code (filename)					-->open file
+**+git clean	-n						-->show unstaged files
+**+git clean	-f						-->delete files
+
+========================================================================================================================================================================================================================== practicing ========================================
+upload project with new branch on github
++git init
++git add .
++git commit -m "first commit"
++git config --global user.name "my userName"
++git config --global user.email "mt email"
++git remote add origin https://github.com/Mina-Emad234/E-commerce.git -->link with github(contact with github by adding prject link)
++git checkout -b (branch name)	-->make & move to specific branch
++git push -u origin (branch name)//push with branch
++git push -u origin master //push with master
+4-make branch master as default on github -->settings-->branches-->master-->upload
+===========================================================================
+1-upload project changes to branch
++git checkout -b (branch name)	-->make & move to specific branch
++git add .
++git commit -m "commit1"
+--------after make other adds & changes
++git add .
++git commit -m "commit2"
++git status		-->check status if you want
+--------push the all commits(more than one commit)
++git push origin branchname//or
++git push origin master
+=======================================================================================
++new branch
++pull		//pull project
+-----------------------------------------------
+---------------------------------- merge branche in github -------------------------------
+1-push last update of project
+2-to merge branch with master branch in github open***github-->repositories-->project-->compare & pull .../(branches-->choose branch-->pull request)-->description-->create pull request
+3-to accept mergin***github-->project-->pull requests-->merge-->confirm merge
+4-make new branch in GIT 
++git checkout -b (branch name)	-->make & move to specific branch
++git checkout (branch name)//move to branch
++git branch //show all branches
++git push origin branchName//push project
+--------------------
++git checkout -- file 
++git restore file	-->unmodifing modified file
+--------------------
++git branch -a //display branches paths on github even if these baranches added to git
++git checkout -b 'branch name' branch path //make & connect (merge) git & github branches if branch created on github and not exists on git
+==========================================================================================
+***github-->new repo-->name & desc-->create		//create repo
+***github-->settings-->ssh and gpg-->new secure shell -->add title & key-->add
+>>>merge branch with master branch in githubopen***github-->repositories-->project-->compare & pull .../(branches-->choose branch-->pull request)-->description-->create pull request
+>>>to accept merge***github-->project-->pull requests-->merge-->confirm merge
+======================================== TeamWork =======================================
+-->add persons work with you on your project
+1- github--->your project--->settings--->collaborators--->add person in input--->click add collaborator
+2-send project url to collaborator person(team colleage)
+-------------collaborator  person will do this steps
+1- on git add this command +get clone projectUrl //to download the project
+2- make prject changes and new adds
+3- push changes on github
+-->in project file
++git checkout -b (branch name) //make new branch
++git add .
++git commit -m "MSG"
++git remote add origin https://github.com/Mina-Emad234/E-commerce.git -->project link on github
++git push origin branchname//or
++git push origin master
+------to pull project in case of changes made
++git pull origin master 	-->pull & merge in one step 
++git pull origin branchname 	-->pull & merge in one step
+==================================Remove files using GIT ========================================
++git rm -r --cached file/folderName			//remove from git & github
++git commit -m 'commit'
++git push origin master
+===================================== wiki ===================================== 
+wiki--->project description(project documentation)
+------->open github--->your project---->wiki--->create the first page-->write----->add description-->write(use format tools) 
+@title 		@description
+*h1,h2,h3---->headings
+*add pollets or numbering points
+*<> for code lines//when adding code in documentation
+*add a custom footer //to add footer for documentation
+*****save page
+---->open github--->your project---->wiki--->create the first page-->preview//view your documentation
+---->open github--->your project---->wiki--->new page-->write//add new page
+--->open github--->project---->wiki//users see documentation
+-----------------------------------------

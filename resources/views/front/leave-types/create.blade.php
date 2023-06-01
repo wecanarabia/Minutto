@@ -1,3 +1,4 @@
+<x-layouts.header title="Add Leave Type"/>
 <x-layouts.app>
          <!-- Body: Body -->
          <div class="body d-flex py-3">
@@ -15,6 +16,9 @@
                         <div class="card mb-3">
                             <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
                                 <h6 class="mb-0 fw-bold ">Add Leave Type</h6>
+                                <div class="col-auto d-flex w-sm-100">
+                                    <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.leave-types.index') }}"></i>Leave Types</a>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <form method="post" action="{{ route('company.leave-types.store') }}">

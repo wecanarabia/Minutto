@@ -17,7 +17,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        $data = Branch::where('company_id',Auth::user()->company_id)->get();
+        $data = Branch::where('company_id',Auth::user()->company_id)->orderByDesc('created_at')->get();
         return view('front.branches.index',compact('data'));
     }
 
@@ -42,7 +42,7 @@ class BranchController extends Controller
             'arabic_name',
             'shifts',
         ]));
-        $branch->shifts->attacch($request['shifts']);
+        $branch->shifts()->attach($request['shifts']);
 
         return redirect()->route('company.branches.index')
                         ->with('success','Branch has been added successfully');
@@ -69,7 +69,7 @@ class BranchController extends Controller
         if ($branch->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        $employees=User::whereBelongsTo($branch)->get();
+        $employees=User::active()->whereBelongsTo($branch)->get();
         $shifts = Shift::where('company_id',Auth::user()->company_id)->get();
         return view('front.branches.edit',compact('branch','employees','shifts'));
     }

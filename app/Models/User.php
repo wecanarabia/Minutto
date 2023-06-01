@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Carbon\Carbon;
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -79,6 +80,22 @@ class User extends Authenticatable
         return $this->hasMany(Vacation::class);
     }
 
+    public function UserVacations(){
+        return $this->hasMany(EmployeeVacation::class);
+    }
+
+    public function userVacation(){
+        return $this->hasOne(EmployeeVacation::class)->whereYear('created_at', '=', Carbon::now()->year);
+    }
+
+    public function salaries(){
+        return $this->hasMany(Salary::class);
+    }
+
+    public function salary(){
+        return $this->hasOne(Salary::class)->where('month', Carbon::now()->month);
+    }
+
 
 
     public function workhours(){
@@ -99,12 +116,53 @@ class User extends Authenticatable
         return $this->hasMany(Advance::class);
     }
 
+    public function extras(){
+        return $this->hasMany(Extra::class);
+    }
+
     public function alerts(){
         return $this->hasMany(Alert::class);
     }
 
     public function rewards(){
         return $this->hasMany(Reward::class);
+    }
+
+    public function scopeActive($query){
+        return $query->where('active',1);
+    }
+
+    public function scopeHasVacation($query){
+        return $query->whereHas('userVacation');
+    }
+
+    public function scopeHasSalary($query){
+        return $query->whereHas('salary');
+    }
+
+    public function scopeNotOfThisMonth($q,$now){
+        return $q->where(function ($query) use ($now) {
+            $query->whereYear('created_at', '!=', $now->year)
+                ->orWhere(function ($query) use ($now) {
+                    $query->whereYear('created_at', $now->year)
+                        ->whereMonth('created_at', '!=', $now->month);
+                });
+        });
+    }
+
+    public function scopeThisMonth($q,$now){
+        return $q->where(function ($query) use ($now) {
+            $query->whereYear('created_at', $now->year)
+                ->orWhere(function ($query) use ($now) {
+                    $query->whereYear('created_at', $now->year)
+                        ->whereMonth('created_at', $now->month);
+                });
+        });
+    }
+
+    public function logs()
+    {
+        return $this->hasMany(Log::class,'employee_id');
     }
 
 }

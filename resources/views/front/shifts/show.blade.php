@@ -1,3 +1,4 @@
+<x-layouts.header title="{{$shift->name}}"/>
 <x-layouts.app>
      <!-- Body: Body -->
   <div class="body d-flex py-lg-3 py-md-2">
@@ -7,6 +8,9 @@
                 <div class="card border-0 mb-4 no-bg">
                     <div class="card-header py-3 px-0 d-flex align-items-center  justify-content-between border-bottom">
                         <h3 class=" fw-bold flex-fill mb-0">Shift</h3>
+                        <div class="col-auto d-flex w-sm-100">
+                            <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.shifts.index') }}"></i>Shifts</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -45,7 +49,7 @@
                                         <span class="text-muted">{{$shift->getTranslation('name', 'ar')}}</span>
                                     </div>
                                  </li>
-                               
+
                             </ul>
                         </div>
                     </div>

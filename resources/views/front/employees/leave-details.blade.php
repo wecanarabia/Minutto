@@ -1,3 +1,4 @@
+<x-layouts.header title="{{ $leave->user->name }}Leave Request"/>
 <x-layouts.app>
     <!-- Body: Body -->
  <div class="body d-flex py-lg-3 py-md-2">
@@ -7,6 +8,9 @@
                <div class="card border-0 mb-4 no-bg">
                    <div class="card-header py-3 px-0 d-flex align-items-center  justify-content-between border-bottom">
                        <h3 class=" fw-bold flex-fill mb-0">Leave Request Details</h3>
+                       <div class="col-auto d-flex w-sm-100">
+                        <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.leaves.index') }}"></i>Leave Requests</a>
+                    </div>
                    </div>
                </div>
            </div>
@@ -203,9 +207,16 @@
                             <input type="text" class="form-control"
                                 id="exampleFormControlleavediscount" value="{{ $leave->discount_value }}">
                         </div>
+                       </div>
                         <div class="row g-3 mb-3">
 
 
+
+                            <div class="col-sm-6">
+                                <label for="exampleFormControlleavereplay" class="form-label">Replay</label>
+                                <textarea class="form-control" name="replay"
+                                    id="exampleFormControlleavereplay">{{ $leave->replay }}</textarea>
+                            </div>
 
                             <div class="col-sm-6">
                                 <label for="exampleFormControlleavenote" class="form-label">Note</label>
@@ -213,15 +224,16 @@
                                     id="exampleFormControlleavenote">{{ $leave->note }}</textarea>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button id="leave-submit" class="btn btn-primary">update</button>
+                        </div>
                        </div>
 
 
                    </div>
                </div>
-               <div class="modal-footer">
-                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                   <button id="leave-submit" class="btn btn-primary">update</button>
-               </div>
+
            </div>
        </div>
    </div>

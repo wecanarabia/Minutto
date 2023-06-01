@@ -20,19 +20,19 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-12">
+                <div class="col-xl-8">
                     <div class="card">
                         <div class="card-body p-0">
                             <div class="offcanvas-body">
                                 <div class="container-fluid">
                                 <h4 class="heading mb-5"> {{ $introduction->title }}</h4>
 
-                                    <p class="mb-3"><strong>English title : </strong> {{ $introduction->getTranslation('title', 'en') }}</p>
+                                    <p class="mb-3"><strong>English Title : </strong> {{ $introduction->getTranslation('title', 'en') }}</p>
                                     <p class="mb-3"><strong>Arabic Title : </strong> {{ $introduction->getTranslation('title', 'ar') }}</p>
                                     <p class="mb-3"><strong>English body : </strong> {{ $introduction->getTranslation('body', 'en') }}</p>
                                     <p class="mb-3"><strong>Arabic body :</strong> {{ $introduction->getTranslation('body', 'ar') }}</p>
                         </div>
-                        <img class="card-img-bottom img-fluid" src="{{ asset( $introduction->image ) }}" alt="{{ $introduction->title }}">
+                        <img class="card-img-bottom img-thumbnail" src="{{ asset( $introduction->image ) }}" alt="{{ $introduction->title }}">
 
                         </div>
                         </div>

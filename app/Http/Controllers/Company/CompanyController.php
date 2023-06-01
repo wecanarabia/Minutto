@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Company;
 
 use DateTimeZone;
+use App\Models\Role;
 use App\Models\Shift;
 use App\Models\Branch;
 use App\Models\Company;
 use App\Models\Workday;
 use App\Models\Department;
+use App\Models\RewardType;
 use App\Models\CompanyAdmin;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
@@ -23,7 +25,7 @@ class CompanyController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('CheckCompany')->only(['edit', 'update','show']);
+        $this->middleware(['CheckCompany','timezone','can:company'])->only(['edit', 'update','show']);
     }
 
 
@@ -196,8 +198,19 @@ class CompanyController extends Controller
         $department->company_id=$company->id;
         $department->save();
         $branch->shifts()->attach($shift->id);
-        CompanyAdmin::find(Auth::guard('company')->user()->id)->update(['company_id'=>$company->id]);
+        $role = Role::create([
+            'name'=>['en'=>'admin','ar'=>'مسؤل'],
+            'company_id'=>$company->id,
+            'permissions'=>json_encode(array_keys(config('global.permissions'))),
+        ]);
+        CompanyAdmin::find(Auth::guard('company')->user()->id)->update(['company_id'=>$company->id,'role_id'=>$role->id]);
         $days=Workday::WORKDAYS;
+        foreach (RewardType::DEFAULTTYPES as $value) {
+            RewardType::create([
+                'company_id'=>$company->id,
+                'name'=>$value,
+            ]);
+        }
     foreach ($days as $i => $day) {
         if ($request[$day['en']]) {
             $validator = Validator::make([
@@ -249,7 +262,7 @@ class CompanyController extends Controller
      */
     public function show()
     {
-        $company = Company::with('branches')->find(Auth::guard('company')->user()->company_id);
+$company = Company::with('branches')->find(Auth::guard('company')->user()->company_id);
         return view('front.company-settings.show',compact('company'));
     }
 
@@ -272,7 +285,12 @@ class CompanyController extends Controller
         $company = Company::find(Auth::guard('company')->user()->company_id);
         $request['name']=['en'=>$request->english_name,'ar'=>$request->arabic_name];
         $request['description']=['en'=>$request->english_description,'ar'=>$request->arabic_description];
-        $company->update($request->all());
+        $company->update($request->except([
+            'english_name',
+            'arabic_name',
+            'english_description',
+            'arabic_description',
+             ]));
         return redirect()->route('company.company-settings.show')->with(['success'=>'Company settings has been Updated Successfully']);
 
     }

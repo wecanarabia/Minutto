@@ -1,3 +1,4 @@
+<x-layouts.header title="Edit Workdays"/>
 <x-layouts.app>
     <!-- Body: Body -->
     <div class="body d-flex py-3">
@@ -15,6 +16,10 @@
                    <div class="card mb-3">
                        <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
                            <h6 class="mb-0 fw-bold ">Edit Workday</h6>
+                           <div class="col-auto d-flex w-sm-100">
+                            <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.workdays.index') }}"></i>Workdays</a>
+                            <a class="btn btn-dark btn-set-task w-sm-100 mx-2 " href="{{ route('company.workdays.show',$workday->shift->id) }}"></i>{{ $workday->shift->name }} Workdays</a>
+                        </div>
                        </div>
                        <div class="card-body">
                         <form method="post" action="{{ route('company.workdays.update',$workday->id) }}">
@@ -36,7 +41,7 @@
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    
+
                                     <div class="col-md-4">
                                         <label for="exampleFormControlInput546565" class="form-label">Status</label>
                                         <div class="form-check">
@@ -59,7 +64,7 @@
                                     </div>
 
 
-                                    
+
 
 
                                </div>

@@ -2,13 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Alert extends Model
 {
-    use HasFactory;
+    use HasFactory,HasTranslations;
     protected $guarded=[];
+    public $translatable = ['type'];
+    
+    const TYPES = [
+        ['en'=>'vacation days','ar'=>'أيام أجازة'],
+        ['en'=>'Salary number of working days','ar'=>'مستحقات لعدد من أيام العمل'],
+        ['en'=>'amount','ar'=>'مبلغ مالي'],
+        ['en'=>'attention','ar'=>'لفت نظر'],
+    ];
 
     public function setFileAttribute($value){
         if ($value){

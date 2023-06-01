@@ -34,7 +34,7 @@
                                     <x-admin-layouts.alerts />
                                     <div class="table-responsive active-projects manage-client">
                                         <div class="tbl-caption">
-                                            <h4 class="heading mb-0"> {{ __('Admin Pages') }}</h4>
+                                            <h4 class="heading mb-0"> {{ __('Introductions') }}</h4>
                                         </div>
                                         <table class="table">
                                             <thead>
@@ -118,7 +118,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Delete Subscription</h5>
+          <h5 class="modal-title" id="deleteModalLabel">Delete Introduction</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form action="{{ route('admin.introductions.destroy','test') }}" method="post">

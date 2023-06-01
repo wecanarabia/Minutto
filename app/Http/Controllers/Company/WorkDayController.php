@@ -20,7 +20,7 @@ class WorkDayController extends Controller
     {
         $data = Workday::with('shift')->whereHas('shift',function ($q){
             $q->where('company_id',Auth::user()->company_id);
-        })->where('status',1)->orderByDesc('shift_id')->get();
+        })->where('status',1)->orderByDesc('shift_id')->orderByDesc('created_at')->get();
         return view('front.workdays.index',compact('data'));
     }
 
@@ -128,7 +128,7 @@ class WorkDayController extends Controller
         }else {
             $workday->update($request->all());
         }
- 
+
 
         return redirect()->route('company.workdays.index')
                         ->with('success','Workday has been updated successfully');
@@ -142,14 +142,14 @@ class WorkDayController extends Controller
         }
         return view('front.workdays.shift-workdays-edit',compact('shift'));
     }
-    
+
     public function updateShiftWorkdays($id,Request $request)
     {
         $shift = Shift::with('workdays')->findOrFail($id);
         if ($shift->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        
+
         foreach ($shift->workdays as $i => $day) {
             if ($request[$day->getTranslation('day','en') ]) {
                 $validator = Validator::make([
@@ -183,9 +183,9 @@ class WorkDayController extends Controller
                 ]);
             }
         }
-    
+
         return redirect()->route('company.workdays.show',$shift->id)
                         ->with('success', 'Workdays has been updated successfully');
-    
+
     }
 }

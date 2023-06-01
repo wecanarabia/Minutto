@@ -1,3 +1,4 @@
+<x-layouts.header title="{{ $attendance->user->name }} attendance"/>
 <x-layouts.app>
     <!-- Body: Body -->
     <div class="body d-flex py-lg-3 py-md-2">
@@ -8,6 +9,9 @@
                         <div
                             class="card-header py-3 px-0 d-flex align-items-center  justify-content-between border-bottom">
                             <h3 class=" fw-bold flex-fill mb-0">Attendance Details</h3>
+                            <div class="col-auto d-flex w-sm-100">
+                                <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.attendance.index') }}"></i>Attendance</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -33,10 +37,7 @@
                                 </a>
                                 <div
                                     class="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
-                                    <span class="text-muted small">{{ $attendance->user->name .
-                                        "
-                                        " .
-                                        $attendance->user->last_name }}</span>
+                                    <span class="text-muted small">{{ $attendance->user->namE." ".$attendance->user->last_name }}</span>
                                 </div>
                             </div>
 
@@ -161,10 +162,9 @@
                             <div class="row g-3 mb-3">
 
                                 <div class="col-sm-6">
-                                    <label for="exampleFormControldeparturetime" class="form-label">Departure
-                                        Time</label>
-                                    <input type="time" class="form-control" name="time_departure"
-                                        id="exampleFormControldeparturetime" value="{{ date('H:i',strtotime($attendance->time_departure)) }}">
+                                    <label for="exampleFormControlattendancereplay" class="form-label">Replay</label>
+                                    <textarea class="form-control" name="replay"
+                                        id="exampleFormControlattendancereplay">{{ $attendance->replay }}</textarea>
                                 </div>
 
                                 <div class="col-sm-6">
@@ -172,6 +172,17 @@
                                     <textarea class="form-control" name="note"
                                         id="exampleFormControlattendancenote">{{ $attendance->note }}</textarea>
                                 </div>
+                            </div>
+                            <div class="row g-3 mb-3">
+
+                                <div class="col-sm-6">
+                                    <label for="exampleFormControldeparturetime" class="form-label">Departure
+                                        Time</label>
+                                    <input type="time" class="form-control" name="time_departure"
+                                        id="exampleFormControldeparturetime" value="{{ date('H:i',strtotime($attendance->time_departure)) }}">
+                                </div>
+
+
                             </div>
                         </div>
 

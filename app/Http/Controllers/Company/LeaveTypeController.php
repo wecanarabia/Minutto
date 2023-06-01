@@ -15,7 +15,7 @@ class LeaveTypeController extends Controller
      */
     public function index()
     {
-        $data = LeaveType::where('company_id',Auth::user()->company_id)->get();
+        $data = LeaveType::where('company_id',Auth::user()->company_id)->orderByDesc('created_at')->get();
         return view('front.leave-types.index',compact('data'));
     }
 

@@ -1,3 +1,4 @@
+<x-layouts.header title="Add Main Shift"/>
 <x-layouts.app>
     <!-- Body: Body -->
     <div class="body d-flex py-3">
@@ -36,7 +37,7 @@
                                    </div>
 
 
-                                   
+
 
                                </div>
                                <a href="{{ route('company.company-settings.branch.create') }}" class="btn btn-dark mt-4">Back</a>

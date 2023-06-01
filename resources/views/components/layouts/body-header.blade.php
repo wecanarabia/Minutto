@@ -7,9 +7,7 @@
                     <!-- header rightbar icon -->
                     <div class="h-right d-flex align-items-center mr-5 mr-lg-0 order-1">
                         <div class="d-flex">
-                            <a class="nav-link text-primary collapsed" href="help.html" title="Get Help">
-                                <i class="icofont-info-square fs-5"></i>
-                            </a>
+
                             <div class="avatar-list avatar-list-stacked px-3">
                                 <img class="avatar rounded-circle" src="{{ asset('assets/images/xs/avatar2.jpg') }}" alt="">
                                 <img class="avatar rounded-circle" src="{{ asset('assets/images/xs/avatar1.jpg') }}" alt="">
@@ -121,7 +119,7 @@
                                     <div class="list-group m-2 ">
                                         <a href="task.html" class="list-group-item list-group-item-action border-0 "><i class="icofont-tasks fs-5 me-3"></i>My Task</a>
                                         <a href="members.html" class="list-group-item list-group-item-action border-0 "><i class="icofont-ui-user-group fs-6 me-3"></i>members</a>
-                                        <a href="ui-elements/auth-signin.html" class="list-group-item list-group-item-action border-0 "><i class="icofont-logout fs-6 me-3"></i>Signout</a>
+                                        <a href="{{ route('company.logout') }}" class="list-group-item list-group-item-action border-0 "><i class="icofont-logout fs-6 me-3"></i>Signout</a>
                                         <div><hr class="dropdown-divider border-dark"></div>
                                         <a href="ui-elements/auth-signup.html" class="list-group-item list-group-item-action border-0 "><i class="icofont-contact-add fs-5 me-3"></i>Add personal account</a>
                                     </div>

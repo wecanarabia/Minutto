@@ -1,3 +1,4 @@
+<x-layouts.header title="{{ $company->name }}"/>
 <x-layouts.app>
     <!-- Body: Body -->
     <div class="body d-flex py-3">
@@ -6,6 +7,8 @@
                <div class="border-0 mb-4">
                    <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
                        <h3 class="fw-bold mb-0">{{ $company->name }}</h3>
+                       <a class="btn btn-dark btn-set-task w-sm-100 mx-2 " href="{{ route('company.company-settings.show',$company->id) }}"></i>{{ $company->name }}</a>
+
                    </div>
                </div>
            </div> <!-- Row end  -->
@@ -67,19 +70,36 @@
                                    </div>
 
                                    <div class="col-md-6">
-                                       <label class="form-label">Allowed Holidays Count</label>
+                                       <label class="form-label">Allowed Holidays Count (in days)</label>
                                        <input type="number" class="form-control" name="holidays_count" value="{{ old('holidays_count',$company->holidays_count??0) }}" required>
                                        @error('holidays_count')
                                        <div class="text-danger">{{ $message }}</div>
                                        @enderror
                                    </div>
+
                                    <div class="col-md-6">
-                                       <label class="form-label">Allowed Percentage of Advances</label>
+                                    <label class="form-label">Allowed Sick Leaves (in days)</label>
+                                    <input type="number" class="form-control" name="sick_leaves" value="{{ old('sick_leaves',$company->sick_leaves??0) }}" required>
+                                    @error('sick_leaves')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                   <div class="col-md-6">
+                                       <label class="form-label">Percentage of Advances (%)</label>
                                        <input type="number" class="form-control" name="advances_percentage" value="{{ old('advances_percentage',$company->advances_percentage??0) }}" required>
                                        @error('advances_percentage')
                                        <div class="text-danger">{{ $message }}</div>
                                        @enderror
                                    </div>
+
+                                   <div class="col-md-6">
+                                    <label class="form-label">Overtime Rate (for ocertime calculation)</label>
+                                    <input type="text" class="form-control" name="extra_rate" value="{{ old('extra_rate',$company->extra_rate??0) }}" required>
+                                    @error('extra_rate')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
 
                                    <div class="col-md-6">
                                        <label class="form-label">Subscription</label>
@@ -107,8 +127,8 @@
                                    </div>
 
                                    <div class="col-md-6">
-                                       <label class="form-label">Attendance Grace Period (in minutes)</label>
-                                       <input type="number" class="form-control" name="grace_period" value="{{ old('grace_period',$company?->grace_period??0) }}" required>
+                                       <label class="form-label">Attendance Grace Period (HH:MM:SS)</label>
+                                       <input type="text" class="form-control" placeholder="HH:MM:SS" name="grace_period" value="{{ old('grace_period',$company?->grace_period??0) }}" required>
                                        @error('grace_period')
                                        <div class="text-danger">{{ $message }}</div>
                                        @enderror

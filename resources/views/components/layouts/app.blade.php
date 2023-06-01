@@ -1,6 +1,4 @@
 
-<x-layouts.header/>
-
 
 <div id="mytask-layout" class="theme-indigo">
 

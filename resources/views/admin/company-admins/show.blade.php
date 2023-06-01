@@ -20,7 +20,7 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-12">
+                <div class="col-xl-8">
                     <div class="card">
                         <div class="card-body p-0">
                             <div class="offcanvas-body">
@@ -31,10 +31,11 @@
                                     <p class="mb-3"><strong>Email: </strong> {{ $admin->email }}</p>
                                     <p class="mb-3"><strong>Phone: </strong> {{ $admin->phone }}</p>
                                     <p class="mb-3"><strong>Company :</strong> {{ $admin->company->getTranslation('name', 'en')??"No Company"  }}</p>
+                                    <p class="mb-3"><strong>Role :</strong> {{ $admin->role->getTranslation('name', 'en')??"No Company"  }}</p>
 
 
                                 </div>
-                                <img class="card-img-bottom img-fluid" src="{{ asset( $admin->image ) }}" alt="{{ $admin->name }}">
+                                <img class="card-img-bottom img-thumbnail" src="{{ asset( $admin->image ) }}" alt="{{ $admin->name }}">
 
                         </div>
                         </div>

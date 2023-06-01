@@ -3,10 +3,28 @@
     background-color: #091C2B;
 }
 
-.ms-link:hover {
+.sidebar .menu-list .m-link:hover {
     color: #B2DCBC;
 }
 
-.btn-dark{
-    background-color: #091C2B;
+.sidebar .menu-list ul li .ms-link:hover {
+    color: #B2DCBC;
 }
+
+.menu-list .collapsed .ms-link:hover{
+    color: #B2DCBC;
+}
+
+.ms-link.active span{
+    color: #B2DCBC;
+}
+
+.btn.btn-dark{
+    background-color: #091C2B;
+    color: #B2DCBC;
+}
+
+*{
+    font-family: 'Tajawal', sans-serif;
+}
+

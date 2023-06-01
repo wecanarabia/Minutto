@@ -1,3 +1,4 @@
+<x-layouts.header title="{{ $department->name }}"/>
 <x-layouts.app>
      <!-- Body: Body -->
   <div class="body d-flex py-lg-3 py-md-2">
@@ -7,6 +8,9 @@
                 <div class="card border-0 mb-4 no-bg">
                     <div class="card-header py-3 px-0 d-flex align-items-center  justify-content-between border-bottom">
                         <h3 class=" fw-bold flex-fill mb-0">Department</h3>
+                        <div class="col-auto d-flex w-sm-100">
+                            <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.departments.index') }}"></i>Departments</a>
+                        </div>
                     </div>
                 </div>
             </div>

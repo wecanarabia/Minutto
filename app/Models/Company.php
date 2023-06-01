@@ -37,6 +37,10 @@ class Company extends Model
     public function branches(){
         return $this->hasMany(Branch::class);
     }
+    
+    public function officialVacations(){
+        return $this->hasMany(OfficialVacation::class);
+    }
 
 
     public function vactypes(){
@@ -53,6 +57,10 @@ class Company extends Model
 
     public function extratypes(){
         return $this->hasMany(ExtraType::class);
+    }
+    
+    public function roles(){
+        return $this->hasMany(Role::class);
     }
 
 

@@ -37,7 +37,7 @@ class UpdateEmployeeRequest extends FormRequest
             'swift_number'=>'sometimes|min:4|max:255',
             'career'=>'sometimes|min:4|max:255',
             'description'=>'sometimes|min:4|max:2000',
-            'duration_of_contract'=>'sometimes|integer',
+            'duration_of_contract'=>'sometimes|numeric|min:0',
             'contract_expire'=>'sometimes|date',
             'branch_id'=>'sometimes|exists:branches,id',
             'branch_id'=>'sometimes|exists:departments,id',

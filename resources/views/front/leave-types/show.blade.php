@@ -1,3 +1,4 @@
+<x-layouts.header title="{{ $type->name }}"/>
 <x-layouts.app>
      <!-- Body: Body -->
   <div class="body d-flex py-lg-3 py-md-2">
@@ -7,6 +8,9 @@
                 <div class="card border-0 mb-4 no-bg">
                     <div class="card-header py-3 px-0 d-flex align-items-center  justify-content-between border-bottom">
                         <h3 class=" fw-bold flex-fill mb-0">Leave Type</h3>
+                        <div class="col-auto d-flex w-sm-100">
+                            <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.leave-types.index') }}"></i>Leave Types</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -54,17 +58,17 @@
                 <div class="row g-3">
 
 
-                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
+                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                         <div class="card">
                             <div class="card-header py-3 d-flex justify-content-between">
-                                <h6 class="mb-0 fw-bold ">Leave Requests</h6>
+                                <h6 class="mb-0 fw-bold ">leave Requests</h6>
                             </div>
                             <div class="card-body">
                                 <div class="row clearfix g-3">
                                     <div class="col-sm-12">
                                           <div class="card mb-3">
                                               <div class="card-body">
-                                                <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                                                <table class="table table-hover align-middle mb-0" style="width:100%">
                                                     <thead>
                                                         <tr>
                                                             <th>Id</th>
@@ -79,7 +83,7 @@
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($type->leaves as $leave)
-                    
+
                                                         <tr>
                                                             <td>
                                                                 {{ $leave->id }}
@@ -99,21 +103,25 @@
                                                             {{ $leave->to }}
                                                            </td>
                                                            <td>
-                                                           {{ $leave->status }}
+                                                            <span @class(['badge','bg-success'=>$leave->getTranslation('status','en')=='approve',
+                                                                'bg-danger'=>$leave->getTranslation('status','en')=='rejected',
+                                                                'bg-info'=>$leave->getTranslation('status','en')=='waiting',
+                                                                ])>
+                                                           {{ $leave->status }}</span>
                                                            </td>
-                                                           
+
                                                            <td>
                                                            {{ $leave->ltype->name }}
                                                            </td>
                                                            <td>
                                                             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                                <a class="btn btn-outline-secondary" href="{{ route('company.leave.show',$leave->id) }}"><i class="icofont-location-arrow"></i></a>
+                                                                <a class="btn btn-outline-secondary" href="{{ route('company.leaves.show',$leave->id) }}"><i class="icofont-location-arrow"></i></a>
                                                             </div>
                                                             </td>
                                                         </tr>
-                    
+
                                                         @endforeach
-                    
+
                                                     </tbody>
                                                 </table>
                                               </div>

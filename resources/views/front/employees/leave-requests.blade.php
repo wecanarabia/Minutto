@@ -1,3 +1,5 @@
+<x-layouts.header title="Leave Requests"/>
+
 <x-layouts.app>
     <!-- Body: Body -->
     <div class="body d-flex py-lg-3 py-md-2">
@@ -5,7 +7,7 @@
             <div class="row align-items-center">
                 <div class="border-0 mb-4">
                     <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-                        <h3 class="fw-bold mb-0">Leave Requestd</h3>
+                        <h3 class="fw-bold mb-0">Leave Requests</h3>
 
                     </div>
                 </div>
@@ -14,7 +16,7 @@
               <div class="col-sm-12">
                     <div class="card mb-3">
                         <div class="card-body">
-                            <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                            <table class="table table-hover align-middle mb-0" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Id</th>

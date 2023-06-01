@@ -1,3 +1,4 @@
+<x-layouts.header title="Edit Department"/>
 <x-layouts.app>
     <!-- Body: Body -->
     <div class="body d-flex py-3">
@@ -6,6 +7,10 @@
                <div class="border-0 mb-4">
                    <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
                        <h3 class="fw-bold mb-0">Edit Department</h3>
+                       <div class="col-auto d-flex w-sm-100">
+                        <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.departments.index') }}"></i>Departments</a>
+                        <a class="btn btn-dark btn-set-task w-sm-100 mx-2 " href="{{ route('company.departments.show',$department->id) }}"></i>{{ $department->name }}</a>
+                    </div>
                    </div>
                </div>
            </div> <!-- Row end  -->
@@ -39,7 +44,7 @@
                                    </div>
 
                                    <div class="col-md-12">
-                                       <label for="addnote" class="form-label">English Descritpion</label>
+                                       <label for="addnote" class="form-label">English Description</label>
                                        <textarea  class="form-control" name="english_description" id="addnote" rows="3">{{ old('english_description',$department->getTranslation('description', 'en')) }}</textarea>
                                        @error('english_description')
                                        <div class="text-danger">{{ $message }}</div>
@@ -47,7 +52,7 @@
                                   </div>
 
                                    <div class="col-md-12">
-                                       <label for="addnote" class="form-label">Arabic Descritpion</label>
+                                       <label for="addnote" class="form-label">Arabic Description</label>
                                        <textarea  class="form-control" name="arabic_description"  id="addnote" rows="3">{{ old('arabic_description',$department->getTranslation('description', 'ar')) }}</textarea>
                                        @error('arabic_description')
                                        <div class="text-danger">{{ $message }}</div>
