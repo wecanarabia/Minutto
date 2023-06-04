@@ -25,6 +25,7 @@ class RewardResource extends JsonResource
             'status'=>$this->status,
             'replay'=>$this->replay,
             'reward_type_id'=>$this->rtype->id,
+            'reward_type_name'=>$this->rtype->name,
             'user_id'=>$this->user->id,
 
         ];

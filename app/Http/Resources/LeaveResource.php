@@ -25,6 +25,7 @@ class LeaveResource extends JsonResource
             'status'=>$this->status,
             'replay'=>$this->replay,
             'leave_type_id'=>$this->ltype->id,
+            'leave_type_name'=>$this->ltype->name,
             'user_id'=>$this->user->id,
         ];
     }

@@ -382,7 +382,10 @@ class AuthController extends Controller
 
         return false;
     }
-
+    public function userProfile($id)
+    {
+        return $this->returnData('user', UserResource::make(User::find($id)), 'successful');
+    }
 
     public function updateDeviceToken(Request $request)
     {
