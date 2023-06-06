@@ -89,28 +89,65 @@ class ReportController extends ApiController
 
     }
 
-    public function getCountersForLeaves($year,$month)
+    // public function getCountersForLeaves($year,$month)
+    // {
+
+
+
+    //     $data = array();
+
+    //     $data['total'] = User::find(Auth::user()->id)->branch->company->leaves_count;
+
+    //     $data['taken'] = Leave::where('user_id', Auth::user()->id)->where('time_leave','!=',null)
+    //     ->whereMonth('leave_date', $month)
+    //     ->whereYear('leave_date', $year)
+    //     ->select(DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(period))) as total_period'))
+    //     ->firstOrFail()
+    //      ->total_period;
+
+
+    //     $tot= User::find(Auth::user()->id)->branch->company->LeaveHours;
+
+
+
+    //     $dif=Carbon::createFromFormat('H:i:s',$tot)->diffInMinutes(Carbon::createFromFormat('H:i:s',$data['taken']));
+    //     $data['remaining']=gmdate('H:i:s',$dif*60);
+
+    //     return $this->returnData('data', $data, __('Succesfully'));
+    // }
+
+    public function getCountersForLeaves($year, $month)
     {
+        $data = [];
 
-
-
-        $data = array();
 
         $data['total'] = User::find(Auth::user()->id)->branch->company->leaves_count;
 
-        $data['taken'] = Leave::where('user_id', Auth::user()->id)->where('time_leave','!=',null)
-        ->whereMonth('leave_date', $month)
-        ->whereYear('leave_date', $year)
-        ->select(DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(period))) as total_period'))
-        ->get()[0]->total_period;
+        // Get the total time of leaves taken by the user in the specified month and year
+        $result = Leave::where('user_id', Auth::user()->id)
+            ->where('time_leave', '!=', null)
+            ->whereMonth('leave_date', $month)
+            ->whereYear('leave_date', $year)
+            ->select(DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(period))) as total_period'))
+            ->firstOrFail()
+            ->total_period;
 
-        $tot= User::find(Auth::user()->id)->branch->company->LeaveHours;
 
 
-        $dif=Carbon::createFromFormat('H:i:s',$tot)->diffInMinutes(Carbon::createFromFormat('H:i:s',$data['taken']));
-        $data['remaining']=gmdate('H:i:s',$dif*60);
+        if ($result === null) {
+            $data['taken'] = '00:00:00';
+            $data['remaining'] = '00:00:00';
+        } else {
+            $data['taken'] = $result;
+
+            // Calculate the remaining time for leaves based on the total allowed time and the time already taken
+            $totalAllowedTime = User::find(Auth::user()->id)->branch->company->LeaveHours;
+            $takenTime = Carbon::createFromFormat('H:i:s', $data['taken'])->diffInMinutes(Carbon::createFromFormat('H:i:s', $totalAllowedTime));
+            $data['remaining'] = gmdate('H:i:s', $takenTime * 60);
+        }
 
         return $this->returnData('data', $data, __('Succesfully'));
+
     }
 
 }
