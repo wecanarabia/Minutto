@@ -123,6 +123,7 @@ class ReportController extends ApiController
 
         $data['total'] = User::find(Auth::user()->id)->branch->company->leaves_count;
 
+
         // Get the total time of leaves taken by the user in the specified month and year
         $result = Leave::where('user_id', Auth::user()->id)
             ->where('time_leave', '!=', null)
@@ -131,6 +132,7 @@ class ReportController extends ApiController
             ->select(DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(period))) as total_period'))
             ->firstOrFail()
             ->total_period;
+
 
 
 
