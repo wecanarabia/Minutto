@@ -179,4 +179,15 @@ class WorkhourController extends ApiController
         return $this->returnData('data', $data, __('Succesfully'));
     }
 
+
+   public function getLastWorkhour(){
+
+    $user=User::find(Auth::user()->id);
+    $last=$user->workhours?->last();
+
+    return $this->returnData('data', new $this->resource( $last ), __('Updated succesfully'));
+
+
+   }
+
 }

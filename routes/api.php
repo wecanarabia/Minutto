@@ -108,7 +108,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         // getCountersForLeaves
        Route::get('count-all-leaves/{year}/{month}', [ReportController::class, 'getCountersForLeaves']);
 
-
+       //getLastWorkhour
+       Route::get('last-workhour', [WorkhourController::class, 'getLastWorkhour']);
 
 
     });
