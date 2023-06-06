@@ -145,6 +145,17 @@ class ReportController extends ApiController
             $takenTime = Carbon::createFromFormat('H:i:s', $data['taken'])->diffInMinutes(Carbon::createFromFormat('H:i:s', $totalAllowedTime));
             $data['remaining'] = gmdate('H:i:s', $takenTime * 60);
         }
+        if ($result === null) {
+            $data['taken'] = '00:00:00';
+            $data['remaining'] = '00:00:00';
+        } else {
+            $data['taken'] = $result;
+
+            // Calculate the remaining time for leaves based on the total allowed time and the time already taken
+            $totalAllowedTime = User::find(Auth::user()->id)->branch->company->LeaveHours;
+            $takenTime = Carbon::createFromFormat('H:i:s', $data['taken'])->diffInMinutes(Carbon::createFromFormat('H:i:s', $totalAllowedTime));
+            $data['remaining'] = gmdate('H:i:s', $takenTime * 60);
+        }
 
         return $this->returnData('data', $data, __('Succesfully'));
 
