@@ -98,7 +98,7 @@ class ReportController extends ApiController
 
         $data['total'] = User::find(Auth::user()->id)->branch->company->leaves_count;
 
-        $data['taken'] = Leave::where('user_id', Auth::user()->id)->where('status','approve')
+        $data['taken'] = Leave::where('user_id', Auth::user()->id)->where('time_leave','!=',null)
         ->whereMonth('leave_date', $month)
         ->whereYear('leave_date', $year)
         ->select(DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(period))) as total_period'))
