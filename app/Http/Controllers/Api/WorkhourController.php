@@ -78,6 +78,7 @@ class WorkhourController extends ApiController
 
 
 
+
                 foreach($discount as $dis) {
 
 
