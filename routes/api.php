@@ -104,6 +104,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          //getCountersForVacations
          Route::get('count-vacations', [WorkhourController::class, 'getCountersForVacations']);
 
+        // getCountersForAdvances
+         Route::get('count-advances', [AdvanceController::class, 'getCountersForAdvances']);
+
          //getCountersForWorkhours
          Route::get('count-workhours/{year}/{month}', [ReportController::class, 'getCountersForWorkhours']);
 
