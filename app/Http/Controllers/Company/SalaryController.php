@@ -200,79 +200,82 @@ class SalaryController extends Controller
 
 
       $totalRecords = $records->count();
+if ($records->count()>0) {
+    # code...
 
-      // Total records with filter
-            $records = Salary::select('count(*) as allcount')->whereBelongsTo($employees)->where('year',$year)->where('month',$month);
-            if (!empty($searchValue)) {
+    // Total records with filter
+    $records = Salary::select('count(*) as allcount')->whereBelongsTo($employees)->where('year', $year)->where('month', $month);
+    if (!empty($searchValue)) {
 
-            $records->whereHas('user',function($q)use($searchValue){
-                $q->where('name','like',"%$searchValue%");
-            })->orWhere('id','like',"%$searchValue%")
-            ->orWhere('actual_salary','like',"%$searchValue%")->orWhere('net_salary','like',"%$searchValue%");
-        }
-      ## Add custom filter conditions
-      if(!empty($month)){
-       $records->where('month',$month);
-      }
-      if(!empty($year)){
-        $records->where('year',$year);
-      }
+        $records->whereHas('user', function ($q) use ($searchValue) {
+            $q->where('name', 'like', "%$searchValue%");
+        })->orWhere('id', 'like', "%$searchValue%")
+        ->orWhere('actual_salary', 'like', "%$searchValue%")->orWhere('net_salary', 'like', "%$searchValue%");
+    }
+    ## Add custom filter conditions
+    if(!empty($month)) {
+        $records->where('month', $month);
+    }
+    if(!empty($year)) {
+        $records->where('year', $year);
+    }
 
-      $totalRecordswithFilter = $records->count();
+    $totalRecordswithFilter = $records->count();
 
-      // Fetch records
-            $records = Salary::select('salaries.*')->whereBelongsTo($employees)->where('year',$year)->where('month',$month)->orderBy($columnName, $columnSortOrder);
-            if (!empty($searchValue)) {
+    // Fetch records
+    $records = Salary::select('salaries.*')->whereBelongsTo($employees)->where('year', $year)->where('month', $month)->orderBy($columnName, $columnSortOrder);
+    if (!empty($searchValue)) {
 
-                $records->whereHas('user',function($q)use($searchValue){
-                    $q->where('name','like',"%$searchValue%");
-                })->orWhere('id','like',"%$searchValue%")
-                ->orWhere('actual_salary','like',"%$searchValue%")->orWhere('net_salary','like',"%$searchValue%");
-            }
-                ## Add custom filter conditions
+        $records->whereHas('user', function ($q) use ($searchValue) {
+            $q->where('name', 'like', "%$searchValue%");
+        })->orWhere('id', 'like', "%$searchValue%")
+        ->orWhere('actual_salary', 'like', "%$searchValue%")->orWhere('net_salary', 'like', "%$searchValue%");
+    }
+    ## Add custom filter conditions
 
-      $slaries = $records->skip($start)
-                   ->take($rowperpage)
-                   ->get();
-      $data = $this->getTotals($employees,$month,$year);
-      $data['net']=$slaries->sum('net_salary');
-      $data['actual']=$slaries->sum('actual_salary');
-      $data['discounts']=$data['workhours'] + $data['leaves'] + $data['alerts_in_days'] + $data['alerts'];
-      $data_arr = array();
-      foreach($slaries as $salary){
+    $slaries = $records->skip($start)
+                 ->take($rowperpage)
+                 ->get();
+    $data = $this->getTotals($employees, $month, $year);
+    $data['net']=$slaries->sum('net_salary');
+    $data['actual']=$slaries->sum('actual_salary');
+    $data['discounts']=$data['workhours'] + $data['leaves'] + $data['alerts_in_days'] + $data['alerts'];
+    $data_arr = array();
+    foreach($slaries as $salary) {
 
-         $id = $salary->id;
-         $employee = " <img class='avatar rounded-circle' src='/".$salary->user->image."' alt=''>
+        $id = $salary->id;
+        $employee = " <img class='avatar rounded-circle' src='/".$salary->user->image."' alt=''>
          <a href='/employees/".$salary->user->id."' class='fw-bold text-secondary'>
          <span class='fw-bold ms-1'>".$salary->user->name."</span></a>";
-         $year = $salary->year;
-         $month = $salary->month;
-         $actual_salary = $salary->actual_salary;
-         $net_salary = $salary->net_salary;
-         $show = "     <div class='btn-group' role='group' aria-label='Basic outlined example'>
+        $year = $salary->year;
+        $month = $salary->month;
+        $actual_salary = $salary->actual_salary;
+        $net_salary = $salary->net_salary;
+        $show = "     <div class='btn-group' role='group' aria-label='Basic outlined example'>
          <a class='btn btn-outline-secondary' href='/salaries/".$salary->id."'><i class='icofont-location-arrow'></i></a>
      </div>";
 
-         $data_arr[] = array(
-             "id" => $id,
-             "employee" => $employee,
-             "month" => $month,
-             "year" => $year,
-             "actual_salary" => $actual_salary,
-             "net_salary" => $net_salary,
-             "show" => $show,
-         );
-      }
+        $data_arr[] = array(
+            "id" => $id,
+            "employee" => $employee,
+            "month" => $month,
+            "year" => $year,
+            "actual_salary" => $actual_salary,
+            "net_salary" => $net_salary,
+            "show" => $show,
+        );
+    }
 
-      $response = array(
-         "draw" => intval($draw),
-         "iTotalRecords" => $totalRecords,
-         "iTotalDisplayRecords" => $totalRecordswithFilter,
-         "aaData" => $data_arr,
-         "additionalData" => $data,
-      );
+    $response = array(
+       "draw" => intval($draw),
+       "iTotalRecords" => $totalRecords,
+       "iTotalDisplayRecords" => $totalRecordswithFilter,
+       "aaData" => $data_arr,
+       "additionalData" => $data,
+    );
 
-      return response()->json($response);
+    return response()->json($response);
+}
    }
 
    public function getTotals($employees,$month,$year)
