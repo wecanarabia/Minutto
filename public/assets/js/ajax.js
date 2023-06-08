@@ -475,13 +475,13 @@ $(document).ready(function() {
     });
 
 
-    $('#month-filter').change(function(){
-        table.draw();
-    });
+    // $('#month-filter').change(function(){
+    //     table.draw();
+    // });
 
-    $('#year-filter').change(function(){
-        table.draw();
-    });
+    // $('#year-filter').change(function(){
+    //     table.draw();
+    // });
 
 
 
