@@ -44,6 +44,7 @@ class SalaryController extends Controller
         }else{
             $data['salaries'] = collect([]);
             $data['workhours']=0;
+            $data['leaves']=0;
             $data['advances']=0;
             $data['extras']=0;
             $data['rewards']=0;
