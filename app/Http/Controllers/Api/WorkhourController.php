@@ -57,7 +57,7 @@ class WorkhourController extends ApiController
 
             if($dif <= $company->grace_period && $difference != 0 && $model->time_attendance > $workday->from)
             {
-
+                 return "aya";
                 $late=Carbon::createFromFormat('H:i:s',$company->grace_period)->diffInMinutes(Carbon::createFromFormat('H:i:s',$dif));
                 $delay=gmdate('H:i:s',$difference*60);
                 $model->status="late";
@@ -74,6 +74,7 @@ class WorkhourController extends ApiController
                 $discount = Discount::select('from','to',DB::raw('(TIME_TO_SEC(percentage)/60) as total_per'))
                 ->where('company_id',$company->id)
                 ->get();
+
 
 
 
