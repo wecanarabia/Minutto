@@ -152,6 +152,7 @@ class WorkhourController extends ApiController
         $workhours = Workhour::where('user_id',Auth::user()->id)
         ->whereYear('created_at', '=', $year)
         ->whereMonth('created_at', '=', $month)
+        ->orderByDesc('id')
         ->get();
 
         return $this->returnData('data',  WorkhourResource::collection( $workhours ), __('Get  succesfully'));
