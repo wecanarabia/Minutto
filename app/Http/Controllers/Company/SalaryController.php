@@ -50,7 +50,7 @@ class SalaryController extends Controller
             $data['rewards']=0;
             $data['alerts_in_days']=0;
             $data['alerts']=0;
-            $data['years']=Carbon::now()->year;
+            $data['years']=(array)Carbon::now()->year;
         }
         $employeesNoSalary = User::active()->whereDoesntHave('salary')->thisMonth($now)->whereBelongsTo($branches)->get();
         return view('front.salaries.index',compact('data','employeesNoSalary'));
