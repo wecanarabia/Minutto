@@ -14,6 +14,8 @@
                         <div class="col-auto d-flex w-sm-100">
                             <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.salaries.generate') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Generate Salaries this Month</a>
                         </div>
+                        @endif
+
                         <div class="col-auto d-flex w-sm-100">
                             <select id="month-filter" class="btn btn-dark">
                                 <option selected disabled>Select Month</option>
