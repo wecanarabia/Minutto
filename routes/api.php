@@ -27,6 +27,7 @@ use App\Http\Controllers\Api\RewardTypeController;
 use App\Http\Controllers\Api\ExtraController;
 use App\Http\Controllers\Api\ExtraTypeController;
 use App\Http\Controllers\Api\MessageController;
+use App\Http\Controllers\Api\SalaryController;
 
 
 
@@ -91,6 +92,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
              //my rewards
              Route::get('my-rewards', [RewardController::class, 'myRewards']);
 
+             //mySalaries
+             Route::get('my-salaries', [SalaryController::class, 'mySalaries']);
 
          //getCountersForLeaves
          Route::get('count-leaves', [LeaveController::class, 'getCountersForLeaves']);
@@ -107,6 +110,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
         // getCountersForLeaves
        Route::get('count-all-leaves/{year}/{month}', [ReportController::class, 'getCountersForLeaves']);
+
+
 
        //getLastWorkhour
        Route::get('last-workhour', [WorkhourController::class, 'getLastWorkhour']);
