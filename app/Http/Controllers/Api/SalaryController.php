@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Auth;
 class SalaryController extends ApiController
 {
 
+    public function __construct()
+    {
+        $this->resource = SalaryResource::class;
+        $this->model = app(Salary::class);
+        $this->repositry =  new Repository($this->model);
+    }
+
     public function mySalaries($year,$month)
     {
 
