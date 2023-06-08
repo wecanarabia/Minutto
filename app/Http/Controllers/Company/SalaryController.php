@@ -176,6 +176,8 @@ class SalaryController extends Controller
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::active()->hasSalary()->whereBelongsTo($branches)->get();
+        if (!empty($employees)) {
+
           ## Read value
       $draw = $request->get('draw');
       $start = $request->get("start");
@@ -201,7 +203,7 @@ class SalaryController extends Controller
 
       $totalRecords = $records->count();
 if ($records->count()>0) {
-    # code...
+
 
     // Total records with filter
     $records = Salary::select('count(*) as allcount')->whereBelongsTo($employees)->where('year', $year)->where('month', $month);
@@ -275,6 +277,7 @@ if ($records->count()>0) {
     );
 
     return response()->json($response);
+}
 }
    }
 
