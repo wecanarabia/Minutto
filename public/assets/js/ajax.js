@@ -443,10 +443,7 @@ $(document).ready(function() {
 
 
 
-
-    let table;
-
-     table = $('.data-table').DataTable({
+    $('.data-table').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
@@ -489,17 +486,17 @@ $(document).ready(function() {
     });
 
     }
-    // else{
-    //     $('table').not('.data-table')
-    //     .addClass( 'nowrap' )
-    //     .dataTable( {
-    //         responsive: true,
-    //         order:[[0, 'desc']],
-    //         columnDefs: [
-    //             { targets: [-1, -3], className: 'dt-body-right' }
-    //         ]
-    //     });
-    // }
+    else{
+        $('table').not('.data-table')
+        .addClass( 'nowrap' )
+        .dataTable( {
+            responsive: true,
+            order:[[0, 'desc']],
+            columnDefs: [
+                { targets: [-1, -3], className: 'dt-body-right' }
+            ]
+        });
+    }
     }
 
 });
