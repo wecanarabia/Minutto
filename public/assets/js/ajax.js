@@ -439,40 +439,40 @@ $(document).ready(function() {
 
     });
 
-    let table;
+    // let table;
 
-     table = $('.data-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: {
-          url: "/salaries/filter",
-          data: function (d) {
-                d.month = $('#month-filter').val(),
-                d.year = $('#year-filter').val()
-             },
-            dataSrc: function (json) {
-                // Get the additional data from the response
-                var additionalData = json.additionalData;
+    //  table = $('.data-table').DataTable({
+    //     processing: true,
+    //     serverSide: true,
+    //     ajax: {
+    //       url: "/salaries/filter",
+    //       data: function (d) {
+    //             d.month = $('#month-filter').val(),
+    //             d.year = $('#year-filter').val()
+    //          },
+    //         dataSrc: function (json) {
+    //             // Get the additional data from the response
+    //             var additionalData = json.additionalData;
 
-                $('#actual').html(additionalData.actual);
-                $('#discount').html(additionalData.discounts);
-                $('#advance').html(additionalData.advances);
-                $('#reward').html(additionalData.rewards);
-                $('#extra').html(additionalData.extras);
-                $('#net').html(additionalData.net);
-                return json.aaData;
-            }
-        },
-        columns: [
-            {data: 'id', name: 'id'},
-            {data: 'employee', name: 'employee'},
-            {data: 'month', name: 'month'},
-            {data: 'year', name: 'year'},
-            {data: 'actual_salary', name: 'actual_salary'},
-            {data: 'net_salary', name: 'net_salary'},
-            {data: 'show', name: 'show'},
-        ]
-    });
+    //             $('#actual').html(additionalData.actual);
+    //             $('#discount').html(additionalData.discounts);
+    //             $('#advance').html(additionalData.advances);
+    //             $('#reward').html(additionalData.rewards);
+    //             $('#extra').html(additionalData.extras);
+    //             $('#net').html(additionalData.net);
+    //             return json.aaData;
+    //         }
+    //     },
+    //     columns: [
+    //         {data: 'id', name: 'id'},
+    //         {data: 'employee', name: 'employee'},
+    //         {data: 'month', name: 'month'},
+    //         {data: 'year', name: 'year'},
+    //         {data: 'actual_salary', name: 'actual_salary'},
+    //         {data: 'net_salary', name: 'net_salary'},
+    //         {data: 'show', name: 'show'},
+    //     ]
+    // });
 
 
     $('#month-filter').change(function(){
