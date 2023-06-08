@@ -489,7 +489,7 @@ $(document).ready(function() {
     });
 
     }else{
-        $('table')
+        $('table').not('.data-table')
         .addClass( 'nowrap' )
         .dataTable( {
             responsive: true,
