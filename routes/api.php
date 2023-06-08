@@ -93,7 +93,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
              Route::get('my-rewards', [RewardController::class, 'myRewards']);
 
              //mySalaries
-             Route::get('my-salaries', [SalaryController::class, 'mySalaries']);
+             Route::get('my-salaries/{year}/{month}', [SalaryController::class, 'mySalaries']);
 
          //getCountersForLeaves
          Route::get('count-leaves', [LeaveController::class, 'getCountersForLeaves']);
