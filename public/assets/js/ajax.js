@@ -439,11 +439,9 @@ $(document).ready(function() {
 
     });
 
-    if ($('table').hasClass('data-table')) {
+    let table;
 
-
-
-    $('.data-table').DataTable({
+     table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
@@ -485,19 +483,7 @@ $(document).ready(function() {
         table.draw();
     });
 
-    }
-    else{
-        $('table').not('.data-table')
-        .addClass( 'nowrap' )
-        .dataTable( {
-            responsive: true,
-            order:[[0, 'desc']],
-            columnDefs: [
-                { targets: [-1, -3], className: 'dt-body-right' }
-            ]
-        });
-    }
-    }
+
 
 });
 

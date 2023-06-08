@@ -37,7 +37,24 @@
             ]
         });
 
+        }else{
+
+            if (!$('table').hasClass('data-table')) {
+
+
+        $('table').not('.data-table')
+        .addClass( 'nowrap' )
+        .dataTable( {
+            responsive: true,
+            order:[[0, 'desc']],
+            columnDefs: [
+                { targets: [-1, -3], className: 'dt-body-right' }
+            ]
         });
+    }
+    }
+
+    });
 </script>
 </body>
 
