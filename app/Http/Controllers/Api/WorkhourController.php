@@ -75,7 +75,7 @@ class WorkhourController extends ApiController
                 ->where('company_id',$company->id)
                 ->get();
 
-                return $discount->total_per;
+
 
                 foreach($discount as $dis) {
 
