@@ -488,17 +488,18 @@ $(document).ready(function() {
         table.draw();
     });
 
-    }else{
-        $('table').not('.data-table')
-        .addClass( 'nowrap' )
-        .dataTable( {
-            responsive: true,
-            order:[[0, 'desc']],
-            columnDefs: [
-                { targets: [-1, -3], className: 'dt-body-right' }
-            ]
-        });
     }
+    // else{
+    //     $('table').not('.data-table')
+    //     .addClass( 'nowrap' )
+    //     .dataTable( {
+    //         responsive: true,
+    //         order:[[0, 'desc']],
+    //         columnDefs: [
+    //             { targets: [-1, -3], className: 'dt-body-right' }
+    //         ]
+    //     });
+    // }
     }
 
 });
