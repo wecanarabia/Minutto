@@ -35,15 +35,18 @@ class WorkhourController extends ApiController
         // dd(company);
         $currentD=Carbon::today()->format('l');
         $workday=Workday::where('shift_id',$user->shift_id)
-                        ->where('day',$currentD)
+                        ->where('day', 'like', '%' . $currentD . '%')
                         ->where('status',1)
                         ->first();
 
+
         if($company)
         {
+
             $difference=Carbon::createFromFormat('H:i:s',$model->time_attendance)->diffInMinutes(Carbon::createFromFormat('H:i:s',$workday->from));
             $dif=gmdate('H:i:s',$difference*60);
             // dd($dif);
+
             if($difference == 0 || $model->time_attendance <= $workday->from )
             {
 
@@ -54,7 +57,7 @@ class WorkhourController extends ApiController
 
             if($dif <= $company->grace_period && $difference != 0 && $model->time_attendance > $workday->from)
             {
-
+                 return "aya";
                 $late=Carbon::createFromFormat('H:i:s',$company->grace_period)->diffInMinutes(Carbon::createFromFormat('H:i:s',$dif));
                 $delay=gmdate('H:i:s',$difference*60);
                 $model->status="late";
@@ -71,6 +74,9 @@ class WorkhourController extends ApiController
                 $discount = Discount::select('from','to',DB::raw('(TIME_TO_SEC(percentage)/60) as total_per'))
                 ->where('company_id',$company->id)
                 ->get();
+
+
+
 
 
                 foreach($discount as $dis) {
@@ -149,6 +155,7 @@ class WorkhourController extends ApiController
         $workhours = Workhour::where('user_id',Auth::user()->id)
         ->whereYear('created_at', '=', $year)
         ->whereMonth('created_at', '=', $month)
+        ->orderByDesc('id')
         ->get();
 
         return $this->returnData('data',  WorkhourResource::collection( $workhours ), __('Get  succesfully'));
@@ -175,5 +182,16 @@ class WorkhourController extends ApiController
 
         return $this->returnData('data', $data, __('Succesfully'));
     }
+
+
+   public function getLastWorkhour(){
+
+    $user=User::find(Auth::user()->id);
+    $last=$user->workhours?->last();
+
+    return $this->returnData('data', new $this->resource( $last ), __('Updated succesfully'));
+
+
+   }
 
 }

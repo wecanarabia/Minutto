@@ -27,6 +27,7 @@ class UserResource extends JsonResource
             'career'=>(string)$this?->career,
             'active'=>$this?->active,
             'is_pass'=>$this?->is_pass,
+            'is_left'=>$this?->is_left,
             'country'=>(string)$this?->country,
             'date_of_birth'=>$this?->date_of_birth,
             'work_start'=>$this?->work_start,

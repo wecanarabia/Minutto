@@ -101,6 +101,7 @@ class LeaveController extends ApiController
     {
 
         $leaves = Auth::user()->leaves;
+        // $leaves= Leave::where('user_id', Auth::user()->id)->where('time_leave','!=',null)->get();
         return $this->returnData('data',  LeaveResource::collection( $leaves ), __('Get  succesfully'));
 
     }
@@ -119,7 +120,7 @@ class LeaveController extends ApiController
         $data['total'] = $leave;
 
 
-        $data['taken'] = Leave::where('user_id', Auth::user()->id)->where('status','approve')
+        $data['taken'] = Leave::where('user_id', Auth::user()->id)->where('time_leave','!=',null)
         ->whereMonth('leave_date', $currentM)
         ->whereYear('leave_date', $currentY)
         ->get()->count();
@@ -127,5 +128,16 @@ class LeaveController extends ApiController
 
         return $this->returnData('data', $data, __('Succesfully'));
     }
+
+
+    public function getLastLeave(){
+
+        $user=User::find(Auth::user()->id);
+        $last=$user->leaves?->last();
+
+        return $this->returnData('data', new $this->resource( $last ), __('Updated succesfully'));
+
+
+       }
 
 }

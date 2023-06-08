@@ -26,6 +26,9 @@ use App\Http\Controllers\Api\RewardController;
 use App\Http\Controllers\Api\RewardTypeController;
 use App\Http\Controllers\Api\ExtraController;
 use App\Http\Controllers\Api\ExtraTypeController;
+use App\Http\Controllers\Api\MessageController;
+use App\Http\Controllers\Api\SalaryController;
+
 
 
 
@@ -60,6 +63,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     Route::post('change-password', [AuthController::class, 'changePassword']);
 
+    Route::get('/user/{id}', [AuthController::class, 'userProfile']);
+
     Route::middleware(['auth:api','timezone'])->group(function () {
 
 
@@ -87,6 +92,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
              //my rewards
              Route::get('my-rewards', [RewardController::class, 'myRewards']);
 
+             //mySalaries
+
+             Route::get('my-salaries/{year}/{month}', [SalaryController::class, 'mySalaries']);
+
 
          //getCountersForLeaves
          Route::get('count-leaves', [LeaveController::class, 'getCountersForLeaves']);
@@ -94,6 +103,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
          //getCountersForVacations
          Route::get('count-vacations', [WorkhourController::class, 'getCountersForVacations']);
+
+        // getCountersForAdvances
+         Route::get('count-advances', [AdvanceController::class, 'getCountersForAdvances']);
 
          //getCountersForWorkhours
          Route::get('count-workhours/{year}/{month}', [ReportController::class, 'getCountersForWorkhours']);
@@ -106,6 +118,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
+       //getLastWorkhour
+       Route::get('last-workhour', [WorkhourController::class, 'getLastWorkhour']);
+
+       //getLastLeave
+       Route::get('last-leave', [LeaveController::class, 'getLastLeave']);
 
     });
 
