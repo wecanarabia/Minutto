@@ -43,6 +43,13 @@ class SalaryController extends Controller
             $data['years'] = Salary::select('year')->distinct()->whereBelongsTo($employees)->pluck('year')??Carbon::now()->year;
         }else{
             $data['salaries'] = collect([]);
+            $data['workhours']=0;
+            $data['advances']=0;
+            $data['extras']=0;
+            $data['rewards']=0;
+            $data['alerts_in_days']=0;
+            $data['alerts']=0;
+            $data['years']=Carbon::now()->year;
         }
         $employeesNoSalary = User::active()->whereDoesntHave('salary')->thisMonth($now)->whereBelongsTo($branches)->get();
         return view('front.salaries.index',compact('data','employeesNoSalary'));
