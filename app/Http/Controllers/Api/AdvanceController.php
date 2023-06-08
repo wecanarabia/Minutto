@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Repositories\Repository;
 use App\Http\Resources\AdvanceResource;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Auth;
 
 class AdvanceController extends ApiController
 {

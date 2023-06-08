@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Reward;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Http\Resources\RewardResource;
