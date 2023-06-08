@@ -111,6 +111,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
        //getLastWorkhour
        Route::get('last-workhour', [WorkhourController::class, 'getLastWorkhour']);
 
+       //getLastLeave
+       Route::get('last-leave', [LeaveController::class, 'getLastLeave']);
 
     });
 
