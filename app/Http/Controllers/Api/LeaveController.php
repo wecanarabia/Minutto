@@ -100,8 +100,8 @@ class LeaveController extends ApiController
     public function myLeaves()
     {
 
-        // $leaves = Auth::user()->leaves;
-        $leaves= Leave::where('user_id', Auth::user()->id)->where('time_leave','!=',null)->get();
+        $leaves = Auth::user()->leaves;
+        // $leaves= Leave::where('user_id', Auth::user()->id)->where('time_leave','!=',null)->get();
         return $this->returnData('data',  LeaveResource::collection( $leaves ), __('Get  succesfully'));
 
     }
