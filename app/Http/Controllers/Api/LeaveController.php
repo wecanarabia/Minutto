@@ -129,4 +129,15 @@ class LeaveController extends ApiController
         return $this->returnData('data', $data, __('Succesfully'));
     }
 
+
+    public function getLastLeave(){
+
+        $user=User::find(Auth::user()->id);
+        $last=$user->leaves?->last();
+
+        return $this->returnData('data', new $this->resource( $last ), __('Updated succesfully'));
+
+
+       }
+
 }
