@@ -438,20 +438,12 @@ $(document).ready(function() {
         });
 
     });
-    if (!$('table').hasClass('data-table')) {
+
+    if ($('table').hasClass('data-table')) {
 
 
-        $('table')
-        .addClass( 'nowrap' )
-        .dataTable( {
-            responsive: true,
-            order:[[0, 'desc']],
-            columnDefs: [
-                { targets: [-1, -3], className: 'dt-body-right' }
-            ]
-        });
-    }
-    }else{
+
+
     let table;
 
      table = $('.data-table').DataTable({
@@ -496,6 +488,17 @@ $(document).ready(function() {
         table.draw();
     });
 
+    }else{
+        $('table')
+        .addClass( 'nowrap' )
+        .dataTable( {
+            responsive: true,
+            order:[[0, 'desc']],
+            columnDefs: [
+                { targets: [-1, -3], className: 'dt-body-right' }
+            ]
+        });
+    }
     }
 
 });
