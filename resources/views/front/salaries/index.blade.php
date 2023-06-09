@@ -10,7 +10,7 @@
                         <h3 class="fw-bold mb-0">Salaries</h3>
 
 
-                        @if (count($data)==0||count($data['salaries'])==0)
+                        @if (count($data['salaries'])==0)
                         <div class="col-auto d-flex w-sm-100">
                             <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.salaries.generate') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Generate Salaries this Month</a>
                         </div>
