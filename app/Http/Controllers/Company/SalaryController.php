@@ -80,6 +80,8 @@ class SalaryController extends Controller
                     $data['alerts'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', '!=', 'Salary number of working days')->where('type->en', '!=', 'vacation days')->whereBelongsTo($employees)->get()->sum('punishment')??0;
 
                     $salary = new Salary([
+                        "year"=>Carbon::now()->year,
+                        "month"=>Carbon::now()->month,
                         'actual_salary'=>$employee->monthly_salary,
                         'discounts'=>(int)$data['workhours']+(int)$data['leaves']+(int)$data['alerts']+(int)$data['alerts_in_days'],
                         'advances'=>(int)$data['advances'],
@@ -160,6 +162,8 @@ class SalaryController extends Controller
                     $data['alerts'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', '!=', 'Salary number of working days')->where('type->en', '!=', 'vacation days')->whereBelongsTo($employees)->get()->sum('punishment')??0;
 
                     $employee->salary()->update([
+                        "year"=>Carbon::now()->year,
+                        "month"=>Carbon::now()->month,
                         'actual_salary'=>$employee->monthly_salary,
                         'discounts'=>(int)$data['workhours']+(int)$data['leaves']+(int)$data['alerts']+(int)$data['alerts_in_days'],
                         'advances'=>(int)$data['advances'],
