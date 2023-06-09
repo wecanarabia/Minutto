@@ -10,13 +10,13 @@
                         <h3 class="fw-bold mb-0">Salaries</h3>
 
 
-                        @if (empty($data['salaries']))
+                        @if ($data['salaries']->count()==0)
                         <div class="col-auto d-flex w-sm-100">
                             <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.salaries.generate') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Generate Salaries this Month</a>
                         </div>
                         @else
                         <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.salaries.update') }}">Update Salaries</a>
-                        @if (count($employeesNoSalary)>0)
+                        @if (count($employeesNoSalary)>0&&$data['salaries']->count()>0)
                         <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.salaries.create') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Add Salary</a>
                         @endif
                         @endif
