@@ -39,7 +39,7 @@ class SalaryController extends Controller
                 return $alert;
             })->sum('salary');
             $data['alerts'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', '!=', 'Salary number of working days')->where('type->en', '!=', 'vacation days')->whereBelongsTo($employees)->get()->sum('punishment');
-            $data['salaries'] = Salary::whereMonth('month', Carbon::now()->month)->whereYear('year', Carbon::now()->year)->whereBelongsTo($employees)->orderByDesc('created_at')->get();
+            $data['salaries'] = Salary::where('month', Carbon::now()->month)->where('year', Carbon::now()->year)->whereBelongsTo($employees)->orderByDesc('created_at')->get();
             $data['years'] = Salary::select('year')->distinct()->whereBelongsTo($employees)->pluck('year')??Carbon::now()->year;
         dd($data['salaries']);
         }else{
@@ -65,7 +65,7 @@ class SalaryController extends Controller
         $employees = User::active()->hasNotSalary()->whereBelongsTo($branches)->notOfThisMonth($now)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
 
-            $salaryOfMonth = Salary::whereMonth('month', Carbon::now()->month)->whereYear('year', Carbon::now()->year)->whereBelongsTo($employees)->get();
+            $salaryOfMonth = Salary::where('month', Carbon::now()->month)->where('year', Carbon::now()->year)->whereBelongsTo($employees)->get();
             if (count($salaryOfMonth)==0) {
                 foreach ($employees as $employee) {
                     $data['leaves'] = Leave::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employee)->get()->sum('discount_value')??0;
