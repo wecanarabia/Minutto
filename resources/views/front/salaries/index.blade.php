@@ -15,7 +15,7 @@
                             <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.salaries.generate') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Generate Salaries this Month</a>
                         </div>
                         @else
-                        <a class="btn btn-dark btn-set-task w-sm-100 mx-2" href="{{ route('company.salaries.update') }}">Update Salaries</a>
+                        <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.salaries.update') }}">Update Salaries</a>
                         @if (count($employeesNoSalary)>0)
                         <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.salaries.create') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Add Salary</a>
                         @endif
