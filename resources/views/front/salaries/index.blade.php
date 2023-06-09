@@ -110,6 +110,7 @@
                 </div>
             </div>
             </div>
+            @if ($data['salaries']->count()==0)
 
             <div class="row clearfix g-3">
               <div class="col-sm-12">
@@ -167,6 +168,7 @@
                     </div>
               </div>
             </div><!-- Row End -->
+            @endif
         </div>
     </div>
 
