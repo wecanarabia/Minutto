@@ -17,6 +17,8 @@ class SalaryResource extends JsonResource
         return [
 
             'id'=>$this->id,
+            'month'=>$this->month,
+            'year'=>$this->year,
             'actual_salary'=>$this->actual_salary,
             'net_salary'=>$this->net_salary,
             'discounts'=>$this->discounts,
