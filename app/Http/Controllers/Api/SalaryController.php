@@ -21,6 +21,18 @@ class SalaryController extends ApiController
         $this->repositry =  new Repository($this->model);
     }
 
+
+
+    public function salaries()
+    {
+
+        $salaries = Salary::where('user_id',Auth::user()->id)
+        ->get();
+
+        return $this->returnData('data',  SalaryResource::collection( $salaries ), __('Get  succesfully'));
+
+    }
+
     public function mySalaries($year,$month)
     {
 
