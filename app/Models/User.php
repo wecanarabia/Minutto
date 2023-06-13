@@ -93,7 +93,7 @@ class User extends Authenticatable
     }
 
     public function salary(){
-        return $this->hasOne(Salary::class)->where('month', Carbon::now()->month);
+        return $this->hasOne(Salary::class)->where('month', Carbon::now()->month)->where('year', Carbon::now()->year);
     }
 
 
@@ -138,6 +138,10 @@ class User extends Authenticatable
 
     public function scopeHasSalary($query){
         return $query->whereHas('salary');
+    }
+
+    public function scopeHasNotSalary($query){
+        return $query->whereDoesntHave('salary');
     }
 
     public function scopeNotOfThisMonth($q,$now){

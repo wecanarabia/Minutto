@@ -14,8 +14,8 @@ return new class extends Migration
     {
         Schema::create('salaries', function (Blueprint $table) {
             $table->id();
-            $table->integer('month')->default(Carbon::now()->month);
-            $table->integer('year')->default(Carbon::now()->year);
+            $table->integer('month');
+            $table->integer('year');
             $table->double('actual_salary')->default(0);
             $table->double('net_salary')->default(0);
             $table->double('discounts')->default(0);
