@@ -55,13 +55,16 @@ class LeaveController extends ApiController
 
         if ($model) {
 
+
+
+            $model = $this->repositry->edit( $id,$request->all() );
+
             if($model->time_leave && $user->is_left == 1){
 
-                $user->is_left= 2 ;
+                $user->is_left = 2 ;
                 $user->save();
             }
 
-            $model = $this->repositry->edit( $id,$request->all() );
             if($model->time_leave && $model->time_leave < $model->from){
 
                 $model->time_status="late";
