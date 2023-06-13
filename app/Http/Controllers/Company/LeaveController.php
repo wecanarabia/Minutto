@@ -76,6 +76,7 @@ class LeaveController extends Controller
                 $this->addLog($leave->user->id,'Update leave request','تحديث طلب المغادرة','Leave request has been approved','تم الموافقة على طلب المغادرة',$request['note']);
             }else if($request['status.en'] == 'rejected'){
                 $this->addLog($leave->user->id,'Update leave request','تحديث طلب المغادرة','Leave request has been rejected','تم رفض طلب المغادرة',$request['note']);
+                $request['is_left']=0;
             };
         };
 
