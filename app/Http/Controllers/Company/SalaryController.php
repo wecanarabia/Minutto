@@ -39,10 +39,18 @@ class SalaryController extends Controller
                 return $alert;
             })->sum('salary');
             $data['alerts'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', '!=', 'Salary number of working days')->where('type->en', '!=', 'vacation days')->whereBelongsTo($employees)->get()->sum('punishment');
-            $data['salaries'] = Salary::whereMonth('created_at', Carbon::now()->month)->whereBelongsTo($employees)->orderByDesc('created_at')->get();
+            $data['salaries'] = Salary::where('month', Carbon::now()->month)->where('year', Carbon::now()->year)->whereBelongsTo($employees)->orderByDesc('created_at')->get();
             $data['years'] = Salary::select('year')->distinct()->whereBelongsTo($employees)->pluck('year')??Carbon::now()->year;
         }else{
             $data['salaries'] = collect([]);
+            $data['workhours']=0;
+            $data['leaves']=0;
+            $data['advances']=0;
+            $data['extras']=0;
+            $data['rewards']=0;
+            $data['alerts_in_days']=0;
+            $data['alerts']=0;
+            $data['years']=(array)Carbon::now()->year;
         }
         $employeesNoSalary = User::active()->whereDoesntHave('salary')->thisMonth($now)->whereBelongsTo($branches)->get();
         return view('front.salaries.index',compact('data','employeesNoSalary'));
@@ -53,24 +61,27 @@ class SalaryController extends Controller
     {
         $now = Carbon::now();
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->whereBelongsTo($branches)->notOfThisMonth($now)->with(['branch','shift'])->get();
+        $employees = User::active()->hasNotSalary()->whereBelongsTo($branches)->notOfThisMonth($now)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
-            $salaryOfMonth = Salary::whereMonth('created_at', Carbon::now()->month)->whereBelongsTo($employees)->get();
+
+            $salaryOfMonth = Salary::where('month', Carbon::now()->month)->where('year', Carbon::now()->year)->whereBelongsTo($employees)->get();
             if (count($salaryOfMonth)==0) {
                 foreach ($employees as $employee) {
-                    $data['leaves'] = Leave::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employee)->get()->sum('discount_value');
-                    $data['workhours'] = Workhour::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employee)->get()->sum('discount_value');
-                    $data['advances'] = Advance::whereMonth('created_at', Carbon::now()->month)->where('value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('value');
-                    $data['extras'] = Extra::whereMonth('created_at', Carbon::now()->month)->where('amount', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('amount');
-                    $data['rewards'] = Reward::whereMonth('created_at', Carbon::now()->month)->where('reward_value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('reward_value');
+                    $data['leaves'] = Leave::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employee)->get()->sum('discount_value')??0;
+                    $data['workhours'] = Workhour::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employee)->get()->sum('discount_value')??0;
+                    $data['advances'] = Advance::whereMonth('created_at', Carbon::now()->month)->where('value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('value')??0;
+                    $data['extras'] = Extra::whereMonth('created_at', Carbon::now()->month)->where('amount', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('amount')??0;
+                    $data['rewards'] = Reward::whereMonth('created_at', Carbon::now()->month)->where('reward_value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('reward_value')??0;
                     $data['alerts_in_days'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', 'Salary number of working days')->whereBelongsTo($employee)->with('user')
                     ->get()->map(function ($alert) {
                         $alert->salary = $alert->punishment * $alert->user->daily_salary;
                         return $alert;
-                    })->sum('salary');
-                    $data['alerts'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', '!=', 'Salary number of working days')->where('type->en', '!=', 'vacation days')->whereBelongsTo($employees)->get()->sum('punishment');
+                    })->sum('salary')??0;
+                    $data['alerts'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', '!=', 'Salary number of working days')->where('type->en', '!=', 'vacation days')->whereBelongsTo($employees)->get()->sum('punishment')??0;
 
                     $salary = new Salary([
+                        "year"=>Carbon::now()->year,
+                        "month"=>Carbon::now()->month,
                         'actual_salary'=>$employee->monthly_salary,
                         'discounts'=>(int)$data['workhours']+(int)$data['leaves']+(int)$data['alerts']+(int)$data['alerts_in_days'],
                         'advances'=>(int)$data['advances'],
@@ -138,19 +149,21 @@ class SalaryController extends Controller
             $salaryOfMonth = Salary::whereMonth('created_at', Carbon::now()->month)->whereBelongsTo($employees)->get();
             if (count($salaryOfMonth)>0) {
                 foreach ($employees as $employee) {
-                    $data['leaves'] = Leave::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employee)->get()->sum('discount_value');
-                    $data['workhours'] = Workhour::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employee)->get()->sum('discount_value');
-                    $data['advances'] = Advance::whereMonth('created_at', Carbon::now()->month)->where('value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('value');
-                    $data['extras'] = Extra::whereMonth('created_at', Carbon::now()->month)->where('amount', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('amount');
-                    $data['rewards'] = Reward::whereMonth('created_at', Carbon::now()->month)->where('reward_value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('reward_value');
+                    $data['leaves'] = Leave::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employee)->get()->sum('discount_value'??0);
+                    $data['workhours'] = Workhour::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employee)->get()->sum('discount_value')??0;
+                    $data['advances'] = Advance::whereMonth('created_at', Carbon::now()->month)->where('value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('value')??0;
+                    $data['extras'] = Extra::whereMonth('created_at', Carbon::now()->month)->where('amount', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('amount')??0;
+                    $data['rewards'] = Reward::whereMonth('created_at', Carbon::now()->month)->where('reward_value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('reward_value')??0;
                     $data['alerts_in_days'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', 'Salary number of working days')->whereBelongsTo($employee)->with('user')
                     ->get()->map(function ($alert) {
                         $alert->salary = $alert->punishment * $alert->user->daily_salary;
                         return $alert;
-                    })->sum('salary');
-                    $data['alerts'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', '!=', 'Salary number of working days')->where('type->en', '!=', 'vacation days')->whereBelongsTo($employees)->get()->sum('punishment');
+                    })->sum('salary')??0;
+                    $data['alerts'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', '!=', 'Salary number of working days')->where('type->en', '!=', 'vacation days')->whereBelongsTo($employees)->get()->sum('punishment')??0;
 
                     $employee->salary()->update([
+                        "year"=>Carbon::now()->year,
+                        "month"=>Carbon::now()->month,
                         'actual_salary'=>$employee->monthly_salary,
                         'discounts'=>(int)$data['workhours']+(int)$data['leaves']+(int)$data['alerts']+(int)$data['alerts_in_days'],
                         'advances'=>(int)$data['advances'],
@@ -168,6 +181,8 @@ class SalaryController extends Controller
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::active()->hasSalary()->whereBelongsTo($branches)->get();
+        if (!empty($employees)) {
+
           ## Read value
       $draw = $request->get('draw');
       $start = $request->get("start");
@@ -192,79 +207,83 @@ class SalaryController extends Controller
 
 
       $totalRecords = $records->count();
+if ($records->count()>0) {
 
-      // Total records with filter
-            $records = Salary::select('count(*) as allcount')->whereBelongsTo($employees)->where('year',$year)->where('month',$month);
-            if (!empty($searchValue)) {
 
-            $records->whereHas('user',function($q)use($searchValue){
-                $q->where('name','like',"%$searchValue%");
-            })->orWhere('id','like',"%$searchValue%")
-            ->orWhere('actual_salary','like',"%$searchValue%")->orWhere('net_salary','like',"%$searchValue%");
-        }
-      ## Add custom filter conditions
-      if(!empty($month)){
-       $records->where('month',$month);
-      }
-      if(!empty($year)){
-        $records->where('year',$year);
-      }
+    // Total records with filter
+    $records = Salary::select('count(*) as allcount')->whereBelongsTo($employees)->where('year', $year)->where('month', $month);
+    if (!empty($searchValue)) {
 
-      $totalRecordswithFilter = $records->count();
+        $records->whereHas('user', function ($q) use ($searchValue) {
+            $q->where('name', 'like', "%$searchValue%");
+        })->orWhere('id', 'like', "%$searchValue%")
+        ->orWhere('actual_salary', 'like', "%$searchValue%")->orWhere('net_salary', 'like', "%$searchValue%");
+    }
+    ## Add custom filter conditions
+    if(!empty($month)) {
+        $records->where('month', $month);
+    }
+    if(!empty($year)) {
+        $records->where('year', $year);
+    }
 
-      // Fetch records
-            $records = Salary::select('salaries.*')->whereBelongsTo($employees)->where('year',$year)->where('month',$month)->orderBy($columnName, $columnSortOrder);
-            if (!empty($searchValue)) {
+    $totalRecordswithFilter = $records->count();
 
-                $records->whereHas('user',function($q)use($searchValue){
-                    $q->where('name','like',"%$searchValue%");
-                })->orWhere('id','like',"%$searchValue%")
-                ->orWhere('actual_salary','like',"%$searchValue%")->orWhere('net_salary','like',"%$searchValue%");
-            }
-                ## Add custom filter conditions
+    // Fetch records
+    $records = Salary::select('salaries.*')->whereBelongsTo($employees)->where('year', $year)->where('month', $month)->orderBy($columnName, $columnSortOrder);
+    if (!empty($searchValue)) {
 
-      $slaries = $records->skip($start)
-                   ->take($rowperpage)
-                   ->get();
-      $data = $this->getTotals($employees,$month,$year);
-      $data['net']=$slaries->sum('net_salary');
-      $data['actual']=$slaries->sum('actual_salary');
-      $data['discounts']=$data['workhours'] + $data['leaves'] + $data['alerts_in_days'] + $data['alerts'];
-      $data_arr = array();
-      foreach($slaries as $salary){
+        $records->whereHas('user', function ($q) use ($searchValue) {
+            $q->where('name', 'like', "%$searchValue%");
+        })->orWhere('id', 'like', "%$searchValue%")
+        ->orWhere('actual_salary', 'like', "%$searchValue%")->orWhere('net_salary', 'like', "%$searchValue%");
+    }
+    ## Add custom filter conditions
 
-         $id = $salary->id;
-         $employee = " <img class='avatar rounded-circle' src='/".$salary->user->image."' alt=''>
+    $slaries = $records->skip($start)
+                 ->take($rowperpage)
+                 ->get();
+    $data = $this->getTotals($employees, $month, $year);
+    $data['net']=$slaries->sum('net_salary');
+    $data['actual']=$slaries->sum('actual_salary');
+    $data['discounts']=$data['workhours'] + $data['leaves'] + $data['alerts_in_days'] + $data['alerts'];
+    $data_arr = array();
+    foreach($slaries as $salary) {
+
+        $id = $salary->id;
+        $employee = " <img class='avatar rounded-circle' src='/".$salary->user->image."' alt=''>
          <a href='/employees/".$salary->user->id."' class='fw-bold text-secondary'>
          <span class='fw-bold ms-1'>".$salary->user->name."</span></a>";
-         $year = $salary->year;
-         $month = $salary->month;
-         $actual_salary = $salary->actual_salary;
-         $net_salary = $salary->net_salary;
-         $show = "     <div class='btn-group' role='group' aria-label='Basic outlined example'>
+        $year = $salary->year;
+        $month = $salary->month;
+        $actual_salary = $salary->actual_salary;
+        $net_salary = $salary->net_salary;
+        $show = "     <div class='btn-group' role='group' aria-label='Basic outlined example'>
          <a class='btn btn-outline-secondary' href='/salaries/".$salary->id."'><i class='icofont-location-arrow'></i></a>
      </div>";
 
-         $data_arr[] = array(
-             "id" => $id,
-             "employee" => $employee,
-             "month" => $month,
-             "year" => $year,
-             "actual_salary" => $actual_salary,
-             "net_salary" => $net_salary,
-             "show" => $show,
-         );
-      }
+        $data_arr[] = array(
+            "id" => $id,
+            "employee" => $employee,
+            "month" => $month,
+            "year" => $year,
+            "actual_salary" => $actual_salary,
+            "net_salary" => $net_salary,
+            "show" => $show,
+        );
+    }
 
-      $response = array(
-         "draw" => intval($draw),
-         "iTotalRecords" => $totalRecords,
-         "iTotalDisplayRecords" => $totalRecordswithFilter,
-         "aaData" => $data_arr,
-         "additionalData" => $data,
-      );
+    $response = array(
+       "draw" => intval($draw),
+       "iTotalRecords" => $totalRecords,
+       "iTotalDisplayRecords" => $totalRecordswithFilter,
+       "aaData" => $data_arr,
+       "additionalData" => $data,
+    );
 
-      return response()->json($response);
+    return response()->json($response);
+}
+}
    }
 
    public function getTotals($employees,$month,$year)

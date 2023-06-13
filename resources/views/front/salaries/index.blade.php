@@ -10,11 +10,17 @@
                         <h3 class="fw-bold mb-0">Salaries</h3>
 
 
-                        @if (count($data)==0||count($data['salaries'])==0))
+                        @if ($data['salaries']->count()==0)
                         <div class="col-auto d-flex w-sm-100">
                             <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.salaries.generate') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Generate Salaries this Month</a>
                         </div>
                         @else
+                        <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.salaries.update') }}">Update Salaries</a>
+                        @if (count($employeesNoSalary)>0&&$data['salaries']->count()>0)
+                        <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.salaries.create') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Add Salary</a>
+                        @endif
+                        @endif
+
                         <div class="col-auto d-flex w-sm-100">
                             <select id="month-filter" class="btn btn-dark">
                                 <option selected disabled>Select Month</option>
@@ -28,13 +34,9 @@
                                     <option value="{{ $year }}"  @selected($year==\Carbon\Carbon::now()->year)>{{ $year }}</option>
                                 @endforeach
                             </select>
-                            <a class="btn btn-dark btn-set-task w-sm-100 mx-2" href="{{ route('company.salaries.update') }}">Update Salaries</a>
-                            @if (count($employeesNoSalary)>0)
-                            <a class="btn btn-dark btn-set-task w-sm-100" href="{{ route('company.salaries.create') }}"><i class="icofont-plus-circle me-2 fs-6"></i>Add Salary</a>
-                            @endif
+
                         </div>
 
-                        @endif
 
 
                     </div>
@@ -108,6 +110,7 @@
                 </div>
             </div>
             </div>
+            @if ($data['salaries']->count()>0)
 
             <div class="row clearfix g-3">
               <div class="col-sm-12">
@@ -165,6 +168,7 @@
                     </div>
               </div>
             </div><!-- Row End -->
+            @endif
         </div>
     </div>
 

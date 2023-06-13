@@ -42,7 +42,7 @@
             if (!$('table').hasClass('data-table')) {
 
 
-        $('table')
+        $('table').not('.data-table')
         .addClass( 'nowrap' )
         .dataTable( {
             responsive: true,
