@@ -150,7 +150,7 @@ class WorkhourController extends ApiController
 
             if($dif <= $company->grace_period && $difference != 0 && $model->time_attendance > $workday->from)
             {
-                 
+
                 $late=Carbon::createFromFormat('H:i:s',$company->grace_period)->diffInMinutes(Carbon::createFromFormat('H:i:s',$dif));
                 $delay=gmdate('H:i:s',$difference*60);
                 $model->status="late";
@@ -231,6 +231,7 @@ class WorkhourController extends ApiController
             if($user){
 
                 $user->is_pass=0;
+                $user->is_left=0;
                 $user->save();
 
 
