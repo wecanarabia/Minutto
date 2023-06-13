@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
 
-            $table->boolean('is_left')->default(0);
+            $table->integer('is_left')->default(0);
 
         });
     }
