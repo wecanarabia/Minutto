@@ -57,7 +57,7 @@ class LeaveController extends ApiController
 
             if($model->time_leave && $user->is_left == 1){
 
-                $user->is_left=0;
+                $user->is_left=2;
                 $user->save();
             }
 
@@ -82,6 +82,13 @@ class LeaveController extends ApiController
                 $model->save();
 
 
+            }
+
+
+            if($model->time_back && $user->is_left == 2){
+
+                $user->is_left=0;
+                $user->save();
             }
 
 
