@@ -125,6 +125,10 @@ class WorkhourController extends ApiController
 
 
 
+
+            $user=User::find($request->user_id);
+
+
             $user=User::find($request->user_id);
 //             $last=$user->workhours?->last();
 
