@@ -24,7 +24,8 @@ class BranchResource extends JsonResource
                 'lat'=>$this?->lat,
                 'long'=>$this?->long,
                 'company_id'=>$this->company?->id,
-                'company_id'=>$this->company?->currency,
+                'company_currency'=>$this->company?->currency,
+
         ];
     }
 }
