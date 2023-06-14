@@ -124,8 +124,8 @@ class WorkhourController extends ApiController
             DB::beginTransaction();
 
 
-            $us=User::find(Auth::user()->id);
-            $last=$us->workhours?->last();
+            $user=User::find($request->user_id);
+            $last=$user->workhours?->last();
 
            if ($last) {
             $createdAt = Carbon::parse($last->created_at);
@@ -139,7 +139,7 @@ class WorkhourController extends ApiController
 
 
         $model = $this->repositry->save( $request->all() );
-        $user=User::find($request->user_id);
+
         $company=Company::find($user->branch->company->id);
         // dd(company);
         $currentD=Carbon::today()->format('l');
