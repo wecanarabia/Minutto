@@ -124,8 +124,10 @@ class WorkhourController extends ApiController
             DB::beginTransaction();
 
 
+
             $user=User::find($request->user_id);
             $last=$user->workhours?->last();
+
 
            if ($last) {
             $createdAt = Carbon::parse($last->created_at);
