@@ -72,7 +72,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::middleware(['auth:api','timezone'])->group(function () {
 
           //get time by time zone
-  Route::get('get-time', [CompanyController::class, 'getTime']);
+        Route::get('get-time', [CompanyController::class, 'getTime']);
 
         //view Daily Message
         Route::get('daily-message', [MessageController::class, 'viewDailyMessage']);

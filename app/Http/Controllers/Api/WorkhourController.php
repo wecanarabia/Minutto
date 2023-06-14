@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use DB;
 
+
 class WorkhourController extends ApiController
 {
 
@@ -121,6 +122,21 @@ class WorkhourController extends ApiController
 
         try {
             DB::beginTransaction();
+
+
+            $us=User::find(Auth::user()->id);
+            $last=$us->workhours?->last();
+
+           if ($last) {
+            $createdAt = Carbon::parse($last->created_at);
+             $today = Carbon::today();
+
+    if ($createdAt->isSameDay($today)) {
+        return $this->returnError(__('Sorry! You can not be fingerprinted again !'));
+    }
+}
+
+
 
         $model = $this->repositry->save( $request->all() );
         $user=User::find($request->user_id);
