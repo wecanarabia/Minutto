@@ -125,18 +125,21 @@ class WorkhourController extends ApiController
 
 
 
+
             $user=User::find($request->user_id);
-            $last=$user->workhours?->last();
 
 
-           if ($last) {
-            $createdAt = Carbon::parse($last->created_at);
-             $today = Carbon::today();
+            $user=User::find($request->user_id);
+//             $last=$user->workhours?->last();
 
-    if ($createdAt->isSameDay($today)) {
-        return $this->returnError(__('Sorry! You can not be fingerprinted again !'));
-    }
-}
+//            if ($last) {
+//             $createdAt = Carbon::parse($last->created_at);
+//              $today = Carbon::today();
+
+//     if ($createdAt->isSameDay($today)) {
+//         return $this->returnError(__('Sorry! You can not be fingerprinted again !'));
+//     }
+// }
 
 
 
