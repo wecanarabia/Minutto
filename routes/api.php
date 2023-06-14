@@ -65,6 +65,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     Route::get('/user/{id}', [AuthController::class, 'userProfile']);
 
+
+  //get time by time zone
+  Route::get('get-time', [CompanyController::class, 'getTime']);
+
+
     Route::middleware(['auth:api','timezone'])->group(function () {
 
 
