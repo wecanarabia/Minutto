@@ -50,6 +50,7 @@ class UserResource extends JsonResource
             'marial_status'=>$this?->marial_status,
             'emergency_contact'=>$this?->emergency_contact,
             'description'=>$this?->description,
+            'timezone'=>$this?->branch?->company?->timezone,
 
         ];
     }
