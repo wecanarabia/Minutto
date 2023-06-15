@@ -25,6 +25,7 @@ class BranchResource extends JsonResource
                 'long'=>$this?->long,
                 'company_id'=>$this->company?->id,
                 'company_currency'=>$this->company?->currency,
+
         ];
     }
 }
