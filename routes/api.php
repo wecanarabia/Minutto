@@ -66,6 +66,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('/user/{id}', [AuthController::class, 'userProfile']);
 
 
+    Route::get('delete-user/{id}', [AuthController::class, 'delete']);
 
 
 
@@ -75,6 +76,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
         Route::get('get-time', [CompanyController::class, 'getTime']);
 
+        Route::post('user/token', [AuthController::class, 'updateDeviceToken']);
 
         //view Daily Message
         Route::get('daily-message', [MessageController::class, 'viewDailyMessage']);
