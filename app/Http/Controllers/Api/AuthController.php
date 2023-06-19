@@ -79,6 +79,7 @@ class AuthController extends Controller
             $user = $this->userRepositry->save($request);
 
             $company= Company::where('code',$request->code)->first();
+
             if($company)
             {
 
@@ -92,6 +93,13 @@ class AuthController extends Controller
 
                 }
             }
+
+            if(!$company)
+            {
+                return $this->returnError('Sorry! The code not correct');
+            }
+
+
 
             // $user->update([
             //     'password' => Hash::make('1234')
