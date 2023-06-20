@@ -83,6 +83,7 @@ class AuthController extends Controller
 
 
 
+
             if (isset($request->imei)) {
                 $check = User::where('imei', $request->imei)
                     ->first();
@@ -107,6 +108,7 @@ class AuthController extends Controller
 
             $user = $this->userRepositry->save($request);
 
+
             $company= Company::where('code',$request->code)->first();
 
             if($company)
@@ -127,6 +129,7 @@ class AuthController extends Controller
             {
                 return $this->returnError('Sorry! The code not correct');
             }
+
 
 
 
