@@ -101,6 +101,7 @@ class AuthController extends Controller
             }
 
 
+
             if (isset($request->imei)) {
                 $check = User::where('imei', $request->imei)
                     ->first();
@@ -123,6 +124,7 @@ class AuthController extends Controller
             }
 
             $user = $this->userRepositry->save($request);
+
 
             // $user->update([
             //     'password' => Hash::make('1234')
