@@ -76,7 +76,8 @@ class AuthController extends Controller
     {
         try {
             DB::beginTransaction();
-            $user = $this->userRepositry->save($request);
+
+
 
 
             $company= Company::where('code',$request->code)->first();
@@ -123,6 +124,8 @@ class AuthController extends Controller
                 }
             }
 
+
+            $user = $this->userRepositry->save($request);
 
 
 
