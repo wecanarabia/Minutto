@@ -79,6 +79,7 @@ class AuthController extends Controller
 
 
 
+
             $company= Company::where('code',$request->code)->first();
 
             if($company)
@@ -123,7 +124,9 @@ class AuthController extends Controller
                 }
             }
 
+
             $user = $this->userRepositry->save($request);
+
 
 
             // $user->update([
