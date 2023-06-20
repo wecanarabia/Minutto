@@ -78,6 +78,7 @@ class AuthController extends Controller
             DB::beginTransaction();
             $user = $this->userRepositry->save($request);
 
+
             $company= Company::where('code',$request->code)->first();
 
             if($company)
@@ -97,6 +98,28 @@ class AuthController extends Controller
             if(!$company)
             {
                 return $this->returnError('Sorry! The code not correct');
+            }
+
+
+            if (isset($request->imei)) {
+                $check = User::where('imei', $request->imei)
+                    ->first();
+
+                if ($check) {
+
+                    return $this->returnError('The imei is already used!');
+                }
+            }
+
+
+            if (isset($request->phone)) {
+                $check = User::where('phone', $request->phone)
+                    ->first();
+
+                if ($check) {
+
+                    return $this->returnError('The phone number is already used!');
+                }
             }
 
 
