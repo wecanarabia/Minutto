@@ -82,6 +82,7 @@ class AuthController extends Controller
 
 
 
+
             if (isset($request->imei)) {
                 $check = User::where('imei', $request->imei)
                     ->first();
@@ -102,6 +103,7 @@ class AuthController extends Controller
                     return $this->returnError('The phone number is already used!');
                 }
             }
+
 
             $user = $this->userRepositry->save($request);
 
@@ -125,6 +127,7 @@ class AuthController extends Controller
             {
                 return $this->returnError('Sorry! The code not correct');
             }
+
 
 
             // $user->update([
