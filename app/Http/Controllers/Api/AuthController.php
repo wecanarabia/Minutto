@@ -80,26 +80,7 @@ class AuthController extends Controller
 
 
 
-            $company= Company::where('code',$request->code)->first();
 
-            if($company)
-            {
-
-                $branch_id= $company->branches->first()->id;
-                if($branch_id)
-                {
-
-                $user->update([
-                    'branch_id' => $branch_id,
-                ]);
-
-                }
-            }
-
-            if(!$company)
-            {
-                return $this->returnError('Sorry! The code not correct');
-            }
 
 
 
@@ -126,6 +107,29 @@ class AuthController extends Controller
 
 
             $user = $this->userRepositry->save($request);
+
+
+            $company= Company::where('code',$request->code)->first();
+
+            if($company)
+            {
+
+                $branch_id= $company->branches->first()->id;
+                if($branch_id)
+                {
+
+                $user->update([
+                    'branch_id' => $branch_id,
+                ]);
+
+                }
+            }
+
+            if(!$company)
+            {
+                return $this->returnError('Sorry! The code not correct');
+            }
+
 
 
 
