@@ -37,7 +37,7 @@ class Company extends Model
     public function branches(){
         return $this->hasMany(Branch::class);
     }
-    
+
     public function officialVacations(){
         return $this->hasMany(OfficialVacation::class);
     }
@@ -58,10 +58,17 @@ class Company extends Model
     public function extratypes(){
         return $this->hasMany(ExtraType::class);
     }
-    
+
     public function roles(){
         return $this->hasMany(Role::class);
     }
 
+    public function pages(){
+        return $this->hasMany(Page::class);
+    }
+
+    public function faqs(){
+        return $this->hasMany(Faq::class);
+    }
 
 }

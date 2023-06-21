@@ -70,6 +70,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
+
+
     Route::middleware(['auth:api','timezone'])->group(function () {
 
           //get time by time zone
@@ -169,6 +171,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
     Route::get('days', [PageController::class, 'getDaysNumber']);
+
+
+    //getPagesOfCompany
+    Route::get('pages-of-company/{company_id}', [PageController::class, 'getPagesOfCompany']);
+
+
+     //getFaqsOfCompany
+     Route::get('faqs-of-company/{company_id}', [FaqController::class, 'getFaqsOfCompany']);
 
     //Branch
     Route::get('branchs', [BranchController::class, 'list']);
