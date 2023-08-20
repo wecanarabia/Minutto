@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class CompanyAdmin extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory,Notifiable;
     protected $fillable =['name','email','password','phone','company_id','image','role_id'];
     protected $hidden =['password'];
 
@@ -28,6 +30,11 @@ class CompanyAdmin extends Authenticatable
                 unlink($admin->image);
             }
         });
+    }
+
+    public function check_password($password)
+    {
+        return Hash::check($password, $this->password);
     }
 
     public function company()

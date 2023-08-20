@@ -32,6 +32,8 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
     'as' => 'company.'], function () {
     Route::get('/login', [LoginController::class, 'getLogin'])->name('login-page');
     Route::post('/send-login', [LoginController::class, 'postLogin'])->name('login');
+        Route::get('/register', [LoginController::class, 'getRegister'])->name('register-page');
+    Route::post('/send-register', [LoginController::class, 'postRegister'])->name('register');
     Route::get('/', [IndexController::class, 'index'])->name('index');
 
     Route::group(['middleware' => 'auth:company'], function () {
