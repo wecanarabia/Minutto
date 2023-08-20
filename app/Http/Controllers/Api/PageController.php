@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Page;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Http\Requests\PageRequest;
@@ -29,6 +30,19 @@ class PageController extends ApiController
         return $this->update($id,$request->all());
 
     }
+
+    public function getPagesOfCompany($company_id){
+
+        $com = Company::find($company_id);
+        if($com){
+
+        return $this->returnData('data',  $this->resource::collection($com->pages ), __('Get  succesfully'));
+
+        }
+        return $this->returnError(__('Sorry! Failed to get !'));
+
+    }
+
 
 
 

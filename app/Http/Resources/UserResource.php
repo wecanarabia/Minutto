@@ -17,6 +17,7 @@ class UserResource extends JsonResource
         return [
 
             'id'=>$this->id,
+            'imei'=>$this->imei,
             'name'=>$this->name,
             'last_name'=>(string)$this?->last_name,
             'email'=>$this->email,
@@ -50,6 +51,7 @@ class UserResource extends JsonResource
             'marial_status'=>$this?->marial_status,
             'emergency_contact'=>$this?->emergency_contact,
             'description'=>$this?->description,
+            'timezone'=>$this?->branch?->company?->timezone,
 
         ];
     }

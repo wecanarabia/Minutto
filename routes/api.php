@@ -65,8 +65,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     Route::get('/user/{id}', [AuthController::class, 'userProfile']);
 
+
+    Route::get('delete-user/{id}', [AuthController::class, 'delete']);
+
+
+
+
+
     Route::middleware(['auth:api','timezone'])->group(function () {
 
+          //get time by time zone
+
+        Route::get('get-time', [CompanyController::class, 'getTime']);
+
+        Route::post('user/token', [AuthController::class, 'updateDeviceToken']);
 
         //view Daily Message
         Route::get('daily-message', [MessageController::class, 'viewDailyMessage']);
@@ -159,6 +171,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
     Route::get('days', [PageController::class, 'getDaysNumber']);
+
+
+    //getPagesOfCompany
+    Route::get('pages-of-company/{company_id}', [PageController::class, 'getPagesOfCompany']);
+
+
+     //getFaqsOfCompany
+     Route::get('faqs-of-company/{company_id}', [FaqController::class, 'getFaqsOfCompany']);
 
     //Branch
     Route::get('branchs', [BranchController::class, 'list']);

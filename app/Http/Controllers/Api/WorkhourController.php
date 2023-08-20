@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use DB;
 
+
 class WorkhourController extends ApiController
 {
 
@@ -122,8 +123,28 @@ class WorkhourController extends ApiController
         try {
             DB::beginTransaction();
 
+
+
+
+            $user=User::find($request->user_id);
+
+
+            $user=User::find($request->user_id);
+            $last=$user->workhours?->last();
+
+           if ($last) {
+            $createdAt = Carbon::parse($last->created_at);
+             $today = Carbon::today();
+
+    if ($createdAt->isSameDay($today)) {
+        return $this->returnError(__('Sorry! You can not be fingerprinted again !'));
+    }
+}
+
+
+
         $model = $this->repositry->save( $request->all() );
-        $user=User::find($request->user_id);
+
         $company=Company::find($user->branch->company->id);
         // dd(company);
         $currentD=Carbon::today()->format('l');
@@ -150,7 +171,7 @@ class WorkhourController extends ApiController
 
             if($dif <= $company->grace_period && $difference != 0 && $model->time_attendance > $workday->from)
             {
-                 
+
                 $late=Carbon::createFromFormat('H:i:s',$company->grace_period)->diffInMinutes(Carbon::createFromFormat('H:i:s',$dif));
                 $delay=gmdate('H:i:s',$difference*60);
                 $model->status="late";
@@ -231,6 +252,7 @@ class WorkhourController extends ApiController
             if($user){
 
                 $user->is_pass=0;
+                $user->is_left=0;
                 $user->save();
 
 

@@ -30,6 +30,7 @@ class UserRequest extends FormRequest
             'country' => 'required | string ',
             'phone' => 'required | string ',
             'code' => 'required | string ',
+            'imei' => 'required | string ',
             // 'password' => 'required ',
 
         ];
