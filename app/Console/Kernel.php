@@ -15,7 +15,10 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         // $schedule->call(new ScheduledFunctions)->everyTwoMinutes();
-        $schedule->command('check:workhour')->dailyAt('22:00');
+
+        // $schedule->command('check:workhour')->dailyAt('22:00');
+        $schedule->command('check:workhour')->everyFiveMinutes();
+
     }
 
     /**
