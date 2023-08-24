@@ -277,6 +277,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          Route::post('workhour/edit/{id}', [WorkhourController::class, 'edit']);
 
 
+         Route::get('check', [WorkhourController::class, 'checkWorkhours']);
+
          //Advance
          Route::get('advances', [AdvanceController::class, 'list']);
          Route::post('advance-create', [AdvanceController::class, 'save']);
