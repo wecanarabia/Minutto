@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Models\CompanyAdmin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Company\LoginRequest;
+use App\Http\Requests\Company\RegisterRequest;
 
 class LoginController extends Controller
 {
@@ -29,4 +32,19 @@ class LoginController extends Controller
     public function getGuard(){
         return auth('company');
     }
+
+    public function getRegister(){
+        return view('company.guest.register');
+    }
+
+    public function postRegister(RegisterRequest $request){
+
+        $request['password']=bcrypt($request->password);
+        $admin = CompanyAdmin::create($request->all());
+        Auth::guard('company')->login($admin);
+        if ($admin){
+            return redirect()->route('company.home');
+        }
+        return redirect()->back()->withInput()->with(['error'=>__('messages.INVALID_CREDINTIALS')]);
+       }
 }
