@@ -7,6 +7,8 @@ use App\Models\Workday;
 use App\Models\Discount;
 use App\Models\Company;
 use App\Models\User;
+use App\Models\Vacation;
+use App\Models\OfficialVacation;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Http\Resources\WorkhourResource;
@@ -311,6 +313,62 @@ class WorkhourController extends ApiController
 
     return $this->returnData('data', new $this->resource( $last ), __('Updated succesfully'));
 
+
+   }
+
+
+
+   public function checkWorkhours()
+   {
+       $users = User::all();
+       $currentDate = Carbon::now();
+
+       foreach ($users as $user) {
+           $lastWorkhour = $user->workhours()
+               ->latest('created_at')
+               ->first();
+
+           if (!$lastWorkhour || !$lastWorkhour->created_at->isSameDay($currentDate)) {
+               $branch = $user->branch;
+               $shift=$user->shift;
+
+               $workdayExists = $shift->workdays()
+               ->where('day', $currentDate->format('l'))
+               ->where('status', 1)
+               ->exists();
+
+
+
+               if ($workdayExists) {
+                   $officialVacationExists = OfficialVacation::whereDate('from', '<=', $currentDate)
+                       ->whereDate('to', '>=', $currentDate)
+                       ->exists();
+
+                   $vacationExists = Vacation::where('user_id',$user->id)
+                       ->whereDate('from', '<=', $currentDate)
+                       ->whereDate('to', '>=', $currentDate)
+                       ->where('status', 'approve')
+                       ->exists();
+
+                       if ($vacationExists) {
+                        $workhour = new Workhour();
+                        $workhour->user_id = $user->id;
+                        $workhour->status = 'vacation';
+                        $workhour->save();
+                    }
+
+                   if (!$officialVacationExists && !$vacationExists) {
+
+                       $workhour = new Workhour();
+                       $workhour->user_id = $user->id;
+                       $workhour->status = 'absence';
+                       $workhour->save();
+                   }
+               }
+           }
+       }
+
+       return $this->returnSuccessMessage('Workhours checked successfully');
 
    }
 
