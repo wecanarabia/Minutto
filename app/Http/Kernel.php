@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         'changeLang'=>\App\Http\Middleware\ChangeLang::class,
         'CheckCompany'=>\App\Http\Middleware\CheckAdminCompany::class,
         'timezone'=>\App\Http\Middleware\CheckTimezone::class,
+        'setLocale'=>\App\Http\Middleware\SetLocaleMiddleware::class,
         /**** OTHER MIDDLEWARE ****/
         'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
         'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,

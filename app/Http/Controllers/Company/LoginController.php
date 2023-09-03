@@ -9,7 +9,7 @@ use App\Http\Requests\Company\LoginRequest;
 class LoginController extends Controller
 {
     public function getLogin(){
-        return view('front.guest.login');
+        return view('company.guest.login');
     }
     public function postLogin(LoginRequest $request){
 

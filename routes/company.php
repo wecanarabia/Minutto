@@ -28,7 +28,7 @@ use App\Http\Controllers\Company\EmployeeVacationController;
 use App\Http\Controllers\Company\OfficialVacationController;
 
 Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
-    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath','setLocale'],
     'as' => 'company.'], function () {
     Route::get('/login', [LoginController::class, 'getLogin'])->name('login-page');
     Route::post('/send-login', [LoginController::class, 'postLogin'])->name('login');
