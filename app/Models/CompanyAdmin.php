@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class CompanyAdmin extends Authenticatable
 {
     use HasFactory,Notifiable;
-    protected $fillable =['name','email','password','phone','company_id','image','role_id'];
+    protected $fillable =['name','email','password','phone','company_id','image','role_id','remember_token'];
     protected $hidden =['password'];
 
     public function setImageAttribute($value){

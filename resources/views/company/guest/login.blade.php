@@ -11,9 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="handheldfriendly" content="true" />
     <meta name="MobileOptimized" content="width" />
-    <meta name="description" content="Minutto Company Dashboard" />
-    <meta name="author" content="WE Can" />
-    <meta name="keywords" content="Minutto" />
+    <meta name="description" content="لوحة الإدارة الخاصة بقسم ادارة الموارد البشرية للشركات التي تستخدم نظام مينيتو لإدارة الموارد البشرية "/>
+    <meta name="author" content="مينيتو - minutto" />
+    <meta name="keywords" content="لوحة ، الادارة ، قسم ، الموارد ، البشرية ، مينيتو ، برنامج ، ادارة، الموظفين، البصمة، الحضور، الغياب" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/png" href="{{asset('dist/images/logos/favicon.png')}}" />
