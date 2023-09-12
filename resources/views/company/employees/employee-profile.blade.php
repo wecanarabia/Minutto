@@ -122,7 +122,7 @@
                                             <div class="card-body p-4">
                                                 <h5 class="card-title fw-semibold">Update Profile</h5>
                                                 <form method="post"
-                                                    action="{{ route('front.employees.update', $employee->id) }}">
+                                                    action="{{ route('front.employees.update', $employee->id) }}" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('PUT')
                                                     <input type="hidden" name="id" value="{{ $employee->id }}">
