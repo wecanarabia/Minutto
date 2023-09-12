@@ -74,8 +74,12 @@
                             <div class="tab-pane fade show active" id="pills-account" role="tabpanel"
                                 aria-labelledby="pills-account-tab" tabindex="0">
                                 <div class="row">
-                                    <div class="col-lg-12 d-flex align-items-stretch">
+
+                                    <div id="profile-data" class="col-lg-12">
+                                        <button id="profile-edit" class="btn btn-success float-end">Edit</button>
+
                                         <div class="chat-list chat active-chat" data-user-id="1">
+
                                             <div
                                                 class="hstack align-items-start mb-7 pb-1 align-items-center justify-content-between">
                                                 <div class="d-flex align-items-center gap-3">
@@ -86,8 +90,11 @@
                                                             {{ $employee->name . ' ' . $employee->last_name }}</h6>
                                                         <p class="mb-0">{{ $employee->career }}</p>
                                                     </div>
+
                                                 </div>
+
                                             </div>
+
                                             <div class="row">
 
                                                 <div class="col-6 mb-7">
@@ -117,7 +124,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 d-flex align-items-stretch">
+                                    <div id="profile-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
                                                 <h5 class="card-title fw-semibold">Update Profile</h5>
@@ -209,9 +216,11 @@
                                                         </div>
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary">
+                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <button id="profile-cancel" class="btn btn-dark">Cancel</button>
 
                                                 </form>
+
                                             </div>
                                         </div>
                                     </div>
@@ -221,7 +230,9 @@
                             <div class="tab-pane fade" id="pills-notifications" role="tabpanel"
                                 aria-labelledby="pills-notifications-tab" tabindex="0">
                                 <div class="row">
-                                    <div class="col-lg-12 d-flex align-items-stretch">
+                                    <div id="identity-data" class="col-lg-12">
+                                        <button id="identity-edit" class="btn btn-success float-end">Edit</button>
+
                                         <div class="chat-list chat active-chat" data-user-id="1">
                                             <div class="row">
 
@@ -274,7 +285,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 d-flex align-items-stretch">
+                                    <div id="identity-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
                                                 <h5 class="card-title fw-semibold">Update Identity</h5>
@@ -363,7 +374,8 @@
                                                         </div>
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary">
+                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <button id="identity-cancel" class="btn btn-dark">Cancel</button>
 
                                                 </form>
                                             </div>
@@ -375,7 +387,9 @@
                             <div class="tab-pane fade" id="pills-bills" role="tabpanel"
                                 aria-labelledby="pills-bills-tab" tabindex="0">
                                 <div class="row">
-                                    <div class="col-lg-12 d-flex align-items-stretch">
+                                    <div id="work-data" class="col-lg-12">
+                                        <button id="work-edit" class="btn btn-success float-end">Edit</button>
+
                                         <div class="chat-list chat active-chat" data-user-id="1">
                                             <div class="row">
 
@@ -423,7 +437,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 d-flex align-items-stretch">
+                                    <div id="work-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
                                                 <h5 class="card-title fw-semibold">Update Profile</h5>
@@ -492,7 +506,8 @@
 
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary">
+                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <button id="work-cancel" class="btn btn-dark">Cancel</button>
 
                                                 </form>
                                             </div>
@@ -504,7 +519,8 @@
                             <div class="tab-pane fade" id="pills-security" role="tabpanel"
                                 aria-labelledby="pills-security-tab" tabindex="0">
                                 <div class="row">
-                                    <div class="col-lg-12 d-flex align-items-stretch">
+                                    <div id="bank-data" class="col-lg-12">
+                                        <button id="bank-edit" class="btn btn-success float-end">Edit</button>
                                         <div class="chat-list chat active-chat" data-user-id="1">
                                             <div class="row">
 
@@ -558,7 +574,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 d-flex align-items-stretch">
+                                    <div id="bank-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
                                                 <h5 class="card-title fw-semibold">Update Bank Info</h5>
@@ -618,7 +634,8 @@
 
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary">
+                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <button id="bank-cancel" class="btn btn-dark">Cancel</button>
 
                                                 </form>
                                             </div>

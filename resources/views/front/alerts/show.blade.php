@@ -54,7 +54,7 @@
                                         <span class="text-muted">{{ $alert->alert_date }}</span>
                                     </div>
                                 </li>
-                                
+
                                  <li class="row flex-wrap mb-3">
                                     <div class="col-4">
                                         <span class="fw-bold">Note</span>
@@ -64,7 +64,7 @@
                                     </div>
                                  </li>
 
-    
+
 
                                  <li class="row flex-wrap mb-3">
                                     <div class="col-4">
@@ -74,7 +74,7 @@
                                      <span>{{ $alert->type }}</span>
                                     </div>
                                  </li>
-    
+
 
                                  <li class="row flex-wrap mb-3">
                                     <div class="col-4">

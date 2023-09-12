@@ -26,7 +26,7 @@ class AlertRequest extends FormRequest
             'alert_date'=>'required|date',
             'punishment'=>'required|integer|declined_if:type.en,attention|min:0',
             'note'=>'required|min:5|max:2000',
-            'file'=>'mimes:jpg,gif,jpeg,png,mp4,pdf,txt,mkv,flv,docs,doc,3gb,xlsx,pptx|max:4000',
+            'file'=>'nullable|mimes:jpg,gif,jpeg,png,mp4,pdf,txt,mkv,flv,docs,doc,3gb,xlsx,pptx|max:4000',
             'type.en'=>"in:amount,attention,vacation days,Salary number of working days",
             'user_id'=>'required|exists:users,id',
         ];

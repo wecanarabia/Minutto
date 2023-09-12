@@ -16,7 +16,7 @@ class OfficialVacationController extends Controller
     public function index()
     {
         $data = OfficialVacation::where('company_id',Auth::user()->company_id)->orderByDesc('created_at')->get();
-        return view('front.official-vacations.index',compact('data'));
+        return view('company.official-vacations.index',compact('data'));
     }
 
     /**
@@ -24,7 +24,7 @@ class OfficialVacationController extends Controller
      */
     public function create()
     {
-        return view('front.official-vacations.create');
+        return view('company.official-vacations.create');
     }
 
     /**
@@ -43,7 +43,7 @@ class OfficialVacationController extends Controller
         ]));
 
 
-        return redirect()->route('company.official-vacations.index')
+        return redirect()->route('front.official-vacations.index')
                         ->with('success','Official Vacation has been added successfully');
     }
 
@@ -56,7 +56,7 @@ class OfficialVacationController extends Controller
         if ($vacation->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        return view('front.official-vacations.show',compact('vacation'));
+        return view('company.official-vacations.show',compact('vacation'));
     }
 
     /**
@@ -68,7 +68,7 @@ class OfficialVacationController extends Controller
         if ($vacation->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        return view('front.official-vacations.edit',compact('vacation'));
+        return view('company.official-vacations.edit',compact('vacation'));
     }
 
     /**
@@ -91,7 +91,7 @@ class OfficialVacationController extends Controller
         ]));
 
 
-        return redirect()->route('company.official-vacations.show',$vacation->id)
+        return redirect()->route('front.official-vacations.show',$vacation->id)
                         ->with('success','Official Vacation has been updated successfully');
     }
 

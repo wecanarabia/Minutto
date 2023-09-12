@@ -389,6 +389,7 @@
 <script src="{{ asset('dist/js/dashboard.js') }}"></script>
 <script src="{{ asset('dist/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('dist/js/datatable/datatable-basic.init.js') }}"></script>
+<script src="{{ asset('dist/js/profile.js') }}"></script>
 
 </body>
 

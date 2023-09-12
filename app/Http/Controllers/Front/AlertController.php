@@ -21,13 +21,13 @@ class AlertController extends Controller
    public function index()
    {
     $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-    $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->get();
+    $employees = User::active()->whereBelongsTo($branches)->get();
     if ($employees->count()>0) {
-        $data = Alert::whereBelongsTo($employees)->orderByDesc('created_at')->get();
+        $data = Alert::whereBelongsTo($employees)->orderByDesc('alert_date')->get();
     }else{
         $data=collect([]);
     }
-    return view('front.alerts.index',compact('data'));
+    return view('company.alerts.index',compact('data'));
    }
 
    /**
@@ -36,10 +36,10 @@ class AlertController extends Controller
    public function create()
    {
     $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-    $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->get();
+    $employees = User::active()->whereBelongsTo($branches)->get();
     $types=Alert::TYPES;
 
-    return view('front.alerts.create',compact('employees','types'));
+    return view('company.alerts.create',compact('employees','types'));
    }
 
    /**
@@ -56,7 +56,7 @@ class AlertController extends Controller
                 $alert->user->userVacation()->update(['vacation_balance'=>($alert->user->userVacation->vacation_balance-$alert->punishment)]);
             }
        }
-       return redirect()->route('company.alerts.index')
+       return redirect()->route('front.alerts.index')
                        ->with('success','Alert has been added successfully');
    }
 
@@ -69,7 +69,7 @@ class AlertController extends Controller
        if ($alert->user->branch->company_id!=Auth::user()->company_id) {
            return abort(404);
        }
-       return view('front.alerts.show',compact('alert'));
+       return view('company.alerts.show',compact('alert'));
    }
 
    /**
@@ -84,10 +84,10 @@ class AlertController extends Controller
 
 
        $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-       $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->get();
+       $employees = User::active()->whereBelongsTo($branches)->get();
        $types=Alert::TYPES;
 
-       return view('front.alerts.edit',compact('alert','employees','types'));
+       return view('company.alerts.edit',compact('alert','employees','types'));
    }
 
    /**
@@ -116,7 +116,7 @@ class AlertController extends Controller
                 $alert->user->userVacation()->update(['vacation_balance'=>(int)$sum-(int)$alert->punishment]);
 
         }
-       return redirect()->route('company.alerts.show',$alert->id)
+       return redirect()->route('front.alerts.show',$alert->id)
                        ->with('success','Alert has been updated successfully');
    }
 

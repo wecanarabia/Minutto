@@ -81,7 +81,7 @@
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="app-chat.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route('front.attendance.index') }}" aria-expanded="false">
                   <span>
                     <i class="ti ti-fingerprint"></i>
                   </span>
@@ -89,7 +89,7 @@
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="app-email.html" aria-expanded="false">
+                <a class="sidebar-link" href="" aria-expanded="false">
                   <span>
                     <i class="ti ti-beach"></i>
                   </span>
@@ -121,15 +121,15 @@
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="app-contact2.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route("front.official-vacations.index") }}" aria-expanded="false">
                   <span>
                     <i class="ti ti-calendar-event"></i>
                   </span>
-                  <span class="hide-menu">الإجازات وايام العمل</span>
+                  <span class="hide-menu">الإجازات الرسمية</span>
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="page-user-profile.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route("front.alerts.index") }}" aria-expanded="false">
                   <span>
                     <i class="ti ti-file-alert"></i>
                   </span>
@@ -178,7 +178,7 @@
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="page-faq.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route('front.advances.index') }}" aria-expanded="false">
                   <span>
                     <i class="ti ti-wallet"></i>
                   </span>

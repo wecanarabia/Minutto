@@ -8,6 +8,7 @@ use App\Models\Workhour;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Company\AttendanceRequest;
 use App\Traits\LogTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -19,32 +20,32 @@ class AttendanceController extends Controller
     public function index()
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->with(['branch','shift'])->get();
+        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
             $data = Workhour::whereBelongsTo($employees)->orderByDesc('created_at')->get();
         }else{
             $data=collect([]);
         }
-        return view('front.employees.attendance',compact('data'));
+        return view('company.employees.attendance',compact('data'));
     }
 
     public function show($id)
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
+        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
         $attendance = Workhour::find($id);
         if (!in_array($attendance->user->id,$employees)) {
             return abort('404');
         }
         $allStatus=Workhour::STATUS;
-        return view('front.employees.attendance-details',compact('attendance','allStatus'));
+        return view('company.employees.attendance-details',compact('attendance','allStatus'));
     }
 
     public function openFile($id)
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
+        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
         $attendance = Workhour::find($id);
         if (!in_array($attendance->user->id,$employees)) {
@@ -53,27 +54,14 @@ class AttendanceController extends Controller
         return response()->file($attendance->file);
     }
 
-    public function update(Request $request,$id)
+    public function update(AttendanceRequest $request,$id)
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
-        $request['status'] = json_decode($request['status'],true);
-        $validator = Validator::make($request->all(), [
-            'discount_value'=>'nullable|numeric|declined_if:status.en,disciplined|min:0',
-            'note'=>'required|min:4|max:2000',
-            'replay'=>'required|min:4|max:2000',
-            'time_departure'=>'nullable|date_format:H:i',
-            'status.en'=>"required|in:disciplined,late,absence,vacation",
-        ]);
-
+        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
         $attendance = Workhour::find($id);
-
         $allStatus=Workhour::STATUS;
-        if ($validator->fails()||!in_array($attendance->user->id,$employees)||!in_array($request['status'],$allStatus)) {
-            return response()->json([
-                'error' => $validator->errors()->all(),
-            ]);
-        }
+        if (in_array($attendance->user->id,$employees)||in_array($request['status'],$allStatus)) {
+
         if ($attendance->getTranslation('status', 'en')!==$request['status.en']) {
 
             $this->addLog($attendance->user->id, 'Update Attendance', 'تحديث الحضور', 'Attendance Status has been updated', 'تم تحديث حالة الحضور لموظف', $request['note']);
@@ -90,7 +78,12 @@ class AttendanceController extends Controller
             'replay'=>$request['replay'],
             'time_departure'=>$request['time_departure'],
         ]);
-        return response()->json(['success' => 'Attendance updated successfully.']);
+        return redirect()->route('front.attendance.show',$attendance->id)
+        ->with('success','Attendance has been update successfully');
+    }else{
+        return redirect()->back()
+        ->with('error','Something has been wrong');
+    }
     }
 
 

@@ -82,7 +82,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::get('attendance', [AttendanceController::class, 'index'])->name('attendance.index');
                 Route::get('attendance/{id}', [AttendanceController::class, 'show'])->name('attendance.show');
                 Route::get('attendance/file/{id}', [AttendanceController::class, 'openFile'])->name('attendance.file');
-                Route::post('attendance/update/{id}', [AttendanceController::class, 'update'])->name('attendance.update');
+                Route::put('attendance/update/{id}', [AttendanceController::class, 'update'])->name('attendance.update');
             });
             //leaves
             Route::group(['middleware' => 'can:leaves'], function () {
@@ -103,7 +103,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::get('advances', [AdvanceController::class, 'index'])->name('advances.index');
                 Route::get('advances/{id}', [AdvanceController::class, 'show'])->name('advances.show');
                 Route::get('advances/file/{id}', [AdvanceController::class, 'openFile'])->name('advances.file');
-                Route::post('advances/update/{id}', [AdvanceController::class, 'update'])->name('advances.update');
+                Route::put('advances/update/{id}', [AdvanceController::class, 'update'])->name('advances.update');
             });
             //extras
             Route::group(['middleware' => 'can:extra'], function () {

@@ -7,7 +7,7 @@
                 <div class="border-0 mb-4">
                     <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
                         <h3 class="fw-bold mb-0">Attendance</h3>
-             
+
                     </div>
                 </div>
             </div> <!-- Row end  -->
@@ -22,7 +22,7 @@
                                         <th>Employee</th>
                                         <th>Attendance Time</th>
                                         <th>Departure Time</th>
-                                        <th>Discount</th>
+                                        <th>Deduction</th>
                                         <th>Status</th>
                                         <th>Show</th>
                                     </tr>
