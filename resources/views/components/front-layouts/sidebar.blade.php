@@ -73,7 +73,7 @@
                 <span class="hide-menu">الموارد البشرية</span>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="app-calendar.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route('front.employees.index') }}" aria-expanded="false">
                   <span>
                     <i class="ti ti-users"></i>
                   </span>
