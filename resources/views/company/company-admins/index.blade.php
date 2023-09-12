@@ -2,7 +2,13 @@
     <div class="card bg-light-info shadow-none position-relative overflow-hidden">
         <div class="card-body px-4 py-3">
           <div class="row align-items-center">
-            <div class="col-9">
+            <div class="col-12">
+                <a href="{{ route("front.admins.create") }}" class="btn btn-info float-end mx-2">
+                    <i class="ti ti-users text-white me-1 fs-5"></i> Add Admins
+                  </a>
+                  <a href="{{ route("front.roles.index") }}" class="btn btn-dark float-end">
+                    <i class="ti ti-lock-cog text-white me-1 fs-5"></i> Roles
+                  </a>
               <h4 class="fw-semibold mb-8">Admins</h4>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -11,32 +17,13 @@
                 </ol>
               </nav>
             </div>
-            <div class="col-3">
-              <div class="text-center mb-n5">
 
-              </div>
-            </div>
           </div>
         </div>
       </div>
       <div class="widget-content searchable-container list">
         <!-- --------------------- start Contact ---------------- -->
-        <div class="card card-body">
-          <div class="row">
-            <div class="col-md-4 col-xl-3">
-              <form class="position-relative">
-                <input type="text" class="form-control product-search ps-5" id="input-search" placeholder="Search Contacts...">
-                <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark me-3"></i>
-              </form>
-            </div>
-            <div class="col-md-8 col-xl-9 text-end d-flex justify-content-md-end justify-content-center mt-3 mt-md-0">
 
-              <a href="{{ route("front.admins.create") }}" id="btn-add-contact" class="btn btn-info d-flex align-items-center">
-                <i class="ti ti-users text-white me-1 fs-5"></i> Add Admins
-              </a>
-            </div>
-          </div>
-        </div>
         <!-- ---------------------
                         end Contact
                     ---------------- -->

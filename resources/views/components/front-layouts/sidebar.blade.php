@@ -5,8 +5,8 @@
         <div>
           <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="index.html" class="text-nowrap logo-img">
-              <img src="../../dist/images/logos/logo.svg" class="dark-logo" width="180" alt="" />
-              <img src="../../dist/images/logos/light-logo.svg" class="light-logo"  width="180" alt="" />
+              <img src="{{ asset('dist/images/logos/logo.svg') }}" class="dark-logo" width="180" alt="" />
+              <img src="{{ asset('dist/images/logos/light-logo.svg') }}" class="light-logo"  width="180" alt="" />
             </a>
             <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
               <i class="ti ti-x fs-8"></i>
@@ -220,7 +220,7 @@
                 </a>
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="ui-accordian.html" class="sidebar-link">
+                    <a href="{{ route('front.branches.index') }}" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -228,7 +228,7 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="ui-badge.html" class="sidebar-link">
+                    <a href="{{ route('front.shifts.index') }}" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -236,7 +236,7 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="ui-buttons.html" class="sidebar-link">
+                    <a href="{{ route('front.departments.index') }}" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>

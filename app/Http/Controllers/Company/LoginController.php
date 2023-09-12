@@ -12,7 +12,7 @@ use App\Http\Requests\Company\RegisterRequest;
 class LoginController extends Controller
 {
     public function getLogin(){
-        return view('company.guest.login');
+        return view('front.guest.login');
     }
     public function postLogin(LoginRequest $request){
 
@@ -34,7 +34,7 @@ class LoginController extends Controller
     }
 
     public function getRegister(){
-        return view('company.guest.register');
+        return view('front.guest.register');
     }
 
     public function postRegister(RegisterRequest $request){

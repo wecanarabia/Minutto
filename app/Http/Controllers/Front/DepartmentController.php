@@ -17,7 +17,7 @@ class DepartmentController extends Controller
     public function index()
     {
         $data = Department::where('company_id',Auth::user()->company_id)->orderByDesc('created_at')->get();
-        return view('front.departments.index',compact('data'));
+        return view('company.departments.index',compact('data'));
     }
 
     /**
@@ -25,7 +25,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('front.departments.create');
+        return view('company.departments.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class DepartmentController extends Controller
         ]));
 
 
-        return redirect()->route('company.departments.index')
+        return redirect()->route('front.departments.index')
                         ->with('success','department has been added successfully');
     }
 
@@ -57,7 +57,7 @@ class DepartmentController extends Controller
         if ($department->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        return view('front.departments.show',compact('department'));
+        return view('company.departments.show',compact('department'));
     }
 
     /**
@@ -70,7 +70,7 @@ class DepartmentController extends Controller
             return abort(404);
         }
         $employees=User::active()->hasSalary()->hasVacation()->whereBelongsTo($department)->get();
-        return view('front.departments.edit',compact('department','employees'));
+        return view('company.departments.edit',compact('department','employees'));
     }
 
     /**
@@ -93,7 +93,7 @@ class DepartmentController extends Controller
         ]));
 
 
-        return redirect()->route('company.departments.show',$department->id)
+        return redirect()->route('front.departments.show',$department->id)
                         ->with('success','department has been updated successfully');
     }
 

@@ -1367,14 +1367,14 @@
                                 <div class="col">
                                     <label for="exampleFormControlInput977" class="form-label">Status</label>
                                     <div class="form-check">
-                                        <input class="form-check-input flexRadioDefault44" id="active" name="status" type="radio" value="1"
+                                        <input class="form-check-input flexRadioDefault44" id="active" name="active" type="radio" value="1"
                                             @checked($employee->active==1)>
                                         <label class="form-check-label" for="active">
                                             Active
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input flexRadioDefault44" id="inactive" name="status" type="radio" value="0"
+                                        <input class="form-check-input flexRadioDefault44" id="inactive" name="active" type="radio" value="0"
                                             @checked($employee->active==0)>
                                         <label class="form-check-label" for="inactive">
                                             In Active

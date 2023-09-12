@@ -63,7 +63,7 @@
                     </div>
                   </div>
                   @endif
-                  <form method="post" action="{{ route("company.register") }}" enctype="multipart/form-data">
+                  <form method="post" action="{{ route("front.register") }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Name</label>
@@ -117,7 +117,7 @@
                     <input type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2" value="Sign Up">
                     <div class="d-flex align-items-center justify-content-center">
                       <p class="fs-4 mb-0 fw-medium">Already have an account?</p>
-                      <a class="text-primary fw-medium ms-2" href="{{ route('company.login-page') }}">Sign In</a>
+                      <a class="text-primary fw-medium ms-2" href="{{ route('front.login-page') }}">Sign In</a>
                     </div>
                   </form>
                 </div>

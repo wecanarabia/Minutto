@@ -17,8 +17,15 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/png" href="{{asset('dist/images/logos/favicon.png')}}" />
     <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{{asset('dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}">
+
+    <link rel="stylesheet" href="{{asset('dist/libs/prismjs/themes/prism.min.css')}}">
+
+
     <link rel="stylesheet" href="{{asset('dist/libs/owl.carousel/dist/assets/owl.carousel.min.css')}}">
     <!-- Core Css -->
+    <link rel="stylesheet" href="{{asset('dist/libs/select2/dist/css/select2.min.css')}}">
+
     <link rel="stylesheet" href="{{asset('dist/css/style.min.css')}}" />
   </head>
   <body>

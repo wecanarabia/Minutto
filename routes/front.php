@@ -54,8 +54,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::put('company-settings/update', [CompanyController::class, 'update'])->name('company-settings.update');
 
         Route::group(['middleware' => ['CheckCompany', 'timezone']], function () {
-            Route::resource('employees', EmployeeController::class)->except(['destroy', 'edit', 'update', 'create', 'store'])->middleware('can:employees');
-            Route::post('employees/update/{id}', [EmployeeController::class, 'updateData'])->middleware('can:employees');
+            Route::resource('employees', EmployeeController::class)->except(['destroy', 'edit', 'create', 'store'])->middleware('can:employees');
             Route::resource('departments', DepartmentController::class)->except(['destroy'])->middleware('can:departments');
             Route::resource('branches', BranchController::class)->except(['destroy'])->middleware('can:branches');
             Route::resource('shifts', ShiftController::class)->except(['destroy'])->middleware('can:shifts');

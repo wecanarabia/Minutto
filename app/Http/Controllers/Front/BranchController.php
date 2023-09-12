@@ -18,7 +18,7 @@ class BranchController extends Controller
     public function index()
     {
         $data = Branch::where('company_id',Auth::user()->company_id)->orderByDesc('created_at')->get();
-        return view('front.branches.index',compact('data'));
+        return view('company.branches.index',compact('data'));
     }
 
     /**
@@ -27,7 +27,7 @@ class BranchController extends Controller
     public function create()
     {
         $shifts = Shift::where('company_id',Auth::user()->company_id)->get();
-        return view('front.branches.create',compact('shifts'));
+        return view('company.branches.create',compact('shifts'));
     }
 
     /**
@@ -44,7 +44,7 @@ class BranchController extends Controller
         ]));
         $branch->shifts()->attach($request['shifts']);
 
-        return redirect()->route('company.branches.index')
+        return redirect()->route('front.branches.index')
                         ->with('success','Branch has been added successfully');
     }
 
@@ -57,7 +57,7 @@ class BranchController extends Controller
         if ($branch->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        return view('front.branches.show',compact('branch'));
+        return view('company.branches.show',compact('branch'));
     }
 
     /**
@@ -71,7 +71,7 @@ class BranchController extends Controller
         }
         $employees=User::active()->whereBelongsTo($branch)->get();
         $shifts = Shift::where('company_id',Auth::user()->company_id)->get();
-        return view('front.branches.edit',compact('branch','employees','shifts'));
+        return view('company.branches.edit',compact('branch','employees','shifts'));
     }
 
     /**
@@ -93,7 +93,7 @@ class BranchController extends Controller
         $branch->shifts()->sync($request['shifts']);
 
 
-        return redirect()->route('company.branches.show',$branch->id)
+        return redirect()->route('front.branches.show',$branch->id)
                         ->with('success','Branch has been updated successfully');
     }
 }

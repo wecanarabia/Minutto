@@ -5,7 +5,7 @@
 <!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/rtl/authentication-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 18 Jun 2023 11:40:42 GMT -->
 <head>
     <!-- Title -->
-    <title>Sign-in Minutto</title>
+    <title>Sign-up Minutto</title>
     <!-- Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -50,7 +50,7 @@
                       </a>
 
                   <div class="position-relative text-center my-4">
-                    <p class="mb-0 fs-4 px-3 d-inline-block bg-white text-dark z-index-5 position-relative">sign in</p>
+                    <p class="mb-0 fs-4 px-3 d-inline-block bg-white text-dark z-index-5 position-relative">sign up</p>
                     <span class="border-top w-100 position-absolute top-50 start-50 translate-middle"></span>
                   </div>
                   @if (Session::has('error'))
@@ -63,12 +63,30 @@
                     </div>
                   </div>
                   @endif
-                  <form method="post" action="{{ route("company.login") }}">
+                  <form method="post" action="{{ route("company.register") }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" name="name" value="{{ old("name") }}" class="form-control">
+                        @error('name')
+                        <div class="text-danger">
+                          {{ $message }}
+                        </div>
+                          @enderror
+                      </div>
+                    <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Email</label>
-                      <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <input type="email" name="email" class="form-control" value="{{ old("email") }}" id="exampleInputEmail1" aria-describedby="emailHelp">
                       @error('email')
+                      <div class="text-danger">
+                        {{ $message }}
+                      </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Phone</label>
+                      <input type="tel" name="phone" class="form-control" value="{{ old("phone") }}">
+                      @error('phone')
                       <div class="text-danger">
                         {{ $message }}
                       </div>
@@ -83,19 +101,23 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                      <div class="form-check">
-                        <input class="form-check-input primary" name="remember_me" type="checkbox" id="flexCheckChecked" checked>
-                        <label class="form-check-label text-dark" for="flexCheckChecked">
-                          Remeber Me
-                        </label>
-                      </div>
-                      {{-- <a class="text-primary fw-medium" href="authentication-forgot-password.html">Forgot Password ?</a> --}}
+                    <div class="mb-4">
+                      <label class="form-label">Confirm Password</label>
+                      <input type="password" name="password_confirmation" class="form-control">
                     </div>
-                    <input type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2" value="Sign In">
+                    <div class="mb-4">
+                        <label class="form-label">Image</label>
+                        <input type="file" name="image" class="form-control">
+                          @error('image')
+                          <div class="text-danger">
+                              {{ $message }}
+                          </div>
+                          @enderror
+                      </div>
+                    <input type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2" value="Sign Up">
                     <div class="d-flex align-items-center justify-content-center">
-                      <p class="fs-4 mb-0 fw-medium">New to Minutto?</p>
-                      <a class="text-primary fw-medium ms-2" href="{{ route("company.register-page") }}">Create an account</a>
+                      <p class="fs-4 mb-0 fw-medium">Already have an account?</p>
+                      <a class="text-primary fw-medium ms-2" href="{{ route('company.login-page') }}">Sign In</a>
                     </div>
                   </form>
                 </div>

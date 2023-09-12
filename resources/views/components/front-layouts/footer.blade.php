@@ -369,18 +369,29 @@
 <script src="{{ asset('dist/libs/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('dist/libs/simplebar/dist/simplebar.min.js') }}"></script>
 <script src="{{ asset('dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initialize" async defer></script>
+
 <!--  core files -->
+<script src="{{ asset('assets/js/map.js') }}"></script>
 <script src="{{ asset('dist/js/app.min.js') }}"></script>
 <script src="{{ asset('dist/js/app.init.js') }}"></script>
 <script src="{{ asset('dist/js/app-style-switcher.js') }}"></script>
 <script src="{{ asset('dist/js/sidebarmenu.js') }}"></script>
 <script src="{{ asset('dist/js/custom.js') }}"></script>
+<script src="{{ asset('dist/libs/prismjs/prism.js') }}"></script>
 <!--  current page js files -->
+<script src="{{ asset('dist/libs/select2/dist/js/select2.full.min.js') }}"></script>
+<script src="{{ asset('dist/libs/select2/dist/js/select2.min.js') }}"></script>
+<script src="{{ asset('dist/js/forms/select2.init.js') }}"></script>
 <script src="{{ asset('dist/js/apps/contact.js') }}"></script>
 <script src="{{ asset('dist/libs/owl.carousel/dist/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('dist/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
 <script src="{{ asset('dist/js/dashboard.js') }}"></script>
+<script src="{{ asset('dist/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('dist/js/datatable/datatable-basic.init.js') }}"></script>
+
 </body>
+
 
 <!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/rtl/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 18 Jun 2023 11:27:09 GMT -->
 

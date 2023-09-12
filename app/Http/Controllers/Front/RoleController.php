@@ -13,18 +13,18 @@ class RoleController extends Controller
     public function index()
     {
        $data=Role::where('company_id',Auth::guard('company')->user()->company_id)->orderByDesc('created_at')->get();
-        return view('front.roles.index', compact('data'));
+        return view('company.roles.index', compact('data'));
     }
 
     public function create(){
-        return view('front.roles.create');
+        return view('company.roles.create');
     }
 
     public function store(RoleRequest $request){
 
             $role = $this->process(new Role, $request);
 
-                return redirect()->route('company.roles.index')->with(['success' => "Role has been created successfully"]);
+                return redirect()->route('front.roles.index')->with(['success' => "Role has been created successfully"]);
 
 
 
@@ -32,12 +32,12 @@ class RoleController extends Controller
 
     public function show($id){
         $role=Role::where('company_id',Auth::guard('company')->user()->company_id)->findOrFail($id);
-        return view('front.roles.show', compact('role'));
+        return view('company.roles.show', compact('role'));
     }
 
     public function edit($id){
         $role=Role::where('company_id',Auth::guard('company')->user()->company_id)->findOrFail($id);
-        return view('front.roles.edit', compact('role'));
+        return view('company.roles.edit', compact('role'));
     }
 
     public function update(RoleRequest $request,$id){
@@ -46,7 +46,7 @@ class RoleController extends Controller
 
 
             $role = $this->process($role, $request);
-            return redirect()->route('company.roles.index')->with(['success' => "Role has been updated successfully"]);
+            return redirect()->route('front.roles.index')->with(['success' => "Role has been updated successfully"]);
 
     }
 

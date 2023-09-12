@@ -24,6 +24,7 @@ class ShiftRequest extends FormRequest
         return [
             'english_name' => 'required|min:4|max:255',
             'arabic_name' => 'required|min:4|max:255',
+       
         ];
     }
 }
