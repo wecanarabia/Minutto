@@ -4,7 +4,7 @@ namespace App\Http\Requests\Company;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EmployeeVacationRequest extends FormRequest
+class ExtraRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,10 +21,14 @@ class EmployeeVacationRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'vacation_balance'=>'required|numeric|min:0',
-            'user_id'=>'required_without:id|exists:users,id',
+        $this['status'] = json_decode($this['status'],true);
 
+        return [
+            'from'=>'required|date_format:H:i',
+            'to'=>'required|date_format:H:i',
+            'note'=>'required|min:4|max:2000',
+            'replay'=>'required|min:4|max:2000',
+            'status.en'=>"required|in:waiting,approve,rejected",
         ];
     }
 }

@@ -111,7 +111,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::get('extras', [ExtraController::class, 'index'])->name('extras.index');
                 Route::get('extras/{id}', [ExtraController::class, 'show'])->name('extras.show');
                 Route::get('extras/file/{id}', [ExtraController::class, 'openFile'])->name('extras.file');
-                Route::post('extras/update/{id}', [ExtraController::class, 'update'])->name('extras.update');
+                Route::put('extras/update/{id}', [ExtraController::class, 'update'])->name('extras.update');
             });
             //employee-vacations
             Route::group(['middleware' => 'can:vacations'], function () {
@@ -120,7 +120,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::get('employee-vacations/create', [EmployeeVacationController::class, 'create'])->name('employee-vacations.create');
                 Route::post('employee-vacations/store', [EmployeeVacationController::class, 'store'])->name('employee-vacations.store');
                 Route::get('employee-vacations/{id}', [EmployeeVacationController::class, 'show'])->name('employee-vacations.show');
-                Route::post('employee-vacations/update/{id}', [EmployeeVacationController::class, 'update'])->name('employee-vacations.update');
+                Route::put('employee-vacations/update/{id}', [EmployeeVacationController::class, 'update'])->name('employee-vacations.update');
             });
             //salaries
             Route::group(['middleware' => 'can:salaries'], function () {

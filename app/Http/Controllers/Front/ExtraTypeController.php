@@ -16,7 +16,7 @@ class ExtraTypeController extends Controller
     public function index()
     {
         $data = ExtraType::where('company_id',Auth::user()->company_id)->orderByDesc('created_at')->get();
-        return view('front.extra-types.index',compact('data'));
+        return view('company.extra-types.index',compact('data'));
     }
 
     /**
@@ -24,7 +24,7 @@ class ExtraTypeController extends Controller
      */
     public function create()
     {
-        return view('front.extra-types.create');
+        return view('company.extra-types.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class ExtraTypeController extends Controller
         ]));
 
 
-        return redirect()->route('company.extra-types.index')
+        return redirect()->route('front.extra-types.index')
                         ->with('success','Extra type has been added successfully');
     }
 
@@ -53,7 +53,7 @@ class ExtraTypeController extends Controller
         if ($type->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        return view('front.extra-types.show',compact('type'));
+        return view('company.extra-types.show',compact('type'));
     }
 
     /**
@@ -65,7 +65,7 @@ class ExtraTypeController extends Controller
         if ($type->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        return view('front.extra-types.edit',compact('type'));
+        return view('company.extra-types.edit',compact('type'));
     }
 
     /**
@@ -85,7 +85,7 @@ class ExtraTypeController extends Controller
         ]));
 
 
-        return redirect()->route('company.extra-types.show',$type->id)
+        return redirect()->route('front.extra-types.show',$type->id)
                         ->with('success','Extra type has been updated successfully');
     }
 }

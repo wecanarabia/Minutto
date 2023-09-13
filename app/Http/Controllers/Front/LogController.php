@@ -17,13 +17,13 @@ class LogController extends Controller
     public function index()
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->get();
+        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
             $data = Log::with('admin','user')->whereBelongsTo($employees)->orderByDesc('created_at')->get();
         }else{
             $data=collect([]);
         }
-        return view('front.logs.index',compact('data'));
+        return view('company.logs.index',compact('data'));
     }
 
 
@@ -37,6 +37,6 @@ class LogController extends Controller
         if ($log->admin->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        return view('front.logs.show',compact('log'));
+        return view('company.logs.show',compact('log'));
     }
 }

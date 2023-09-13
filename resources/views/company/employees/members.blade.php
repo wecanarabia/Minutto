@@ -27,8 +27,10 @@
         <div class="card card-body">
             <x-front-layouts.messages/>
           <div class="table-responsive">
-            <table class="table search-table align-middle text-nowrap">
-              <thead class="header-item">
+            <table id="scroll_hor"
+            class="table border table-striped table-bordered display nowrap"
+            style="width: 100%">
+            <thead class="header-item">
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>

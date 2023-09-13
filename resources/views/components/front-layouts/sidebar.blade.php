@@ -105,7 +105,7 @@
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="app-contact.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route("front.extras.index") }}" aria-expanded="false">
                   <span>
                     <i class="ti ti-24-hours"></i>
                   </span>
@@ -244,11 +244,20 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="ui-dropdowns.html" class="sidebar-link">
+                    <a href="{{ route("front.employee-vacations.index") }}" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
-                      <span class="hide-menu">ادارة العمل</span>
+                      <span class="hide-menu">تنظيم الأجازات</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-item">
+                    <a href="{{ route("front.logs.index") }}" class="sidebar-link">
+                      <div class="round-16 d-flex align-items-center justify-content-center">
+                        <i class="ti ti-circle"></i>
+                      </div>
+                      <span class="hide-menu">ادارة السجلات</span>
                     </a>
                   </li>
                 </ul>
