@@ -89,14 +89,14 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::get('leaves', [LeaveController::class, 'index'])->name('leaves.index');
                 Route::get('leaves/{id}', [LeaveController::class, 'show'])->name('leaves.show');
                 Route::get('leaves/file/{id}', [LeaveController::class, 'openFile'])->name('leaves.file');
-                Route::post('leaves/update/{id}', [LeaveController::class, 'update'])->name('leaves.update');
+                Route::put('leaves/update/{id}', [LeaveController::class, 'update'])->name('leaves.update');
             });
             //vacations
             Route::group(['middleware' => 'can:vacations'], function () {
                 Route::get('vacation-requests', [VacationController::class, 'index'])->name('vacations.index');
                 Route::get('vacation-requests/{id}', [VacationController::class, 'show'])->name('vacations.show');
                 Route::get('vacation-requests/file/{id}', [VacationController::class, 'openFile'])->name('vacations.file');
-                Route::post('vacation-requests/update/{id}', [VacationController::class, 'update'])->name('vacations.update');
+                Route::put('vacation-requests/update/{id}', [VacationController::class, 'update'])->name('vacations.update');
             });
             //advances
             Route::group(['middleware' => 'can:advances'], function () {

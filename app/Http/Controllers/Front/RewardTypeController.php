@@ -16,7 +16,7 @@ class RewardTypeController extends Controller
     public function index()
     {
         $data = RewardType::where('company_id',Auth::user()->company_id)->orderByDesc('created_at')->get();
-        return view('front.reward-types.index',compact('data'));
+        return view('company.reward-types.index',compact('data'));
     }
 
     /**
@@ -24,7 +24,7 @@ class RewardTypeController extends Controller
      */
     public function create()
     {
-        return view('front.reward-types.create');
+        return view('company.reward-types.create');
     }
 
     /**
@@ -40,8 +40,8 @@ class RewardTypeController extends Controller
         ]));
 
 
-        return redirect()->route('company.reward-types.index')
-                        ->with('success','Incentive type has been added successfully');
+        return redirect()->route('front.reward-types.index')
+                        ->with('success','Bonus type has been added successfully');
     }
 
     /**
@@ -49,11 +49,11 @@ class RewardTypeController extends Controller
      */
     public function show(string $id)
     {
-        $reward = RewardType::findOrFail($id);
-        if ($reward->company_id!=Auth::user()->company_id) {
+        $type = RewardType::findOrFail($id);
+        if ($type->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        return view('front.reward-types.show',compact('reward'));
+        return view('company.reward-types.show',compact('type'));
     }
 
     /**
@@ -61,11 +61,11 @@ class RewardTypeController extends Controller
      */
     public function edit(string $id)
     {
-        $reward = RewardType::findOrFail($id);
-        if ($reward->company_id!=Auth::user()->company_id) {
+        $type = RewardType::findOrFail($id);
+        if ($type->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        return view('front.reward-types.edit',compact('reward'));
+        return view('company.reward-types.edit',compact('type'));
     }
 
     /**
@@ -85,7 +85,7 @@ class RewardTypeController extends Controller
         ]));
 
 
-        return redirect()->route('company.reward-types.show',$reward->id)
-                        ->with('success','Incentive type has been updated successfully');
+        return redirect()->route('front.reward-types.show',$reward->id)
+                        ->with('success','Bonus type has been updated successfully');
     }
 }

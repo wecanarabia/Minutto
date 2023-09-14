@@ -16,7 +16,7 @@ class VacationTypeController extends Controller
     public function index()
     {
         $data = VacationType::where('company_id',Auth::user()->company_id)->orderByDesc('created_at')->get();
-        return view('front.vacation-types.index',compact('data'));
+        return view('company.vacation-types.index',compact('data'));
     }
 
     /**
@@ -24,7 +24,7 @@ class VacationTypeController extends Controller
      */
     public function create()
     {
-        return view('front.vacation-types.create');
+        return view('company.vacation-types.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class VacationTypeController extends Controller
         ]));
 
 
-        return redirect()->route('company.vacation-types.index')
+        return redirect()->route('front.vacation-types.index')
                         ->with('success','Vacation type has been added successfully');
     }
 
@@ -53,7 +53,7 @@ class VacationTypeController extends Controller
         if ($type->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        return view('front.vacation-types.show',compact('type'));
+        return view('company.vacation-types.show',compact('type'));
     }
 
     /**
@@ -65,7 +65,7 @@ class VacationTypeController extends Controller
         if ($type->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        return view('front.vacation-types.edit',compact('type'));
+        return view('company.vacation-types.edit',compact('type'));
     }
 
     /**
@@ -85,7 +85,7 @@ class VacationTypeController extends Controller
         ]));
 
 
-        return redirect()->route('company.vacation-types.show',$type->id)
+        return redirect()->route('front.vacation-types.show',$type->id)
                         ->with('success','Vacation type has been updated successfully');
     }
 }

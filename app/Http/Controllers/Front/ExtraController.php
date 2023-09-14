@@ -19,7 +19,7 @@ class ExtraController extends Controller
     public function index()
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->get();
+        $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
             $data = Extra::whereBelongsTo($employees)->orderByDesc('created_at')->get();
         }else{
@@ -31,7 +31,7 @@ class ExtraController extends Controller
     public function show($id)
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
+        $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
         $extra = Extra::find($id);
         if (!in_array($extra->user->id,$employees)) {
@@ -44,7 +44,7 @@ class ExtraController extends Controller
     public function openFile($id)
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
+        $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
         $extra = Extra::find($id);
         if (!in_array($extra->user->id,$employees)) {
@@ -56,7 +56,7 @@ class ExtraController extends Controller
     public function update(ExtraRequest $request,$id)
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
+        $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
         $extra = Extra::find($id);
         $allStatus=Extra::STATUS;

@@ -16,7 +16,7 @@ class LeaveTypeController extends Controller
     public function index()
     {
         $data = LeaveType::where('company_id',Auth::user()->company_id)->orderByDesc('created_at')->get();
-        return view('front.leave-types.index',compact('data'));
+        return view('company.leave-types.index',compact('data'));
     }
 
     /**
@@ -24,7 +24,7 @@ class LeaveTypeController extends Controller
      */
     public function create()
     {
-        return view('front.leave-types.create');
+        return view('company.leave-types.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class LeaveTypeController extends Controller
         ]));
 
 
-        return redirect()->route('company.leave-types.index')
+        return redirect()->route('front.leave-types.index')
                         ->with('success','Leave type has been added successfully');
     }
 
@@ -53,7 +53,7 @@ class LeaveTypeController extends Controller
         if ($type->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        return view('front.leave-types.show',compact('type'));
+        return view('company.leave-types.show',compact('type'));
     }
 
     /**
@@ -65,7 +65,7 @@ class LeaveTypeController extends Controller
         if ($type->company_id!=Auth::user()->company_id) {
             return abort(404);
         }
-        return view('front.leave-types.edit',compact('type'));
+        return view('company.leave-types.edit',compact('type'));
     }
 
     /**
@@ -85,7 +85,7 @@ class LeaveTypeController extends Controller
         ]));
 
 
-        return redirect()->route('company.leave-types.show',$type->id)
+        return redirect()->route('front.leave-types.show',$type->id)
                         ->with('success','Leave type has been updated successfully');
     }
 }

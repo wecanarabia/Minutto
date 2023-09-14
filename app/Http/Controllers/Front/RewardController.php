@@ -28,7 +28,7 @@ class RewardController extends Controller
     }else{
         $data=collect([]);
     }
-    return view('front.rewards.index',compact('data'));
+    return view('company.rewards.index',compact('data'));
    }
 
    /**
@@ -41,7 +41,7 @@ class RewardController extends Controller
     $types = RewardType::where('company_id', Auth::user()->company_id)->get();
     $allStatus=Reward::STATUS;
 
-    return view('front.rewards.create',compact('employees','types','allStatus'));
+    return view('company.rewards.create',compact('employees','types','allStatus'));
    }
 
    /**
@@ -52,14 +52,14 @@ class RewardController extends Controller
 
 
        $reward = Reward::create($request->all());
-       $this->addLog($reward->user->id, 'Add Employee incentive', 'إضافة حافز لموظف', 'Employee Incentive has been added', 'تم إضافة حافز لموظف',$request['note']);
+       $this->addLog($reward->user->id, 'Add Employee Bonus', 'إضافة حافز لموظف', 'Employee Incentive has been added', 'تم إضافة حافز لموظف',$request['note']);
        if ($reward->getTranslation('status','en')=='approve'&&$reward->rtype->getTranslation('name','en')=='vacation days') {
         if ($reward->user->userVacation->vacation_balance>=$reward->reward_value) {
 
             $reward->user->userVacation()->update(['vacation_balance'=>($reward->user->userVacation->vacation_balance+$reward->reward_value)]);
         }
         }
-       return redirect()->route('company.rewards.index')
+       return redirect()->route('front.rewards.index')
                        ->with('success','Incentive has been added successfully');
    }
 
@@ -72,7 +72,7 @@ class RewardController extends Controller
        if ($reward->user->branch->company_id!=Auth::user()->company_id) {
            return abort(404);
        }
-       return view('front.rewards.show',compact('reward'));
+       return view('company.rewards.show',compact('reward'));
    }
 
    /**
@@ -91,7 +91,7 @@ class RewardController extends Controller
        $types = RewardType::where('company_id', Auth::user()->company_id)->get();
        $allStatus=Reward::STATUS;
 
-       return view('front.rewards.edit',compact('reward','employees','types','allStatus'));
+       return view('company.rewards.edit',compact('reward','employees','types','allStatus'));
    }
 
    /**
@@ -116,12 +116,12 @@ class RewardController extends Controller
         }
         if ($reward->getTranslation('status','en')!==$request['status.en']) {
             if($request['status.en'] == 'approve'){
-                $this->addLog($reward->user->id,'Update Employee incentive','تحديث حافز لموظف','Employee Incentive has been approved','تم الموافقة على طلب حافز',$request['note']);
+                $this->addLog($reward->user->id,'Update Employee Bonus','تحديث حافز لموظف','Employee Incentive has been approved','تم الموافقة على طلب حافز',$request['note']);
             }else if($request['status.en'] == 'rejected'){
-                $this->addLog($reward->user->id,'Update Employee incentive','تحديث حافز لموظف','Employee Incentive has been rejected','تم رفض  طلب حافز',$request['note']);
+                $this->addLog($reward->user->id,'Update Employee Bonus','تحديث حافز لموظف','Employee Incentive has been rejected','تم رفض  طلب حافز',$request['note']);
             };
         }else{
-            $this->addLog($reward->user->id, 'Update Employee incentive', 'تحديث حافز لموظف', 'Employee Incentive has been updated', 'تم تحديث حافز لموظف',$request['note']);
+            $this->addLog($reward->user->id, 'Update Employee Bonus', 'تحديث حافز لموظف', 'Employee Incentive has been updated', 'تم تحديث حافز لموظف',$request['note']);
         }
 
        $reward->update($request->all());
@@ -131,7 +131,7 @@ class RewardController extends Controller
 
 }
 
-       return redirect()->route('company.rewards.show',$reward->id)
+       return redirect()->route('front.rewards.show',$reward->id)
                        ->with('success','Incentive has been updated successfully');
    }
    public function openFile($id)

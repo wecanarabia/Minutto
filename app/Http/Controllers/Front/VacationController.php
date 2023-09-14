@@ -24,7 +24,7 @@ class VacationController extends Controller
         }else{
             $data=collect([]);
         }
-        return view('front.employees.vacation-requests',compact('data'));
+        return view('company.vacations.index',compact('data'));
     }
 
     public function show($id)
@@ -37,7 +37,7 @@ class VacationController extends Controller
             return abort('404');
         }
         $allStatus=Vacation::STATUS;
-        return view('front.employees.vacation-details',compact('vacation','allStatus'));
+        return view('company.vacations.show',compact('vacation','allStatus'));
     }
 
     public function openFile($id)
@@ -58,14 +58,7 @@ class VacationController extends Controller
         $employees = User::active()->hasSalary()->hasVacation()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
         $vacation = Vacation::find($id);
-        $request['status'] = json_decode($request['status'],true);
-        $validator = Validator::make($request->all(), [
-            'from'=>'required|date',
-            'to'=>'required|date',
-            'note'=>'required|min:4|max:2000',
-            'replay'=>'required|min:4|max:2000',
-            'status.en'=>"required|in:waiting,approve,rejected",
-    ]);
+
         $allStatus=Vacation::STATUS;
         if ($request['status.en']=='approve') {
             $period = CarbonPeriod::create($request['from'], $request['to']);
@@ -92,12 +85,9 @@ class VacationController extends Controller
         }
 
 
-        if (in_array($vacation->getTranslation('status','en'),['approve','rejected'])||$validator->fails()||!in_array($vacation->user->id,$employees)||!in_array($request['status'],$allStatus)) {
-            $errors[]='Something went wrong, please try again';
-            $errors[]=$validator->errors()->all();
-            return response()->json([
-                'error' => $errors,
-            ]);
+        if (!in_array($vacation->getTranslation('status','en'),['approve','rejected'])||!in_array($vacation->user->id,$employees)||!in_array($request['status'],$allStatus)) {
+            return redirect()->back()->with("error",'Something went wrong, please try again');
+
         }
         if ($vacation->getTranslation('status','en')!==$request['status.en']) {
             if($request['status.en'] == 'approve'){
@@ -114,6 +104,7 @@ class VacationController extends Controller
             'note'=>$request['note'],
             'replay'=>$request['replay'],
         ]);
-        return response()->json(['success' => 'Vacation Request updated successfully.']);
+        return redirect()->route('front.vacations.show',$vacation->id)
+        ->with('success','Vacation Request has been update successfully');
     }
 }

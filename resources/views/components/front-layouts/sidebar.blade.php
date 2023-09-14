@@ -89,7 +89,7 @@
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route("front.vacations.index") }}" aria-expanded="false">
                   <span>
                     <i class="ti ti-beach"></i>
                   </span>
@@ -97,7 +97,7 @@
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="app-notes.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route("front.leaves.index") }}" aria-expanded="false">
                   <span>
                     <i class="ti ti-door-exit"></i>
                   </span>
@@ -113,7 +113,7 @@
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="app-contact.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route("front.rewards.index") }}" aria-expanded="false">
                   <span>
                     <i class="ti ti-file-certificate"></i>
                   </span>

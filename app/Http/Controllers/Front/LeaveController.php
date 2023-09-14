@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Front;
 use App\Models\User;
 use App\Models\Leave;
 use App\Models\Branch;
+use App\Traits\LogTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Traits\LogTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\Company\LeaveRequest;
 
 class LeaveController extends Controller
 {
@@ -23,7 +24,7 @@ class LeaveController extends Controller
         }else{
             $data=collect([]);
         }
-        return view('front.employees.leave-requests',compact('data'));
+        return view('company.leaves.index',compact('data'));
     }
 
     public function show($id)
@@ -36,7 +37,7 @@ class LeaveController extends Controller
             return abort('404');
         }
         $allStatus=Leave::STATUS;
-        return view('front.employees.leave-details',compact('leave','allStatus'));
+        return view('company.leaves.show',compact('leave','allStatus'));
     }
 
     public function openFile($id)
@@ -51,26 +52,16 @@ class LeaveController extends Controller
         return response()->file($leave->file);
     }
 
-    public function update(Request $request,$id)
+    public function update(LeaveRequest $request,$id)
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
         $leave = Leave::find($id);
-        $request['status'] = json_decode($request['status'],true);
-        $validator = Validator::make($request->all(), [
-            'discount_value'=>'nullable|numeric|declined_if:status.en,approve|min:0',
-            'note'=>'required|min:4|max:2000',
-            'replay'=>'required|min:4|max:2000',
-            'status.en'=>"required|in:waiting,approve,rejected",
-        ]);
+
 
         $allStatus=Leave::STATUS;
-        if ($validator->fails()||!in_array($leave->user->id,$employees)||!in_array($request['status'],$allStatus)) {
-            return response()->json([
-                'error' => $validator->errors()->all(),
-            ]);
-        }
+
         if ($leave->getTranslation('status','en')!==$request['status.en']) {
             if($request['status.en'] == 'approve'){
                 $this->addLog($leave->user->id,'Update leave request','تحديث طلب المغادرة','Leave request has been approved','تم الموافقة على طلب المغادرة',$request['note']);
@@ -93,6 +84,7 @@ class LeaveController extends Controller
             'replay'=>$request['replay'],
         ]);
 
-        return response()->json(['success' => 'Leave Request updated successfully.']);
+        return redirect()->route('front.leaves.show',$leave->id)
+        ->with('success','Leave Request has been update successfully');
     }
 }
