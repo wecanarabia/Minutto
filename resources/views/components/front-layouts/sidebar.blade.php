@@ -170,7 +170,7 @@
                 <span class="hide-menu">قسم المحاسبة</span>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="page-pricing.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route("front.salaries.index") }}" aria-expanded="false">
                   <span>
                     <i class="ti ti-report-money"></i>
                   </span>
