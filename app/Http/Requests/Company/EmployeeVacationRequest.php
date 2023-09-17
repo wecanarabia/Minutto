@@ -23,7 +23,7 @@ class EmployeeVacationRequest extends FormRequest
     {
         return [
             'vacation_balance'=>'required|numeric|min:0',
-            'user_id'=>'required|exists:users,id',
+            'user_id'=>'required_without:id|exists:users,id',
 
         ];
     }

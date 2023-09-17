@@ -31,5 +31,9 @@ class AuthServiceProvider extends ServiceProvider
             });
         }
 
+        Passport::tokensCan([
+            'user' => 'User Type',
+            'company' => 'Company Type',
+        ]);
     }
 }

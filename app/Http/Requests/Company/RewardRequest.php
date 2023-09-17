@@ -27,7 +27,7 @@ class RewardRequest extends FormRequest
             'reward_date'=>'required|date',
             'reward_value'=>'required|numeric|min:0|declined_if:status.en,waiting|declined_if:status.en,rejected',
             'note'=>'required|min:5|max:2000',
-            'file'=>'mimes:jpg,gif,jpeg,png,mp4,pdf,txt,mkv,flv,docs,doc,3gb,xlsx,pptx|max:4000',
+            'file'=>'nullable|mimes:jpg,gif,jpeg,png,mp4,pdf,txt,mkv,flv,docs,doc,3gb,xlsx,pptx|max:4000',
             'status.en'=>"in:waiting,approve,rejected",
             'replay'=>'required|min:5|max:2000',
             'reward_type_id'=>'required|exists:reward_types,id',

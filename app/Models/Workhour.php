@@ -24,7 +24,7 @@ class Workhour extends Model
             $file = $value;
             $extension = $file->getClientOriginalExtension(); // getting file extension
             $filename =time().mt_rand(1000,9999).'.'.$extension;
-            $file->move(public_path('file/appointment/'), $filename);
+            $file->move(base_path('../file/appointment/'), $filename);
             $this->attributes['file'] =  'file/appointment/'.$filename;
         }
     }
@@ -33,7 +33,7 @@ class Workhour extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    
+
     public function leaveRequest(){
         return $this->hasOne(Leave::class);
     }

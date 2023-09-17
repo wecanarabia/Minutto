@@ -11,7 +11,7 @@ class Alert extends Model
     use HasFactory,HasTranslations;
     protected $guarded=[];
     public $translatable = ['type'];
-    
+
     const TYPES = [
         ['en'=>'vacation days','ar'=>'أيام أجازة'],
         ['en'=>'Salary number of working days','ar'=>'مستحقات لعدد من أيام العمل'],
@@ -24,7 +24,7 @@ class Alert extends Model
             $file = $value;
             $extension = $file->getClientOriginalExtension(); // getting file extension
             $filename =time().mt_rand(1000,9999).'.'.$extension;
-            $file->move(public_path('file/appointment/'), $filename);
+            $file->move(base_path('../file/appointment/'), $filename);
             $this->attributes['file'] =  'file/appointment/'.$filename;
         }
     }

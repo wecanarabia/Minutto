@@ -116,7 +116,7 @@
                 <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title  fw-bold" id="edit-advanceLabel"> Edit advance</h5>
+                            <h5 class="modal-title  fw-bold" id="edit-advanceLabel"> Edit Advance Requests</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">

@@ -23,7 +23,7 @@ class Vacation extends Model
             $file = $value;
             $extension = $file->getClientOriginalExtension(); // getting file extension
             $filename =time().mt_rand(1000,9999).'.'.$extension;
-            $file->move(public_path('file/appointment/'), $filename);
+            $file->move(base_path('../file/appointment/'), $filename);
             $this->attributes['file'] =  'file/appointment/'.$filename;
         }
     }

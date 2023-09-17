@@ -1,5 +1,4 @@
 
-
 <div id="mytask-layout" class="theme-indigo">
 
     <x-layouts.sidebar />
