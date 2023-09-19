@@ -50,7 +50,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::get('company-settings/shift-workdays/create', [CompanyController::class, 'createWorkdays'])->name('company-settings.shift-workdays.create');
             Route::post('company-settings/shift-workdays/store', [CompanyController::class, 'storeWorkdays'])->name('company-settings.shift-workdays.store');
             Route::get('company-settings/show', [CompanyController::class, 'show'])->name('company-settings.show');
-            Route::get('company-settings/edit', [CompanyController::class, 'edit'])->name('company-settings.edit');
+            // Route::get('company-settings/edit', [CompanyController::class, 'edit'])->name('company-settings.edit');
             Route::put('company-settings/update', [CompanyController::class, 'update'])->name('company-settings.update');
 
         Route::group(['middleware' => ['CheckCompany', 'timezone']], function () {

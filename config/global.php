@@ -11,7 +11,7 @@ return [
         'shifts'=>['en'=>'Shifts','ar'=>'المناوبات'],
         'leaves'=>['en'=>'Leaves','ar'=>'المغادرات'],
         'vacations'=>['en'=>'Vacations','ar'=>'الأجازات'],
-        'rewards'=>['en'=>'Incentives','ar'=>'الحوافز'],
+        'rewards'=>['en'=>'Bouns','ar'=>'الحوافز'],
         'alerts'=>['en'=>'Alerts','ar'=>'الجزاءات'],
         'extra'=>['en'=>'Extras','ar'=>'الإضافي'],
         'advances'=>['en'=>'Advances','ar'=>'السلف'],

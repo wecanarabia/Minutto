@@ -94,7 +94,7 @@
                                    </div>
 
                                    <div class="col-md-6">
-                                    <label class="form-label">Overtime Rate (for ocertime calculation)</label>
+                                    <label class="form-label">Overtime Rate (for overtime calculation)</label>
                                     <input type="text" class="form-control" name="extra_rate" value="{{ old('extra_rate',$company->extra_rate??0) }}" required>
                                     @error('extra_rate')
                                     <div class="text-danger">{{ $message }}</div>
