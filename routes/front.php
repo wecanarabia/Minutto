@@ -27,7 +27,7 @@ use App\Http\Controllers\Front\VacationTypeController;
 use App\Http\Controllers\Front\EmployeeVacationController;
 use App\Http\Controllers\Front\OfficialVacationController;
 
-Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale()."/front",
+Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath','setLocale'],
     'as' => 'front.'], function () {
     Route::get('/login', [LoginController::class, 'getLogin'])->name('login-page');

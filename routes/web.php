@@ -19,4 +19,4 @@ Route::get('/', function () {
 
 require __DIR__ . '/dashboard.php';
 require __DIR__ . '/front.php';
-require __DIR__ . '/company.php';
+// require __DIR__ . '/company.php';
