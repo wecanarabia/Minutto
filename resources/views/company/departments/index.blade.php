@@ -66,7 +66,7 @@
                                        <td>
                                         @if ($department->head)
                                         <img class="avatar rounded-circle" src="{{ asset( $department->head->image ) }}" alt="">
-                                        <a href="{{ route('company.employees.show',$department->head->id) }}" class="fw-bold text-secondary">
+                                        <a href="{{ route('front.employees.show',$department->head->id) }}" class="fw-bold text-secondary">
                                         <span class="fw-bold ms-1">{{ $department->head->name }}</span></a>
                                         @else
                                             edit Department to add Head

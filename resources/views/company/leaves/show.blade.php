@@ -43,7 +43,7 @@
                                             <div
                                                 class="hstack align-items-start mb-7 pb-1 align-items-center justify-content-between">
                                                 <div class="d-flex align-items-center gap-3">
-                                                    <a href="{{ route('company.employees.show',$leave->user->id) }}">
+                                                    <a href="{{ route('front.employees.show',$leave->user->id) }}">
 
                                                     <img src="{{ asset($leave->user->image) }}" width="72"
                                                         height="72" class="rounded-circle">

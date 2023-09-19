@@ -33,7 +33,7 @@
                                         <div
                                         class="hstack align-items-start mb-7 pb-1 align-items-center justify-content-between">
                                         <div class="d-flex align-items-center gap-3">
-                                            <a href="{{ route('company.employees.show',$alert->user->id) }}">
+                                            <a href="{{ route('front.employees.show',$alert->user->id) }}">
 
                                             <img src="{{ asset($alert->user->image) }}" width="72"
                                                 height="72" class="rounded-circle">

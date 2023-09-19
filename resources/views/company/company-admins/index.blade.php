@@ -53,7 +53,7 @@
                       <img src="{{ asset( $admin->image ) }}" alt="avatar" class="rounded-circle" width="35">
                       <div class="ms-3">
                         <div class="user-meta-info">
-                            <a href="{{ route('company.admins.show',$admin->id) }}">
+                            <a href="{{ route('front.admins.show',$admin->id) }}">
                           <h6 class="user-name mb-0" data-name="Emma Adams">{{ $admin->name }}</h6></a>
                         </div>
                       </div>

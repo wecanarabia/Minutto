@@ -34,7 +34,7 @@
                                             class="hstack align-items-start mb-7 pb-1 align-items-center justify-content-between">
                                             @if ($branch->head)
                                             <div class="d-flex align-items-center gap-3">
-                                                <a href="{{ route('company.employees.show',$branch->head->id) }}">
+                                                <a href="{{ route('front.employees.show',$branch->head->id) }}">
                                                 <img src="{{ asset($branch->head->image) }}" alt="user4" width="72"
                                                     height="72" class="rounded-circle">
                                                 <div>

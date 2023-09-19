@@ -43,7 +43,7 @@
                                             <div
                                                 class="hstack align-items-start mb-7 pb-1 align-items-center justify-content-between">
                                                 <div class="d-flex align-items-center gap-3">
-                                                    <a href="{{ route('company.employees.show',$extra->user->id) }}">
+                                                    <a href="{{ route('front.employees.show',$extra->user->id) }}">
 
                                                     <img src="{{ asset($extra->user->image) }}" width="72"
                                                         height="72" class="rounded-circle">
@@ -105,7 +105,7 @@
                                                     <p class="mb-1 fs-2">Replay</p>
                                                     <h6 class="fw-semibold mb-0">{{ $extra->replay }}</h6>
                                                 </div>
-                                                
+
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">File</p>
                                                     <h6 class="fw-semibold mb-0">
