@@ -115,7 +115,7 @@
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">Profile Status</p>
                                                     <h6 class="fw-semibold mb-0">
-                                                        {{ $employee->active ? 'Active' : 'In Active' }}</h6>
+                                                        {{ $employee->active == 1 ? 'Active' : 'In Active' }}</h6>
                                                 </div>
 
                                                 <div class="col-12 mb-7">

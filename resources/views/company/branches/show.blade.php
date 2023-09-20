@@ -35,8 +35,14 @@
                                             @if ($branch->head)
                                             <div class="d-flex align-items-center gap-3">
                                                 <a href="{{ route('front.employees.show',$branch->head->id) }}">
-                                                <img src="{{ asset($branch->head->image) }}" alt="user4" width="72"
+                                                    @if ($branch->head->image==null)
+
+                                                    <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="72"
+                                                        height="72" class="rounded-circle">
+                                                    @else
+                                                    <img src="{{ asset($branch->head->image) }}" alt="user4" width="72"
                                                     height="72" class="rounded-circle">
+                                                    @endif
                                                 <div>
                                                     <h6 class="fw-semibold fs-4 mb-0">{{ $branch->head->name }}</h6>
                                                     <p class="mb-0">Head Manager</p>

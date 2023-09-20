@@ -44,9 +44,14 @@
                                                 class="hstack align-items-start mb-7 pb-1 align-items-center justify-content-between">
                                                 <div class="d-flex align-items-center gap-3">
                                                     <a href="{{ route('front.employees.show',$leave->user->id) }}">
+                                                        @if ($leave->user->image==null)
 
+                                                        <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="72"
+                                                            height="72" class="rounded-circle">
+                                                        @else
                                                     <img src="{{ asset($leave->user->image) }}" width="72"
                                                         height="72" class="rounded-circle">
+                                                        @endif
                                                     <div>
                                                         <h6 class="fw-semibold fs-4 mb-0">
                                                             {{ $leave->user->name . ' ' . $leave->user->last_name }}</h6>

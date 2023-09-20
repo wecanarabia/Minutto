@@ -65,7 +65,13 @@
                                        </td>
                                        <td>
                                         @if ($department->head)
+                                        @if ($department->head->image==null)
+
+                                        <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="35"
+                                            class="rounded-circle">
+                                        @else
                                         <img class="avatar rounded-circle" src="{{ asset( $department->head->image ) }}" alt="">
+                                        @endif
                                         <a href="{{ route('front.employees.show',$department->head->id) }}" class="fw-bold text-secondary">
                                         <span class="fw-bold ms-1">{{ $department->head->name }}</span></a>
                                         @else

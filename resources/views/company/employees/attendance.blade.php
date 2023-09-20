@@ -53,7 +53,7 @@
                    </td>
                    <td>
                     <div class="d-flex align-items-center">
-                        @if ($employee->image==null)
+                        @if ($attendance->user->image==null)
 
                         <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="35"
                             class="rounded-circle">
