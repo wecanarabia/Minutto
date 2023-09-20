@@ -27,7 +27,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">{{ $branch->name }}</h5>
+                                        <h5 class="mb-0">{{ $admin->name }}</h5>
                                     </div>
                                     <div class="chat-list chat active-chat" data-user-id="1">
                                         <div
