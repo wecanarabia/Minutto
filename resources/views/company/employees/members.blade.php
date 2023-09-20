@@ -44,7 +44,7 @@
                 <tr class="search-items" style="">
                   <td>
                     <div class="d-flex align-items-center">
-                        @if (!$employee->image)
+                        @if ($employee->image==null)
 
                         <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="35"
                             class="rounded-circle">

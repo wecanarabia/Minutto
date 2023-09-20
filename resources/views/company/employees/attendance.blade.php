@@ -53,7 +53,13 @@
                    </td>
                    <td>
                     <div class="d-flex align-items-center">
+                        @if ($employee->image==null)
+
+                        <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="35"
+                            class="rounded-circle">
+                        @else
                       <img src="{{ asset( $attendance->user->image ) }}" alt="avatar" class="rounded-circle" width="35">
+                      @endif
                       <div class="ms-3">
                         <div class="user-meta-info">
                             <a href="{{ route('front.employees.show',$attendance->user->id) }}">
