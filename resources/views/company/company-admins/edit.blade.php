@@ -28,7 +28,7 @@
                                     <div class="mb-2">
                                         <h5 class="mb-0">Edit Admin</h5>
                                     </div>
-                                    <form method="post" action="{{ route('front.admins.edit', $admin->id) }}">
+                                    <form method="post" action="{{ route('front.admins.update', $admin->id) }}">
                                         @csrf
                                         @method('PUT')
                                         <div class="mb-4">
