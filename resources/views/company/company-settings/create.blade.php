@@ -71,7 +71,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="mb-4">
-                                                    <label class="form-label">Allowed Leaves Count (in Hours)</label>
+                                                    <label class="form-label">Number Of allowed leave (In Hours)</label>
                                                     <input type="number" class="form-control" name="leaves_count" value="{{ old('leaves_count',$company?->leaves_count) }}" required>
                                                     @error('leaves_count')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -79,7 +79,7 @@
                                                 </div>
 
                                                 <div class="mb-4">
-                                                    <label class="form-label">Allowed Holidays Count (in days)</label>
+                                                    <label class="form-label">Number Of Employee Vacation Balance (In Days)</label>
                                                     <input type="number" class="form-control" name="holidays_count" value="{{ old('holidays_count',$company->holidays_count??0) }}" required>
                                                     @error('holidays_count')
                                                     <div class="text-danger">{{ $message }}</div>

@@ -188,7 +188,7 @@
                                                     <h6 class="fw-semibold mb-0">{{ $company->employees_count }}</h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Number Of allowed leaves</p>
+                                                    <p class="mb-1 fs-2">Number Of allowed leaves (In Hours)</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->leaves_count }}</h6>
                                                 </div>
 
@@ -246,7 +246,7 @@
                                                         </div>
                                                         <div class="mb-4 col-6">
                                                             <label for="exampleFormControlInput2222"
-                                                                class="form-label">Number Of allowed leave Requests</label>
+                                                                class="form-label">Number Of allowed leave (In Hours)</label>
                                                                 <input type="number" class="form-control" name="leaves_count" value="{{ old('leaves_count',$company?->leaves_count) }}" >
 
                                                         </div>
