@@ -312,8 +312,10 @@
                         <span class="d-block text-dark">Account Settings</span>
                       </div>
                     </a>
+                    <div class="d-grid gap-2">
 
                     <a href="{{ route('front.logout') }}" class="btn btn-outline-primary">Log Out</a>
+                    </div>
                   </div>
                 </div>
               </div>
