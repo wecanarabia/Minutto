@@ -83,8 +83,15 @@
                                             <div
                                                 class="hstack align-items-start mb-7 pb-1 align-items-center justify-content-between">
                                                 <div class="d-flex align-items-center gap-3">
+                                                    @if (!$employee->image)
+
+                                                    <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="72"
+                                                        height="72" class="rounded-circle">
+                                                    @else
                                                     <img src="{{ asset($employee->image) }}" alt="user4" width="72"
                                                         height="72" class="rounded-circle">
+                                                    @endif
+
                                                     <div>
                                                         <h6 class="fw-semibold fs-4 mb-0">
                                                             {{ $employee->name . ' ' . $employee->last_name }}</h6>
