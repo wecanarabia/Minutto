@@ -30,7 +30,7 @@
                         <span class="hide-menu">الرئيسية</span>
                     </a>
                 </li>
-            @if (Auth::guard('company')->user()->company==null && Auth::user()->can('company'))
+            @if (Auth::guard('company')->user()->company==null)
 
 
 
