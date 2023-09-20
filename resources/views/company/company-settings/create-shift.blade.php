@@ -36,14 +36,14 @@
                                             <div class="row g-3 align-items-center">
                                                 <div class="mb-4">
                                                     <label for="firstname" class="form-label">English Name</label>
-                                                    <input type="text" class="form-control" id="firstname" name="english_name" value="{{ old('english_name',$branch?->getTranslation('name','en')??"") }}" required>
+                                                    <input type="text" class="form-control" id="firstname" name="english_name" value="{{ old('english_name',$shift?->getTranslation('name','en')??"") }}" required>
                                                     @error('english_name')
                                                     <div class="text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                                 <div class="mb-4">
                                                     <label for="lastname" class="form-label">Arabic Name</label>
-                                                    <input type="text" class="form-control" name="arabic_name" value="{{ old('arabic_name',$branch?->getTranslation('name','ar')??"") }}" id="lastname" required>
+                                                    <input type="text" class="form-control" name="arabic_name" value="{{ old('arabic_name',$shift?->getTranslation('name','ar')??"") }}" id="lastname" required>
                                                     @error('arabic_name')
                                                     <div class="text-danger">{{ $message }}</div>
                                                     @enderror
