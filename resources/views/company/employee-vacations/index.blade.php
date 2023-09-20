@@ -4,12 +4,12 @@
           <div class="row align-items-center">
             <div class="col-12">
                 @if (count($vacationsOfYear)==0)
-                    <a href="{{ route('company.employee-vacations.generate') }}" class="btn btn-info float-end">
+                    <a href="{{ route('front.employee-vacations.generate') }}" class="btn btn-info float-end">
                         <i class="ti ti-device-game-pad text-white me-1 fs-5"></i> Generate Vacations of this Year
                     </a>
                     @endif
                 @if (count($employeesHasNoVacation)>0)
-                <a href="{{ route('company.employee-vacations.create') }}" class="btn btn-info float-end">
+                <a href="{{ route('front.employee-vacations.create') }}" class="btn btn-info float-end">
                     <i class="ti ti-device-game-pad text-white me-1 fs-5"></i> Add Vacation Balance
                   </a>
                   @endif
