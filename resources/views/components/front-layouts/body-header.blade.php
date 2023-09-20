@@ -6,13 +6,9 @@
             <i class="ti ti-menu-2"></i>
           </a>
         </li>
-        <li class="nav-item d-none d-lg-block">
-          <a class="nav-link nav-icon-hover" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="ti ti-search"></i>
-          </a>
-        </li>
+
       </ul>
-      <ul class="navbar-nav quick-links d-none d-lg-flex">
+      {{-- <ul class="navbar-nav quick-links d-none d-lg-flex">
         <li class="nav-item dropdown hover-dd d-none d-lg-block">
           <a class="nav-link" href="javascript:void(0)" data-bs-toggle="dropdown">Apps<span class="mt-1"><i class="ti ti-chevron-down"></i></span></a>
           <div class="dropdown-menu dropdown-menu-nav dropdown-menu-animate-up py-0">
@@ -155,7 +151,7 @@
         <li class="nav-item dropdown-hover d-none d-lg-block">
           <a class="nav-link" href="app-email.html">Email</a>
         </li>
-      </ul>
+      </ul> --}}
       <div class="d-block d-lg-none">
         <img src="{{ asset('dist/images/logos/logo.svg') }}" width="180" alt="" />
       </div>
@@ -170,8 +166,8 @@
             <i class="ti ti-align-justified fs-7"></i>
           </a>
           <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
-            <li class="nav-item dropdown">
-              <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+            {{--<li class="nav-item dropdown">
+               <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-flag-en.svg" alt="" class="rounded-circle object-fit-cover round-20">
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
@@ -202,8 +198,8 @@
                   </a>
                 </div>
               </div>
-            </li>
-            <li class="nav-item">
+            </li> --}}
+            {{-- <li class="nav-item">
               <a class="nav-link notify-badge nav-icon-hover" href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                   <i class="ti ti-moon"></i>
               </a>
@@ -278,7 +274,16 @@
                   <button class="btn btn-outline-primary w-100"> See All Notifications </button>
                 </div>
               </div>
+            </li> --}}
+            @if (app()->getLocale()==='ar')
+            <li class="nav-item mx-2"><a class="" rel="alternate" hreflang="en" href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">
+                {{ LaravelLocalization::getSupportedLocales()['en']['native'] }}</a>
             </li>
+        @else
+            <li class="nav-item"><a class="" rel="alternate" hreflang="ar" href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}">
+                {{ LaravelLocalization::getSupportedLocales()['ar']['native'] }}</a>
+            </li>
+        @endif
             <li class="nav-item dropdown">
               <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="d-flex align-items-center">
@@ -296,7 +301,7 @@
                     <img src="{{ asset(Auth::user()->image) }}" class="rounded-circle" width="80" height="80" alt="" />
                     <div class="ms-3">
                       <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
-                      <span class="mb-1 d-block text-dark">{{ Auth::user()->role->name }}</span>
+                      <span class="mb-1 d-block text-dark">{{ Auth::user()->role?->name??"" }}</span>
                       <p class="mb-0 d-flex text-dark align-items-center gap-2">
                         <i class="ti ti-mail fs-4"></i> {{ Auth::user()->email }}
                       </p>
