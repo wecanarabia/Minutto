@@ -22,7 +22,7 @@
             <div class="widget-content searchable-container list">
                 <x-front-layouts.messages />
                 @if ($errors->any())
-                <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                         @foreach ($errors->all() as $error)
                             <p>{{ $error }}</p>
@@ -44,9 +44,14 @@
                                                 class="hstack align-items-start mb-7 pb-1 align-items-center justify-content-between">
                                                 <div class="d-flex align-items-center gap-3">
                                                     <a href="{{ route('front.employees.show',$salary->user->id) }}">
+                                                        @if ($salary->user->image==null)
 
+                                                        <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="72"
+                                                            height="72" class="rounded-circle">
+                                                        @else
                                                     <img src="{{ asset($salary->user->image) }}" width="72"
                                                         height="72" class="rounded-circle">
+                                                        @endif
                                                     <div>
                                                         <h6 class="fw-semibold fs-4 mb-0">
                                                             {{ $salary->user->name . ' ' . $salary->user->last_name }}</h6>

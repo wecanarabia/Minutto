@@ -22,7 +22,7 @@
             <div class="widget-content searchable-container list">
                 <x-front-layouts.messages />
                 @if ($errors->any())
-                <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                         @foreach ($errors->all() as $error)
                             <p>{{ $error }}</p>

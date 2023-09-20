@@ -61,7 +61,13 @@
                                         <td>{{ $reward->reward_date }}</td>
                                         <td>
                     <div class="d-flex align-items-center">
+                        @if ($reward->user->image==null)
+
+                        <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="35"
+                            class="rounded-circle">
+                        @else
                       <img src="{{ asset( $reward->user->image ) }}" alt="avatar" class="rounded-circle" width="35">
+                        @endif
                       <div class="ms-3">
                         <div class="user-meta-info">
                             <a href="{{ route('front.employees.show',$reward->user->id) }}">
