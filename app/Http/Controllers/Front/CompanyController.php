@@ -182,7 +182,7 @@ class CompanyController extends Controller
     {
         $shift = $request->session()->get('shift');
         $days=Workday::WORKDAYS;
-        return view('company.company-settings.create-wordays',compact('shift','days'));
+        return view('company.company-settings.create-workdays',compact('shift','days'));
     }
 
     public function storeWorkdays(Request $request)
