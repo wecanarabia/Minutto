@@ -55,7 +55,7 @@ class EmployeeController extends Controller
         $shifts = Shift::whereHas('branches', function($q){
             $q->whereIn('branch_id',Branch::where('company_id', Auth::user()->company_id)->pluck('id'));
         })->get();
-        $employee = User::whereBelongsTo($branches)->with(['branch','shift'])->find($id);
+        $employee = User::whereBelongsTo($branches)->with(['branch','shift'])->findOrFail($id);
         return view('company.employees.employee-profile',compact('employee','branches','shifts','departments'));
     }
 
