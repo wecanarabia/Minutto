@@ -35,7 +35,7 @@ class EmployeeVacationController extends Controller
     public function generate()
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->hasVacation()->whereBelongsTo($branches)->with(['branch','shift'])->get();
+        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
             $vacationsOfYear = EmployeeVacation::where('year',Carbon::now()->year)->whereBelongsTo($employees)->get();
             if (count($vacationsOfYear)==0) {
