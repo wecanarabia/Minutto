@@ -21,7 +21,6 @@ class LeaveController extends Controller
         $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
             $data = Leave::whereBelongsTo($employees)->orderByDesc('created_at')->get();
-            dd($data);
         }else{
             $data=collect([]);
         }
