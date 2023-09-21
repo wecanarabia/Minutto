@@ -14,9 +14,11 @@ use App\Models\Advance;
 use App\Models\Workhour;
 use App\Traits\LogTrait;
 use Illuminate\Http\Request;
+use App\Exports\SalaryExport;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Company\SalaryRequest;
 
@@ -187,7 +189,7 @@ class SalaryController extends Controller
 
         ]);
         if ($validator->fails()){
-            return redirect()->back()->withInput();
+            return redirect()->back();
         }
         $salaries = Salary::where('month', $request->month)->where('year', $request->year)->whereBelongsTo($employees)->orderByDesc('year')->orderByDesc('month')->get();
         // $data = $this->getTotals($employees, $request->month, $request->year);
@@ -195,6 +197,10 @@ class SalaryController extends Controller
         // $data['actual']=$salaries->sum('actual_salary');
         // $data['discounts']=$data['workhours'] + $data['leaves'] + $data['alerts_in_days'] + $data['alerts'];
         return view("company.salaries.filter",compact('salaries'));
+    }
+    public function export($month,$year)
+    {
+        return Excel::download(new SalaryExport($month,$year), 'salaries.xlsx');
     }
 
 //     public function filter(Request $request)

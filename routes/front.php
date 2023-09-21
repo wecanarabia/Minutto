@@ -131,6 +131,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::post('salaries/store', [SalaryController::class, 'store'])->name('salaries.store');
                 Route::post('salaries/filter', [SalaryController::class, 'filter'])->name('salaries.filter');
                 Route::get('salaries/{id}', [SalaryController::class, 'show'])->name('salaries.show');
+                Route::get('salaries/export/{month}/{year}', [SalaryController::class, 'export'])->name('salaries.export');
             });
 
             //logs
