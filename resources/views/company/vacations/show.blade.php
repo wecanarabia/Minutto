@@ -48,10 +48,10 @@
                                                     <a href="{{ route('front.employees.show',$vacation->user->id) }}">
                                                         @if ($vacation->user->image==null)
 
-                                                        <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="72"
+                                                        <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="{{ $vacation->user->name . ' ' . $vacation->user->last_name }}" width="72"
                                                             height="72" class="rounded-circle">
                                                         @else
-                                                    <img src="{{ asset($vacation->user->image) }}" width="72"
+                                                    <img src="{{ asset($vacation->user->image) }}" width="72" alt="{{ $vacation->user->name . ' ' . $vacation->user->last_name }}"
                                                         height="72" class="rounded-circle">
                                                         @endif
                                                     <div>

@@ -33,7 +33,7 @@
                                         <div
                                             class="hstack align-items-start mb-7 pb-1 align-items-center justify-content-between">
                                             <div class="d-flex align-items-center gap-3">
-                                                <img src="{{ asset($admin->image) }}" alt="user4" width="72"
+                                                <img src="{{ asset($admin->image) }}" alt="{{ $admin->name }}" width="72"
                                                     height="72" class="rounded-circle">
                                                 <div>
                                                     <h6 class="fw-semibold fs-4 mb-0">{{ $admin->name }}</h6>

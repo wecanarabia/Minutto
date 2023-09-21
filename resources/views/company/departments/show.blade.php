@@ -37,14 +37,14 @@
                                                 <a href="{{ route('front.employees.show',$department->head->id) }}">
                                                     @if ($department->head->image==null)
 
-                                                    <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="72"
+                                                    <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="{{ $department->head->name . ' ' . $department->head->last_name }}" width="72"
                                                         height="72" class="rounded-circle">
                                                     @else
-                                                    <img src="{{ asset($department->head->image) }}" alt="user4" width="72"
+                                                    <img src="{{ asset($department->head->image) }}" alt="{{ $department->head->name . ' ' . $department->head->last_name }}" width="72"
                                                     height="72" class="rounded-circle">
                                                     @endif
                                                 <div>
-                                                    <h6 class="fw-semibold fs-4 mb-0">{{ $department->head->name }}</h6>
+                                                    <h6 class="fw-semibold fs-4 mb-0">{{ $department->head->name . ' ' . $department->head->last_name }}</h6>
                                                     <p class="mb-0">Head Manager</p>
 
                                                     </a>

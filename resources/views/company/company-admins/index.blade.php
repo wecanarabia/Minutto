@@ -50,7 +50,7 @@
                     <td>{{ $admin->id }}</td>
                   <td>
                     <div class="d-flex align-items-center">
-                      <img src="{{ asset( $admin->image ) }}" alt="avatar" class="rounded-circle" width="35">
+                      <img src="{{ asset( $admin->image ) }}" alt="{{ $admin->name }}" class="rounded-circle" width="35">
                       <div class="ms-3">
                         <div class="user-meta-info">
                             <a href="{{ route('front.admins.show',$admin->id) }}">

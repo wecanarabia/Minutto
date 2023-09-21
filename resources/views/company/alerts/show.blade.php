@@ -36,11 +36,11 @@
                                             <a href="{{ route('front.employees.show',$alert->user->id) }}">
                                                 @if ($alert->user->image==null)
 
-                                                <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="72"
+                                                <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="{{ $alert->user->name . ' ' . $alert->user->last_name }} " width="72"
                                                     height="72" class="rounded-circle">
                                                 @else
                                             <img src="{{ asset($alert->user->image) }}" width="72"
-                                                height="72" class="rounded-circle">
+                                                height="72" class="rounded-circle" alt="{{ $alert->user->name . ' ' . $alert->user->last_name }}">
                                                 @endif
                                             <div>
                                                 <h6 class="fw-semibold fs-4 mb-0">

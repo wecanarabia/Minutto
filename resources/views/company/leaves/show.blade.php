@@ -46,10 +46,10 @@
                                                     <a href="{{ route('front.employees.show',$leave->user->id) }}">
                                                         @if ($leave->user->image==null)
 
-                                                        <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="72"
+                                                        <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt=">{{ $leave->user->name . ' ' . $leave->user->last_name }}" width="72"
                                                             height="72" class="rounded-circle">
                                                         @else
-                                                    <img src="{{ asset($leave->user->image) }}" width="72"
+                                                    <img src="{{ asset($leave->user->image) }}" width="72" alt=">{{ $leave->user->name . ' ' . $leave->user->last_name }}"
                                                         height="72" class="rounded-circle">
                                                         @endif
                                                     <div>
