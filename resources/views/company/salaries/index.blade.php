@@ -10,16 +10,16 @@
                     <i class="ti ti-currency-real text-white me-1 fs-5"></i> Generate Salaries Of this Month
                   </a>
                   @else
-
                   <a href="{{ route('front.salaries.update') }}" class="btn btn-info float-end mx-2">
                     <i class="ti ti-currency-dollar-singapore text-white me-1 fs-5"></i> Update Salaries Of this Month
                   </a>
+
+                  @endif
                   @if (count($employeesNoSalary)>0&&$data['salaries']->count()>=0)
 
                   <a href="{{ route("front.salaries.create") }}" class="btn btn-info float-end mx-2">
                     <i class="ti ti-currency-dollar-canadian text-white me-1 fs-5"></i> Add Salary for new Employee
                   </a>
-                  @endif
                   @endif
 
               <h4 class="fw-semibold mb-8">Salaries</h4>
