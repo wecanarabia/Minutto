@@ -75,6 +75,74 @@
 
         <div class="card card-body">
             <x-front-layouts.messages/>
+            <div class="owl-carousel counter-carousel owl-theme">
+                <div class="item">
+                  <div class="card border-0 zoom-in bg-light-primary shadow-none">
+                    <div class="card-body">
+                      <div class="text-center">
+                        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-user-male.svg" width="50" height="50" class="mb-3" alt="" />
+                        <p class="fw-semibold fs-3 text-primary mb-1"> Total Actual Salaries </p>
+                        <h5 class="fw-semibold text-primary mb-0">{{ $data['salaries']->sum('actual_salary') }}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="card border-0 zoom-in bg-light-warning shadow-none">
+                    <div class="card-body">
+                      <div class="text-center">
+                        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-briefcase.svg" width="50" height="50" class="mb-3" alt="" />
+                        <p class="fw-semibold fs-3 text-warning mb-1">Total discounts and alerts</p>
+                        <h5 class="fw-semibold text-warning mb-0">{{ $data['workhours'] + $data['leaves'] + $data['alerts_in_days'] + $data['alerts'] }}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="card border-0 zoom-in bg-light-info shadow-none">
+                    <div class="card-body">
+                      <div class="text-center">
+                        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-mailbox.svg" width="50" height="50" class="mb-3" alt="" />
+                        <p class="fw-semibold fs-3 text-info mb-1">Total Advances</p>
+                        <h5 class="fw-semibold text-info mb-0">{{ $data['advances'] }}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="card border-0 zoom-in bg-light-danger shadow-none">
+                    <div class="card-body">
+                      <div class="text-center">
+                        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-favorites.svg" width="50" height="50" class="mb-3" alt="" />
+                        <p class="fw-semibold fs-3 text-danger mb-1">Total Incentives</p>
+                        <h5 class="fw-semibold text-danger mb-0">{{ $data['rewards'] }}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="card border-0 zoom-in bg-light-success shadow-none">
+                    <div class="card-body">
+                      <div class="text-center">
+                        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-speech-bubble.svg" width="50" height="50" class="mb-3" alt="" />
+                        <p class="fw-semibold fs-3 text-success mb-1">Total Extras</p>
+                        <h5 class="fw-semibold text-success mb-0">{{ $data['extras'] }}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="card border-0 zoom-in bg-light-info shadow-none">
+                    <div class="card-body">
+                      <div class="text-center">
+                        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-connect.svg" width="50" height="50" class="mb-3" alt="" />
+                        <p class="fw-semibold fs-3 text-info mb-1">Total net slaries</p>
+                        <h5 class="fw-semibold text-info mb-0">{{ $data['salaries']->sum('net_salary') }}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
           <div class="table-responsive">
             <table class="table search-table align-middle text-nowrap">
               <thead class="header-item">

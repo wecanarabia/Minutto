@@ -5,8 +5,11 @@
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="{{ route('front.home') }}" class="text-nowrap logo-img">
-                <img src="{{ asset('dist/images/logos/logo.svg') }}" class="dark-logo" width="180" alt="" />
-                <img src="{{ asset('dist/images/logos/light-logo.svg') }}" class="light-logo" width="180" alt="" />
+                @if (app()->getLocale()==='ar')
+                <img src="{{ asset('dist/images/logos/logo.svg') }}" class="dark-logo" width="101" alt="" />
+                @else
+                <img src="{{ asset('dist/images/logos/logo-en.svg') }}" class="light-logo" width="180" alt="" />
+                @endif
             </a>
             <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="ti ti-x fs-8"></i>
