@@ -136,7 +136,9 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             //logs
             Route::get('logs', [LogController::class, 'index'])->name('logs.index')->middleware('can:logs');
             Route::get('logs/{id}', [LogController::class, 'show'])->name('logs.show')->middleware('can:logs');
-
+            Route::get('/{any}', function($any){
+                return abort('404');
+            })->where('any', '.*');
         });
     });
 });
