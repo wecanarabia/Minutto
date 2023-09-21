@@ -62,8 +62,8 @@ class SalaryController extends Controller
     {
         $now = Carbon::now();
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->hasNotSalary()->whereBelongsTo($branches)->notOfThisMonth($now)->with(['branch','shift'])->get();
-        if ($employees->count()>=0) {
+        $employees = User::active()->hasNotSalary()->whereBelongsTo($branches)->with(['branch','shift'])->get();
+        if ($employees->count()>0) {
 
             $salaryOfMonth = Salary::where('month', Carbon::now()->month)->where('year', Carbon::now()->year)->whereBelongsTo($employees)->get();
             if (count($salaryOfMonth)==0) {
