@@ -28,6 +28,8 @@ use App\Http\Controllers\Api\ExtraController;
 use App\Http\Controllers\Api\ExtraTypeController;
 use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\SalaryController;
+use App\Http\Controllers\Api\NotificationController;
+
 
 
 
