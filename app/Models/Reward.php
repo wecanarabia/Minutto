@@ -20,7 +20,7 @@ class Reward extends Model
 
     protected static function booted()
     {
-        static::created(function ($reward) {
+        static::creating(function ($reward) {
             $reward->status = ['en'=>'waiting','ar'=>'في الانتظار'];
         });
     }

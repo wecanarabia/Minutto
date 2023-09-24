@@ -25,7 +25,7 @@ class Leave extends Model
 
     protected static function booted()
     {
-        static::created(function ($leave) {
+        static::creating(function ($leave) {
             $leave->status = ['en'=>'waiting','ar'=>'في الانتظار'];
         });
     }

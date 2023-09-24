@@ -20,7 +20,7 @@ class Vacation extends Model
 
     protected static function booted()
     {
-        static::created(function ($vacation) {
+        static::creating(function ($vacation) {
             $vacation->status = ['en'=>'waiting','ar'=>'في الانتظار'];
         });
     }
