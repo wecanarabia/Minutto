@@ -451,11 +451,8 @@
                                     <div id="work-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
-<<<<<<< HEAD
-                                                <h5 class="card-title fw-semibold">Update Work Info</h5>
-=======
+
                                                 <h5 class="card-title fw-semibold">@lang('views.UPDATE PROFILE')</h5>
->>>>>>> a52761cfbde96b53e7940dd81eda013d6fcba186
                                                 <form method="post"
                                                     action="{{ route('front.employees.update', $employee->id) }}">
                                                     @csrf
@@ -475,16 +472,13 @@
                                                                 value="{{ $employee->duration_of_contract }}">
                                                         </div>
                                                         <div class="mb-4 col-6">
-<<<<<<< HEAD
                                                             <label for="exampleFormControlInput33_3" class="form-label">Working Start Date</label>
                                                             <input type="date" name="work_start" class="form-control" id="exampleFormControlInput33_3"
                                                                 value="{{ $employee->work_start }}">
                                                         </div>
                                                         <div class="mb-4 col-6">
-                                                            <label for="exampleFormControlInput4434" class="form-label">Contract Expiration</label>
-=======
+
                                                             <label for="exampleFormControlInput4434" class="form-label">@lang('views.CONTRACT EXPIRATION')</label>
->>>>>>> a52761cfbde96b53e7940dd81eda013d6fcba186
                                                             <input type="date" name="contract_expire" class="form-control" id="exampleFormControlInput4434"
                                                                 value="{{ $employee->contract_expire }}">
                                                         </div>
