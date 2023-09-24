@@ -65,9 +65,15 @@
                                        </td>
                                        <td>
                                         @if ($department->head)
-                                        <img class="avatar rounded-circle" src="{{ asset( $department->head->image ) }}" alt="">
-                                        <a href="{{ route('company.employees.show',$department->head->id) }}" class="fw-bold text-secondary">
-                                        <span class="fw-bold ms-1">{{ $department->head->name }}</span></a>
+                                        @if ($department->head->image==null)
+
+                                        <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="{{ $department->head->name . ' ' . $department->head->last_name }}" width="35"
+                                            class="rounded-circle">
+                                        @else
+                                        <img class="avatar rounded-circle" width="35" src="{{ asset( $department->head->image ) }}" alt="{{ $department->head->name . ' ' . $department->head->last_name }}">
+                                        @endif
+                                        <a href="{{ route('front.employees.show',$department->head->id) }}" class="fw-bold text-secondary">
+                                        <span class="fw-bold ms-1">{{ $department->head->name . ' ' . $department->head->last_name }}</span></a>
                                         @else
                                             edit Department to add Head
                                         @endif

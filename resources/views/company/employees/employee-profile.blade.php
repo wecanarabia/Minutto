@@ -22,7 +22,7 @@
             <div class="widget-content searchable-container list">
                 <x-front-layouts.messages />
                 @if ($errors->any())
-                <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                         @foreach ($errors->all() as $error)
                             <p>{{ $error }}</p>
@@ -83,8 +83,15 @@
                                             <div
                                                 class="hstack align-items-start mb-7 pb-1 align-items-center justify-content-between">
                                                 <div class="d-flex align-items-center gap-3">
+                                                    @if ($employee->image==null)
+
+                                                    <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="72"
+                                                        height="72" class="rounded-circle">
+                                                    @else
                                                     <img src="{{ asset($employee->image) }}" alt="user4" width="72"
                                                         height="72" class="rounded-circle">
+                                                    @endif
+
                                                     <div>
                                                         <h6 class="fw-semibold fs-4 mb-0">
                                                             {{ $employee->name . ' ' . $employee->last_name }}</h6>
@@ -108,7 +115,7 @@
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">@lang('views.PROFILE STATUS')</p>
                                                     <h6 class="fw-semibold mb-0">
-                                                        {{ $employee->active ? 'Active' : 'In Active' }}</h6>
+                                                        {{ $employee->active == 1 ? 'Active' : 'In Active' }}</h6>
                                                 </div>
 
                                                 <div class="col-12 mb-7">
@@ -413,19 +420,23 @@
                                                 </div>
 
                                                 <div class="col-6 mb-7">
+
                                                     <p class="mb-1 fs-2">@lang('views.BRANCH')</p>
-                                                    <h6 class="fw-semibold mb-0">{{ $employee->branch->name }}</h6>
+                                                    <h6 class="fw-semibold mb-0">{{ $employee->branch?->name }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">@lang('views.SHIFT')</p>
-                                                    <h6 class="fw-semibold mb-0">{{ $employee->shift->name }}
+                                                    <h6 class="fw-semibold mb-0">{{ $employee->shift?->name }}
+
                                                     </h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
+
                                                     <p class="mb-1 fs-2">@lang('views.DEPARTMENT')</p>
-                                                    <h6 class="fw-semibold mb-0">{{ $employee->department->name }}
+                                                    <h6 class="fw-semibold mb-0">{{ $employee->department?->name }}
+
                                                     </h6>
                                                 </div>
 

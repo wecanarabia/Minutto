@@ -78,11 +78,17 @@
                                         @if ($branch->head)
 
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ asset( $branch->head->image ) }}" alt="avatar" class="rounded-circle" width="35">
+                                            @if ($branch->head->image==null)
+
+                                            <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="{{ $branch->head->name . ' ' . $branch->head->last_name }}" width="35"
+                                                class="rounded-circle">
+                                            @else
+                                            <img src="{{ asset( $branch->head->image ) }}" alt="{{ $branch->head->name . ' ' . $branch->head->last_name }}" class="rounded-circle" width="35">
+                                            @endif
                                             <div class="ms-3">
                                               <div class="user-meta-info">
-                                                  <a href="{{ route('company.employees.show',$branch->head->id) }}">
-                                                <h6 class="user-name mb-0" data-name="Emma Adams">{{ $branch->head->name }}</h6></a>
+                                                  <a href="{{ route('front.employees.show',$branch->head->id) }}">
+                                                <h6 class="user-name mb-0" data-name="Emma Adams">{{ $branch->head->name . ' ' . $branch->head->last_name }}</h6></a>
                                               </div>
                                             </div>
                                           </div>

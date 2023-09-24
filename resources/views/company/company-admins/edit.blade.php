@@ -28,7 +28,7 @@
                                     <div class="mb-2">
                                         <h5 class="mb-0">@lang('views.EDIT ADMIN')</h5>
                                     </div>
-                                    <form method="post" action="{{ route('front.admins.edit', $admin->id) }}">
+                                    <form method="post" action="{{ route('front.admins.update', $admin->id) }}" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <div class="mb-4">

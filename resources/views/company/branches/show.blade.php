@@ -34,12 +34,20 @@
                                             class="hstack align-items-start mb-7 pb-1 align-items-center justify-content-between">
                                             @if ($branch->head)
                                             <div class="d-flex align-items-center gap-3">
-                                                <a href="{{ route('company.employees.show',$branch->head->id) }}">
-                                                <img src="{{ asset($branch->head->image) }}" alt="user4" width="72"
+                                                <a href="{{ route('front.employees.show',$branch->head->id) }}">
+                                                    @if ($branch->head->image==null)
+
+                                                    <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="{{ $branch->head->name . ' ' . $branch->head->last_name }}" width="72"
+                                                        height="72" class="rounded-circle">
+                                                    @else
+                                                    <img src="{{ asset($branch->head->image) }}" alt="{{ $branch->head->name . ' ' . $branch->head->last_name }}" width="72"
                                                     height="72" class="rounded-circle">
+                                                    @endif
                                                 <div>
-                                                    <h6 class="fw-semibold fs-4 mb-0">{{ $branch->head->name }}</h6>
+
+                                                    <h6 class="fw-semibold fs-4 mb-0">{{ $branch->head->name . ' ' . $branch->head->last_name }}</h6>
                                                     <p class="mb-0">@lang('views.HEAD MANAGER')</p>
+
 
                                                     </a>
                                                 </div>

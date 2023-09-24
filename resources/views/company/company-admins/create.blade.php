@@ -29,7 +29,7 @@
                                     <div class="mb-2">
                                         <h5 class="mb-0">@lang('views.CREATE ADMIN')</h5>
                                     </div>
-                                    <form method="post" action="{{ route('front.admins.store') }}">
+                                    <form method="post" action="{{ route('front.admins.store') }}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="mb-4">
                                             <label for="exampleInputPassword1"

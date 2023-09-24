@@ -81,7 +81,7 @@ class CompanyAdminController extends Controller
         $admin->update($request->all());
 
 
-        return redirect()->route('company.admins.index')
+        return redirect()->route('front.admins.index')
                         ->with('success','Company Admin has been updated successfully');
     }
 

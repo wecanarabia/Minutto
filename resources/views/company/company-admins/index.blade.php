@@ -6,10 +6,14 @@
                 <a href="{{ route("front.admins.create") }}" class="btn btn-info float-end mx-2">
                     <i class="ti ti-users text-white me-1 fs-5"></i>@lang('views.ADD ADMIN')
                   </a>
+                  @can('roles')
                   <a href="{{ route("front.roles.index") }}" class="btn btn-dark float-end">
                     <i class="ti ti-lock-cog text-white me-1 fs-5"></i> @lang('views.ROLES')
                   </a>
+
+
               <h4 class="fw-semibold mb-8">@lang('views.ADMINS')</h4>
+
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">@lang('views.DASHBOARD')</a></li>
@@ -47,10 +51,10 @@
                     <td>{{ $admin->id }}</td>
                   <td>
                     <div class="d-flex align-items-center">
-                      <img src="{{ asset( $admin->image ) }}" alt="avatar" class="rounded-circle" width="35">
+                      <img src="{{ asset( $admin->image ) }}" alt="{{ $admin->name }}" class="rounded-circle" width="35">
                       <div class="ms-3">
                         <div class="user-meta-info">
-                            <a href="{{ route('company.admins.show',$admin->id) }}">
+                            <a href="{{ route('front.admins.show',$admin->id) }}">
                           <h6 class="user-name mb-0" data-name="Emma Adams">{{ $admin->name }}</h6></a>
                         </div>
                       </div>

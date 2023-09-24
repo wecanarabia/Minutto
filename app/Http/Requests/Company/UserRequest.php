@@ -29,7 +29,6 @@ class UserRequest extends FormRequest
             'passport_identity'=>'sometimes|min:4|max:255',
             'national_identity'=>'sometimes|min:4|max:255',
             'emergency_contact'=>'sometimes|min:4|max:255',
-            
             'bank_name'=>'sometimes|min:4|max:255',
             'account_number'=>'sometimes|min:4|max:255',
             'bank_branch'=>'sometimes|min:4|max:255',

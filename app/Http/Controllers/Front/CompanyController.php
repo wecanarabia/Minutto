@@ -40,7 +40,7 @@ class CompanyController extends Controller
         $department = $request->session()->get('department');
         $subscriptions = Subscription::all();
         $timezones = DateTimeZone::listIdentifiers();
-        return view('front.company-settings.create',compact('company','subscriptions','timezones'));
+        return view('company.company-settings.create',compact('company','subscriptions','timezones'));
     }
 
     /**
@@ -73,13 +73,13 @@ class CompanyController extends Controller
                  ]));
             $request->session()->put('company', $company);
         }
-    return redirect()->route('company.company-settings.branch.create');
+    return redirect()->route('front.company-settings.branch.create');
     }
     public function createBranch(Request $request)
     {
         $branch = $request->session()->get('branch');
 
-        return view('front.company-settings.create-branch',compact('branch'));
+        return view('company.company-settings.create-branch',compact('branch'));
     }
 
     /**
@@ -105,44 +105,14 @@ class CompanyController extends Controller
             $request->session()->put('branch', $branch);
         }
 
-        return redirect()->route('company.company-settings.shift.create');
+        return redirect()->route('front.company-settings.department.create');
     }
 
-    public function createShift(Request $request)
-    {
-        $shift = $request->session()->get('shift');
-        return view('front.company-settings.create-shift',compact('shift'));
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function storeShift(ShiftRequest $request)
-    {
-        if(empty($request->session()->get('shift'))){
-            $shift = new Shift();
-            $request['name']=['en'=>$request->english_name,'ar'=>$request->arabic_name];
-            $shift->fill($request->except([
-            'english_name',
-            'arabic_name',
-             ]));
-            $request->session()->put('shift', $shift);
-        }else{
-            $shift = $request->session()->get('shift');
-            $request['name']=['en'=>$request->english_name,'ar'=>$request->arabic_name];
-            $shift->fill($request->except([
-            'english_name',
-            'arabic_name',
-             ]));
-            $request->session()->put('shift', $shift);
-        }
-
-        return redirect()->route('company.company-settings.department.create');
-    }
     public function createDepartment(Request $request)
     {
         $department = $request->session()->get('department');
-        return view('front.company-settings.create-department',compact('department'));
+        return view('company.company-settings.create-department',compact('department'));
     }
 
     /**
@@ -175,13 +145,44 @@ class CompanyController extends Controller
             $request->session()->put('department', $department);
         }
 
-        return redirect()->route('company.company-settings.shift-workdays.create');
+        return redirect()->route('front.company-settings.shift.create');
+    }
+    public function createShift(Request $request)
+    {
+        $shift = $request->session()->get('shift');
+        return view('company.company-settings.create-shift',compact('shift'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function storeShift(ShiftRequest $request)
+    {
+        if(empty($request->session()->get('shift'))){
+            $shift = new Shift();
+            $request['name']=['en'=>$request->english_name,'ar'=>$request->arabic_name];
+            $shift->fill($request->except([
+            'english_name',
+            'arabic_name',
+             ]));
+            $request->session()->put('shift', $shift);
+        }else{
+            $shift = $request->session()->get('shift');
+            $request['name']=['en'=>$request->english_name,'ar'=>$request->arabic_name];
+            $shift->fill($request->except([
+            'english_name',
+            'arabic_name',
+             ]));
+            $request->session()->put('shift', $shift);
+        }
+
+        return redirect()->route('front.company-settings.shift-workdays.create');
     }
     public function createWorkdays(Request $request)
     {
         $shift = $request->session()->get('shift');
         $days=Workday::WORKDAYS;
-        return view('front.company-settings.create-wordays',compact('shift','days'));
+        return view('company.company-settings.create-workdays',compact('shift','days'));
     }
 
     public function storeWorkdays(Request $request)
@@ -253,7 +254,7 @@ class CompanyController extends Controller
     $request->session()->forget('branch');
     $request->session()->forget('department');
     $request->session()->forget('company');
-        return redirect()->route('company.company-settings.show')->with(['success'=>'Company settings has been added Successfully']);
+        return redirect()->route('front.company-settings.show')->with(['success'=>'Company settings has been added Successfully']);
     }
 
 
@@ -262,20 +263,22 @@ class CompanyController extends Controller
      */
     public function show()
     {
-$company = Company::with('branches')->find(Auth::guard('company')->user()->company_id);
-        return view('front.company-settings.show',compact('company'));
+        $company = Company::with('branches')->find(Auth::guard('company')->user()->company_id);
+        $subscriptions = Subscription::all();
+        $timezones = DateTimeZone::listIdentifiers();
+        return view('company.company-settings.show',compact('company','subscriptions','timezones'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
-    {
-        $company = Company::find(Auth::guard('company')->user()->company_id);
-        $subscriptions = Subscription::all();
-        $timezones = DateTimeZone::listIdentifiers();
-        return view('front.company-settings.edit',compact('company','subscriptions','timezones'));
-    }
+    // public function edit()
+    // {
+    //     $company = Company::find(Auth::guard('company')->user()->company_id);
+    //     // $subscriptions = Subscription::all();
+    //     // $timezones = DateTimeZone::listIdentifiers();
+    //     return view('company.company-settings.edit',compact('company','subscriptions','timezones'));
+    // }
 
     /**
     * Update the specified resource in storage.
@@ -291,7 +294,7 @@ $company = Company::with('branches')->find(Auth::guard('company')->user()->compa
             'english_description',
             'arabic_description',
              ]));
-        return redirect()->route('company.company-settings.show')->with(['success'=>'Company settings has been Updated Successfully']);
+        return redirect()->route('front.company-settings.show')->with(['success'=>'Company settings has been Updated Successfully']);
 
     }
 
@@ -303,7 +306,7 @@ $company = Company::with('branches')->find(Auth::guard('company')->user()->compa
             foreach ($array_name as $value) {
                 array_push($new_arr, $value[0]);
             }
-            $code = implode("", $new)."#".rand(10000, 100000);
+            $code = implode("", $new_arr)."#".rand(10000, 100000);
         }else{
             $code = implode("", $array_name)."#".rand(10000, 100000);
          }

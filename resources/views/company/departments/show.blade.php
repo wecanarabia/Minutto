@@ -34,12 +34,20 @@
                                             class="hstack align-items-start mb-7 pb-1 align-items-center justify-content-between">
                                             @if ($department->head)
                                             <div class="d-flex align-items-center gap-3">
-                                                <a href="{{ route('company.employees.show',$department->head->id) }}">
-                                                <img src="{{ asset($department->head->image) }}" alt="user4" width="72"
+                                                <a href="{{ route('front.employees.show',$department->head->id) }}">
+                                                    @if ($department->head->image==null)
+
+                                                    <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="{{ $department->head->name . ' ' . $department->head->last_name }}" width="72"
+                                                        height="72" class="rounded-circle">
+                                                    @else
+                                                    <img src="{{ asset($department->head->image) }}" alt="{{ $department->head->name . ' ' . $department->head->last_name }}" width="72"
                                                     height="72" class="rounded-circle">
+                                                    @endif
                                                 <div>
-                                                    <h6 class="fw-semibold fs-4 mb-0">{{ $department->head->name }}</h6>
+
+                                                    <h6 class="fw-semibold fs-4 mb-0">{{ $department->head->name . ' ' . $department->head->last_name }}</h6>
                                                     <p class="mb-0">@lang('views.HEAD MANAGER')</p>
+
 
                                                     </a>
                                                 </div>

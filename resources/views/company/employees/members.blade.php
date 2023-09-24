@@ -44,7 +44,13 @@
                 <tr class="search-items" style="">
                   <td>
                     <div class="d-flex align-items-center">
+                        @if ($employee->image==null)
+
+                        <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="user4" width="35"
+                            class="rounded-circle">
+                        @else
                       <img src="{{ asset( $employee->image ) }}" alt="avatar" class="rounded-circle" width="35">
+                      @endif
                       <div class="ms-3">
                         <div class="user-meta-info">
                             <a href="{{ route('front.employees.show',$employee->id) }}">

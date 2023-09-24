@@ -58,11 +58,17 @@
                                         <td>{{ $alert->alert_date }}</td>
                                         <td>
                     <div class="d-flex align-items-center">
-                      <img src="{{ asset( $alert->user->image ) }}" alt="avatar" class="rounded-circle" width="35">
+                        @if ($alert->user->image==null)
+
+                        <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="{{ $alert->user->name . ' ' . $alert->user->last_name }}" width="35"
+                            class="rounded-circle">
+                        @else
+                      <img src="{{ asset( $alert->user->image ) }}" alt="{{ $alert->user->name . ' ' . $alert->user->last_name }}" class="rounded-circle" width="35">
+                      @endif
                       <div class="ms-3">
                         <div class="user-meta-info">
                             <a href="{{ route('front.employees.show',$alert->user->id) }}">
-                          <h6 class="user-name mb-0" data-name="Emma Adams">{{ $alert->user->name }}</h6></a>
+                          <h6 class="user-name mb-0" data-name="Emma Adams">{{ $alert->user->name . ' ' . $alert->user->last_name }}</h6></a>
                         </div>
                       </div>
                     </div>

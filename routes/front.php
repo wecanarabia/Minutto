@@ -27,7 +27,7 @@ use App\Http\Controllers\Front\VacationTypeController;
 use App\Http\Controllers\Front\EmployeeVacationController;
 use App\Http\Controllers\Front\OfficialVacationController;
 
-Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale()."/front",
+Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath','setLocale'],
     'as' => 'front.'], function () {
     Route::get('/login', [LoginController::class, 'getLogin'])->name('login-page');
@@ -50,7 +50,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::get('company-settings/shift-workdays/create', [CompanyController::class, 'createWorkdays'])->name('company-settings.shift-workdays.create');
             Route::post('company-settings/shift-workdays/store', [CompanyController::class, 'storeWorkdays'])->name('company-settings.shift-workdays.store');
             Route::get('company-settings/show', [CompanyController::class, 'show'])->name('company-settings.show');
-            Route::get('company-settings/edit', [CompanyController::class, 'edit'])->name('company-settings.edit');
+            // Route::get('company-settings/edit', [CompanyController::class, 'edit'])->name('company-settings.edit');
             Route::put('company-settings/update', [CompanyController::class, 'update'])->name('company-settings.update');
 
         Route::group(['middleware' => ['CheckCompany', 'timezone']], function () {
@@ -129,14 +129,17 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::get('salaries/update', [SalaryController::class, 'update'])->name('salaries.update');
                 Route::get('salaries/create', [SalaryController::class, 'create'])->name('salaries.create');
                 Route::post('salaries/store', [SalaryController::class, 'store'])->name('salaries.store');
-                Route::get('salaries/filter', [SalaryController::class, 'filter'])->name('salaries.filter');
+                Route::post('salaries/filter', [SalaryController::class, 'filter'])->name('salaries.filter');
                 Route::get('salaries/{id}', [SalaryController::class, 'show'])->name('salaries.show');
+                Route::get('salaries/export/{month}/{year}', [SalaryController::class, 'export'])->name('salaries.export');
             });
 
             //logs
             Route::get('logs', [LogController::class, 'index'])->name('logs.index')->middleware('can:logs');
             Route::get('logs/{id}', [LogController::class, 'show'])->name('logs.show')->middleware('can:logs');
-
+            Route::get('/{any}', function($any){
+                return abort('404');
+            })->where('any', '.*');
         });
     });
 });

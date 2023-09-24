@@ -54,7 +54,13 @@
 
                    <td>
                     <div class="d-flex align-items-center">
-                      <img src="{{ asset( $vacation->user->image ) }}" alt="avatar" class="rounded-circle" width="35">
+                        @if ($vacation->user->image==null)
+
+                        <img src="{{ asset('assets\images\lg\avatar13.png') }}" alt="{{ $vacation->user->name . ' ' . $vacation->user->last_name }}" width="35"
+                            class="rounded-circle">
+                        @else
+                      <img src="{{ asset( $vacation->user->image ) }}" alt="{{ $vacation->user->name . ' ' . $vacation->user->last_name }}" class="rounded-circle" width="35">
+                      @endif
                       <div class="ms-3">
                         <div class="user-meta-info">
                             <a href="{{ route('front.employees.show',$vacation->user->id) }}">
