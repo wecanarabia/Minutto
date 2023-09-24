@@ -174,6 +174,7 @@ return [
     'TYPES VALUE' => 'Types Value',
     'ADD BONUS' => 'Add Bonus' ,
     'ADD ALLOWANCE' => 'Add Allowance' ,
+    'ALLOWANCE'=>'Allowances',
     'ROLES' => 'Roles' ,
     'PERMISSIONS' => 'Permissions' ,
     'EDIT ROLE' => 'Edit Role' ,

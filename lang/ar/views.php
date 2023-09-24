@@ -172,6 +172,8 @@ return [
 'INCENTIVE DATE' => 'تاريخ الحوافز',
 'TYPES VALUE' => 'قيمة الأنواع',
 'ADD BONUS' => 'إضافة مكافأة',
+'ALLOWANCE'=>'البدلات',
+'ADD ALLOWANCE' => 'إضافة بدل',
 'ROLES' => 'الأدوار',
 'PERMISSIONS' => 'الصلاحيات',
 'EDIT ROLE' => 'تعديل الدور',
