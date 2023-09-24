@@ -92,7 +92,7 @@
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Bouns And Extra</p>
+                                                    <p class="mb-1 fs-2">Allowances</p>
                                                     <h6 class="fw-semibold mb-0">{{ $salary->incentives_and_extra }}</h6>
                                                 </div>
 

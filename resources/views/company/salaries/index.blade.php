@@ -114,7 +114,7 @@
                     <div class="card-body">
                       <div class="text-center">
                         <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-favorites.svg" width="50" height="50" class="mb-3" alt="" />
-                        <p class="fw-semibold fs-3 text-danger mb-1">Total Incentives</p>
+                        <p class="fw-semibold fs-3 text-danger mb-1">Total Allowances</p>
                         <h5 class="fw-semibold text-danger mb-0">{{ $data['rewards'] }}</h5>
                       </div>
                     </div>
