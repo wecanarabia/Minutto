@@ -5,11 +5,11 @@
             <div class="col-12">
 
 
-              <h4 class="fw-semibold mb-8">Employees</h4>
+              <h4 class="fw-semibold mb-8">@lang('views.EMPLOYEES')</h4>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">Dashboard</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Employees</li>
+                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">@lang('views.DASHBOARD')</a></li>
+                  <li class="breadcrumb-item" aria-current="page">@lang('views.EMPLOYEES')</li>
                 </ol>
               </nav>
             </div>
@@ -31,12 +31,12 @@
             class="table border table-striped table-bordered display nowrap"
             style="width: 100%">
             <thead class="header-item">
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Branch</th>
-                <th>Department</th>
-                <th>Shift</th>
+                <th>@lang('views.NAME')</th>
+                <th>@lang('views.EMAIL')</th>
+                <th>@lang('views.PHONE')</th>
+                <th>@lang('views.BRANCH')</th>
+                <th>@lang('views.DEPARTMENT')</th>
+                <th>@lang('views.SHIFT')</th>
               </tr></thead>
               <tbody>
                 <!-- start row -->

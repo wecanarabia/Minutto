@@ -50,7 +50,7 @@
                       </a>
 
                   <div class="position-relative text-center my-4">
-                    <p class="mb-0 fs-4 px-3 d-inline-block bg-white text-dark z-index-5 position-relative">sign up</p>
+                    <p class="mb-0 fs-4 px-3 d-inline-block bg-white text-dark z-index-5 position-relative">@lang('views.SIGN UP')</p>
                     <span class="border-top w-100 position-absolute top-50 start-50 translate-middle"></span>
                   </div>
                   @if (Session::has('error'))
@@ -66,7 +66,7 @@
                   <form method="post" action="{{ route("front.register") }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-label">Name</label>
+                        <label class="form-label">@lang('views.NAME')</label>
                         <input type="text" name="name" value="{{ old("name") }}" class="form-control">
                         @error('name')
                         <div class="text-danger">
@@ -75,7 +75,7 @@
                           @enderror
                       </div>
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email</label>
+                      <label for="exampleInputEmail1" class="form-label">@lang('views.EMAIL')</label>
                       <input type="email" name="email" class="form-control" value="{{ old("email") }}" id="exampleInputEmail1" aria-describedby="emailHelp">
                       @error('email')
                       <div class="text-danger">
@@ -84,7 +84,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                      <label class="form-label">Phone</label>
+                      <label class="form-label">@lang('views.PHONE')</label>
                       <input type="tel" name="phone" class="form-control" value="{{ old("phone") }}">
                       @error('phone')
                       <div class="text-danger">
@@ -93,7 +93,7 @@
                         @enderror
                     </div>
                     <div class="mb-4">
-                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <label for="exampleInputPassword1" class="form-label">@lang('views.PASSWORD')</label>
                       <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                         @error('password')
                         <div class="text-danger">
@@ -102,11 +102,11 @@
                         @enderror
                     </div>
                     <div class="mb-4">
-                      <label class="form-label">Confirm Password</label>
+                      <label class="form-label">@lang('views.CONFIRM PASSWORD')</label>
                       <input type="password" name="password_confirmation" class="form-control">
                     </div>
                     <div class="mb-4">
-                        <label class="form-label">Image</label>
+                        <label class="form-label">@lang('views.IMAGE')</label>
                         <input type="file" name="image" class="form-control">
                           @error('image')
                           <div class="text-danger">
@@ -116,8 +116,8 @@
                       </div>
                     <input type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2" value="Sign Up">
                     <div class="d-flex align-items-center justify-content-center">
-                      <p class="fs-4 mb-0 fw-medium">Already have an account?</p>
-                      <a class="text-primary fw-medium ms-2" href="{{ route('front.login-page') }}">Sign In</a>
+                      <p class="fs-4 mb-0 fw-medium">@lang('views.ALREADY HAVE AN ACCOUNT?')</p>
+                      <a class="text-primary fw-medium ms-2" href="{{ route('front.login-page') }}">@lang('views.SIGN IN?')</a>
                     </div>
                   </form>
                 </div>

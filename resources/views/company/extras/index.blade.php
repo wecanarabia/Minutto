@@ -6,13 +6,13 @@
 
 
                 <a href="{{ route("front.extra-types.index") }}" class="btn btn-info float-end">
-                    <i class="ti ti-folder-star text-white me-1 fs-5"></i> Extra Types
+                    <i class="ti ti-folder-star text-white me-1 fs-5"></i> @lang('views.EXTRA TYPES')
                   </a>
-              <h4 class="fw-semibold mb-8">Extra Requests</h4>
+              <h4 class="fw-semibold mb-8">@lang('views.EXTRA REQUESTS')</h4>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">Dashboard</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Extra Requests</li>
+                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">@lang('views.DASHBOARD')</a></li>
+                  <li class="breadcrumb-item" aria-current="page">@lang('views.EXTRA REQUESTS')</li>
                 </ol>
               </nav>
             </div>
@@ -33,13 +33,13 @@
             <table class="table search-table align-middle text-nowrap">
               <thead class="header-item">
                 <tr>
-                    <th>Extra Date</th>
-                    <th>Employee</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Status</th>
-                    <th>Type</th>
-                    <th>Action</th>
+                    <th>@lang('views.EXTRA DATE')</th>
+                    <th>@lang('views.EMPLOYEE')</th>
+                    <th>@lang('views.FROM')</th>
+                    <th>@lang('views.TO')</th>
+                    <th>@lang('views.STATUS')</th>
+                    <th>@lang('views.TYPE')</th>
+                    <th>@lang('views.ACTION')</th>
               </tr></thead>
               <tbody>
                 <!-- start row -->

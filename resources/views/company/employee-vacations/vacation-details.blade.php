@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Employee Vacation</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.EMPLOYEE VACATIONS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.employee-vacations.index') }}">Employee Vacation</a></li>
+                                            href="{{ route('front.employee-vacations.index') }}">@lang('views.EMPLOYEE VACATIONS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -36,7 +36,7 @@
                                 <div class="card-body">
 
                                     <div id="cat-data" class="col-lg-12">
-                                        <button id="cat-edit" class="btn btn-success float-end">Edit</button>
+                                        <button id="cat-edit" class="btn btn-success float-end">@lang('views.EDIT')</button>
 
                                         <div class="chat-list chat active-chat" data-user-id="1">
 
@@ -61,11 +61,11 @@
                                             <div class="row">
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Year</p>
+                                                    <p class="mb-1 fs-2">@lang('views.YEAR')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $vacation->year }}</h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Vacation Balance</p>
+                                                    <p class="mb-1 fs-2">@lang('views.VACATION BALANCE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $vacation->vacation_balance }}</h6>
                                                 </div>
 
@@ -79,7 +79,7 @@
                                     <div id="cat-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
-                                                <h5 class="card-title fw-semibold">Update Employee Vacation</h5>
+                                                <h5 class="card-title fw-semibold">@lang('views.UPDATE EMPLOYEE VACATION')</h5>
                                                 <form method="post"
                                                     action="{{ route('front.employee-vacations.update', $vacation->id) }}" enctype="multipart/form-data">
                                                     @csrf
@@ -87,7 +87,7 @@
                                                     <input type="hidden" name="id" value="{{ $vacation->id }}">
                                                     <div class="row">
                                                         <div class="mb-4 col-12">
-                                                            <label for="exampleFormControlevacationbalance" class="form-label">Vacation Balance</label>
+                                                            <label for="exampleFormControlevacationbalance" class="form-label">@lang('views.VACATION BALANCE')</label>
                                                             <input type="number" class="form-control"
                                                                 id="exampleFormControlevacationbalance" name="vacation_balance" value="{{ $vacation->vacation_balance }}">
 
@@ -99,7 +99,7 @@
 
                                                     </div>
                                                     <input type="submit" value="Update" class="btn btn-primary mx-2">
-                                                    <button id="cat-cancel" class="btn btn-dark">Cancel</button>
+                                                    <button id="cat-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>
 

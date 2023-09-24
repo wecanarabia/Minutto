@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Alerts</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.ALERTS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.alerts.index') }}">Alerts</a></li>
+                                            href="{{ route('front.alerts.index') }}">@lang('views.ALERTS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -49,12 +49,12 @@
                                     </div>
                                         <div class="row">
                                             <div class="col-4 mb-7">
-                                                <p class="mb-1 fs-2">Alert Date</p>
+                                                <p class="mb-1 fs-2">@lang('views.ALERT DATE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $alert->alert_date }}
                                                 </h6>
                                             </div>
                                             <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">Alert Type</p>
+                                                <p class="mb-1 fs-2">@lang('views.ALERT TYPE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $alert->type }}
                                                 </h6>
                                             </div>
@@ -62,18 +62,18 @@
 
 
                                             <div class="col-4 mb-7">
-                                                <p class="mb-1 fs-2">Alert Type's Value</p>
+                                                <p class="mb-1 fs-2">@lang('views.ALERT TYPES VALUE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $alert->punishment }}
                                                 </h6>
                                             </div>
                                             <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">Note</p>
+                                                <p class="mb-1 fs-2">@lang('views.NOTE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $alert->note }}
                                                 </h6>
                                             </div>
 
                                               <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">File</p>
+                                                <p class="mb-1 fs-2">@lang('views.FILE')</p>
                                                 <h6 class="fw-semibold mb-0">
                                                     <a href="{{ route('front.alerts.file',$alert->id) }}" class="text-muted">{{ explode('/',$alert->file)[2]??null }}</a>
                                                 </h6>
@@ -89,7 +89,7 @@
 
                                         <div class="d-flex align-items-center gap-2">
                                             <a href="{{ route('front.alerts.edit', $alert->id) }}"
-                                                class="btn btn-primary fs-2">Edit</a>
+                                                class="btn btn-primary fs-2">@lang('views.EDIT')</a>
                                         </div>
                                     </div>
                                 </div>

@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Advance Request</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.ADVANCE REQUEST')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.advances.index') }}">Advance Requests</a></li>
+                                            href="{{ route('front.advances.index') }}">@lang('views.ADVANCE REQUEST')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -36,7 +36,7 @@
                                 <div class="card-body">
 
                                     <div id="cat-data" class="col-lg-12">
-                                        <button id="cat-edit" class="btn btn-success float-end">Edit</button>
+                                        <button id="cat-edit" class="btn btn-success float-end">@lang('views.EDIT')</button>
 
                                         <div class="chat-list chat active-chat" data-user-id="1">
 
@@ -61,28 +61,28 @@
                                             <div class="row">
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Request Date</p>
+                                                    <p class="mb-1 fs-2">@lang('views.REQUEST DATE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $advance->req_date }}</h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Amount</p>
+                                                    <p class="mb-1 fs-2">@lang('views.AMOUNT')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $advance->value }}</h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Note</p>
+                                                    <p class="mb-1 fs-2">@lang('views.NOTE')</p>
                                                     <h6 class="fw-semibold mb-0">
                                                         {{ $advance->note }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Replay</p>
+                                                    <p class="mb-1 fs-2">@lang('views.REPLAY')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $advance->replay }}</h6>
                                                 </div>
 
 
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Status</p>
+                                                    <p class="mb-1 fs-2">@lang('views.STATUS')</p>
                                                     <h6 class="fw-semibold mb-0">
                                                         <span
                                                         @class(['badge','bg-success'=>$advance->getTranslation('status','en')=='approve',
@@ -94,7 +94,7 @@
                                                     </h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">File</p>
+                                                    <p class="mb-1 fs-2">@lang('views.FILE')</p>
                                                     <h6 class="fw-semibold mb-0"><a href="{{ route('front.advances.file', $advance->id) }}"
                                                         class="text-muted">{{ explode('/', $advance->file)[2]??null }}</a></h6>
                                                 </div>
@@ -109,7 +109,7 @@
                                     <div id="cat-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
-                                                <h5 class="card-title fw-semibold">Update Advance Request</h5>
+                                                <h5 class="card-title fw-semibold">@lang('views.UPDATE ADVANCE REQUEST')</h5>
                                                 <form method="post"
                                                     action="{{ route('front.advances.update', $advance->id) }}" enctype="multipart/form-data">
                                                     @csrf
@@ -117,7 +117,7 @@
                                                     <input type="hidden" name="id" value="{{ $advance->id }}">
                                                     <div class="row">
                                                         <div class="mb-4 col-6">
-                                                            <label for="exampleFormAtgtendanceStatus" class="form-label">Status</label>
+                                                            <label for="exampleFormAtgtendanceStatus" class="form-label">@lang('views.STATUS')</label>
                                                         <select class="form-select" name="status" id="exampleFormAtgtendanceStatus"
                                                             aria-label="Default select example">
                                                             <option disabled selected>Status</option>
@@ -130,27 +130,27 @@
 
                                                         </div>
                                                         <div class="mb-4 col-6">
-                                                            <label for="exampleFormControladvancevalue" class="form-label">Amount</label>
+                                                            <label for="exampleFormControladvancevalue" class="form-label">@lang('views.AMOUNT')</label>
                                                             <input type="text" class="form-control"
                                                                 id="exampleFormControladvancevalue" name="value" value="{{ $advance->value }}">
 
                                                         </div>
                                                         <div class="mb-4 col-12">
-                                                            <label for="exampleFormControlattendancereplay" class="form-label">Replay</label>
+                                                            <label for="exampleFormControlattendancereplay" class="form-label">@lang('views.REPLAY')</label>
                                                             <textarea class="form-control"
                                                                 id="exampleFormControlattendancereplay" name="replay">{{ $advance->replay }}</textarea>
 
                                                         </div>
                                                         <div class="mb-4 col-12">
-                                                            <label for="exampleFormControlattendancenote" class="form-label">Note</label>
+                                                            <label for="exampleFormControlattendancenote" class="form-label">@lang('views.NOTE')</label>
                                                             <textarea class="form-control"
                                                                 id="exampleFormControlattendancenote" name="note">{{ $advance->note }}</textarea>
 
                                                         </div>
 
                                                         <div class="mb-4 col-6">
-                                                            <label for="exampleFormControlreqdate" class="form-label">Request
-                                                                Date</label>
+                                                            <label for="exampleFormControlreqdate" class="form-label">@lang('views.REQUEST DATE')
+                                                                </label>
                                                             <input type="date" class="form-control" name="req_date"
                                                                 id="exampleFormControlreqdate" value="{{ $advance->req_date }}">
                                                         </div>
@@ -159,7 +159,7 @@
 
                                                     </div>
                                                     <input type="submit" value="Update" class="btn btn-primary mx-2">
-                                                    <button id="cat-cancel" class="btn btn-dark">Cancel</button>
+                                                    <button id="cat-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>
 

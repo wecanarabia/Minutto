@@ -100,6 +100,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
            //my alerts
            Route::get('my-alerts', [AlertController::class, 'myAlerts']);
 
+           //myExtras
+           Route::get('my-extras', [ExtraController::class, 'myExtras']);
 
              //my rewards
              Route::get('my-rewards', [RewardController::class, 'myRewards']);

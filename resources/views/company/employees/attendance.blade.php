@@ -3,11 +3,11 @@
         <div class="card-body px-4 py-3">
           <div class="row align-items-center">
             <div class="col-12">
-              <h4 class="fw-semibold mb-8">Attendance</h4>
+              <h4 class="fw-semibold mb-8">@lang('views.ATTENDANCE')</h4>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">Dashboard</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Attendance</li>
+                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">@lang('views.DASHBOARD')</a></li>
+                  <li class="breadcrumb-item" aria-current="page">@lang('views.ATTENDANCE')</li>
                 </ol>
               </nav>
             </div>
@@ -30,13 +30,13 @@
             style="width: 100%">
             <thead class="header-item">
                 <tr>
-                    <th>Date</th>
-                    <th>Attendance Time</th>
-                    <th>Departure Time</th>
-                    <th>Employee</th>
-                    <th>Deduction</th>
-                    <th>Status</th>
-                    <th>Action</th>
+                    <th>@lang('views.DATE')</th>
+                    <th>@lang('views.ATTENDANCE TIME')</th>
+                    <th>@lang('views.DEPARTURE TIME')</th>
+                    <th>@lang('views.EMPLOYEE')</th>
+                    <th>@lang('views.DEDUCTION')</th>
+                    <th>@lang('views.STATUS')</th>
+                    <th>@lang('views.ACTION')</th>
               </tr></thead>
               <tbody>
                 <!-- start row -->

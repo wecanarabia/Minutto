@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">{{ $log->user->name }} Log</h4>
+                            <h4 class="fw-semibold mb-8">{{ $log->user->name }} @lang('views.LOG')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.logs.index') }}">Logs</a></li>
+                                            href="{{ route('front.logs.index') }}">@lang('views.LOGS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -77,31 +77,31 @@
                                             <div class="row">
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">English Title</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ENGLISH TITLE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $log->getTranslation('on','en')}}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Arabic Title</p>
+                                                    <p class="mb-1 fs-2">@lang('views.Arabic TITLE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $log->getTranslation('on','ar') }}</h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">English Log</p>
+                                                    <p class="mb-1 fs-2">@lang('views.English Log')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $log->getTranslation('log','en') }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Arabic Log</p>
+                                                    <p class="mb-1 fs-2">@lang('views.Arabic Log')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $log->getTranslation('log','ar') }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Note</p>
+                                                    <p class="mb-1 fs-2">@lang('views.NOTE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $log->note }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">created_at</p>
+                                                    <p class="mb-1 fs-2">@lang('views.CREATED AT')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $log->created_at }}</h6>
                                                 </div>
 

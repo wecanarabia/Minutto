@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Extra Requests</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.EXTRA REQUESTS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.extras.index') }}">Extra Requests</a></li>
+                                            href="{{ route('front.extras.index') }}">@lang('views.EXTRA REQUESTS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -36,7 +36,7 @@
                                 <div class="card-body">
 
                                     <div id="cat-data" class="col-lg-12">
-                                        <button id="cat-edit" class="btn btn-success float-end">Edit</button>
+                                        <button id="cat-edit" class="btn btn-success float-end">@lang('views.EDIT')</button>
 
                                         <div class="chat-list chat active-chat" data-user-id="1">
 
@@ -62,21 +62,21 @@
 
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">From</p>
+                                                    <p class="mb-1 fs-2">@lang('views.FROM')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $extra->from }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">To</p>
+                                                    <p class="mb-1 fs-2">@lang('views.TO')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $extra->to }}</h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">extra Date</p>
+                                                    <p class="mb-1 fs-2">@lang('views.EXTRA DATE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $extra->extra_date }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Status</p>
+                                                    <p class="mb-1 fs-2">@lang('views.STATUS')</p>
                                                     <h6 class="fw-semibold mb-0">
                                                         <span @class(['badge','bg-success'=>$extra->getTranslation('status','en')=='approve',
                                                             'bg-danger'=>$extra->getTranslation('status','en')=='rejected',
@@ -87,27 +87,27 @@
 
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Extra Type</p>
+                                                    <p class="mb-1 fs-2">@lang('views.EXTRA TYPE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $extra->extype->name }}</h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Extra Amount</p>
+                                                    <p class="mb-1 fs-2">@lang('views.EXTRA AMOUNT')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $extra->amount }}</h6>
                                                 </div>
 
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Note</p>
+                                                    <p class="mb-1 fs-2">@lang('views.NOTE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $extra->note }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Replay</p>
+                                                    <p class="mb-1 fs-2">@lang('views.REPLAY')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $extra->replay }}</h6>
                                                 </div>
-                                                
+
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">File</p>
+                                                    <p class="mb-1 fs-2">@lang('views.FILE')</p>
                                                     <h6 class="fw-semibold mb-0">
                                                         <a href="{{ route('front.extras.file',$extra->id) }}" class="text-muted">{{ explode('/',$extra->file)[2]??null }}</a>
                                                     </h6>
@@ -121,7 +121,7 @@
                                     <div id="cat-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
-                                                <h5 class="card-title fw-semibold">Update Extra Request</h5>
+                                                <h5 class="card-title fw-semibold">@lang('views.UPDATE EXTRA REQUEST')</h5>
                                                 <form method="post"
                                                     action="{{ route('front.extras.update', $extra->id) }}" enctype="multipart/form-data">
                                                     @csrf
@@ -129,33 +129,33 @@
                                                     <input type="hidden" name="id" value="{{ $extra->id }}">
                                                     <div class="row">
                                                         <div class="mb-4 col-12">
-                                                            <label for="exampleFormControlextrareplay" class="form-label">Replay</label>
+                                                            <label for="exampleFormControlextrareplay" class="form-label">@lang('views.REPLAY')</label>
                                                             <textarea class="form-control" name="replay"
                                                                 id="exampleFormControlextrareplay">{{ $extra->replay }}</textarea>
 
                                                         </div>
 
                                                         <div class="mb-4 col-12">
-                                                            <label for="exampleFormControlextranote" class="form-label">Note</label>
+                                                            <label for="exampleFormControlextranote" class="form-label">@lang('views.NOTE')</label>
                                                             <textarea class="form-control" name="note"
                                                                 id="exampleFormControlextranote">{{ $extra->note }}</textarea>
                                                         </div>
 
                                                         <div class="mb-4 col-12">
-                                                            <label for="exampleFormControlextrafrom" class="form-label">From</label>
+                                                            <label for="exampleFormControlextrafrom" class="form-label">@lang('views.FROM')</label>
                                                             <input type="time" class="form-control"
                                                                 id="exampleFormControlextrafrom" name="from" value="{{ date('H:i',strtotime($extra->from)) }}">
 
                                                         </div>
 
                                                         <div class="mb-4 col-12">
-                                                            <label for="exampleFormControlextrato" class="form-label">To</label>
+                                                            <label for="exampleFormControlextrato" class="form-label">@lang('views.TO')</label>
                                                             <input type="time" class="form-control without"
                                                                 id="exampleFormControlextrato" name="to" value="{{ date('H:i',strtotime($extra->to)) }}">
 
                                                         </div>
                                                         <div class="mb-4 col-12">
-                                                            <label for="exampleFormextraStatus" class="form-label">Status</label>
+                                                            <label for="exampleFormextraStatus" class="form-label">@lang('views.STATUS')</label>
                                                             <select class="form-select" id="exampleFormextraStatus" name="status"
                                                                 aria-label="Default select example">
                                                                 <option disabled selected>Status</option>
@@ -171,7 +171,7 @@
 
                                                     </div>
                                                     <input type="submit" value="Update" class="btn btn-primary mx-2">
-                                                    <button id="cat-cancel" class="btn btn-dark">Cancel</button>
+                                                    <button id="cat-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>
 

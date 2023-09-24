@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Alerts</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.ALERTS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.alerts.index') }}">Alerts</a></li>
+                                            href="{{ route('front.alerts.index') }}">@lang('views.ALERTS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -27,14 +27,14 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">Edit Shift</h5>
+                                        <h5 class="mb-0">@lang('views.EDIT SHIFT')</h5>
                                     </div>
                                     <form method="post" action="{{ route('front.alerts.update',$alert->id) }}" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="id" value="{{ $alert->id }}">
                                         <div class="mb-4">
-                                            <label class="form-label">Alert Date</label>
+                                            <label class="form-label">@lang('views.ALERT DATE')</label>
                                             <input type="date" class="form-control" name="alert_date" value="{{ old('alert_date',$alert->alert_date) }}" required>
                                             @error('alert_date')
                                             <div class="text-danger">{{ $message }}</div>
@@ -42,7 +42,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label">Employee</label>
+                                            <label class="form-label">@lang('views.EMPLOYEE')</label>
                                             <select class="default-select form-control" name="user_id">
                                              <option Selected disabled>Employee</option>
                                              @foreach ($employees as $employee)
@@ -55,7 +55,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label">Note</label>
+                                            <label class="form-label">@lang('views.NOTE')</label>
                                             <textarea  class="form-control" name="note" rows="3">{{ old('note',$alert->note) }}</textarea>
                                             @error('note')
                                             <div class="text-danger">{{ $message }}</div>
@@ -63,7 +63,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label">Alert Type</label>
+                                            <label class="form-label">@lang('views.ALERT TYPE')</label>
                                             <select class="default-select form-control" name="type">
                                              <option Selected disabled>Type</option>
                                              @foreach ($types as $type)
@@ -76,7 +76,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label">Alert Type's Value (days-amount)</label>
+                                            <label class="form-label">@lang('views.ALERT TYPES VALUE') (days-amount)</label>
                                             <input type="number" class="form-control" name="punishment" value="{{ old('punishment',$alert->punishment) }}" required>
                                             @error('punishment')
                                             <div class="text-danger">{{ $message }}</div>
@@ -84,7 +84,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label">File</label>
+                                            <label class="form-label">@lang('views.FILE')</label>
                                             <input type="file" class="form-control" name="file">
                                             @error('file')
                                             <div class="text-danger">{{ $message }}</div>

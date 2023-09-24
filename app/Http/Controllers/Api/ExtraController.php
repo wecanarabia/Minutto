@@ -32,4 +32,13 @@ class ExtraController extends ApiController
 
     }
 
+    public function myExtras()
+    {
+
+        $extras = Auth::user()->extras;
+        // $leaves= Leave::where('user_id', Auth::user()->id)->where('time_leave','!=',null)->get();
+        return $this->returnData('data',  ExtraResource::collection( $extras ), __('Get  succesfully'));
+
+    }
+
 }
