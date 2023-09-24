@@ -5,9 +5,9 @@
             <div class="col-12">
 
 
-                <a href="{{ route("front.extra-types.index") }}" class="btn btn-info float-end">
+                {{-- <a href="{{ route("front.extra-types.index") }}" class="btn btn-info float-end">
                     <i class="ti ti-folder-star text-white me-1 fs-5"></i> @lang('views.EXTRA TYPES')
-                  </a>
+                  </a> --}}
               <h4 class="fw-semibold mb-8">@lang('views.EXTRA REQUESTS')</h4>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
