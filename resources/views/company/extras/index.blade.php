@@ -38,7 +38,7 @@
                     <th>@lang('views.FROM')</th>
                     <th>@lang('views.TO')</th>
                     <th>@lang('views.STATUS')</th>
-                    <th>@lang('views.TYPE')</th>
+                    {{-- <th>@lang('views.TYPE')</th> --}}
                     <th>@lang('views.ACTION')</th>
               </tr></thead>
               <tbody>
@@ -81,9 +81,9 @@
                                        {{ $extra->status }}</span>
                                        </td>
 
-                                       <td>
+                                       {{-- <td>
                                        {{ $extra->extype->name }}
-                                    </td>
+                                    </td> --}}
                   <td>
                     <div class="action-btn">
                       <a href="{{ route('front.extras.show',$extra->id) }}" class="text-info edit">

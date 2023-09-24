@@ -54,10 +54,9 @@ class RewardController extends Controller
        $reward = Reward::create($request->all());
        $this->addLog($reward->user->id, 'Add Employee Bonus', 'إضافة حافز لموظف', 'Employee Incentive has been added', 'تم إضافة حافز لموظف',$request['note']);
        if ($reward->getTranslation('status','en')=='approve'&&$reward->rtype->getTranslation('name','en')=='vacation days') {
-        if ($reward->user->userVacation->vacation_balance>=$reward->reward_value) {
-
-            $reward->user->userVacation()->update(['vacation_balance'=>($reward->user->userVacation->vacation_balance+$reward->reward_value)]);
-        }
+            if ($reward->user->userVacation->vacation_balance>=$reward->reward_value) {
+                $reward->user->userVacation()->update(['vacation_balance'=>($reward->user->userVacation->vacation_balance+$reward->reward_value)]);
+            }
         }
        return redirect()->route('front.rewards.index')
                        ->with('success','Incentive has been added successfully');
