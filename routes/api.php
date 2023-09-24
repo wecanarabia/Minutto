@@ -28,6 +28,8 @@ use App\Http\Controllers\Api\ExtraController;
 use App\Http\Controllers\Api\ExtraTypeController;
 use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\SalaryController;
+use App\Http\Controllers\Api\NotificationController;
+
 
 
 
@@ -78,6 +80,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
         Route::get('get-time', [CompanyController::class, 'getTime']);
 
+
         Route::post('user/token', [AuthController::class, 'updateDeviceToken']);
 
         //view Daily Message
@@ -100,6 +103,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
            //my alerts
            Route::get('my-alerts', [AlertController::class, 'myAlerts']);
 
+           //myExtras
+           Route::get('my-extras', [ExtraController::class, 'myExtras']);
 
              //my rewards
              Route::get('my-rewards', [RewardController::class, 'myRewards']);
@@ -151,7 +156,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('company/delete/{id}', [CompanyController::class, 'delete']);
     Route::post('company/edit/{id}', [CompanyController::class, 'edit']);
 
-    });
+
+
+    //my notifications
+Route::get('my-notifications/{id}', [NotificationController::class, 'myNotifications']);
+
+
 
 
     //faq
@@ -359,3 +369,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
                 //extra types for company
              Route::get('extra-types/{company_id}', [ExtraTypeController::class, 'exTypeByCompany']);
+            });

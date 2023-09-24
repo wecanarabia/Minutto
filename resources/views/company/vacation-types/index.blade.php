@@ -4,14 +4,14 @@
             <div class="row align-items-center">
                 <div class="col-12">
                     <a href="{{ route("front.vacation-types.create") }}" class="btn btn-info float-end">
-                        <i class="ti ti-square-rounded-plus text-white me-1 fs-5"></i> Add Vacation Type
+                        <i class="ti ti-square-rounded-plus text-white me-1 fs-5"></i>@lang('views.ADD VACATION TYPE')
                       </a>
-                    <h4 class="fw-semibold mb-8">Vacation Types</h4>
+                    <h4 class="fw-semibold mb-8">@lang('views.VACATION TYPES')</h4>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a class="text-muted"
-                                    href="{{ route('front.home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item" aria-current="page">Vacation Types</li>
+                                    href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
+                            <li class="breadcrumb-item" aria-current="page">@lang('views.VACATION TYPES')</li>
                         </ol>
                     </nav>
                 </div>
@@ -32,7 +32,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-2">
-                                <h5 class="mb-0">Vacation Types</h5>
+                                <h5 class="mb-0">@lang('views.VACATION TYPES')</h5>
                             </div>
                             <div class="table-responsive">
                                 <table id="scroll_hor"
@@ -41,10 +41,10 @@
                                 <thead>
                                     <!-- start row -->
                                     <tr>
-                                        <th>English Name</th>
-                                        <th>Arabic Name</th>
+                                        <th>@lang('views.ENGLISH NAME')</th>
+                                        <th>@lang('views.ARABIC NAME')</th>
 
-                                        <th>Actions</th>
+                                        <th>@lang('views.ACTIONS')</th>
 
                                     </tr>
                                     <!-- end row -->

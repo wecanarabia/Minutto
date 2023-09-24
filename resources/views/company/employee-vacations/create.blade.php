@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Employee Vacations</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.EMPLOYEE VACATIONS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.employee-vacations.index') }}">Employee Vacations</a></li>
+                                            href="{{ route('front.employee-vacations.index') }}">@lang('views.EMPLOYEE VACATIONS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -27,12 +27,12 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">Create Employee Vacation</h5>
+                                        <h5 class="mb-0">@lang('views.CREATE EMPLOYEE VACATION')</h5>
                                     </div>
                                     <form method="post" action="{{ route('front.employee-vacations.store') }}">
                                         @csrf
                                         <div class="mb-4">
-                                            <label class="form-label">Vacation Balance</label>
+                                            <label class="form-label">@lang('views.VACATION BALANCE')</label>
                                             <input type="number" class="form-control" name="vacation_balance" value="{{ old('vacation_balance') }}" required>
                                             @error('vacation_balance')
                                             <div class="text-danger">{{ $message }}</div>
@@ -40,7 +40,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label">Employee</label>
+                                            <label class="form-label">@lang('views.EMPLOYEE')</label>
                                             <select class="default-select form-control" name="user_id">
                                              <option Selected disabled>Employee</option>
                                              @foreach ($employees as $employee)
@@ -52,7 +52,7 @@
                                             @enderror
                                         </div>
                                         <div class="mb-2">
-                                            <h5 class="mb-0">Employee Vacation Workdays</h5>
+                                            <h5 class="mb-0">@lang('views.EMPLOYEE VACATION WORKDAYS')</h5>
                                         </div>
 
 

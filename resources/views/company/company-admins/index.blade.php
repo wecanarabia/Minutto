@@ -4,19 +4,20 @@
           <div class="row align-items-center">
             <div class="col-12">
                 <a href="{{ route("front.admins.create") }}" class="btn btn-info float-end mx-2">
-                    <i class="ti ti-users text-white me-1 fs-5"></i> Add Admins
+                    <i class="ti ti-users text-white me-1 fs-5"></i>@lang('views.ADD ADMIN')
                   </a>
                   @can('roles')
                   <a href="{{ route("front.roles.index") }}" class="btn btn-dark float-end">
-                    <i class="ti ti-lock-cog text-white me-1 fs-5"></i> Roles
+                    <i class="ti ti-lock-cog text-white me-1 fs-5"></i> @lang('views.ROLES')
                   </a>
-                  @endcan
 
-              <h4 class="fw-semibold mb-8">Admins</h4>
+
+              <h4 class="fw-semibold mb-8">@lang('views.ADMINS')</h4>
+
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">Dashboard</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Admins</li>
+                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">@lang('views.DASHBOARD')</a></li>
+                  <li class="breadcrumb-item" aria-current="page">@lang('views.ADMINS')</li>
                 </ol>
               </nav>
             </div>
@@ -36,12 +37,12 @@
           <div class="table-responsive">
             <table class="table search-table align-middle text-nowrap">
               <thead class="header-item">
-                <th>Id</th>
-                <th>Admin</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Role</th>
-                <th>Actions</th>
+                <th>@lang('views.ID')</th>
+                <th>@lang('views.ADMIN')</th>
+                <th>@lang('views.EMAIL')</th>
+                <th>@lang('views.PHONE')</th>
+                <th>@lang('views.ROLE')</th>
+                <th>@lang('views.ACTIONS')</th>
               </tr></thead>
               <tbody>
                 <!-- start row -->

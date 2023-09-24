@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Bonus</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.BONUS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.rewards.index') }}">Bonus</a></li>
+                                            href="{{ route('front.rewards.index') }}">@lang('views.BONUS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -27,14 +27,14 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">Edit Shift</h5>
+                                        <h5 class="mb-0">@lang('views.EDIT SHIFT')</h5>
                                     </div>
                                     <form method="post" action="{{ route('front.rewards.update',$reward->id) }}" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="id" value="{{ $reward->id }}">
                                         <div class="col-md-6">
-                                            <label class="form-label">Incentive Date</label>
+                                            <label class="form-label">@lang('views.INCENTIVE DATE')</label>
                                             <input type="date" class="form-control" name="reward_date" value="{{ old('reward_date',$reward->reward_date) }}" required>
                                             @error('reward_date')
                                             <div class="text-danger">{{ $message }}</div>
@@ -42,7 +42,7 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            <label class="form-label">Employee</label>
+                                            <label class="form-label">@lang('views.EMPLOYEE')</label>
                                             <select class="default-select form-control" name="user_id">
                                              <option Selected disabled>Employee</option>
                                              @foreach ($employees as $employee)
@@ -55,7 +55,7 @@
                                          </div>
 
                                         <div class="col-md-12">
-                                            <label class="form-label">Note</label>
+                                            <label class="form-label">@lang('views.NOTE')</label>
                                             <textarea  class="form-control" name="note" rows="3">{{ old('note',$reward->note) }}</textarea>
                                             @error('note')
                                             <div class="text-danger">{{ $message }}</div>
@@ -63,7 +63,7 @@
                                        </div>
 
                                         <div class="col-md-12">
-                                            <label class="form-label">Replay</label>
+                                            <label class="form-label">@lang('views.REPLAY')</label>
                                             <textarea  class="form-control" name="replay" rows="3">{{ old('replay',$reward->replay) }}</textarea>
                                             @error('replay')
                                             <div class="text-danger">{{ $message }}</div>
@@ -71,7 +71,7 @@
                                          </div>
 
                                          <div class="col-md-6">
-                                            <label class="form-label">Type</label>
+                                            <label class="form-label">@lang('views.TYPE')</label>
                                             <select class="default-select form-control" name="reward_type_id">
                                              <option Selected disabled>Type</option>
                                              @foreach ($types as $type)
@@ -84,7 +84,7 @@
                                          </div>
 
                                          <div class="col-md-6">
-                                            <label class="form-label">Type's Value (days-amount)</label>
+                                            <label class="form-label">@lang('views.TYPES VALUE') (days-amount)</label>
                                             <input type="number" class="form-control" name="reward_value" value="{{ old('reward_value',$reward->reward_value) }}" required>
                                             @error('reward_value')
                                             <div class="text-danger">{{ $message }}</div>
@@ -92,7 +92,7 @@
                                         </div>
 
                                          <div class="col-md-6">
-                                            <label class="form-label">Status</label>
+                                            <label class="form-label">@lang('views.STATUS')</label>
                                             <select class="default-select form-control" name="status">
                                              <option Selected disabled>Status</option>
                                              @foreach ($allStatus as $status)
@@ -106,7 +106,7 @@
                                          </div>
 
                                          <div class="col-md-6">
-                                            <label class="form-label">File</label>
+                                            <label class="form-label">@lang('views.FILE')</label>
                                             <input type="file" class="form-control" name="file">
                                             @error('file')
                                             <div class="text-danger">{{ $message }}</div>

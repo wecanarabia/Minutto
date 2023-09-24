@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Bonus Types</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.BONUS TYPES')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.reward-types.index') }}">Bonus Types</a></li>
+                                            href="{{ route('front.reward-types.index') }}">@lang('views.BONUS TYPES')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -27,12 +27,12 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">Create Bonus Type</h5>
+                                        <h5 class="mb-0">@lang('views.CREATE BONUS TYPE')</h5>
                                     </div>
                                     <form method="post" action="{{ route('front.reward-types.store') }}">
                                         @csrf
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">English Name</label>
+                                            <label class="form-label fw-semibold">@lang('views.ENGLISH NAME')</label>
                                             <input type="text" name="english_name" value="{{ old('english_name') }}"
                                                 class="form-control">
                                             @error('english_name')
@@ -43,7 +43,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">Arabic Name</label>
+                                            <label class="form-label fw-semibold">@lang('views.ARABIC NAME')</label>
                                             <input type="text" name="arabic_name" value="{{ old('arabic_name') }}"
                                                 class="form-control">
                                             @error('arabic_name')

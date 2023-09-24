@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('extra_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('company_id');
-            $table->timestamps();
+        Schema::table('leaves', function (Blueprint $table) {
+            $table->boolean('is_break')->default(0);
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('extra_types');
+        Schema::table('leaves', function (Blueprint $table) {
+            //
+        });
     }
 };

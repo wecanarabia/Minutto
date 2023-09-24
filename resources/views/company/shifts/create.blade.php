@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Shifts</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.SHIFTS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.shifts.index') }}">Shifts</a></li>
+                                            href="{{ route('front.shifts.index') }}">@lang('views.SHIFTS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -27,12 +27,12 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">Create Shift</h5>
+                                        <h5 class="mb-0">@lang('views.CREATE SHIFT')</h5>
                                     </div>
                                     <form method="post" action="{{ route('front.shifts.store') }}">
                                         @csrf
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">English Name</label>
+                                            <label class="form-label fw-semibold">@lang('views.ENGLISH NAME')</label>
                                             <input type="text" name="english_name" value="{{ old('english_name') }}"
                                                 class="form-control">
                                             @error('english_name')
@@ -43,7 +43,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">Arabic Name</label>
+                                            <label class="form-label fw-semibold">@lang('views.ARABIC NAME')</label>
                                             <input type="text" name="arabic_name" value="{{ old('arabic_name') }}"
                                                 class="form-control">
                                             @error('arabic_name')
@@ -53,7 +53,7 @@
                                             @enderror
                                         </div>
                                         <div class="mb-2">
-                                            <h5 class="mb-0">Shift Workdays</h5>
+                                            <h5 class="mb-0">@lang('views.SHIFT WORKDAYS')</h5>
                                         </div>
 
 
@@ -66,13 +66,13 @@
                                         </div>
                                         <div class="col-md-4">
 
-                                        <label class="form-label">From</label>
+                                        <label class="form-label">@lang('views.FROM')</label>
                                         <input type="time" class="form-control" name="{{ $day['en'] }}-from" value="{{ old($day['en'].'-from') }}" >
                                         </div>
 
                                         <div class="col-md-4">
 
-                                        <label class="form-label">To</label>
+                                        <label class="form-label">@lang('views.TO')</label>
                                         <input type="time" class="form-control" name="{{ $day['en'] }}-to" value="{{ old($day['en'].'-to') }}" >
                                         </div>
                                         @endforeach

@@ -31,6 +31,8 @@ class CheckWorkhour extends Command
      */
     public function handle()
     {
+
+
         $users = User::all();
         $currentDate = Carbon::now();
 

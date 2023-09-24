@@ -337,7 +337,7 @@ class WorkhourController extends ApiController
                ->where('status', 1)
                ->exists();
 
-
+// dd($workdayExists);
 
                if ($workdayExists) {
                    $officialVacationExists = OfficialVacation::whereDate('from', '<=', $currentDate)

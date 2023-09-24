@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('file')->nullable();
             $table->string('status')->default('waiting');
             $table->string('replay')->nullable();
-            $table->integer('extra_type_id');
             $table->integer('user_id');
             $table->timestamps();
         });

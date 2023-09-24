@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Branches</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.BRANCHES')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.branches.index') }}">Branches</a></li>
+                                            href="{{ route('front.branches.index') }}">@lang('views.BRANCHES')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -44,8 +44,10 @@
                                                     height="72" class="rounded-circle">
                                                     @endif
                                                 <div>
+
                                                     <h6 class="fw-semibold fs-4 mb-0">{{ $branch->head->name . ' ' . $branch->head->last_name }}</h6>
-                                                    <p class="mb-0">Head Manager</p>
+                                                    <p class="mb-0">@lang('views.HEAD MANAGER')</p>
+
 
                                                     </a>
                                                 </div>
@@ -54,31 +56,31 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-4 mb-7">
-                                                <p class="mb-1 fs-2">English Name</p>
+                                                <p class="mb-1 fs-2">@lang('views.ENGLISH NAME')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $branch->getTranslation('name', 'en') }}
                                                 </h6>
                                             </div>
                                             <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">Arabic Name</p>
+                                                <p class="mb-1 fs-2">@lang('views.ARABIC NAME')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $branch->getTranslation('name', 'ar') }}
                                                 </h6>
                                             </div>
 
 
                                             <div class="col-6 mb-7">
-                                                <p class="mb-1 fs-2">Location</p>
+                                                <p class="mb-1 fs-2">@lang('views.LOCATION')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $branch->location }}
                                                 </h6>
                                             </div>
 
                                             <div class="col-3 mb-7">
-                                                <p class="mb-1 fs-2">Latitude</p>
+                                                <p class="mb-1 fs-2">@lang('views.LATITUDE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $branch->lat }}
                                                 </h6>
                                             </div>
 
                                             <div class="col-3 mb-7">
-                                                <p class="mb-1 fs-2">Longitude</p>
+                                                <p class="mb-1 fs-2">@lang('views.LONGITUDE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $branch->long }}
                                                 </h6>
                                             </div>
@@ -87,7 +89,7 @@
 
                                         <div class="d-flex align-items-center gap-2">
                                             <a href="{{ route('front.branches.edit', $branch->id) }}"
-                                                class="btn btn-primary fs-2">Edit</a>
+                                                class="btn btn-primary fs-2">@lang('views.EDIT')</a>
                                         </div>
                                     </div>
                                 </div>

@@ -3,11 +3,11 @@
         <div class="card-body px-4 py-3">
           <div class="row align-items-center">
             <div class="col-12">
-              <h4 class="fw-semibold mb-8">Logs</h4>
+              <h4 class="fw-semibold mb-8">@lang('views.LOGS')</h4>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">Dashboard</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Logs</li>
+                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">@lang('views.DASHBOARD')</a></li>
+                  <li class="breadcrumb-item" aria-current="page">@lang('views.LOGS')</li>
                 </ol>
               </nav>
             </div>
@@ -30,12 +30,12 @@
             style="width: 100%">
               <thead class="header-item">
                 <tr>
-                    <th>Created At</th>
-                    <th>Employee</th>
-                    <th>Admin</th>
-                    <th>Title</th>
-                    <th>Log</th>
-                    <th>Action</th>
+                    <th>@lang('views.CREATED AT')</th>
+                    <th>@lang('views.EMPLOYEE')</th>
+                    <th>@lang('views.ADMIN')</th>
+                    <th>@lang('views.TITLE')</th>
+                    <th>@lang('views.LOG')</th>
+                    <th>@lang('views.ACTION')</th>
               </tr></thead>
               <tbody>
                 <!-- start row -->

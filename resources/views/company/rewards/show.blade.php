@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Bonus</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.BONUS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.rewards.index') }}">Bonus</a></li>
+                                            href="{{ route('front.rewards.index') }}">@lang('views.BONUS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -54,12 +54,12 @@
                                     </div>
                                         <div class="row">
                                             <div class="col-4 mb-7">
-                                                <p class="mb-1 fs-2">Bonus Date</p>
+                                                <p class="mb-1 fs-2">@lang('views.BONUS DATE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $reward->reward_date }}
                                                 </h6>
                                             </div>
                                             <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">Bonus Type</p>
+                                                <p class="mb-1 fs-2">@lang('views.BONUS TYPE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $reward->rtype->name }}
                                                 </h6>
                                             </div>
@@ -67,13 +67,13 @@
 
 
                                             <div class="col-4 mb-7">
-                                                <p class="mb-1 fs-2">Bonus Type's Value</p>
+                                                <p class="mb-1 fs-2">@lang('views.BONUS TYPES VALUE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $reward->reward_value }}
                                                 </h6>
                                             </div>
 
                                             <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">Status</p>
+                                                <p class="mb-1 fs-2">@lang('views.STATUS')</p>
                                                 <h6 class="fw-semibold mb-0">
                                                     <span @class(['badge','bg-success'=>$reward->getTranslation('status','en')=='approve',
                                                         'bg-danger'=>$reward->getTranslation('status','en')=='rejected',
@@ -82,19 +82,19 @@
                                                 </h6>
                                             </div>
                                             <div class="col-4 mb-7">
-                                                <p class="mb-1 fs-2">Note</p>
+                                                <p class="mb-1 fs-2">@lang('views.NOTE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $reward->note }}
                                                 </h6>
                                             </div>
 
                                             <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">Replay</p>
+                                                <p class="mb-1 fs-2">@lang('views.REPLAY')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $reward->replay }}
                                                 </h6>
                                             </div>
 
                                               <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">File</p>
+                                                <p class="mb-1 fs-2">@lang('views.FILE')</p>
                                                 <h6 class="fw-semibold mb-0">
                                                     <a href="{{ route('front.rewards.file',$reward->id) }}" class="text-muted">{{ explode('/',$reward->file)[2]??null }}</a>
                                                 </h6>
@@ -110,7 +110,7 @@
 
                                         <div class="d-flex align-items-center gap-2">
                                             <a href="{{ route('front.rewards.edit', $reward->id) }}"
-                                                class="btn btn-primary fs-2">Edit</a>
+                                                class="btn btn-primary fs-2">@lang('views.EDIT')</a>
                                         </div>
                                     </div>
                                 </div>
