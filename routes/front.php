@@ -65,7 +65,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::resource('rewards', RewardController::class)->except(['destroy'])->middleware('can:rewards');
             Route::resource('alerts', AlertController::class)->except(['destroy'])->middleware('can:alerts');
             Route::resource('workdays', WorkDayController::class)->except(['destroy'])->middleware('can:shifts');
-            Route::resource('extra-types', ExtraTypeController::class)->except(['destroy'])->middleware('can:extra');
+            // Route::resource('extra-types', ExtraTypeController::class)->except(['destroy'])->middleware('can:extra');
             Route::resource('official-vacations', OfficialVacationController::class)->except(['destroy'])->middleware('can:official-vacations');
             Route::resource('admins', CompanyAdminController::class)->except(['destroy'])->middleware('can:admins');
             Route::resource('roles', RoleController::class)->except(['destroy'])->middleware('can:roles');
