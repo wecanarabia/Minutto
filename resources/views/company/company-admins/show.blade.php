@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Admins</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.ADMINS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.admins.index') }}">Admins</a></li>
+                                            href="{{ route('front.admins.index') }}">@lang('views.ADMINS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -44,23 +44,23 @@
                                         <div class="row">
 
                                             <div class="col-4 mb-7">
-                                                <p class="mb-1 fs-2">Phone number</p>
+                                                <p class="mb-1 fs-2">@lang('views.PHONE NUMBER')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $admin->phone }}</h6>
                                             </div>
                                             <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">Email address</p>
+                                                <p class="mb-1 fs-2">@lang('views.EMAIL ADDRESS')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $admin->email }}</h6>
                                             </div>
 
                                             <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">Role</p>
+                                                <p class="mb-1 fs-2">@lang('views.ROLE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $admin->role->name }}</h6>
                                             </div>
                                         </div>
 
                                         <div class="d-flex align-items-center gap-2">
                                             <a href="{{ route('front.admins.edit', $admin->id) }}"
-                                                class="btn btn-primary fs-2">Edit</a>
+                                                class="btn btn-primary fs-2">@lang('views.EDIT')</a>
                                         </div>
                                     </div>
                                 </div>

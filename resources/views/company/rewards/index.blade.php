@@ -4,17 +4,17 @@
             <div class="row align-items-center">
                 <div class="col-12">
                     <a href="{{ route("front.rewards.create") }}" class="btn btn-info float-end mx-2">
-                        <i class="ti ti-calendar-plus text-white me-1 fs-5"></i> Add Bonus
+                        <i class="ti ti-calendar-plus text-white me-1 fs-5"></i>@lang('views.ADD BONUS')
                       </a>
                       <a href="{{ route("front.reward-types.index") }}" class="btn btn-info float-end">
-                        <i class="ti ti-device-desktop-cog text-white me-1 fs-5"></i> Bonus Types
+                        <i class="ti ti-device-desktop-cog text-white me-1 fs-5"></i> @lang('views.BONUS TYPES')
                       </a>
-                    <h4 class="fw-semibold mb-8">Bonus</h4>
+                    <h4 class="fw-semibold mb-8">@lang('views.BONUS')</h4>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a class="text-muted"
-                                    href="{{ route('front.home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item" aria-current="page">Bonus</li>
+                                    href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
+                            <li class="breadcrumb-item" aria-current="page">@lang('views.BONUS')</li>
                         </ol>
                     </nav>
                 </div>
@@ -35,7 +35,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-2">
-                                <h5 class="mb-0">Bonus</h5>
+                                <h5 class="mb-0">@lang('views.BONUS')</h5>
                             </div>
                             <div class="table-responsive">
                                 <table id="scroll_hor"
@@ -44,12 +44,12 @@
                                 <thead>
                                     <!-- start row -->
                                     <tr>
-                                        <th>Bonus Date</th>
-                                        <th>Employee</th>
-                                        <th>Type</th>
-                                        <th>type's value</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
+                                        <th>@lang('views.BONUS DATE')</th>
+                                        <th>@lang('views.EMPLOYEE')</th>
+                                        <th>@lang('views.TYPE')</th>
+                                        <th>@lang('views.TYPES VALUE')</th>
+                                        <th>@lang('views.STATUS')</th>
+                                        <th>@lang('views.ACTIONS')</th>
 
                                     </tr>
                                     <!-- end row -->

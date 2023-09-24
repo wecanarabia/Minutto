@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Branches</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.BRANCHES')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.branches.index') }}">Branches</a></li>
+                                            href="{{ route('front.branches.index') }}">@lang('views.BRANCHES')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -27,14 +27,14 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">Edit Branch</h5>
+                                        <h5 class="mb-0">@lang('views.EDIT BRANCH')</h5>
                                     </div>
                                     <form method="post" action="{{ route('front.branches.update',$branch->id) }}">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="id" value="{{ $branch->id }}">
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">English Name</label>
+                                            <label class="form-label fw-semibold">@lang('views.ENGLISH NAME')</label>
                                             <input type="text" name="english_name" value="{{ old('english_name',$branch->getTranslation('name', 'en')) }}"
                                                 class="form-control">
                                             @error('english_name')
@@ -45,7 +45,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">Arabic Name</label>
+                                            <label class="form-label fw-semibold">@lang('views.ARABIC NAME')</label>
                                             <input type="text" name="arabic_name" value="{{ old('arabic_name',$branch->getTranslation('name', 'ar')) }}"
                                                 class="form-control">
                                             @error('arabic_name')
@@ -56,7 +56,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">Shifts</label>
+                                            <label class="form-label fw-semibold">@lang('views.SHIFTS')</label>
                                             <select class="select2 form-control" style="height: 36px" name="shifts[]" multiple="multiple">
                                                 <optgroup label="Shifts">
                                                 @foreach ($shifts as $shift)
@@ -73,7 +73,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">Branch Head</label>
+                                            <label class="form-label fw-semibold">@lang('views.BRANCH HEAD')</label>
                                             <select class="form-select" name="branch_head">
                                                 <option data-display="Select">
                                                     @if($employees->count()==0)
@@ -92,7 +92,7 @@
                                             @enderror
                                         </div>
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">Location</label>
+                                            <label class="form-label fw-semibold">@lang('views.LOCATION')</label>
                                             <input type="text" id="address-input" name="location" value="{{  old('location',$branch->location) }}" class="form-control map-input">
                                             <input type="hidden" name="lat" id="address-latitude" value="{{  old('lat',$branch->lat) }}" />
                                             <input type="hidden" name="long" id="address-longitude" value="{{  old('long',$branch->long) }}" />

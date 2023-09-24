@@ -4,20 +4,22 @@
           <div class="row align-items-center">
             <div class="col-12">
                 @if (count($vacationsOfYear)==0)
+
                     <a href="{{ route('front.employee-vacations.generate') }}" class="btn btn-info float-end">
-                        <i class="ti ti-device-game-pad text-white me-1 fs-5"></i> Generate Vacations of this Year
+                        <i class="ti ti-device-game-pad text-white me-1 fs-5"></i> @lang('views.GENERATE VACATIONS OF THIS YEAR')
                     </a>
                     @endif
                 @if (count($employeesHasNoVacation)>0)
                 <a href="{{ route('front.employee-vacations.create') }}" class="btn btn-info float-end">
-                    <i class="ti ti-device-game-pad text-white me-1 fs-5"></i> Add Vacation Balance
+                    <i class="ti ti-device-game-pad text-white me-1 fs-5"></i> @lang('views.ADD VACATION BALANCE')
+
                   </a>
                   @endif
-              <h4 class="fw-semibold mb-8">Employee Vacation</h4>
+              <h4 class="fw-semibold mb-8">@lang('views.EMPLOYEE VACATIONS')</h4>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">Dashboard</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Employee Vacation</li>
+                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">@lang('views.DASHBOARD')</a></li>
+                  <li class="breadcrumb-item" aria-current="page">@lang('views.EMPLOYEE VACATIONS')</li>
                 </ol>
               </nav>
             </div>
@@ -40,10 +42,10 @@
             style="width: 100%">
             <thead class="header-item">
                 <tr>
-                    <th>Year</th>
-                    <th>Employee</th>
-                    <th>Vacation Balance</th>
-                    <th>Action</th>
+                    <th>@lang('views.YEAR')</th>
+                    <th>@lang('views.EMPLOYEE')</th>
+                    <th>@lang('views.VACATION BALANCE')</th>
+                    <th>@lang('views.ACTION')</th>
               </tr></thead>
               <tbody>
                 <!-- start row -->

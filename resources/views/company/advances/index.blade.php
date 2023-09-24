@@ -3,11 +3,11 @@
         <div class="card-body px-4 py-3">
           <div class="row align-items-center">
             <div class="col-12">
-              <h4 class="fw-semibold mb-8">Advance Requests</h4>
+              <h4 class="fw-semibold mb-8">@lang('views.ADVANCE REQUEST')</h4>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">Dashboard</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Advance Requests</li>
+                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">@lang('views.DASHBOARD')</a></li>
+                  <li class="breadcrumb-item" aria-current="page">@lang('views.ADVANCE REQUEST')</li>
                 </ol>
               </nav>
             </div>
@@ -30,11 +30,11 @@
             style="width: 100%">
             <thead class="header-item">
                 <tr>
-                    <th>Request Date</th>
-                    <th>Employee</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                    <th>Action</th>
+                    <th>@lang('views.REQUEST DATE')</th>
+                    <th>@lang('views.EMPLOYEE')</th>
+                    <th>@lang('views.AMOUNT')</th>
+                    <th>@lang('views.STATUS')</th>
+                    <th>@lang('views.ACTION')</th>
               </tr>
              </thead>
               <tbody>
