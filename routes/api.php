@@ -78,6 +78,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
         Route::get('get-time', [CompanyController::class, 'getTime']);
 
+
         Route::post('user/token', [AuthController::class, 'updateDeviceToken']);
 
         //view Daily Message
