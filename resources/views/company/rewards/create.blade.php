@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">@lang('views.BONUS')</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.ALLOWANCE')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.rewards.index') }}">@lang('views.BONUS')</a></li>
+                                            href="{{ route('front.rewards.index') }}">@lang('views.ALLOWANCE')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -27,12 +27,12 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">@lang('views.CREATE BONUS')</h5>
+                                        <h5 class="mb-0">@lang('views.CREATE ALLOWANCE')</h5>
                                     </div>
                                     <form method="post" action="{{ route('front.rewards.store') }}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="mb-4">
-                                            <label class="form-label">@lang('views.BONUS DATE')</label>
+                                            <label class="form-label">@lang('views.ALLOWANCE DATE')</label>
                                             <input type="date" class="form-control" name="reward_date" value="{{ old('reward_date') }}" required>
                                             @error('reward_date')
                                             <div class="text-danger">{{ $message }}</div>
@@ -68,7 +68,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label">@lang('views.BONUS TYPE')</label>
+                                            <label class="form-label">@lang('views.ALLOWANCE TYPE')</label>
                                             <select class="default-select form-control" name="reward_type_id">
                                                 <option Selected disabled>Type</option>
                                                 @foreach ($types as $type)
@@ -81,7 +81,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label">@lang('views.BONUS TYPES VALUE') (days-amount)</label>
+                                            <label class="form-label">@lang('views.ALLOWANCE TYPES VALUE') (days-amount)</label>
                                             <input type="number" class="form-control" name="reward_value" value="{{ old('reward_value') }}" required>
                                             @error('reward_value')
                                             <div class="text-danger">{{ $message }}</div>

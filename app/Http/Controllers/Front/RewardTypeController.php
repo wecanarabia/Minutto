@@ -41,7 +41,7 @@ class RewardTypeController extends Controller
 
 
         return redirect()->route('front.reward-types.index')
-                        ->with('success','Bonus type has been added successfully');
+                        ->with('success','Allowance type has been added successfully');
     }
 
     /**
@@ -86,6 +86,6 @@ class RewardTypeController extends Controller
 
 
         return redirect()->route('front.reward-types.show',$reward->id)
-                        ->with('success','Bonus type has been updated successfully');
+                        ->with('success','Allowance type has been updated successfully');
     }
 }

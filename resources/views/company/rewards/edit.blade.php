@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">@lang('views.BONUS')</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.ALLOWANCE')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.rewards.index') }}">@lang('views.BONUS')</a></li>
+                                            href="{{ route('front.rewards.index') }}">@lang('views.ALLOWANCE')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -34,7 +34,7 @@
                                         @method('PUT')
                                         <input type="hidden" name="id" value="{{ $reward->id }}">
                                         <div class="col-md-6">
-                                            <label class="form-label">@lang('views.INCENTIVE DATE')</label>
+                                            <label class="form-label">@lang('views.ALLOWANCE DATE')</label>
                                             <input type="date" class="form-control" name="reward_date" value="{{ old('reward_date',$reward->reward_date) }}" required>
                                             @error('reward_date')
                                             <div class="text-danger">{{ $message }}</div>

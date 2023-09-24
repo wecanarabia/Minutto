@@ -91,7 +91,7 @@
                 <!-- ============================= -->
                 <!-- Apps -->
                 <!-- ============================= -->
-                @if (Auth::user()->can('employees') || Auth::user()->can('vacations') || Auth::user()->can('leaves') || Auth::user()->can('extra') || Auth::user()->can('rewards') || Auth::user()->can('alerts') || Auth::user()->can('official-vacations'))
+                @if (Auth::user()->can('employees') || Auth::user()->can('vacations') || Auth::user()->can('leaves') || Auth::user()->can('rewards') || Auth::user()->can('alerts') || Auth::user()->can('official-vacations'))
 
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -137,7 +137,7 @@
                         </a>
                     </li>
                     @endcan
-                    @can('rewards')
+                    {{-- @can('rewards')
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="{{ route('front.rewards.index') }}" aria-expanded="false">
                             <span>
@@ -146,7 +146,7 @@
                             <span class="hide-menu">الحوافز والمكافئات</span>
                         </a>
                     </li>
-                    @endcan
+                    @endcan --}}
                     @can('official-vacations')
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="{{ route('front.official-vacations.index') }}" aria-expanded="false">
@@ -198,7 +198,7 @@
                     <!-- ============================= -->
                     <!-- PAGES -->
                     <!-- ============================= -->
-                    @if (Auth::user()->can('salaries') || Auth::user()->can('advances'))
+                    @if (Auth::user()->can('salaries') || Auth::user()->can('advances') || Auth::user()->can('extra'))
 
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -224,15 +224,16 @@
                         </a>
                     </li>
                     @endcan
-
-                    {{-- <li class="sidebar-item">
-                        <a class="sidebar-link" href="page-account-settings.html" aria-expanded="false">
+                    @can('rewards')
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('front.rewards.index') }}" aria-expanded="false">
                             <span>
                                 <i class="ti ti-replace"></i>
                             </span>
                             <span class="hide-menu">طلبات البدلات</span>
                         </a>
-                    </li> --}}
+                    </li>
+                    @endcan
                     @endif
                     @if (Auth::user()->can('company') || Auth::user()->can('admins') || Auth::user()->can('branches') || Auth::user()->can('shifts') || Auth::user()->can('departments') || Auth::user()->can('vacations') || Auth::user()->can('logs'))
 
