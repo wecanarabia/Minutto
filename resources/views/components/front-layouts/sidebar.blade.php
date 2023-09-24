@@ -226,7 +226,7 @@
                     @endcan
                     @can('rewards')
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('front.allowance.index') }}" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('front.allowances.index') }}" aria-expanded="false">
                             <span>
                                 <i class="ti ti-replace"></i>
                             </span>
