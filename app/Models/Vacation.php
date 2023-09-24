@@ -18,6 +18,13 @@ class Vacation extends Model
         ['en'=>'rejected','ar'=>'مرفوض'],
     ];
 
+    protected static function booted()
+    {
+        static::created(function ($vacation) {
+            $vacation->status = ['en'=>'waiting','ar'=>'في الانتظار'];
+        });
+    }
+
     public function setFileAttribute($value){
         if ($value){
             $file = $value;
