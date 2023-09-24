@@ -144,6 +144,10 @@ class User extends Authenticatable
         return $query->whereDoesntHave('salary');
     }
 
+    public function scopeHasNotSalary($query){
+        return $query->whereDoesntHave('salary');
+    }
+
     public function scopeNotOfThisMonth($q,$now){
         return $q->where(function ($query) use ($now) {
             $query->whereYear('created_at', '!=', $now->year)

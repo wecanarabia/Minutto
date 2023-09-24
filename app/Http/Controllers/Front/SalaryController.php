@@ -107,7 +107,7 @@ class SalaryController extends Controller
     {
         $now = Carbon::now();
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->thisMonth($now)->whereDoesntHave('salary')->get();
+        $employees = User::active()->hasNotSalary()->whereBelongsTo($branches)->with(['branch','shift'])->thisMonth($now)->whereDoesntHave('salary')->get();
         return view('company.salaries.create',compact('employees'));
     }
 
