@@ -153,7 +153,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('company/delete/{id}', [CompanyController::class, 'delete']);
     Route::post('company/edit/{id}', [CompanyController::class, 'edit']);
 
-    });
+
+
+    //my notifications
+Route::get('my-notifications/{id}', [NotificationController::class, 'myNotifications']);
+
+
 
 
     //faq
@@ -361,3 +366,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
                 //extra types for company
              Route::get('extra-types/{company_id}', [ExtraTypeController::class, 'exTypeByCompany']);
+            });

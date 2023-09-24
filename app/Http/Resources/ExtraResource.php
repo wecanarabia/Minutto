@@ -24,8 +24,8 @@ class ExtraResource extends JsonResource
             'file'=>$this->file,
             'status'=>$this->status,
             'replay'=>$this->replay,
-            'extra_type_id'=>$this->extype->id,
-            'extra_type_name'=>$this->extype->name,
+            // 'extra_type_id'=>$this->extype->id,
+            // 'extra_type_name'=>$this->extype->name,
             'user_id'=>$this->user->id,
         ];
     }
