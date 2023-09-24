@@ -23,6 +23,12 @@ class Leave extends Model
         ['en'=>'late','ar'=>'متأخر'],
     ];
 
+    protected static function booted()
+    {
+        static::created(function ($leave) {
+            $leave->status = ['en'=>'waiting','ar'=>'في الانتظار'];
+        });
+    }
     public function setFileAttribute($value){
         if ($value){
             $file = $value;

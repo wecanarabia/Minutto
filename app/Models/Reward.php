@@ -18,6 +18,12 @@ class Reward extends Model
         ['en'=>'rejected','ar'=>'مرفوض'],
     ];
 
+    protected static function booted()
+    {
+        static::created(function ($reward) {
+            $reward->status = ['en'=>'waiting','ar'=>'في الانتظار'];
+        });
+    }
 
 
 
