@@ -17,6 +17,7 @@ class LeaveResource extends JsonResource
         return [
 
             'id'=>$this->id,
+            'is_break' =>$this->is_break ,
             'leave_date'=>$this->leave_date,
             'from'=>$this->from,
             'to'=>$this->to,
