@@ -25,6 +25,7 @@ use App\Http\Controllers\Front\RewardTypeController;
 use App\Http\Controllers\Front\CompanyAdminController;
 use App\Http\Controllers\Front\VacationTypeController;
 use App\Http\Controllers\Front\EmployeeVacationController;
+use App\Http\Controllers\Front\MessageController;
 use App\Http\Controllers\Front\OfficialVacationController;
 
 Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
@@ -68,6 +69,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::resource('official-vacations', OfficialVacationController::class)->except(['destroy'])->middleware('can:official-vacations');
             Route::resource('admins', CompanyAdminController::class)->except(['destroy'])->middleware('can:admins');
             Route::resource('roles', RoleController::class)->except(['destroy'])->middleware('can:roles');
+            Route::resource('messages', MessageController::class)->except(['destroy'])->middleware('can:messages');
 
             //files
             Route::get('rewards/file/{id}', [RewardController::class, 'openFile'])->name('rewards.file')->middleware('can:rewards');

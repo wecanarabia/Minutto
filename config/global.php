@@ -17,6 +17,7 @@ return [
         'advances'=>['en'=>'Advances','ar'=>'السلف'],
         'salaries'=>['en'=>'Salaries','ar'=>'الرواتب'],
         'logs'=>['en'=>'Logs','ar'=>'السجلات'],
+        'messages'=>['en'=>'Management Messages','ar'=>'رسائل الإدارة'],
         'official-vacations'=>['en'=>'Official Vacations','ar'=>'الأجازات الرسمية'],
     ]
 ];

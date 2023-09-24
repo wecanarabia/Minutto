@@ -447,7 +447,7 @@
                                     <div id="work-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
-                                                <h5 class="card-title fw-semibold">Update Profile</h5>
+                                                <h5 class="card-title fw-semibold">Update Work Info</h5>
                                                 <form method="post"
                                                     action="{{ route('front.employees.update', $employee->id) }}">
                                                     @csrf
@@ -465,6 +465,11 @@
                                                             <label for="exampleFormControlInput33_3" class="form-label">Duration Of Contract</label>
                                                             <input type="text" name="duration_of_contract" class="form-control" id="exampleFormControlInput33_3"
                                                                 value="{{ $employee->duration_of_contract }}">
+                                                        </div>
+                                                        <div class="mb-4 col-6">
+                                                            <label for="exampleFormControlInput33_3" class="form-label">Working Start Date</label>
+                                                            <input type="date" name="work_start" class="form-control" id="exampleFormControlInput33_3"
+                                                                value="{{ $employee->work_start }}">
                                                         </div>
                                                         <div class="mb-4 col-6">
                                                             <label for="exampleFormControlInput4434" class="form-label">Contract Expiration</label>

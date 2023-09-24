@@ -337,6 +337,16 @@
                         </a>
                     </li>
                     @endcan
+                    @can('messages')
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('front.messages.index') }}" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-accessible"></i>
+                            </span>
+                            <span class="hide-menu">ادارة الرسائل</span>
+                        </a>
+                    </li>
+                    @endcan
                     {{-- <li class="sidebar-item">
                         <a class="sidebar-link" href="page-faq.html" aria-expanded="false">
                             <span>
