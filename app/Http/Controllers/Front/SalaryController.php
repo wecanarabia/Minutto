@@ -121,6 +121,8 @@ class SalaryController extends Controller
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employee = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->thisMonth($now)->whereDoesntHave('salary')->find($request['user_id']);
         if ($employee) {
+            $request["year"]=Carbon::now()->year;
+            $request["month"]=Carbon::now()->month;
             $salary = Salary::create($request->all());
             $this->addLog($salary->user->id, 'Add Employee salary', 'إضافة راتب لموظف', 'Employee salary has been added', 'تم إضافة راتب لموظف');
         }else {

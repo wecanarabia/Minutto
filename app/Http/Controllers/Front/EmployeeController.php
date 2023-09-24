@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers\Front;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Shift;
 use App\Models\Branch;
+use App\Models\Salary;
 use App\Traits\LogTrait;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use App\Models\EmployeeVacation;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use App\Http\Requests\Company\UserRequest;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\Company\UserRequest;
 use App\Http\Requests\Company\UpdateEmployeeRequest;
 
 class EmployeeController extends Controller
@@ -95,6 +98,20 @@ class EmployeeController extends Controller
             $this->addLog($user->id, 'Update Employee Data', 'تحديث بيانات الموظف', 'Employee salary information has been updated', 'تم تحديث معلومات الراتب لموظف');
         }
         $user->update($request->all());
+        if($user->active){
+            $salary = new Salary([
+                "year"=>Carbon::now()->year,
+                "month"=>Carbon::now()->month,
+                'net_salary'=>$user->daily_salary,
+            ]);
+            $user->salary()->save($salary);
+
+            EmployeeVacation::create([
+                'vacation_balance'=>Auth::user()->company()->holidays_count+Auth::user()->company()->sick_leaves,
+                'user_id'=>$user->id,
+                'year'=>Carbon::now()->year,
+            ]);
+        }
 
         return redirect()->route('front.employees.show',$user->id)
         ->with('success','Employeet of this year has been update successfully');
