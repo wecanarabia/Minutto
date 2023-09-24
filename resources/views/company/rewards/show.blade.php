@@ -12,7 +12,7 @@
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.rewards.index') }}">@lang('views.ALLOWANCE')</a></li>
+                                            href="{{ route('front.allowances.index') }}">@lang('views.ALLOWANCE')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -96,7 +96,7 @@
                                               <div class="col-8 mb-7">
                                                 <p class="mb-1 fs-2">@lang('views.FILE')</p>
                                                 <h6 class="fw-semibold mb-0">
-                                                    <a href="{{ route('front.rewards.file',$reward->id) }}" class="text-muted">{{ explode('/',$reward->file)[2]??null }}</a>
+                                                    <a href="{{ route('front.allowances.file',$reward->id) }}" class="text-muted">{{ explode('/',$reward->file)[2]??null }}</a>
                                                 </h6>
                                             </div>
 
@@ -109,7 +109,7 @@
                                         </div>
 
                                         <div class="d-flex align-items-center gap-2">
-                                            <a href="{{ route('front.rewards.edit', $reward->id) }}"
+                                            <a href="{{ route('front.allowances.edit', $reward->id) }}"
                                                 class="btn btn-primary fs-2">@lang('views.EDIT')</a>
                                         </div>
                                     </div>

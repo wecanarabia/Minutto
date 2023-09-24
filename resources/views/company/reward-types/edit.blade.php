@@ -12,7 +12,7 @@
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.reward-types.index') }}">@lang('views.ALLOWANCE TYPES')</a></li>
+                                            href="{{ route('front.allowance-types.index') }}">@lang('views.ALLOWANCE TYPES')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -29,7 +29,7 @@
                                     <div class="mb-2">
                                         <h5 class="mb-0">@lang('views.EDIT ALLOWANCE TYPE')</h5>
                                     </div>
-                                    <form method="post" action="{{ route('front.reward-types.update',$type->id) }}">
+                                    <form method="post" action="{{ route('front.allowance-types.update',$type->id) }}">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="id" value="{{ $type->id }}">

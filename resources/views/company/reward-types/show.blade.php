@@ -12,7 +12,7 @@
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.reward-types.index') }}">@lang('views.ALLOWANCE TYPES')</a></li>
+                                            href="{{ route('front.allowance-types.index') }}">@lang('views.ALLOWANCE TYPES')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -52,7 +52,7 @@
                                         </div>
 
                                         <div class="d-flex align-items-center gap-2">
-                                            <a href="{{ route('front.reward-types.edit', $type->id) }}"
+                                            <a href="{{ route('front.allowance-types.edit', $type->id) }}"
                                                 class="btn btn-primary fs-2">@lang('views.EDIT')</a>
                                         </div>
                                     </div>
