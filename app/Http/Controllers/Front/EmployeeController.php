@@ -106,7 +106,7 @@ class EmployeeController extends Controller
             ]);
             $user->salary()->save($salary);
         }
-        if($user->active&&$user->UserVacations()->latest()->first()->year!=Carbon::now()->year){
+        if($user->active&&(is_null($user->UserVacations()?->latest()?->first()?->year)||$user->UserVacations()?->latest()?->first()?->year!=Carbon::now()->year)){
 
             EmployeeVacation::create([
                 'vacation_balance'=>Auth::user()->company->holidays_count+Auth::user()->company->sick_leaves,
