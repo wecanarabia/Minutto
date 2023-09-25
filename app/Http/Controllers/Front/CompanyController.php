@@ -206,12 +206,7 @@ class CompanyController extends Controller
         ]);
         CompanyAdmin::find(Auth::guard('company')->user()->id)->update(['company_id'=>$company->id,'role_id'=>$role->id]);
         $days=Workday::WORKDAYS;
-        foreach (RewardType::DEFAULTTYPES as $value) {
-            RewardType::create([
-                'company_id'=>$company->id,
-                'name'=>$value,
-            ]);
-        }
+        
     foreach ($days as $i => $day) {
         if ($request[$day['en']]) {
             $validator = Validator::make([
