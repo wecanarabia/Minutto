@@ -98,16 +98,18 @@ class EmployeeController extends Controller
             $this->addLog($user->id, 'Update Employee Data', 'تحديث بيانات الموظف', 'Employee salary information has been updated', 'تم تحديث معلومات الراتب لموظف');
         }
         $user->update($request->all());
-        if($user->active){
+        if($user->active&&!is_null($user->salary)){
             $salary = new Salary([
                 "year"=>Carbon::now()->year,
                 "month"=>Carbon::now()->month,
                 'net_salary'=>$user->daily_salary,
             ]);
             $user->salary()->save($salary);
+        }
+        if($user->active&&!is_null($user->UserVacations()->latest()->first()->year!=Carbon::now()->year)){
 
             EmployeeVacation::create([
-                'vacation_balance'=>Auth::user()->company()->holidays_count+Auth::user()->company()->sick_leaves,
+                'vacation_balance'=>Auth::user()->company->holidays_count+Auth::user()->company->sick_leaves,
                 'user_id'=>$user->id,
                 'year'=>Carbon::now()->year,
             ]);
