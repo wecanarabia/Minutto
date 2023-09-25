@@ -75,8 +75,11 @@ class EmployeeController extends Controller
      */
     public function update(UserRequest $request, string $id)
     {
-        $user = User::findOrFail($id);
 
+        $user = User::findOrFail($id);
+        if ($request->active&&(is_null($user->daily_salary)||is_null($user->monthly_salary)||is_null($user->hourly_salary)||is_null($user->department_id)||is_null($user->branch_id)||is_null($user->shift_id)||is_null($user->work_start))){
+            return redirect()->back()->with('error','Salary Info And Work Info Are Required to activate Employee Account');
+        }
 
         if ($request->has('password')&&$request->password != null) {
             $request['password']=bcrypt($request->password);
