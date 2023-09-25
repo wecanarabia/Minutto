@@ -98,7 +98,7 @@ class EmployeeController extends Controller
             $this->addLog($user->id, 'Update Employee Data', 'تحديث بيانات الموظف', 'Employee salary information has been updated', 'تم تحديث معلومات الراتب لموظف');
         }
         $user->update($request->all());
-        if($user->active&&!is_null($user->salary)){
+        if($user->active&&is_null($user->salary)){
             $salary = new Salary([
                 "year"=>Carbon::now()->year,
                 "month"=>Carbon::now()->month,
