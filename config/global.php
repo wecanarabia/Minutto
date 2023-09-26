@@ -17,6 +17,10 @@ return [
         'advances'=>['en'=>'Advances','ar'=>'السلف'],
         'salaries'=>['en'=>'Salaries','ar'=>'الرواتب'],
         'logs'=>['en'=>'Logs','ar'=>'السجلات'],
+        'bouns'=>['en'=>'Bouns','ar'=>'المكافئات'],
+        'notifications'=>['en'=>'Notifications','ar'=>'الإشعارات'],
+        'faqs'=>['en'=>'Faqs','ar'=>'الأسئلة الشائعة'],
+        'pages'=>['en'=>'Pages','ar'=>'الصفحات'],
         'messages'=>['en'=>'Management Messages','ar'=>'رسائل الإدارة'],
         'official-vacations'=>['en'=>'Official Vacations','ar'=>'الأجازات الرسمية'],
     ]

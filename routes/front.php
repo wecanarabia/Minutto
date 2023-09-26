@@ -69,7 +69,6 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::resource('official-vacations', OfficialVacationController::class)->except(['destroy'])->middleware('can:official-vacations');
             Route::resource('admins', CompanyAdminController::class)->except(['destroy'])->middleware('can:admins');
             Route::resource('roles', RoleController::class)->except(['destroy'])->middleware('can:roles');
-            Route::resource('messages', MessageController::class)->except(['destroy'])->middleware('can:messages');
 
             //files
             Route::get('rewards/file/{id}', [RewardController::class, 'openFile'])->name('rewards.file')->middleware('can:rewards');
@@ -114,6 +113,14 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::get('extras/{id}', [ExtraController::class, 'show'])->name('extras.show');
                 Route::get('extras/file/{id}', [ExtraController::class, 'openFile'])->name('extras.file');
                 Route::put('extras/update/{id}', [ExtraController::class, 'update'])->name('extras.update');
+            });
+            //messages
+            Route::group(['middleware' => 'can:messages'], function () {
+                Route::get('messages', [MessageController::class, 'index'])->name('messages.index');
+                Route::get('messages/create', [MessageController::class, 'create'])->name('messages.create');
+                Route::post('messages/store', [MessageController::class, 'store'])->name('messages.store');
+                Route::get('messages/show', [MessageController::class, 'show'])->name('messages.show');
+                Route::put('messages/update', [MessageController::class, 'update'])->name('messages.update');
             });
             //employee-vacations
             Route::group(['middleware' => 'can:vacations'], function () {

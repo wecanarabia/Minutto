@@ -45,6 +45,8 @@
 
 
                     <td>
+                        @if ($log->employee_id)
+
                     <div class="d-flex align-items-center">
                         @if ($log->user->image==null)
 
@@ -60,6 +62,9 @@
                         </div>
                       </div>
                     </div>
+                    
+                    @endif
+
                     </td>
 
                   <td>

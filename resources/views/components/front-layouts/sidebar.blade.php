@@ -342,7 +342,7 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="{{ route('front.messages.index') }}" aria-expanded="false">
                             <span>
-                                <i class="ti ti-accessible"></i>
+                                <i class="ti ti-message"></i>
                             </span>
                             <span class="hide-menu">ادارة الرسائل</span>
                         </a>

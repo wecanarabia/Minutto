@@ -38,6 +38,7 @@
                                     <div class="col-lg-12">
 
                                         <div class="chat-list chat active-chat" data-user-id="1">
+                                            @if ($log->employee_id)
 
                                             <div
                                                 class="hstack align-items-start mb-7 pb-1 align-items-center justify-content-between">
@@ -61,7 +62,12 @@
                                                 </div>
 
                                             </div>
-
+                                            @else
+                                            <div class="col-6 mb-7">
+                                                <p class="mb-1 fs-2">Type</p>
+                                                <h6 class="fw-semibold mb-0">No Employee</h6>
+                                            </div>
+                                            @endif
                                             <div
                                             class="hstack align-items-start mb-7 pb-1 align-items-center justify-content-between">
                                             <div class="d-flex align-items-center gap-3">
