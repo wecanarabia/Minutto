@@ -383,7 +383,7 @@
 
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="pills-security" role="tabpanel"
+                            {{-- <div class="tab-pane fade" id="pills-security" role="tabpanel"
                                 aria-labelledby="pills-security-tab" tabindex="0">
                                 <div class="row">
                                     <div id="bank-data" class="col-lg-12">
@@ -406,7 +406,7 @@
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">IPan</p>
+                                                    <p class="mb-1 fs-2">IPAN</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->ipan }}</h6>
                                                 </div>
 
@@ -510,7 +510,7 @@
                                     </div>
 
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

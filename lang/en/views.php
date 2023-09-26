@@ -102,7 +102,7 @@ return [
     'BANK NAME' => 'Bank Name',
     'ACCOUNT NO.' => 'Account Number',
     'BANK BRANCH' => 'Bank Branch',
-    'IPAN' => 'Ipan',
+    'IPAN' => 'IPAN',
     'SWIFT NO' => 'Swift No',
     'MONTHLY SALARY' => 'Monthly Salary',
     'DAILY SALARY' => 'Daily Salary',
