@@ -100,6 +100,10 @@ class EmployeeController extends Controller
         }else if ($request->has('monthly_salary')||$request->has('daily_salary')||$request->has('hourly_salary')) {
             $this->addLog($user->id, 'Update Employee Data', 'تحديث بيانات الموظف', 'Employee salary information has been updated', 'تم تحديث معلومات الراتب لموظف');
         }
+        if ($request->has('is_imei')) {
+            unset($request['is_imei']);
+            $request['imei']=null;
+        }
         $user->update($request->all());
         if($user->active&&is_null($user->salary)){
             $salary = new Salary([

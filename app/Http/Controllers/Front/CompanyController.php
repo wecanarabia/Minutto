@@ -20,6 +20,7 @@ use App\Http\Requests\Company\ShiftRequest;
 use App\Http\Requests\Company\BranchRequest;
 use App\Http\Requests\Company\CompanyRequest;
 use App\Http\Requests\Company\DepartmentRequest;
+use Symfony\Component\Intl\Currencies;
 
 class CompanyController extends Controller
 {
@@ -40,7 +41,8 @@ class CompanyController extends Controller
         $department = $request->session()->get('department');
         $subscriptions = Subscription::all();
         $timezones = DateTimeZone::listIdentifiers();
-        return view('company.company-settings.create',compact('company','subscriptions','timezones'));
+        $currencies = Currencies::getCurrencyCodes();
+        return view('company.company-settings.create',compact('company','subscriptions','timezones','currencies'));
     }
 
     /**
@@ -206,7 +208,7 @@ class CompanyController extends Controller
         ]);
         CompanyAdmin::find(Auth::guard('company')->user()->id)->update(['company_id'=>$company->id,'role_id'=>$role->id]);
         $days=Workday::WORKDAYS;
-        
+
     foreach ($days as $i => $day) {
         if ($request[$day['en']]) {
             $validator = Validator::make([
@@ -261,7 +263,8 @@ class CompanyController extends Controller
         $company = Company::with('branches')->find(Auth::guard('company')->user()->company_id);
         $subscriptions = Subscription::all();
         $timezones = DateTimeZone::listIdentifiers();
-        return view('company.company-settings.show',compact('company','subscriptions','timezones'));
+        $currencies = Currencies::getCurrencyCodes();
+        return view('company.company-settings.show',compact('company','subscriptions','timezones','currencies'));
     }
 
     /**

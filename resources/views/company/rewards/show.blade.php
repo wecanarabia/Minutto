@@ -68,7 +68,7 @@
 
                                             <div class="col-4 mb-7">
                                                 <p class="mb-1 fs-2">@lang('views.ALLOWANCE TYPES VALUE')</p>
-                                                <h6 class="fw-semibold mb-0">{{ $reward->reward_value }}
+                                                <h6 class="fw-semibold mb-0">{{ currency($reward->reward_value) }}
                                                 </h6>
                                             </div>
 

@@ -68,12 +68,12 @@
 
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">Salary</p>
-                                                    <h6 class="fw-semibold mb-0">{{ $salary->actual_salary }}</h6>
+                                                    <h6 class="fw-semibold mb-0">{{ currency($salary->actual_salary) }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">Net Salary</p>
-                                                    <h6 class="fw-semibold mb-0">{{ $salary->net_salary }}</h6>
+                                                    <h6 class="fw-semibold mb-0">{{ currency($salary->net_salary) }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
@@ -88,12 +88,12 @@
 
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">Deduction</p>
-                                                    <h6 class="fw-semibold mb-0">{{ $salary->discounts }}</h6>
+                                                    <h6 class="fw-semibold mb-0">{{ currency($salary->discounts) }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">Allowances</p>
-                                                    <h6 class="fw-semibold mb-0">{{ $salary->incentives_and_extra }}</h6>
+                                                    <h6 class="fw-semibold mb-0">{{ currency($salary->incentives_and_extra) }}</h6>
                                                 </div>
 
 

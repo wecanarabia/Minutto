@@ -94,6 +94,13 @@
                                                 </div>
 
                                                 <div class="mb-4">
+                                                    <label class="form-label">Number of Advances in Month</label>
+                                                    <input type="number" class="form-control" name="advances_count" value="{{ old('advances_count',$company->advances_count??0) }}" required>
+                                                    @error('advances_count')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                                <div class="mb-4">
                                                     <label class="form-label">Percentage of Advances (%)</label>
                                                     <input type="number" class="form-control" name="advances_percentage" value="{{ old('advances_percentage',$company->advances_percentage??0) }}" required>
                                                     @error('advances_percentage')
@@ -129,6 +136,19 @@
                                                         @endforeach
                                                     </select>
                                                     @error('timezone')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <label class="form-label">Currency</label>
+                                                    <select class="default-select form-control" name="currency">
+                                                        <option  selected disabled>Currency</option>
+                                                        @foreach ($currencies as $currency)
+                                                        <option value="{{ $currency }}" @selected(old('currency',$company?->currency??'') == $currency)>{{ $currency  }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('currency')
                                                     <div class="text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>

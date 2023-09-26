@@ -97,7 +97,7 @@
                                                 </div> --}}
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">@lang('views.EXTRA AMOUNT')</p>
-                                                    <h6 class="fw-semibold mb-0">{{ $extra->amount }}</h6>
+                                                    <h6 class="fw-semibold mb-0">{{ currency($extra->amount) }}</h6>
                                                 </div>
 
 

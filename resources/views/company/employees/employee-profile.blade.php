@@ -221,6 +221,12 @@
                                                                 rows="3">{{ $employee->description }}</textarea>
 
                                                         </div>
+                                                        <div class="mb-4 col-6">
+                                                            <label>
+                                                                <input type="checkbox" class="chk-box" name="is_imei">
+                                                                ) إتاحة التسجبل من جهاز جديد(في حالة تسجيل الموظف من جهاز جديد أو التسجيل بعد إعادة تثبيت التطبيق على الجهاز)                                                            </label>
+
+                                                        </div>
 
                                                     </div>
                                                     <input type="submit" value="Update" class="btn btn-primary mx-2">
@@ -568,19 +574,19 @@
 
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">@lang('views.MONTHLY SALARY')</p>
-                                                    <h6 class="fw-semibold mb-0">{{ $employee->monthly_salary }}
+                                                    <h6 class="fw-semibold mb-0">{{ currency($employee->monthly_salary) }}
                                                     </h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">@lang('views.DAILY SALARY')</p>
-                                                    <h6 class="fw-semibold mb-0">{{ $employee->daily_salary }}
+                                                    <h6 class="fw-semibold mb-0">{{ currency($employee->daily_salary) }}
                                                     </h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">@lang('views.HOURLY SALARY')</p>
-                                                    <h6 class="fw-semibold mb-0">{{ $employee->hourly_salary }}
+                                                    <h6 class="fw-semibold mb-0">{{ currency($employee->hourly_salary) }}
                                                     </h6>
                                                 </div>
 

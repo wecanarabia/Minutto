@@ -35,6 +35,8 @@ class CompanyRequest extends FormRequest
             'holidays_count'=>'sometimes|numeric|min:0',
             'sick_leaves'=>'sometimes|numeric|min:0',
             'advances_percentage'=>'sometimes|numeric|min:0',
+            'advances_count'=>'sometimes|numeric|min:0',
+            'currency'=>'sometimes|string|size:3',
             'extra_rate'=>'sometimes|numeric|min:0',
             'subscription_id'=>'sometimes|exists:subscriptions,id',
             'timezone'=>['sometimes', Rule::in($timezones)],
