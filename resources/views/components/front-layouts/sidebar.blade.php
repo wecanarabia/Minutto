@@ -266,6 +266,14 @@
                                     <span class="hide-menu">ادارة بيانات الشركة</span>
                                 </a>
                             </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('front.company-settings.deduction.show') }}" class="sidebar-link">
+                                    <div class="round-16 d-flex align-items-center justify-content-center">
+                                        <i class="ti ti-circle"></i>
+                                    </div>
+                                    <span class="hide-menu">ادارة خصم الحضور </span>
+                                </a>
+                            </li>
                             @endcan
                             @can('branches')
 

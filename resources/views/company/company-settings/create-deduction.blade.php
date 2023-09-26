@@ -29,22 +29,30 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="mb-2">
-                                            <h5 class="mb-0">Add Shift Settings</h5>
+                                            <h5 class="mb-0">Add Attendance Deduction Settings</h5>
                                         </div>
-                                        <form method="post" action="{{ route('front.company-settings.shift.store') }}">
+                                        <form method="post" action="{{ route('front.company-settings.deduction.store') }}">
                                             @csrf
                                             <div class="row g-3 align-items-center">
-                                                <div class="mb-4">
-                                                    <label for="firstname" class="form-label">English Name</label>
-                                                    <input type="text" class="form-control" id="firstname" name="english_name" value="{{ old('english_name',$shift?->getTranslation('name','en')??"") }}" required>
-                                                    @error('english_name')
+                                                <div class="mb-4 col-12">
+                                                    <label class="form-label">@lang('views.FROM')</label>
+                                                     <input type="time" class="form-control" name="from" value="{{ old('from',date('H:i', strtotime($deduction->from??'00:00:00'))) }}" >
+                                                    @error('from')
                                                     <div class="text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
-                                                <div class="mb-4">
-                                                    <label for="lastname" class="form-label">Arabic Name</label>
-                                                    <input type="text" class="form-control" name="arabic_name" value="{{ old('arabic_name',$shift?->getTranslation('name','ar')??"") }}" id="lastname" required>
-                                                    @error('arabic_name')
+                                                <div class="mb-4 col-12">
+                                                    <label class="form-label">@lang('views.TO')</label>
+                                                     <input type="time" class="form-control" name="to" value="{{ old('to',date('H:i', strtotime($deduction->to??'00:00:00'))) }}" >
+                                                    @error('to')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="mb-4 col-12">
+                                                    <label for="percentage" class="form-label">Percentage (HH:MM:SS)</label>
+                                                    <input type="text" class="form-control" name="percentage" placeholder="HH:MM:SS" value="{{ old('percentage',$deduction?->percentage??"") }}" id="percentage" required>
+                                                    @error('percentage')
                                                     <div class="text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
@@ -55,7 +63,7 @@
 
                                             </div>
 
-                                            <a href="{{ route('front.company-settings.deduction.create') }}" class="btn btn-dark mt-4">Back</a>
+                                            <a href="{{ route('front.company-settings.department.create') }}" class="btn btn-dark mt-4">Back</a>
                                             <input type="submit" value="Submit" class="btn btn-primary mt-4">
                                         </form>
                                     </div>
