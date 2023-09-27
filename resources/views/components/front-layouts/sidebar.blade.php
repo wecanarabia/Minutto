@@ -79,6 +79,18 @@
                             <span class="hide-menu">الطلبات</span>
                         </a>
                     </li> --}}
+                    @can('notifications')
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('front.notifications.index') }}" aria-expanded="false">
+                          <span>
+                            <i class="ti ti-bell-star"></i>
+                          </span>
+                          <span class="hide-menu">الإشعارات</span>
+                        </a>
+                      </li>
+                      @endcan
+
 
                     {{-- <li class="sidebar-item">
                         <a class="sidebar-link" href="index5.html" aria-expanded="false">

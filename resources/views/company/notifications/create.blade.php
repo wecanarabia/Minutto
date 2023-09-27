@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">@lang('views.DEPARTMENTS')</h4>
+                            <h4 class="fw-semibold mb-8">Notifications</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.departments.index') }}">@lang('views.DEPARTMENTS')</a></li>
+                                            href="{{ route('front.notifications.index') }}">Notifications</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -27,15 +27,15 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">@lang('views.CREATE DEPARTMENT')</h5>
+                                        <h5 class="mb-0">Create Notification</h5>
                                     </div>
-                                    <form method="post" action="{{ route('front.departments.store') }}">
+                                    <form method="post" action="{{ route('front.notifications.store') }}">
                                         @csrf
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">@lang('views.ENGLISH NAME')</label>
-                                            <input type="text" name="english_name" value="{{ old('english_name') }}"
+                                            <label class="form-label fw-semibold">English Title</label>
+                                            <input type="text" name="english_title" value="{{ old('english_title') }}"
                                                 class="form-control">
-                                            @error('english_name')
+                                            @error('english_title')
                                                 <div class="text-danger">
                                                     {{ $message }}
                                                 </div>
@@ -43,10 +43,10 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">@lang('views.ARABIC NAME')</label>
-                                            <input type="text" name="arabic_name" value="{{ old('arabic_name') }}"
+                                            <label class="form-label fw-semibold">Arabic Title</label>
+                                            <input type="text" name="arabic_title" value="{{ old('arabic_title') }}"
                                                 class="form-control">
-                                            @error('arabic_name')
+                                            @error('arabic_title')
                                                 <div class="text-danger">
                                                     {{ $message }}
                                                 </div>
@@ -54,19 +54,20 @@
                                         </div>
                                         <div class="mb-4">
 
-                                            <label class="form-label fw-semibold">@lang('views.ENGLISH DESCRIPTION')</label>
-                                            <textarea  class="form-control" name="english_description" id="addnote" rows="3">{{ old('english_description') }}</textarea>
-                                            @error('english_description')
-                                            <div class="text-danger">{{ $message }}</div>
-                                            @enderror
+                                        <label class="form-label fw-semibold">English Body</label>
+                                        <textarea  class="form-control" name="english_body" id="addnote" rows="3">{{ old('english_body') }}</textarea>
+                                        @error('english_body')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                         </div>
+                                   
 
 
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">@lang('views.ARARBIC DESCRIPTION')</label>
-                                            <textarea  class="form-control" name="arabic_description"  id="addnote" rows="3">{{ old('arabic_description') }}</textarea>
-                                            @error('arabic_description')
-                                            <div class="text-danger">{{ $message }}</div>
+                                            <label class="form-label fw-semibold">Arabic Body</label>
+                                            <textarea  class="form-control" name="arabic_body"  id="addnote" rows="3">{{ old('arabic_body') }}</textarea>
+                                            @error('arabic_body')
+                                                <div class="text-danger">{{ $message }}</div>
                                              @enderror
                                         </div>
 

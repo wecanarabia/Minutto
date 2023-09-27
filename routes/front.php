@@ -14,19 +14,20 @@ use App\Http\Controllers\Front\RewardController;
 use App\Http\Controllers\Front\SalaryController;
 use App\Http\Controllers\Front\AdvanceController;
 use App\Http\Controllers\Front\CompanyController;
+use App\Http\Controllers\Front\MessageController;
 use App\Http\Controllers\Front\WorkDayController;
 use App\Http\Controllers\Front\EmployeeController;
 use App\Http\Controllers\Front\VacationController;
+use App\Http\Controllers\Front\DeductionController;
 use App\Http\Controllers\Front\ExtraTypeController;
 use App\Http\Controllers\Front\LeaveTypeController;
 use App\Http\Controllers\Front\AttendanceController;
 use App\Http\Controllers\Front\DepartmentController;
 use App\Http\Controllers\Front\RewardTypeController;
 use App\Http\Controllers\Front\CompanyAdminController;
-use App\Http\Controllers\Front\DeductionController;
+use App\Http\Controllers\Front\NotificationController;
 use App\Http\Controllers\Front\VacationTypeController;
 use App\Http\Controllers\Front\EmployeeVacationController;
-use App\Http\Controllers\Front\MessageController;
 use App\Http\Controllers\Front\OfficialVacationController;
 
 Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
@@ -72,6 +73,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::resource('admins', CompanyAdminController::class)->except(['destroy'])->middleware('can:admins');
             Route::resource('roles', RoleController::class)->except(['destroy'])->middleware('can:roles');
             Route::resource('deductions', DeductionController::class)->except(['destroy','edit'])->middleware('can:attendance');
+            Route::resource('notifications', NotificationController::class)->except(['edit','update','destroy'])->middleware('can:notifications');
 
             //files
             Route::get('rewards/file/{id}', [RewardController::class, 'openFile'])->name('rewards.file')->middleware('can:rewards');
