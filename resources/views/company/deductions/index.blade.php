@@ -6,7 +6,7 @@
                     <a href="{{ route("front.deductions.create") }}" class="btn btn-info float-end">
                         <i class="ti ti-device-watch-plus text-white me-1 fs-5"></i> Add Attendance Deduction
                       </a>
-                    <h4 class="fw-semibold mb-8">Attendance Deductions/h4>
+                    <h4 class="fw-semibold mb-8">Attendance Deductions</h4>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a class="text-muted"
@@ -67,7 +67,7 @@
                                                 <a href="{{ route('front.deductions.show',$deduction->id) }}" class="text-info edit">
                                                   <i class="ti ti-eye fs-5"></i>
                                                 </a>
-                                                
+
                                               </div>
                                         </td>
                                     </tr>
