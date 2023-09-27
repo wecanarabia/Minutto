@@ -350,23 +350,6 @@ class CompanyController extends Controller
          return $code;
     }
 
-    public function showDeduction(){
-        $deduction = Discount::where('company_id',Auth::user()->company_id)->first();
-        if (!$deduction) {
-            $deduction = Discount::create([
-                'company_id'=> Auth::user()->company_id,
-                'from'=>"10:00:00",
-                'to'=>"12:00:00",
-                'percentage'=>"12:00:00",
-            ]);
-        }
-        return view('company.company-settings.deduction.show',compact('deduction'));
-    }
-    public function updateDeduction(DeductionRequest $request){
-        $deduction = Discount::where('company_id',Auth::user()->company_id)->firstOrFail();
-        $deduction->update($request->all());
-        return redirect()->route('front.company-settings.deduction.show')
-        ->with('success','Deduction has been updated successfully');
-    }
+   
 
 }

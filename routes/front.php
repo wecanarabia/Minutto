@@ -23,6 +23,7 @@ use App\Http\Controllers\Front\AttendanceController;
 use App\Http\Controllers\Front\DepartmentController;
 use App\Http\Controllers\Front\RewardTypeController;
 use App\Http\Controllers\Front\CompanyAdminController;
+use App\Http\Controllers\Front\DeductionController;
 use App\Http\Controllers\Front\VacationTypeController;
 use App\Http\Controllers\Front\EmployeeVacationController;
 use App\Http\Controllers\Front\MessageController;
@@ -53,9 +54,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::get('company-settings/shift-workdays/create', [CompanyController::class, 'createWorkdays'])->name('company-settings.shift-workdays.create');
             Route::post('company-settings/shift-workdays/store', [CompanyController::class, 'storeWorkdays'])->name('company-settings.shift-workdays.store');
             Route::get('company-settings/show', [CompanyController::class, 'show'])->name('company-settings.show');
-            Route::get('company-settings/deduction/show', [CompanyController::class, 'showDeduction'])->name('company-settings.deduction.show');
-            Route::put('company-settings/deduction/update', [CompanyController::class, 'updateDeduction'])->name('company-settings.deduction.update');
-            Route::put('company-settings/update', [CompanyController::class, 'update'])->name('company-settings.update');
+                       Route::put('company-settings/update', [CompanyController::class, 'update'])->name('company-settings.update');
 
         Route::group(['middleware' => ['CheckCompany', 'timezone']], function () {
             Route::resource('employees', EmployeeController::class)->except(['destroy', 'edit', 'create', 'store'])->middleware('can:employees');
@@ -72,6 +71,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::resource('official-vacations', OfficialVacationController::class)->except(['destroy'])->middleware('can:official-vacations');
             Route::resource('admins', CompanyAdminController::class)->except(['destroy'])->middleware('can:admins');
             Route::resource('roles', RoleController::class)->except(['destroy'])->middleware('can:roles');
+            Route::resource('deductions', DeductionController::class)->except(['destroy','edit'])->middleware('can:attendance');
 
             //files
             Route::get('rewards/file/{id}', [RewardController::class, 'openFile'])->name('rewards.file')->middleware('can:rewards');

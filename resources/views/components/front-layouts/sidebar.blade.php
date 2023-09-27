@@ -247,7 +247,7 @@
                     <!-- =================== -->
                     <!-- UI Elements -->
                     <!-- =================== -->
-                    @if (Auth::user()->can('company') || Auth::user()->can('branches') || Auth::user()->can('shifts') || Auth::user()->can('departments') || Auth::user()->can('vacations') || Auth::user()->can('logs'))
+                    @if (Auth::user()->can('company') || Auth::user()->can('branches')|| Auth::user()->can('attendance') || Auth::user()->can('shifts') || Auth::user()->can('departments') || Auth::user()->can('vacations') || Auth::user()->can('logs'))
                     <li class="sidebar-item">
                         <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
                             <span class="d-flex">
@@ -266,12 +266,16 @@
                                     <span class="hide-menu">ادارة بيانات الشركة</span>
                                 </a>
                             </li>
+                            @endcan
+
+                            @can('attendance')
+
                             <li class="sidebar-item">
-                                <a href="{{ route('front.company-settings.deduction.show') }}" class="sidebar-link">
+                                <a href="{{ route('front.deductions.index') }}" class="sidebar-link">
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
                                     </div>
-                                    <span class="hide-menu">ادارة خصم الحضور </span>
+                                    <span class="hide-menu">ادارة خصومات الحضور </span>
                                 </a>
                             </li>
                             @endcan

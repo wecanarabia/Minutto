@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Attendance Deduction </h4>
+                            <h4 class="fw-semibold mb-8">Attendance Deductions </h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="javascript:void(0);">Attendance Deduction </a></li>
+                                            href="{{ route('front.deductions.index') }}">Attendance Deductions </a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -74,7 +74,7 @@
                                             <div class="card-body p-4">
                                                 <h5 class="card-title fw-semibold">Update Deduction</h5>
                                                 <form method="post"
-                                                    action="{{ route('front.company-settings.deduction.update') }}" enctype="multipart/form-data">
+                                                    action="{{ route('front.deductions.update',$deduction->id) }}" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('PUT')
                                                     <input type="hidden" name="id" value="{{ $deduction->id }}">
