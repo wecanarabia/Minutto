@@ -3,15 +3,15 @@
         <div class="card-body px-4 py-3">
             <div class="row align-items-center">
                 <div class="col-12">
-                    <a href="{{ route("front.notifications.create") }}" class="btn btn-info float-end">
-                        <i class="ti ti-bell-plus text-white me-1 fs-5"></i> Add Notification
+                    <a href="{{ route("front.faqs.create") }}" class="btn btn-info float-end">
+                        <i class="ti ti-help-octagon text-white me-1 fs-5"></i> Add Faq
                       </a>
-                    <h4 class="fw-semibold mb-8">Notifications</h4>
+                    <h4 class="fw-semibold mb-8">Faqs</h4>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a class="text-muted"
                                     href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
-                            <li class="breadcrumb-item" aria-current="page">Notifications</li>
+                            <li class="breadcrumb-item" aria-current="page">Faqs</li>
                         </ol>
                     </nav>
                 </div>
@@ -31,7 +31,7 @@
                         <div class="card-body">
                             <x-front-layouts.messages />
                             <div class="mb-2">
-                                <h5 class="mb-0">Notifications</h5>
+                                <h5 class="mb-0">Faqs</h5>
                             </div>
                             <div class="table-responsive">
                                 <table id="scroll_hor"
@@ -40,29 +40,33 @@
                                 <thead>
                                     <!-- start row -->
                                     <tr>
-                                        <th>English Title</th>
-                                        <th>Arabic Title</th>
+                                        <th>English Question</th>
+                                        <th>Arabic Question</th>
                                         <th>@lang('views.ACTIONS')</th>
 
                                     </tr>
                                     <!-- end row -->
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $notification)
+                                    @foreach ($data as $faq)
 
                                     <tr>
 
                                         <td>
-                                            {{ $notification->getTranslation('title', 'en') }}
+                                            {{ $faq->getTranslation('question', 'en') }}
                                        </td>
                                        <td>
-                                        {{ $notification->getTranslation('title', 'ar') }}
+                                        {{ $faq->getTranslation('question', 'ar') }}
                                        </td>
 
                                         <td>
                                             <div class="action-btn">
-                                                <a href="{{ route('front.notifications.show',$notification->id) }}" class="text-info edit">
+                                                <a href="{{ route('front.faqs.show',$faq->id) }}" class="text-info edit">
                                                   <i class="ti ti-eye fs-5"></i>
+                                                </a>
+
+                                                <a href="{{ route('front.faqs.edit',$faq->id) }}" class="text-info edit">
+                                                  <i class="ti ti-edit fs-5"></i>
                                                 </a>
 
                                               </div>

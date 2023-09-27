@@ -405,19 +405,19 @@
                     {{-- <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">قسم المساعدة</span>
-                    </li>
+                    </li> --}}
                     <!-- =================== -->
                     <!-- Form Input -->
                     <!-- =================== -->
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="form-basic.html" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('front.faqs.index') }}" aria-expanded="false">
                             <span class="d-flex">
                                 <i class="ti ti-help-hexagon"></i>
                             </span>
                             <span class="hide-menu">الأسئلة الشائعة</span>
                         </a>
                     </li>
-                    <li class="sidebar-item">
+                    {{-- <li class="sidebar-item">
                         <a class="sidebar-link" href="form-vertical.html" aria-expanded="false">
                             <span class="d-flex">
                                 <i class="ti ti-radio"></i>

@@ -28,6 +28,7 @@ use App\Http\Controllers\Front\CompanyAdminController;
 use App\Http\Controllers\Front\NotificationController;
 use App\Http\Controllers\Front\VacationTypeController;
 use App\Http\Controllers\Front\EmployeeVacationController;
+use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\OfficialVacationController;
 
 Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
@@ -72,6 +73,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::resource('official-vacations', OfficialVacationController::class)->except(['destroy'])->middleware('can:official-vacations');
             Route::resource('admins', CompanyAdminController::class)->except(['destroy'])->middleware('can:admins');
             Route::resource('roles', RoleController::class)->except(['destroy'])->middleware('can:roles');
+            Route::resource('faqs', FaqController::class)->except(['destroy'])->middleware('can:faqs');
             Route::resource('deductions', DeductionController::class)->except(['destroy','edit'])->middleware('can:attendance');
             Route::resource('notifications', NotificationController::class)->except(['edit','update','destroy'])->middleware('can:notifications');
 
