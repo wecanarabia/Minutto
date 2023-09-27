@@ -42,7 +42,7 @@ class DeductionController extends Controller
     public function update(DeductionRequest $request,String $id){
         $deduction = Discount::where('company_id',Auth::user()->company_id)->findOrFail($id);
         $deduction->update($request->all());
-        return redirect()->route('front.deductions.show')
+        return redirect()->route('front.deductions.index')
         ->with('success','Deduction has been updated successfully');
     }
 }
