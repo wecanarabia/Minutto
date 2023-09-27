@@ -5,7 +5,7 @@
             <div class="col-12">
 
 
-                <a href="{{ route("front.leave-types.index") }}" class="btn btn-info float-end">
+                <a href="{{ route("front.departure-types.index") }}" class="btn btn-info float-end">
                     <i class="ti ti-device-ipad-horizontal-star text-white me-1 fs-5"></i>@lang('views.LEAVE TYPES')
                   </a>
               <h4 class="fw-semibold mb-8">@lang('views.LEAVE REQUESTS')</h4>

@@ -63,7 +63,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::resource('departments', DepartmentController::class)->except(['destroy'])->middleware('can:departments');
             Route::resource('branches', BranchController::class)->except(['destroy'])->middleware('can:branches');
             Route::resource('shifts', ShiftController::class)->except(['destroy'])->middleware('can:shifts');
-            Route::resource('leave-types', LeaveTypeController::class)->except(['destroy'])->middleware('can:leaves');
+            Route::resource('departure-types', LeaveTypeController::class)->except(['destroy'])->middleware('can:leaves');
             Route::resource('vacation-types', VacationTypeController::class)->except(['destroy'])->middleware('can:vacations');
             Route::resource('allowance-types', RewardTypeController::class)->except(['destroy'])->middleware('can:rewards');
             Route::resource('allowances', RewardController::class)->except(['destroy'])->middleware('can:rewards');
@@ -94,10 +94,10 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             });
             //leaves
             Route::group(['middleware' => 'can:leaves'], function () {
-                Route::get('leaves', [LeaveController::class, 'index'])->name('leaves.index');
-                Route::get('leaves/{id}', [LeaveController::class, 'show'])->name('leaves.show');
-                Route::get('leaves/file/{id}', [LeaveController::class, 'openFile'])->name('leaves.file');
-                Route::put('leaves/update/{id}', [LeaveController::class, 'update'])->name('leaves.update');
+                Route::get('departures', [LeaveController::class, 'index'])->name('leaves.index');
+                Route::get('departures/{id}', [LeaveController::class, 'show'])->name('leaves.show');
+                Route::get('departures/file/{id}', [LeaveController::class, 'openFile'])->name('leaves.file');
+                Route::put('departures/update/{id}', [LeaveController::class, 'update'])->name('leaves.update');
             });
             //vacations
             Route::group(['middleware' => 'can:vacations'], function () {
