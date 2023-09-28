@@ -35,13 +35,15 @@ class FaqController extends Controller
         $request['question']=['en'=>$request->question_en,'ar'=>$request->question_ar];
         $request['answer']=['en'=>$request->answer_en,'ar'=>$request->answer_ar];
         $request['company_id'] = Auth::user()->company_id;
-        Faq::create($request->except([
+        $faq = Faq::create($request->except([
             'question_en',
             'question_ar',
             'answer_en',
             'answer_ar',
         ]));
-
+        if ($faq) {
+            $this->addLog(NULL, 'Create Faqs', 'إضافة أسئلة شائعة', 'Faqs has been created successfully', 'تم إضافة أسئلة شائعة  بنجاح');
+        }
 
         return redirect()->route('front.faqs.index')
                         ->with('success','Faq has been added successfully');

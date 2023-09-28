@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\LogController;
+use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\RoleController;
 use App\Http\Controllers\Front\AlertController;
 use App\Http\Controllers\Front\ExtraController;
@@ -28,7 +30,6 @@ use App\Http\Controllers\Front\CompanyAdminController;
 use App\Http\Controllers\Front\NotificationController;
 use App\Http\Controllers\Front\VacationTypeController;
 use App\Http\Controllers\Front\EmployeeVacationController;
-use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\OfficialVacationController;
 
 Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
@@ -92,7 +93,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::get('attendance/file/{id}', [AttendanceController::class, 'openFile'])->name('attendance.file');
                 Route::put('attendance/update/{id}', [AttendanceController::class, 'update'])->name('attendance.update');
             });
-            //leaves
+            //departures
             Route::group(['middleware' => 'can:leaves'], function () {
                 Route::get('departures', [LeaveController::class, 'index'])->name('leaves.index');
                 Route::get('departures/{id}', [LeaveController::class, 'show'])->name('leaves.show');
@@ -120,6 +121,15 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::get('extras/{id}', [ExtraController::class, 'show'])->name('extras.show');
                 Route::get('extras/file/{id}', [ExtraController::class, 'openFile'])->name('extras.file');
                 Route::put('extras/update/{id}', [ExtraController::class, 'update'])->name('extras.update');
+            });
+
+            //pages
+            Route::group(['middleware' => 'can:pages'], function () {
+
+                Route::get('pages/internal', [PageController::class, 'showInternal'])->name('pages.internal');
+                Route::get('pages/departure-vacation', [PageController::class, 'showDeparturVacation'])->name('pages.departure-vacation');
+                Route::put('pages/internal/update', [PageController::class, 'updateInternal'])->name('pages.internal.update');
+                Route::put('pages/departure-vacation/update', [PageController::class, 'updateDeparturVacation'])->name('pages.departure-vacation.update');
             });
             //messages
             Route::group(['middleware' => 'can:messages'], function () {

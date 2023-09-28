@@ -103,7 +103,7 @@
                 <!-- ============================= -->
                 <!-- Apps -->
                 <!-- ============================= -->
-                @if (Auth::user()->can('employees') || Auth::user()->can('vacations') || Auth::user()->can('leaves') || Auth::user()->can('rewards') || Auth::user()->can('alerts') || Auth::user()->can('official-vacations'))
+                @if (Auth::user()->can('employees') || Auth::user()->can('vacations')|| Auth::user()->can('bonus') || Auth::user()->can('pages') || Auth::user()->can('leaves') || Auth::user()->can('rewards') || Auth::user()->can('alerts') || Auth::user()->can('official-vacations'))
 
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -179,16 +179,18 @@
                         </a>
                     </li>
                     @endcan
-                    {{-- <li class="sidebar-item">
+                    @can('pages')
+
+                   <li class="sidebar-item">
                         <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
                             <span class="d-flex">
                                 <i class="ti ti-home-shield"></i>
                             </span>
                             <span class="hide-menu">الإنظمة والتعليمات</span>
-                        </a>
+                        </a> -
                         <ul aria-expanded="false" class="collapse first-level">
                             <li class="sidebar-item">
-                                <a href="blog-posts.html" class="sidebar-link">
+                                <a href="{{ route('front.pages.internal') }}" class="sidebar-link">
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
                                     </div>
@@ -196,7 +198,7 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="blog-detail.html" class="sidebar-link">
+                                <a href="{{ route('front.pages.departure-vacation') }}" class="sidebar-link">
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
                                     </div>
@@ -204,7 +206,8 @@
                                 </a>
                             </li>
                         </ul>
-                    </li> --}}
+                        @endcan
+                    </li>
                     @endif
 
                     <!-- ============================= -->

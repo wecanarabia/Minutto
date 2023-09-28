@@ -30,7 +30,8 @@ class DeductionController extends Controller
     public function store(DeductionRequest $request)
     {
         $request['company_id'] = Auth::user()->company_id;
-        Discount::create($request->all());
+        $deduction = Discount::create($request->all());
+        
         return redirect()->route('front.deductions.index')
                         ->with('success','department has been added successfully');
     }
