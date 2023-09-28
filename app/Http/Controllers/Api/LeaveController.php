@@ -45,7 +45,8 @@ class LeaveController extends ApiController
         return $this->returnError(__('Sorry! Failed to create !'));
     }
 
-    public function edit($id,Request $request){
+    public function edit($id,Request $request)
+    {
 
 
         // return $this->update($id,$request->all());
@@ -58,6 +59,7 @@ class LeaveController extends ApiController
 
 
             $model = $this->repositry->edit( $id,$request->all() );
+
 
             if($model->time_leave && $user->is_left == 1){
 

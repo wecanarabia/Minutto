@@ -187,7 +187,10 @@ return [
 'VACATION TYPES' => 'أنواع الإجازات',
 'CREATE VACATION TYPE' => 'إنشاء نوع الإجازة',
 'EDIT VACATION TYPE' => 'تعديل نوع الإجازة',
-'ADD VACATION TYPE' => 'إضافة نوع الإجازة'
+'ADD VACATION TYPE' => 'إضافة نوع الإجازة',
+'VACATION REQUESTS' => 'طلبات الإجازة' ,
+'VACATION TYPE' => 'نوع الإجازة',
+'UPDATE VACATION REQUEST' => 'تحديث طلب الإجازة'
 
 
 
