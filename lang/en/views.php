@@ -179,6 +179,9 @@ return [
     'CREATE VACATION TYPE' => 'Create Vacation Type' ,
     'EDIT VACATION TYPE' => 'Edit Vacation Type' ,
     'ADD VACATION TYPE' => 'Add Vacation Type' ,
+    'VACATION REQUESTS' => 'Vacation Requests' ,
+    'VACATION TYPE' => 'Vacation Type',
+    'UPDATE VACATION REQUEST' => 'Update Vacation Request',
 
 
 

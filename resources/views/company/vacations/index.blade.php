@@ -6,13 +6,13 @@
 
 
                 <a href="{{ route("front.vacation-types.index") }}" class="btn btn-info float-end">
-                    <i class="ti ti-calendar-due text-white me-1 fs-5"></i> Vacation Types
+                    <i class="ti ti-calendar-due text-white me-1 fs-5"></i>@lang('views.VACATION TYPES')
                   </a>
-              <h4 class="fw-semibold mb-8">Vacation Requests</h4>
+              <h4 class="fw-semibold mb-8">@lang('views.VACATION REQUESTS')</h4>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">Dashboard</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Vacation Requests</li>
+                  <li class="breadcrumb-item"><a class="text-muted" href="{{ route("front.home") }}">@lang('views.DASHBOARD')</a></li>
+                  <li class="breadcrumb-item" aria-current="page">@lang('views.VACATION REQUESTS')</li>
                 </ol>
               </nav>
             </div>
@@ -33,12 +33,12 @@
             <table class="table search-table align-middle text-nowrap">
               <thead class="header-item">
                 <tr>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Employee</th>
-                    <th>Status</th>
-                    <th>Type</th>
-                    <th>Action</th>
+                    <th>@lang('views.FROM')</th>
+                    <th>@lang('views.TO')</th>
+                    <th>@lang('views.EMPLOYEE')</th>
+                    <th>@lang('views.STATUS')</th>
+                    <th>@lang('views.TYPE')</th>
+                    <th>@lang('views.ACTION')</th>
               </tr></thead>
               <tbody>
                 <!-- start row -->
