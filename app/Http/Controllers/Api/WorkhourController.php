@@ -242,7 +242,17 @@ class WorkhourController extends ApiController
 
         $model = $this->repositry->getByID($id);
         if ($model) {
+
+            if($request->note || $request->file)
+            {
+                $model->replay="Waiting for the administrator to respond";
+                $model->save();
+            }
+
             $model = $this->repositry->edit( $id,$request->all() );
+
+
+
 
             $user=User::find($model->user_id);
 
