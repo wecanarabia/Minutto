@@ -94,6 +94,11 @@
                                                     <p class="mb-1 fs-2">Timezone</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->timezone }}</h6>
                                                 </div>
+
+                                                <div class="col-6 mb-7">
+                                                    <p class="mb-1 fs-2">Currenct</p>
+                                                    <h6 class="fw-semibold mb-0">{{ $company->currency }}</h6>
+                                                </div>
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">English Description</p>
                                                     <h6 class="fw-semibold mb-0">
@@ -160,6 +165,17 @@
 
                                                         </div>
 
+                                                        <div class="mb-4 col-6">
+                                                            <label class="form-label">Currency</label>
+                                                            <select class="default-select form-control" name="currency">
+                                                                <option  selected disabled>Currency</option>
+                                                                @foreach ($currencies as $currency)
+                                                                <option value="{{ $currency }}" @selected(old('currency',$company?->currency??'') == $currency)>{{ $currency  }}</option>
+                                                                @endforeach
+                                                            </select>
+
+                                                        </div>
+
 
 
                                                     </div>
@@ -205,6 +221,11 @@
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">Percentage Of Advances</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->advances_percentage }}%</h6>
+                                                </div>
+
+                                                <div class="col-6 mb-7">
+                                                    <p class="mb-1 fs-2">Number of Advances in Month</p>
+                                                    <h6 class="fw-semibold mb-0">{{ $company->advances_count }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
@@ -266,6 +287,11 @@
                                                             <label for="exampleFormControlInput5555"
                                                                 class="form-label">Percentage Of Advances(%)</label>
                                                                 <input type="number" class="form-control" name="advances_percentage" value="{{ old('advances_percentage',$company->advances_percentage??0) }}" >
+                                                        </div>
+                                                        <div class="mb-4">
+                                                            <label class="form-label">Number of Advances in Month</label>
+                                                            <input type="number" class="form-control" name="advances_count" value="{{ old('advances_count',$company->advances_count??0) }}" required>
+
                                                         </div>
 
                                                         <div class="mb-4 col-6">
@@ -357,7 +383,7 @@
 
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="pills-security" role="tabpanel"
+                            {{-- <div class="tab-pane fade" id="pills-security" role="tabpanel"
                                 aria-labelledby="pills-security-tab" tabindex="0">
                                 <div class="row">
                                     <div id="bank-data" class="col-lg-12">
@@ -380,7 +406,7 @@
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">IPan</p>
+                                                    <p class="mb-1 fs-2">IPAN</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->ipan }}</h6>
                                                 </div>
 
@@ -484,7 +510,7 @@
                                     </div>
 
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

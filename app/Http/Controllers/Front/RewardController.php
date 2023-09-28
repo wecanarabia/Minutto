@@ -52,15 +52,10 @@ class RewardController extends Controller
 
 
        $reward = Reward::create($request->all());
-       $this->addLog($reward->user->id, 'Add Employee Bonus', 'إضافة حافز لموظف', 'Employee Incentive has been added', 'تم إضافة حافز لموظف',$request['note']);
-       if ($reward->getTranslation('status','en')=='approve'&&$reward->rtype->getTranslation('name','en')=='vacation days') {
-        if ($reward->user->userVacation->vacation_balance>=$reward->reward_value) {
+       $this->addLog($reward->user->id, 'Add Employee Allownce Request', 'إضافة طلب بدل لموظف', 'Employee Allownce Request has been added', 'تم إضافة طلب بدل لموظف',$request['note']);
 
-            $reward->user->userVacation()->update(['vacation_balance'=>($reward->user->userVacation->vacation_balance+$reward->reward_value)]);
-        }
-        }
-       return redirect()->route('front.rewards.index')
-                       ->with('success','Incentive has been added successfully');
+       return redirect()->route('front.allowances.index')
+                       ->with('success','Allowance Request has been added successfully');
    }
 
    /**
@@ -108,31 +103,22 @@ class RewardController extends Controller
     if ($reward->user->branch->company_id!=Auth::user()->company_id) {
            return abort(404);
        }
-       if ($reward->getTranslation('status','en')=='approve'&&$reward->rtype->getTranslation('name','en')=='vacation days') {
 
-        $sub=(int)$reward->user->userVacation->vacation_balance-(int)$reward->reward_value;
-        $reward->user->userVacation()->update(['vacation_balance'=>(int)$sub]);
-
-        }
         if ($reward->getTranslation('status','en')!==$request['status.en']) {
             if($request['status.en'] == 'approve'){
-                $this->addLog($reward->user->id,'Update Employee Bonus','تحديث حافز لموظف','Employee Incentive has been approved','تم الموافقة على طلب حافز',$request['note']);
+                $this->addLog($reward->user->id,'Update Employee Allowance Request','تحديث طلب بدل لموظف','Employee Allowance Request has been approved','تم الموافقة على طلب بدل',$request['note']);
             }else if($request['status.en'] == 'rejected'){
-                $this->addLog($reward->user->id,'Update Employee Bonus','تحديث حافز لموظف','Employee Incentive has been rejected','تم رفض  طلب حافز',$request['note']);
+                $this->addLog($reward->user->id,'Update Employee Allowance Request','تحديث طلب بدل لموظف','Employee Allowance Request has been rejected','تم رفض  طلب بدل',$request['note']);
             };
         }else{
-            $this->addLog($reward->user->id, 'Update Employee Bonus', 'تحديث حافز لموظف', 'Employee Incentive has been updated', 'تم تحديث حافز لموظف',$request['note']);
+            $this->addLog($reward->user->id, 'Update Employee Allowance Request', 'تحديث طلب بدل لموظف', 'Employee Allowance Request has been updated', 'تم تحديث طلب بدل لموظف',$request['note']);
         }
 
        $reward->update($request->all());
-       if ($reward->getTranslation('status','en')=='approve'&&$reward->rtype->getTranslation('name','en')=='vacation days'&&$reward->user->userVacation->vacation_balance>=$reward->reward_value) {
 
-        $reward->user->userVacation()->update(['vacation_balance'=>(int)$sub+(int)$reward->reward_value]);
 
-}
-
-       return redirect()->route('front.rewards.show',$reward->id)
-                       ->with('success','Incentive has been updated successfully');
+       return redirect()->route('front.allowances.show',$reward->id)
+                       ->with('success','Allowance Request has been updated successfully');
    }
    public function openFile($id)
    {

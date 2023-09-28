@@ -88,6 +88,10 @@
                                                     <p class="mb-1 fs-2">@lang('views.DELAY')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $attendance->delay }}</h6>
                                                 </div>
+                                                <div class="col-6 mb-7">
+                                                    <p class="mb-1 fs-2">@lang('views.DEDUCTION')</p>
+                                                    <h6 class="fw-semibold mb-0">{{ currency($attendance->discount_value) }}</h6>
+                                                </div>
 
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">@lang('views.STATUS')</p>

@@ -3,18 +3,18 @@
         <div class="card-body px-4 py-3">
             <div class="row align-items-center">
                 <div class="col-12">
-                    <a href="{{ route("front.rewards.create") }}" class="btn btn-info float-end mx-2">
-                        <i class="ti ti-calendar-plus text-white me-1 fs-5"></i>@lang('views.ADD BONUS')
+                    <a href="{{ route("front.allowances.create") }}" class="btn btn-info float-end mx-2">
+                        <i class="ti ti-calendar-plus text-white me-1 fs-5"></i>@lang('views.ADD ALLOWANCE')
                       </a>
-                      <a href="{{ route("front.reward-types.index") }}" class="btn btn-info float-end">
-                        <i class="ti ti-device-desktop-cog text-white me-1 fs-5"></i> @lang('views.BONUS TYPES')
+                      <a href="{{ route("front.allowance-types.index") }}" class="btn btn-info float-end">
+                        <i class="ti ti-device-desktop-cog text-white me-1 fs-5"></i> @lang('views.ALLOWANCE TYPES')
                       </a>
-                    <h4 class="fw-semibold mb-8">@lang('views.BONUS')</h4>
+                    <h4 class="fw-semibold mb-8">@lang('views.ALLOWANCE')</h4>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a class="text-muted"
                                     href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
-                            <li class="breadcrumb-item" aria-current="page">@lang('views.BONUS')</li>
+                            <li class="breadcrumb-item" aria-current="page">@lang('views.ALLOWANCE')</li>
                         </ol>
                     </nav>
                 </div>
@@ -35,7 +35,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-2">
-                                <h5 class="mb-0">@lang('views.BONUS')</h5>
+                                <h5 class="mb-0">@lang('views.ALLOWANCE')</h5>
                             </div>
                             <div class="table-responsive">
                                 <table id="scroll_hor"
@@ -44,7 +44,7 @@
                                 <thead>
                                     <!-- start row -->
                                     <tr>
-                                        <th>@lang('views.BONUS DATE')</th>
+                                        <th>@lang('views.ALLOWANCE DATE')</th>
                                         <th>@lang('views.EMPLOYEE')</th>
                                         <th>@lang('views.TYPE')</th>
                                         <th>@lang('views.TYPES VALUE')</th>
@@ -93,10 +93,10 @@
                    </td>
                                         <td>
                                             <div class="action-btn">
-                                                <a href="{{ route('front.rewards.show',$reward->id) }}" class="text-info edit">
+                                                <a href="{{ route('front.allowances.show',$reward->id) }}" class="text-info edit">
                                                   <i class="ti ti-eye fs-5"></i>
                                                 </a>
-                                                <a href="{{ route('front.rewards.edit',$reward->id) }}" class="text-primary edit">
+                                                <a href="{{ route('front.allowances.edit',$reward->id) }}" class="text-primary edit">
                                                   <i class="ti ti-edit fs-5"></i>
                                                 </a>
                                               </div>

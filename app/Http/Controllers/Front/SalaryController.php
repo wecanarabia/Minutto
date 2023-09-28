@@ -35,7 +35,7 @@ class SalaryController extends Controller
             $data['workhours'] = Workhour::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employees)->get()->sum('discount_value');
             $data['advances'] = Advance::whereMonth('created_at', Carbon::now()->month)->where('value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employees)->get()->sum('value');
             $data['extras'] = Extra::whereMonth('created_at', Carbon::now()->month)->where('amount', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employees)->get()->sum('amount');
-            $data['rewards'] = Reward::whereMonth('created_at', Carbon::now()->month)->where('reward_value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employees)->get()->sum('reward_value');
+            $data['rewards'] = Reward::whereMonth('created_at', Carbon::now()->month)->where('reward_value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employees)->get()->sum('reward_value')??0;
             $data['alerts_in_days'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', 'Salary number of working days')->whereBelongsTo($employees)->with('user')
             ->get()->map(function ($alert) {
                 $alert->salary = $alert->punishment * $alert->user->daily_salary;
@@ -107,7 +107,7 @@ class SalaryController extends Controller
     {
         $now = Carbon::now();
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->thisMonth($now)->whereDoesntHave('salary')->get();
+        $employees = User::active()->hasNotSalary()->whereBelongsTo($branches)->with(['branch','shift'])->thisMonth($now)->whereDoesntHave('salary')->get();
         return view('company.salaries.create',compact('employees'));
     }
 
@@ -121,6 +121,8 @@ class SalaryController extends Controller
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employee = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->thisMonth($now)->whereDoesntHave('salary')->find($request['user_id']);
         if ($employee) {
+            $request["year"]=Carbon::now()->year;
+            $request["month"]=Carbon::now()->month;
             $salary = Salary::create($request->all());
             $this->addLog($salary->user->id, 'Add Employee salary', 'إضافة راتب لموظف', 'Employee salary has been added', 'تم إضافة راتب لموظف');
         }else {

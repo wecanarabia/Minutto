@@ -71,7 +71,7 @@
                                                 </div>
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">@lang('views.AMOUNT')</p>
-                                                    <h6 class="fw-semibold mb-0">{{ $advance->value }}</h6>
+                                                    <h6 class="fw-semibold mb-0">{{ currency($advance->value) }}</h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">@lang('views.NOTE')</p>

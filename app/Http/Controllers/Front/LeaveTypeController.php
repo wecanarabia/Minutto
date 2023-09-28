@@ -40,7 +40,7 @@ class LeaveTypeController extends Controller
         ]));
 
 
-        return redirect()->route('front.leave-types.index')
+        return redirect()->route('front.departure-types.index')
                         ->with('success','Leave type has been added successfully');
     }
 
@@ -85,7 +85,7 @@ class LeaveTypeController extends Controller
         ]));
 
 
-        return redirect()->route('front.leave-types.show',$type->id)
+        return redirect()->route('front.departure-types.show',$type->id)
                         ->with('success','Leave type has been updated successfully');
     }
 }

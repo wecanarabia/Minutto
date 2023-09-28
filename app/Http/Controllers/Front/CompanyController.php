@@ -8,6 +8,7 @@ use App\Models\Shift;
 use App\Models\Branch;
 use App\Models\Company;
 use App\Models\Workday;
+use App\Models\Discount;
 use App\Models\Department;
 use App\Models\RewardType;
 use App\Models\CompanyAdmin;
@@ -15,17 +16,19 @@ use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\Intl\Currencies;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Company\ShiftRequest;
 use App\Http\Requests\Company\BranchRequest;
 use App\Http\Requests\Company\CompanyRequest;
+use App\Http\Requests\Company\DeductionRequest;
 use App\Http\Requests\Company\DepartmentRequest;
 
 class CompanyController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['CheckCompany','timezone','can:company'])->only(['edit', 'update','show']);
+        $this->middleware(['CheckCompany','timezone','can:company'])->only(['edit', 'update','show','showDeduction','updateDeduction']);
     }
 
 
@@ -38,9 +41,11 @@ class CompanyController extends Controller
         $branch = $request->session()->get('branch');
         $shift = $request->session()->get('shift');
         $department = $request->session()->get('department');
+        $department = $request->session()->get('deduction');
         $subscriptions = Subscription::all();
         $timezones = DateTimeZone::listIdentifiers();
-        return view('company.company-settings.create',compact('company','subscriptions','timezones'));
+        $currencies = Currencies::getCurrencyCodes();
+        return view('company.company-settings.create',compact('company','subscriptions','timezones','currencies'));
     }
 
     /**
@@ -145,6 +150,39 @@ class CompanyController extends Controller
             $request->session()->put('department', $department);
         }
 
+        return redirect()->route('front.company-settings.deduction.create');
+    }
+
+    public function createDeduction(Request $request)
+    {
+        $deduction = $request->session()->get('deduction');
+        return view('company.company-settings.create-deduction',compact('deduction'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function storeDeduction(DeductionRequest $request)
+    {
+        if(empty($request->session()->get('deduction'))){
+            $deduction = new Discount();
+
+            $deduction->fill($request->only([
+            'from',
+            'to',
+            'percentage',
+             ]));
+            $request->session()->put('deduction', $deduction);
+        }else{
+            $deduction = $request->session()->get('deduction');
+                      $deduction->fill($request->except([
+                'from',
+                'to',
+                'percentage',
+             ]));
+            $request->session()->put('deduction', $deduction);
+        }
+
         return redirect()->route('front.company-settings.shift.create');
     }
     public function createShift(Request $request)
@@ -190,10 +228,13 @@ class CompanyController extends Controller
         $shift = $request->session()->get('shift');
         $branch = $request->session()->get('branch');
         $department = $request->session()->get('department');
+        $deduction = $request->session()->get('deduction');
         $company = $request->session()->get('company');
         $company->save();
         $branch->company_id=$company->id;
         $branch->save();
+        $deduction->company_id=$company->id;
+        $deduction->save();
         $shift->company_id=$company->id;
         $shift->save();
         $department->company_id=$company->id;
@@ -206,12 +247,7 @@ class CompanyController extends Controller
         ]);
         CompanyAdmin::find(Auth::guard('company')->user()->id)->update(['company_id'=>$company->id,'role_id'=>$role->id]);
         $days=Workday::WORKDAYS;
-        foreach (RewardType::DEFAULTTYPES as $value) {
-            RewardType::create([
-                'company_id'=>$company->id,
-                'name'=>$value,
-            ]);
-        }
+
     foreach ($days as $i => $day) {
         if ($request[$day['en']]) {
             $validator = Validator::make([
@@ -266,7 +302,8 @@ class CompanyController extends Controller
         $company = Company::with('branches')->find(Auth::guard('company')->user()->company_id);
         $subscriptions = Subscription::all();
         $timezones = DateTimeZone::listIdentifiers();
-        return view('company.company-settings.show',compact('company','subscriptions','timezones'));
+        $currencies = Currencies::getCurrencyCodes();
+        return view('company.company-settings.show',compact('company','subscriptions','timezones','currencies'));
     }
 
     /**
@@ -312,5 +349,7 @@ class CompanyController extends Controller
          }
          return $code;
     }
+
+   
 
 }

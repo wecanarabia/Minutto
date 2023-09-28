@@ -124,6 +124,7 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
+    'currency' => 'JOD',
 
     /*
     |--------------------------------------------------------------------------
@@ -214,6 +215,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Currency'=>\App\Facades\Currency::class,
+
     ])->toArray(),
 
 ];

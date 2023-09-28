@@ -68,8 +68,15 @@
 
                                             <div class="col-4 mb-7">
                                                 <p class="mb-1 fs-2">@lang('views.ALERT TYPES VALUE')</p>
+                                                @if ($alert->getTranslation('type','en')=='amount')
+                                                <h6 class="fw-semibold mb-0">{{ currency($alert->punishment) }}
+                                                </h6>
+                                                @else
                                                 <h6 class="fw-semibold mb-0">{{ $alert->punishment }}
                                                 </h6>
+                                                @endif
+
+
                                             </div>
                                             <div class="col-8 mb-7">
                                                 <p class="mb-1 fs-2">@lang('views.NOTE')</p>

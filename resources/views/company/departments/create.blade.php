@@ -54,12 +54,13 @@
                                         </div>
                                         <div class="mb-4">
 
-                                        <label class="form-label fw-semibold">@lang('views.ENGLISH DESCRIPTION')</label>
-                                        <textarea  class="form-control" name="english_description" id="addnote" rows="3">{{ old('english_description') }}</textarea>
-                                        @error('english_description')
-                                        <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+                                            <label class="form-label fw-semibold">@lang('views.ENGLISH DESCRIPTION')</label>
+                                            <textarea  class="form-control" name="english_description" id="addnote" rows="3">{{ old('english_description') }}</textarea>
+                                            @error('english_description')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
+
 
                                         <div class="mb-4">
                                             <label class="form-label fw-semibold">@lang('views.ARARBIC DESCRIPTION')</label>
@@ -67,8 +68,8 @@
                                             @error('arabic_description')
                                             <div class="text-danger">{{ $message }}</div>
                                              @enderror
-                                            </div>
                                         </div>
+
 
 
                                         <input type="submit" value="Save" class="btn btn-primary">

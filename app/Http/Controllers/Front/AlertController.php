@@ -48,7 +48,7 @@ class AlertController extends Controller
    public function store(AlertRequest $request)
    {
 
-
+            
        $alert = Alert::create($request->all());
        $this->addLog($alert->user->id,'Add Alert','إضافة مخالفة','Alert has been added to employee','تم إضافة مخالفة على موظف',$alert->note);
        if ($alert->getTranslation('type','en')=='vacation days') {
@@ -56,6 +56,8 @@ class AlertController extends Controller
                 $alert->user->userVacation()->update(['vacation_balance'=>($alert->user->userVacation->vacation_balance-$alert->punishment)]);
             }
        }
+
+
        return redirect()->route('front.alerts.index')
                        ->with('success','Alert has been added successfully');
    }

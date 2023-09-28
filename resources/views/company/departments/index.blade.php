@@ -31,7 +31,7 @@
                         <div class="card-body">
                             <x-front-layouts.messages />
                             <div class="mb-2">
-                                <h5 class="mb-0">@lang('views.BRANCHES')</h5>
+                                <h5 class="mb-0">@lang('views.DEPARTMENTS')</h5>
                             </div>
                             <div class="table-responsive">
                                 <table id="scroll_hor"
@@ -40,7 +40,6 @@
                                 <thead>
                                     <!-- start row -->
                                     <tr>
-                                        <th>@lang('views.ID')</th>
                                         <th>@lang('views.ENGLISH NAME')</th>
                                         <th>@lang('views.ARABIC NAME')</th>
                                         <th>@lang('views.HEAD')</th>
@@ -54,9 +53,7 @@
                                     @foreach ($data as $department)
 
                                     <tr>
-                                        <td>
-                                            {{ $department->id }}
-                                        </td>
+
                                         <td>
                                             {{ $department->getTranslation('name', 'en') }}
                                        </td>

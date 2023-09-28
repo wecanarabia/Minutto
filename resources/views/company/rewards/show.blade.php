@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">@lang('views.BONUS')</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.ALLOWANCE')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.rewards.index') }}">@lang('views.BONUS')</a></li>
+                                            href="{{ route('front.allowances.index') }}">@lang('views.ALLOWANCE')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -54,12 +54,12 @@
                                     </div>
                                         <div class="row">
                                             <div class="col-4 mb-7">
-                                                <p class="mb-1 fs-2">@lang('views.BONUS DATE')</p>
+                                                <p class="mb-1 fs-2">@lang('views.ALLOWANCE DATE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $reward->reward_date }}
                                                 </h6>
                                             </div>
                                             <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">@lang('views.BONUS TYPE')</p>
+                                                <p class="mb-1 fs-2">@lang('views.ALLOWANCE TYPE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $reward->rtype->name }}
                                                 </h6>
                                             </div>
@@ -67,8 +67,8 @@
 
 
                                             <div class="col-4 mb-7">
-                                                <p class="mb-1 fs-2">@lang('views.BONUS TYPES VALUE')</p>
-                                                <h6 class="fw-semibold mb-0">{{ $reward->reward_value }}
+                                                <p class="mb-1 fs-2">@lang('views.ALLOWANCE TYPES VALUE')</p>
+                                                <h6 class="fw-semibold mb-0">{{ currency($reward->reward_value) }}
                                                 </h6>
                                             </div>
 
@@ -96,7 +96,7 @@
                                               <div class="col-8 mb-7">
                                                 <p class="mb-1 fs-2">@lang('views.FILE')</p>
                                                 <h6 class="fw-semibold mb-0">
-                                                    <a href="{{ route('front.rewards.file',$reward->id) }}" class="text-muted">{{ explode('/',$reward->file)[2]??null }}</a>
+                                                    <a href="{{ route('front.allowances.file',$reward->id) }}" class="text-muted">{{ explode('/',$reward->file)[2]??null }}</a>
                                                 </h6>
                                             </div>
 
@@ -109,7 +109,7 @@
                                         </div>
 
                                         <div class="d-flex align-items-center gap-2">
-                                            <a href="{{ route('front.rewards.edit', $reward->id) }}"
+                                            <a href="{{ route('front.allowances.edit', $reward->id) }}"
                                                 class="btn btn-primary fs-2">@lang('views.EDIT')</a>
                                         </div>
                                     </div>

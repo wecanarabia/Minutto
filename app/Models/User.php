@@ -140,6 +140,7 @@ class User extends Authenticatable
         return $query->whereHas('salary');
     }
 
+
     public function scopeHasNotSalary($query){
         return $query->whereDoesntHave('salary');
     }

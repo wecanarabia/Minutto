@@ -130,7 +130,7 @@
                                                 </div>
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">@lang('views.DEDUCTION')</p>
-                                                    <h6 class="fw-semibold mb-0">{{ $leave->discount_value }}</h6>
+                                                    <h6 class="fw-semibold mb-0">{{ currency($leave->discount_value) }}</h6>
                                                 </div>
 
 

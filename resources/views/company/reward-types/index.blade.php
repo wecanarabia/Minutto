@@ -3,15 +3,15 @@
         <div class="card-body px-4 py-3">
             <div class="row align-items-center">
                 <div class="col-12">
-                    <a href="{{ route("front.reward-types.create") }}" class="btn btn-info float-end">
-                        <i class="ti ti-device-desktop-plus text-white me-1 fs-5"></i>@lang('views.ADD BONUS TYPE')
+                    <a href="{{ route("front.allowance-types.create") }}" class="btn btn-info float-end">
+                        <i class="ti ti-device-desktop-plus text-white me-1 fs-5"></i>@lang('views.ADD ALLOWANCE TYPE')
                       </a>
-                    <h4 class="fw-semibold mb-8">@lang('views.BONUS TYPES')</h4>
+                    <h4 class="fw-semibold mb-8">@lang('views.ALLOWANCE TYPES')</h4>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a class="text-muted"
                                     href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
-                            <li class="breadcrumb-item" aria-current="page">@lang('views.BONUS TYPES')</li>
+                            <li class="breadcrumb-item" aria-current="page">@lang('views.ALLOWANCE TYPES')</li>
                         </ol>
                     </nav>
                 </div>
@@ -32,7 +32,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-2">
-                                <h5 class="mb-0">@lang('views.BONUS TYPES')</h5>
+                                <h5 class="mb-0">@lang('views.ALLOWANCE TYPES')</h5>
                             </div>
                             <div class="table-responsive">
                                 <table id="scroll_hor"
@@ -63,10 +63,10 @@
 
                                         <td>
                                             <div class="action-btn">
-                                                <a href="{{ route('front.reward-types.show',$type->id) }}" class="text-info edit">
+                                                <a href="{{ route('front.allowance-types.show',$type->id) }}" class="text-info edit">
                                                   <i class="ti ti-eye fs-5"></i>
                                                 </a>
-                                                <a href="{{ route('front.reward-types.edit',$type->id) }}" class="text-primary edit">
+                                                <a href="{{ route('front.allowance-types.edit',$type->id) }}" class="text-primary edit">
                                                   <i class="ti ti-edit fs-5"></i>
                                                 </a>
                                               </div>

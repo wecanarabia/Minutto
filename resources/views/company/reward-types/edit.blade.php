@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">@lang('views.BONUS TYPES')</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.ALLOWANCE TYPES')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.reward-types.index') }}">@lang('views.BONUS TYPES')</a></li>
+                                            href="{{ route('front.allowance-types.index') }}">@lang('views.ALLOWANCE TYPES')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -27,9 +27,9 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">@lang('views.EDIT BONUS TYPE')</h5>
+                                        <h5 class="mb-0">@lang('views.EDIT ALLOWANCE TYPE')</h5>
                                     </div>
-                                    <form method="post" action="{{ route('front.reward-types.update',$type->id) }}">
+                                    <form method="post" action="{{ route('front.allowance-types.update',$type->id) }}">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="id" value="{{ $type->id }}">

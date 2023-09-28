@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers\Front;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Shift;
 use App\Models\Branch;
+use App\Models\Salary;
 use App\Traits\LogTrait;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use App\Models\EmployeeVacation;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use App\Http\Requests\Company\UserRequest;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\Company\UserRequest;
 use App\Http\Requests\Company\UpdateEmployeeRequest;
 
 class EmployeeController extends Controller
@@ -72,8 +75,11 @@ class EmployeeController extends Controller
      */
     public function update(UserRequest $request, string $id)
     {
-        $user = User::findOrFail($id);
 
+        $user = User::findOrFail($id);
+        if ($request->active&&(is_null($user->daily_salary)||is_null($user->monthly_salary)||is_null($user->hourly_salary)||is_null($user->department_id)||is_null($user->branch_id)||is_null($user->shift_id)||is_null($user->work_start))){
+            return redirect()->back()->with('error','Salary Info And Work Info Are Required to activate Employee Account');
+        }
 
         if ($request->has('password')&&$request->password != null) {
             $request['password']=bcrypt($request->password);
@@ -94,7 +100,27 @@ class EmployeeController extends Controller
         }else if ($request->has('monthly_salary')||$request->has('daily_salary')||$request->has('hourly_salary')) {
             $this->addLog($user->id, 'Update Employee Data', 'تحديث بيانات الموظف', 'Employee salary information has been updated', 'تم تحديث معلومات الراتب لموظف');
         }
+        if ($request->has('is_imei')) {
+            unset($request['is_imei']);
+            $request['imei']=null;
+        }
         $user->update($request->all());
+        if($user->active&&is_null($user->salary)){
+            $salary = new Salary([
+                "year"=>Carbon::now()->year,
+                "month"=>Carbon::now()->month,
+                'net_salary'=>$user->daily_salary,
+            ]);
+            $user->salary()->save($salary);
+        }
+        if($user->active&&(is_null($user->UserVacations()?->latest()?->first()?->year)||$user->UserVacations()?->latest()?->first()?->year!=Carbon::now()->year)){
+
+            EmployeeVacation::create([
+                'vacation_balance'=>Auth::user()->company->holidays_count+Auth::user()->company->sick_leaves,
+                'user_id'=>$user->id,
+                'year'=>Carbon::now()->year,
+            ]);
+        }
 
         return redirect()->route('front.employees.show',$user->id)
         ->with('success','Employeet of this year has been update successfully');

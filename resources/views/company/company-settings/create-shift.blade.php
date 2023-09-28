@@ -55,7 +55,7 @@
 
                                             </div>
 
-                                            <a href="{{ route('front.company-settings.department.create') }}" class="btn btn-dark mt-4">Back</a>
+                                            <a href="{{ route('front.company-settings.deduction.create') }}" class="btn btn-dark mt-4">Back</a>
                                             <input type="submit" value="Submit" class="btn btn-primary mt-4">
                                         </form>
                                     </div>

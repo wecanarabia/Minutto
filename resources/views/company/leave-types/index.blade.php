@@ -3,7 +3,7 @@
         <div class="card-body px-4 py-3">
             <div class="row align-items-center">
                 <div class="col-12">
-                    <a href="{{ route("front.leave-types.create") }}" class="btn btn-info float-end">
+                    <a href="{{ route("front.departure-types.create") }}" class="btn btn-info float-end">
                         <i class="ti ti-device-ipad-horizontal-plus text-white me-1 fs-5"></i> @lang('views.ADD LEAVE TYPE')Add leave Type
                       </a>
                     <h4 class="fw-semibold mb-8">@lang('views.LEAVE TYPES')</h4>
@@ -63,10 +63,10 @@
 
                                         <td>
                                             <div class="action-btn">
-                                                <a href="{{ route('front.leave-types.show',$type->id) }}" class="text-info edit">
+                                                <a href="{{ route('departure.leave-types.show',$type->id) }}" class="text-info edit">
                                                   <i class="ti ti-eye fs-5"></i>
                                                 </a>
-                                                <a href="{{ route('front.leave-types.edit',$type->id) }}" class="text-primary edit">
+                                                <a href="{{ route('departure.leave-types.edit',$type->id) }}" class="text-primary edit">
                                                   <i class="ti ti-edit fs-5"></i>
                                                 </a>
                                               </div>

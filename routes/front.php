@@ -14,17 +14,21 @@ use App\Http\Controllers\Front\RewardController;
 use App\Http\Controllers\Front\SalaryController;
 use App\Http\Controllers\Front\AdvanceController;
 use App\Http\Controllers\Front\CompanyController;
+use App\Http\Controllers\Front\MessageController;
 use App\Http\Controllers\Front\WorkDayController;
 use App\Http\Controllers\Front\EmployeeController;
 use App\Http\Controllers\Front\VacationController;
+use App\Http\Controllers\Front\DeductionController;
 use App\Http\Controllers\Front\ExtraTypeController;
 use App\Http\Controllers\Front\LeaveTypeController;
 use App\Http\Controllers\Front\AttendanceController;
 use App\Http\Controllers\Front\DepartmentController;
 use App\Http\Controllers\Front\RewardTypeController;
 use App\Http\Controllers\Front\CompanyAdminController;
+use App\Http\Controllers\Front\NotificationController;
 use App\Http\Controllers\Front\VacationTypeController;
 use App\Http\Controllers\Front\EmployeeVacationController;
+use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\OfficialVacationController;
 
 Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
@@ -47,27 +51,31 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::post('company-settings/main-shift/store', [CompanyController::class, 'storeShift'])->name('company-settings.shift.store');
             Route::get('company-settings/department/create', [CompanyController::class, 'createDepartment'])->name('company-settings.department.create');
             Route::post('company-settings/department/store', [CompanyController::class, 'storeDepartment'])->name('company-settings.department.store');
+            Route::get('company-settings/deduction/create', [CompanyController::class, 'createDeduction'])->name('company-settings.deduction.create');
+            Route::post('company-settings/deduction/store', [CompanyController::class, 'storeDeduction'])->name('company-settings.deduction.store');
             Route::get('company-settings/shift-workdays/create', [CompanyController::class, 'createWorkdays'])->name('company-settings.shift-workdays.create');
             Route::post('company-settings/shift-workdays/store', [CompanyController::class, 'storeWorkdays'])->name('company-settings.shift-workdays.store');
             Route::get('company-settings/show', [CompanyController::class, 'show'])->name('company-settings.show');
-            // Route::get('company-settings/edit', [CompanyController::class, 'edit'])->name('company-settings.edit');
-            Route::put('company-settings/update', [CompanyController::class, 'update'])->name('company-settings.update');
+                       Route::put('company-settings/update', [CompanyController::class, 'update'])->name('company-settings.update');
 
         Route::group(['middleware' => ['CheckCompany', 'timezone']], function () {
             Route::resource('employees', EmployeeController::class)->except(['destroy', 'edit', 'create', 'store'])->middleware('can:employees');
             Route::resource('departments', DepartmentController::class)->except(['destroy'])->middleware('can:departments');
             Route::resource('branches', BranchController::class)->except(['destroy'])->middleware('can:branches');
             Route::resource('shifts', ShiftController::class)->except(['destroy'])->middleware('can:shifts');
-            Route::resource('leave-types', LeaveTypeController::class)->except(['destroy'])->middleware('can:leaves');
+            Route::resource('departure-types', LeaveTypeController::class)->except(['destroy'])->middleware('can:leaves');
             Route::resource('vacation-types', VacationTypeController::class)->except(['destroy'])->middleware('can:vacations');
-            Route::resource('reward-types', RewardTypeController::class)->except(['destroy'])->middleware('can:rewards');
-            Route::resource('rewards', RewardController::class)->except(['destroy'])->middleware('can:rewards');
+            Route::resource('allowance-types', RewardTypeController::class)->except(['destroy'])->middleware('can:rewards');
+            Route::resource('allowances', RewardController::class)->except(['destroy'])->middleware('can:rewards');
             Route::resource('alerts', AlertController::class)->except(['destroy'])->middleware('can:alerts');
             Route::resource('workdays', WorkDayController::class)->except(['destroy'])->middleware('can:shifts');
-            Route::resource('extra-types', ExtraTypeController::class)->except(['destroy'])->middleware('can:extra');
+            // Route::resource('extra-types', ExtraTypeController::class)->except(['destroy'])->middleware('can:extra');
             Route::resource('official-vacations', OfficialVacationController::class)->except(['destroy'])->middleware('can:official-vacations');
             Route::resource('admins', CompanyAdminController::class)->except(['destroy'])->middleware('can:admins');
             Route::resource('roles', RoleController::class)->except(['destroy'])->middleware('can:roles');
+            Route::resource('faqs', FaqController::class)->except(['destroy'])->middleware('can:faqs');
+            Route::resource('deductions', DeductionController::class)->except(['destroy','edit'])->middleware('can:attendance');
+            Route::resource('notifications', NotificationController::class)->except(['edit','update','destroy'])->middleware('can:notifications');
 
             //files
             Route::get('rewards/file/{id}', [RewardController::class, 'openFile'])->name('rewards.file')->middleware('can:rewards');
@@ -86,10 +94,10 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             });
             //leaves
             Route::group(['middleware' => 'can:leaves'], function () {
-                Route::get('leaves', [LeaveController::class, 'index'])->name('leaves.index');
-                Route::get('leaves/{id}', [LeaveController::class, 'show'])->name('leaves.show');
-                Route::get('leaves/file/{id}', [LeaveController::class, 'openFile'])->name('leaves.file');
-                Route::put('leaves/update/{id}', [LeaveController::class, 'update'])->name('leaves.update');
+                Route::get('departures', [LeaveController::class, 'index'])->name('leaves.index');
+                Route::get('departures/{id}', [LeaveController::class, 'show'])->name('leaves.show');
+                Route::get('departures/file/{id}', [LeaveController::class, 'openFile'])->name('leaves.file');
+                Route::put('departures/update/{id}', [LeaveController::class, 'update'])->name('leaves.update');
             });
             //vacations
             Route::group(['middleware' => 'can:vacations'], function () {
@@ -112,6 +120,14 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::get('extras/{id}', [ExtraController::class, 'show'])->name('extras.show');
                 Route::get('extras/file/{id}', [ExtraController::class, 'openFile'])->name('extras.file');
                 Route::put('extras/update/{id}', [ExtraController::class, 'update'])->name('extras.update');
+            });
+            //messages
+            Route::group(['middleware' => 'can:messages'], function () {
+                Route::get('messages', [MessageController::class, 'index'])->name('messages.index');
+                Route::get('messages/create', [MessageController::class, 'create'])->name('messages.create');
+                Route::post('messages/store', [MessageController::class, 'store'])->name('messages.store');
+                Route::get('messages/show', [MessageController::class, 'show'])->name('messages.show');
+                Route::put('messages/update', [MessageController::class, 'update'])->name('messages.update');
             });
             //employee-vacations
             Route::group(['middleware' => 'can:vacations'], function () {
