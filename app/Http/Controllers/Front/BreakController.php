@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Company\LeaveRequest;
 
-class LeaveController extends Controller
+
+class BreakController extends Controller
 {
     use LogTrait;
     public function index()
@@ -20,24 +21,24 @@ class LeaveController extends Controller
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->get();
         if ($employees->count()>0) {
-            $data = Leave::where('is_break',0)->whereBelongsTo($employees)->orderByDesc('created_at')->get();
+            $data = Leave::where('is_break',1)->whereBelongsTo($employees)->orderByDesc('created_at')->get();
         }else{
             $data=collect([]);
         }
-        return view('company.leaves.index',compact('data'));
+        return view('company.breaks.index',compact('data'));
     }
 
     public function show($id)
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
+        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
-        $leave = Leave::where('is_break',0)->find($id);
+        $leave = Leave::where('is_break',1)->find($id);
         if (!in_array($leave->user->id,$employees)) {
             return abort('404');
         }
         $allStatus=Leave::STATUS;
-        return view('company.leaves.show',compact('leave','allStatus'));
+        return view('company.breaks.show',compact('leave','allStatus'));
     }
 
     public function openFile($id)
@@ -57,16 +58,16 @@ class LeaveController extends Controller
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
-        $leave = Leave::where('is_break',0)->find($id);
+        $leave = Leave::where('is_break',1)->find($id);
 
 
         $allStatus=Leave::STATUS;
 
         if ($leave->getTranslation('status','en')!==$request['status.en']) {
             if($request['status.en'] == 'approve'){
-                $this->addLog($leave->user->id,'Update Departure request','تحديث طلب المغادرة','Departure request has been approved','تم الموافقة على طلب المغادرة',$request['note']);
+                $this->addLog($leave->user->id,'Update Break request','تحديث طلب الإستراحة','Break request has been approved','تم الموافقة على طلب الإستراحة',$request['note']);
             }else if($request['status.en'] == 'rejected'){
-                $this->addLog($leave->user->id,'Update Departure request','تحديث طلب المغادرة','Departure request has been rejected','تم رفض طلب المغادرة',$request['note']);
+                $this->addLog($leave->user->id,'Update Break request','تحديث طلب الإستراحة','Break request has been rejected','تم رفض طلب الإستراحة',$request['note']);
                 $leave->user()->update([
                     'is_left'=>0
                 ]);
@@ -75,7 +76,7 @@ class LeaveController extends Controller
 
         if ($leave->discount_value!==$request['discount_value']) {
 
-            $this->addLog($leave->user->id, 'Update Departure request', 'تحديث طلب المغادرة', 'Departure request Deduction has been updated', 'تم تحديث قيمة خصم طلب المغادرة لموظف', $request['note']);
+            $this->addLog($leave->user->id, 'Update Break request', 'تحديث طلب الإستراحة', 'Break request Deduction has been updated', 'تم تحديث قيمة خصم طلب الإستراحة لموظف', $request['note']);
         }
         $leave->update([
             'status'=>$request['status'],
@@ -84,7 +85,7 @@ class LeaveController extends Controller
             'replay'=>$request['replay'],
         ]);
 
-        return redirect()->route('front.leaves.show',$leave->id)
-        ->with('success','Departure Request has been update successfully');
+        return redirect()->route('front.breaks.show',$leave->id)
+        ->with('success','Break Request has been update successfully');
     }
 }

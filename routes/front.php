@@ -24,6 +24,7 @@ use App\Http\Controllers\Front\DeductionController;
 use App\Http\Controllers\Front\ExtraTypeController;
 use App\Http\Controllers\Front\LeaveTypeController;
 use App\Http\Controllers\Front\AttendanceController;
+use App\Http\Controllers\Front\BreakController;
 use App\Http\Controllers\Front\DepartmentController;
 use App\Http\Controllers\Front\RewardTypeController;
 use App\Http\Controllers\Front\CompanyAdminController;
@@ -99,6 +100,14 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::get('departures/{id}', [LeaveController::class, 'show'])->name('leaves.show');
                 Route::get('departures/file/{id}', [LeaveController::class, 'openFile'])->name('leaves.file');
                 Route::put('departures/update/{id}', [LeaveController::class, 'update'])->name('leaves.update');
+            });
+
+            //departures
+            Route::group(['middleware' => 'can:leaves'], function () {
+                Route::get('breaks', [BreakController::class, 'index'])->name('breaks.index');
+                Route::get('breaks/{id}', [BreakController::class, 'show'])->name('breaks.show');
+                Route::get('breaks/file/{id}', [BreakController::class, 'openFile'])->name('breaks.file');
+                Route::put('breaks/update/{id}', [BreakController::class, 'update'])->name('breaks.update');
             });
             //vacations
             Route::group(['middleware' => 'can:vacations'], function () {

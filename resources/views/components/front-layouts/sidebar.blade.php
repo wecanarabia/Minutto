@@ -139,6 +139,17 @@
                         </a>
                     </li>
                     @endcan
+
+                    @can('leaves')
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('front.breaks.index') }}" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-mood-smile-filled"></i>
+                            </span>
+                            <span class="hide-menu">طلبات الإستراحة</span>
+                        </a>
+                    </li>
+                    @endcan
                     @can('extra')
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="{{ route('front.extras.index') }}" aria-expanded="false">
