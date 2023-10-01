@@ -165,6 +165,7 @@ return [
 'CREATE BONUS' => 'إنشاء مكافأة',
 'BONUS DATE' => 'تاريخ المكافأة',
 'BONUS TYPE' => 'نوع المكافأة',
+'BONUS' => 'المكافأت' ,
 'BONUS TYPES VALUE' => 'قيمة نوع المكافأة',
 'ALLOWANCE TYPES' => 'أنواع البدلات' ,
 'CREATE ALLOWANCE TYPE' => 'إنشاء نوع بدل' ,

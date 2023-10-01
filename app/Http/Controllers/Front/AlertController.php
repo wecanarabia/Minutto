@@ -48,7 +48,7 @@ class AlertController extends Controller
    public function store(AlertRequest $request)
    {
 
-            
+
        $alert = Alert::create($request->all());
        $this->addLog($alert->user->id,'Add Alert','إضافة مخالفة','Alert has been added to employee','تم إضافة مخالفة على موظف',$alert->note);
        if ($alert->getTranslation('type','en')=='vacation days') {
@@ -114,9 +114,11 @@ class AlertController extends Controller
         $alert->update($request->all());
         $this->addLog($alert->user->id,'Update Alert','تحديث مخالفة','Alert has been updated on employee','تم تحديث مخالفة على موظف',$alert->note);
        if ($alert->getTranslation('type','en')=='vacation days'&&$alert->user->userVacation->vacation_balance>=$alert->punishment) {
-
-                $alert->user->userVacation()->update(['vacation_balance'=>(int)$sum-(int)$alert->punishment]);
-
+            $alert->user->userVacation()->update(['vacation_balance'=>(int)$sum-(int)$alert->punishment]);
+        }else if($alert->getTranslation('type','en')=='vacation days'&&$alert->user->userVacation->vacation_balance<$alert->punishment) {
+            $alert->update(['punishment'=>0]);
+            return redirect()->route('front.alerts.show',$alert->id)
+            ->with('warning','Vacation Balance is not enough');
         }
        return redirect()->route('front.alerts.show',$alert->id)
                        ->with('success','Alert has been updated successfully');

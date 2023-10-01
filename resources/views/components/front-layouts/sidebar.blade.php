@@ -103,7 +103,7 @@
                 <!-- ============================= -->
                 <!-- Apps -->
                 <!-- ============================= -->
-                @if (Auth::user()->can('employees') || Auth::user()->can('vacations')|| Auth::user()->can('bonus') || Auth::user()->can('pages') || Auth::user()->can('leaves') || Auth::user()->can('rewards') || Auth::user()->can('alerts') || Auth::user()->can('official-vacations'))
+                @if (Auth::user()->can('employees') || Auth::user()->can('vacations') || Auth::user()->can('bonus') || Auth::user()->can('pages') || Auth::user()->can('leaves') || Auth::user()->can('rewards') || Auth::user()->can('alerts') || Auth::user()->can('official-vacations'))
 
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -160,16 +160,16 @@
                         </a>
                     </li>
                     @endcan
-                    {{-- @can('rewards')
+                    @can('bonus')
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('front.allowances.index') }}" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('front.bonus.index') }}" aria-expanded="false">
                             <span>
                                 <i class="ti ti-file-certificate"></i>
                             </span>
                             <span class="hide-menu">الحوافز والمكافئات</span>
                         </a>
                     </li>
-                    @endcan --}}
+                    @endcan
                     @can('official-vacations')
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="{{ route('front.official-vacations.index') }}" aria-expanded="false">

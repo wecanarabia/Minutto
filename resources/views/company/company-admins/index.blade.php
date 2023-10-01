@@ -10,6 +10,7 @@
                   <a href="{{ route("front.roles.index") }}" class="btn btn-dark float-end">
                     <i class="ti ti-lock-cog text-white me-1 fs-5"></i> @lang('views.ROLES')
                   </a>
+                  @endcan
 
 
               <h4 class="fw-semibold mb-8">@lang('views.ADMINS')</h4>

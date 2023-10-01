@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">@lang('views.ALERTS')</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.BONUS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.alerts.index') }}">@lang('views.ALERTS')</a></li>
+                                            href="{{ route('front.bonus.index') }}">@lang('views.BONUS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -27,14 +27,14 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">@lang('views.CREATE ALERT')</h5>
+                                        <h5 class="mb-0">@lang('views.CREATE BONUS')</h5>
                                     </div>
-                                    <form method="post" action="{{ route('front.alerts.store') }}" enctype="multipart/form-data">
+                                    <form method="post" action="{{ route('front.bonus.store') }}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="mb-4">
-                                            <label class="form-label">@lang('views.ALERT DATE')</label>
-                                            <input type="date" class="form-control" name="alert_date" value="{{ old('alert_date') }}" required>
-                                            @error('alert_date')
+                                            <label class="form-label">@lang('views.BONUS DATE')</label>
+                                            <input type="date" class="form-control" name="date" value="{{ old('date') }}" required>
+                                            @error('date')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -60,6 +60,7 @@
                                             @enderror
                                         </div>
 
+
                                         <div class="mb-4">
                                             <label class="form-label">@lang('views.ALERT TYPE')</label>
                                             <select class="default-select form-control" name="type">
@@ -74,12 +75,14 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label">@lang('views.ALERT TYPES VALUE') (days-amount)</label>
-                                            <input type="text" class="form-control" name="punishment" value="{{ old('punishment') }}" required>
-                                            @error('punishment')
+                                            <label class="form-label">@lang('views.BONUS TYPES VALUE') (days-amount)</label>
+                                            <input type="text" class="form-control" name="value" value="{{ old('value') }}" required>
+                                            @error('value')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
+
+
 
                                         <div class="mb-4">
                                             <label class="form-label">@lang('views.FILE')</label>

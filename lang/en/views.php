@@ -163,6 +163,7 @@ return [
     'CREATE BONUS TYPE' => 'Create Bonus Type' ,
     'EDIT BONUS TYPE' => 'Edit Bonus Type' ,
     'ADD BONUS TYPE' => 'Add Bonus Type' ,
+    'BONUS' => 'Bonus' ,
     'CREATE BONUS' => 'Create Bonus' ,
     'BONUS DATE' => 'Bonus Date' ,
     'BONUS TYPE' => 'Bonus Type' ,

@@ -31,7 +31,7 @@ class BreakController extends Controller
     public function show($id)
     {
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
-        $employees = User::active()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
+        $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
         $leave = Leave::where('is_break',1)->find($id);
         if (!in_array($leave->user->id,$employees)) {
@@ -59,7 +59,6 @@ class BreakController extends Controller
         $employees = User::active()->hasSalary()->whereBelongsTo($branches)->with(['branch','shift'])->pluck('id')->toArray();
 
         $leave = Leave::where('is_break',1)->find($id);
-
 
         $allStatus=Leave::STATUS;
 

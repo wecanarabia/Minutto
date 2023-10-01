@@ -24,6 +24,7 @@ use App\Http\Controllers\Front\DeductionController;
 use App\Http\Controllers\Front\ExtraTypeController;
 use App\Http\Controllers\Front\LeaveTypeController;
 use App\Http\Controllers\Front\AttendanceController;
+use App\Http\Controllers\Front\BonusController;
 use App\Http\Controllers\Front\BreakController;
 use App\Http\Controllers\Front\DepartmentController;
 use App\Http\Controllers\Front\RewardTypeController;
@@ -70,6 +71,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::resource('allowance-types', RewardTypeController::class)->except(['destroy'])->middleware('can:rewards');
             Route::resource('allowances', RewardController::class)->except(['destroy'])->middleware('can:rewards');
             Route::resource('alerts', AlertController::class)->except(['destroy'])->middleware('can:alerts');
+            Route::resource('bonus', BonusController::class)->except(['destroy'])->middleware('can:bonus');
             Route::resource('workdays', WorkDayController::class)->except(['destroy'])->middleware('can:shifts');
             // Route::resource('extra-types', ExtraTypeController::class)->except(['destroy'])->middleware('can:extra');
             Route::resource('official-vacations', OfficialVacationController::class)->except(['destroy'])->middleware('can:official-vacations');
@@ -82,6 +84,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             //files
             Route::get('rewards/file/{id}', [RewardController::class, 'openFile'])->name('rewards.file')->middleware('can:rewards');
             Route::get('alerts/file/{id}', [AlertController::class, 'openFile'])->name('alerts.file')->middleware('can:alerts');
+            Route::get('bonus/file/{id}', [BonusController::class, 'openFile'])->name('bonus.file')->middleware('can:bonus');
 
             //shift-workdays
             Route::get('shifts/workdays/{id}/edit', [WorkDayController::class, 'editShiftWorkdays'])->name('shifts.workdays.edit')->middleware('can:shifts');
