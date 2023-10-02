@@ -79,11 +79,9 @@
                                     <select class="form-select" name="department_head">
                                         <option data-display="Select">
                                             @if ($employees->count() == 0)
-                                                This Department has <b>no</b> employees, please add employees to select
-                                                head from
+                                            @lang('views.NO DEPARTMENT HEAD')
                                             @else
-                                                Select Department head
-                                            @endif
+                                            @lang('views.GET DEPARTMENT HEAD')                                            @endif
                                         </option>
                                         @foreach ($employees as $employee)
                                             <option value="{{ $employee->id }}" @selected(old('department_head', $department->department_head) == $employee->id)>
@@ -97,7 +95,7 @@
                                     @enderror
                                 </div>
 
-                                <input type="submit" value="Update" class="btn btn-primary">
+                                <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary">
                                 </form>
                             </div>
                         </div>

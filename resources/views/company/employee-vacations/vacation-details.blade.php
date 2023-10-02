@@ -103,7 +103,7 @@
 
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary mx-2">
                                                     <button id="cat-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>

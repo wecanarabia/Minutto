@@ -56,6 +56,7 @@ return [
     'EMAIL ADDRESS' => 'Email Address',
     'DEPARTMENTS' => 'Departments',
     'CREATE DEPARTMENT' => 'Create Department',
+    'ADD DEPARTMENT' => 'Add Department',
     'ENGLISH DESCRIPTION' => 'English Description',
     'ARABIC DESCRIPTION' => 'Arabic Description',
     'EDIT DEPARTMENT' => 'Edit Department',
@@ -208,6 +209,8 @@ return [
     'ADD Attendance Deduction' => 'Add Attendance Deduction',
     'GET BRANCH HEAD' => 'Select branch head',
     'NO BRANCH HEAD' => 'This branch has no employees, please add employees to select head from',
+     'GET DEPARTMENT HEAD' => 'Select Department head',
+    'NO DEPARTMENT HEAD' => 'This Department has no employees, please add employees to select head from',
     'ALERT TYPE VALUE' => '(days-amount)',
 
 
