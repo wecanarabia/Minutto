@@ -590,6 +590,22 @@
                                                     </h6>
                                                 </div>
 
+                                                <div class="col-6 mb-7">
+                                                    <p class="mb-1 fs-2">Insurance Value (Deducted from monthly salary on Payroll)</p>
+                                                    <h6 class="fw-semibold mb-0">{{ currency($employee->insurance_value) }}
+                                                    </h6>
+                                                </div>
+                                                <div class="col-6 mb-7">
+                                                    <p class="mb-1 fs-2">Income Tax (Deducted from monthly salary on Payroll)</p>
+                                                    <h6 class="fw-semibold mb-0">{{ currency($employee->income_tax) }}
+                                                    </h6>
+                                                </div>
+                                                <div class="col-6 mb-7">
+                                                    <p class="mb-1 fs-2">Retirement Benefits (Deducted from monthly salary on Payroll)</p>
+                                                    <h6 class="fw-semibold mb-0">{{ currency($employee->retirement_benefits) }}
+                                                    </h6>
+                                                </div>
+
 
 
 
@@ -652,6 +668,21 @@
                                                             <label for="exampleFormControlInput3335" class="form-label">@lang('views.HOURLY SALARY')</label>
                                                             <input type="text" class="form-control" name="hourly_salary" id="exampleFormControlInput3335"
                                                                 value="{{ $employee->hourly_salary }}">
+                                                        </div>
+                                                        <div class="mb-4 col-6">
+                                                            <label for="exampleFormControlInput3336" class="form-label">Insurance Value (Deducted from monthly salary on Payroll)</label>
+                                                            <input type="text" class="form-control" name="insurance_value" id="exampleFormControlInput3336"
+                                                                value="{{ $employee->insurance_value }}">
+                                                        </div>
+                                                        <div class="mb-4 col-6">
+                                                            <label for="exampleFormControlInput3337" class="form-label">Income Tax (Deducted from monthly salary on Payroll)</label>
+                                                            <input type="text" class="form-control" name="income_tax" id="exampleFormControlInput3337"
+                                                                value="{{ $employee->income_tax }}">
+                                                        </div>
+                                                        <div class="mb-4 col-6">
+                                                            <label for="exampleFormControlInput3338" class="form-label">Retirement Benefits (Deducted from monthly salary on Payroll)</label>
+                                                            <input type="text" class="form-control" name="retirement_benefits" id="exampleFormControlInput3338"
+                                                                value="{{ $employee->retirement_benefits }}">
                                                         </div>
 
 
