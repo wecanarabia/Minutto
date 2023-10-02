@@ -133,6 +133,7 @@ class LeaveController extends ApiController
 
 
         $data['taken'] = Leave::where('user_id', Auth::user()->id)->where('time_leave','!=',null)
+        ->where('is_break',0)
         ->whereMonth('leave_date', $currentM)
         ->whereYear('leave_date', $currentY)
         ->get()->count();
