@@ -165,6 +165,7 @@ return [
     'EDIT SHIFT' => 'Edit Shift',
     'EDIT BONUS' => 'Edit Bonus',
     'ADD OFFICIAL VACATIONS' => 'Add Official Vacations',
+    'EDIT OFFICIAL VACATIONS' => 'Edit Official Vacations',
     'BONUS TYPES' => 'Bonus Types' ,
     'CREATE BONUS TYPE' => 'Create Bonus Type' ,
     'EDIT BONUS TYPE' => 'Edit Bonus Type' ,
@@ -177,6 +178,7 @@ return [
     'ALLOWANCE TYPES' => 'Allowance Types' ,
     'CREATE ALLOWANCE TYPE' => 'Create Allowance Type' ,
     'EDIT ALLOWANCE TYPE' => 'Edit Allowance Type' ,
+    'EDIT ALLOWANCE' => 'Edit Allowance' ,
     'ADD ALLOWANCE TYPE' => 'Add Allowance Type' ,
     'CREATE ALLOWANCE' => 'Create Allowance' ,
     'ALLOWANCE DATE' => 'Allowance Date' ,
@@ -222,7 +224,9 @@ return [
      'GET DEPARTMENT HEAD' => 'Select Department head',
     'NO DEPARTMENT HEAD' => 'This Department has no employees, please add employees to select head from',
     'ALERT TYPE VALUE' => '(days-amount)',
-    'IMEI'=>'Allow login from new phone (In case of uninstall the application or login from new phone)'
+    'IMEI'=>'Allow login from new phone (In case of uninstall the application or login from new phone)',
+    'SIGN-IN'=>'Sign-in Minutto',
+    'SIGN-UP'=>'Sign-up Minutto',
 
 
 

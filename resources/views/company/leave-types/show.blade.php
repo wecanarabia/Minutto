@@ -12,7 +12,7 @@
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.departure--types.index') }}">@lang('views.LEAVE TYPES')</a></li>
+                                            href="{{ route('front.departure-types.index') }}">@lang('views.LEAVE TYPES')</a></li>
                                 </ol>
                             </nav>
                         </div>

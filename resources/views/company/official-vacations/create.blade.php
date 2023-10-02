@@ -10,7 +10,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">@lang('views.LOGS')</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
                                             href="{{ route('front.official-vacations.index') }}">@lang('views.OFFICAL VACATIONS')</a></li>
                                 </ol>
@@ -87,7 +87,7 @@
 
 
 
-                                        <input type="submit" value="Save" class="btn btn-primary">
+                                        <input type="submit" value="@lang('views.Arabic SAVE')" class="btn btn-primary">
                                     </form>
                                 </div>
                             </div>

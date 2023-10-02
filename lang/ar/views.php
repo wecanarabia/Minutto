@@ -167,6 +167,7 @@ return [
     'OFFICIAL VACATIONS' => 'إجازات رسمية',
     'EDIT SHIFT' => 'تعديل الوردية',
     'ADD OFFICIAL VACATIONS' => 'إضافة إجازات رسمية',
+    'EDIT OFFICIAL VACATIONS' => 'تحديث إجازات رسمية',
     'BONUS TYPES' => 'أنواع المكافآت',
 'CREATE BONUS TYPE' => 'إنشاء نوع المكافأة',
 'EDIT BONUS TYPE' => 'تعديل نوع المكافأة',
@@ -180,6 +181,7 @@ return [
 'ALLOWANCE TYPES' => 'أنواع البدلات' ,
 'CREATE ALLOWANCE TYPE' => 'إنشاء نوع بدل' ,
 'EDIT ALLOWANCE TYPE' => 'تعدبل نوع بدل' ,
+'EDIT ALLOWANCE' => 'تعدبل بدل' ,
 'ADD ALLOWANCE TYPE' => 'إضافة نوع بدل' ,
 'CREATE ALLOWANCE' => 'إنشاء بدل' ,
 'ALLOWANCE DATE' => 'تاريخ البدل' ,
@@ -220,7 +222,8 @@ return [
 'Create Attendance Deduction' => 'إنشاء خصم الحضور',
 'ADD Attendance Deduction' => 'إضافة خصم الحضور',
 'IMEI' => 'إتاحة التسجبل من جهاز جديد(في حالة تسجيل الموظف من جهاز جديد أو التسجيل بعد إعادة تثبيت التطبيق على الجهاز)',
-
+'SIGN-IN'=>'تسجيل الدخول-مينيتو',
+'SIGN-UP'=>'التسجبل-مينيتو',
 
 
 ];

@@ -27,7 +27,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">@lang('views.EDIT SHIFT')</h5>
+                                        <h5 class="mb-0">@lang('views.EDIT OFFICIAL VACATIONS')</h5>
                                     </div>
                                     <form method="post" action="{{ route('front.official-vacations.update',$vacation->id) }}">
                                         @csrf
@@ -89,7 +89,7 @@
                                         </div>
 
 
-                                        <input type="submit" value="Update" class="btn btn-primary">
+                                        <input type="submit" value="@lang('views.Arabic UPDATE')" class="btn btn-primary">
                                     </form>
                                 </div>
                             </div>

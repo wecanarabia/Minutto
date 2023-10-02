@@ -27,7 +27,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">@lang('views.EDIT SHIFT')</h5>
+                                        <h5 class="mb-0">@lang('views.EDIT ALLOWANCE')</h5>
                                     </div>
                                     <form method="post" action="{{ route('front.allowances.update',$reward->id) }}" enctype="multipart/form-data">
                                         @csrf
@@ -44,7 +44,7 @@
                                         <div class="col-md-6">
                                             <label class="form-label">@lang('views.EMPLOYEE')</label>
                                             <select class="default-select form-control" name="user_id">
-                                             <option Selected disabled>Employee</option>
+                                             <option Selected disabled>@lang('views.EMPLOYEE')</option>
                                              @foreach ($employees as $employee)
                                              <option value="{{ $employee->id }}" @selected(old('user_id',$reward->user_id) == $employee->id)>{{ $employee->name  }}</option>
                                              @endforeach
@@ -84,7 +84,7 @@
                                          </div>
 
                                          <div class="col-md-6">
-                                            <label class="form-label">@lang('views.TYPES VALUE') (days-amount)</label>
+                                            <label class="form-label">@lang('views.TYPES VALUE') @lang('views.ALERT TYPE VALUE')</label>
                                             <input type="text" class="form-control" name="reward_value" value="{{ old('reward_value',$reward->reward_value) }}" required>
                                             @error('reward_value')
                                             <div class="text-danger">{{ $message }}</div>
@@ -94,7 +94,7 @@
                                          <div class="col-md-6">
                                             <label class="form-label">@lang('views.STATUS')</label>
                                             <select class="default-select form-control" name="status">
-                                             <option Selected disabled>Status</option>
+                                             <option Selected disabled>@lang('views.STATUS')</option>
                                              @foreach ($allStatus as $status)
                                                 <option value="{{ json_encode($status) }}" @selected(old('status', $reward->getRawOriginal('status'))==json_encode($status))>
                                                 {{$status[Illuminate\Support\Facades\App::getLocale()] }}</option>
@@ -115,7 +115,7 @@
 
 
 
-                                        <input type="submit" value="Update" class="btn btn-primary">
+                                        <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary">
                                     </form>
                                 </div>
                             </div>

@@ -184,7 +184,7 @@
                                                             <label for="exampleFormextraStatus" class="form-label">@lang('views.STATUS')</label>
                                                             <select class="form-select" name="status" id="exampleFormleaveStatus"
                                                             aria-label="Default select example">
-                                                            <option disabled selected>Status</option>
+                                                            <option disabled selected>@lang('views.STATUS')</option>
                                                             @foreach ($allStatus as $status)
                                                             <option value="{{ json_encode($status) }}" @selected($leave->status==$status[Illuminate\Support\Facades\App::getLocale()])>
                                                             {{$status[Illuminate\Support\Facades\App::getLocale()] }}</option>
@@ -196,7 +196,7 @@
 
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary mx-2">
                                                     <button id="cat-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>
