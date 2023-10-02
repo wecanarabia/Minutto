@@ -80,10 +80,18 @@ return [
     'IDENTITY' => 'الهوية',
     'WORK INFORMATION' => 'معلومات العمل',
     'SALARY INFORMATION' => 'معلومات الراتب',
+    'UPDATE WORK INFORMATION' => 'تعديل معلومات العمل',
+    'UPDATE SALARY INFORMATION' => 'تعديل معلومات الراتب',
+    'INSURANCE VALUE' => 'قيمة التأمين',
+    'INCOME TAX' => 'ضريبة الدخل',
+    'RETIREMENT BENEFITS' => 'استحقاقات التقاعد',
+    'SALARY DEDUCTION' => '(يتم خصمها من الراتب الشهري في كشف الرواتب)',
+    'PROFILE' => 'الملف الشخصي',
     'PROFILE STATUS' => 'حالة الملف الشخصي',
     'UPDATE PROFILE' => 'تحديث الملف الشخصي',
     'LAST NAME' => 'الاسم الأخير',
     'IN ACTIVE' => 'غير نشط',
+    'ACTIVE' => 'نشط',
     'NATIONALITY' => 'الجنسية',
     'DATE OF BIRTH' => 'تاريخ الميلاد',
     'ADDRESS' => 'العنوان',
@@ -211,6 +219,7 @@ return [
 'UPDATE DEDUCTION' => 'تعديل الخصم',
 'Create Attendance Deduction' => 'إنشاء خصم الحضور',
 'ADD Attendance Deduction' => 'إضافة خصم الحضور',
+'IMEI' => 'إتاحة التسجبل من جهاز جديد(في حالة تسجيل الموظف من جهاز جديد أو التسجيل بعد إعادة تثبيت التطبيق على الجهاز)',
 
 
 

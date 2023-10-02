@@ -79,11 +79,15 @@ return [
     'EMPLOYEES' => 'Employees',
     'IDENTITY' => 'Identity',
     'WORK INFORMATION' => 'Work Information',
+    'UPDATE WORK INFORMATION' => 'Update Work Information',
     'SALARY INFORMATION' => 'Salary Information',
+    'UPDATE SALARY INFORMATION' => 'Update Salary Information',
     'PROFILE STATUS' => 'Profile Status',
     'UPDATE PROFILE' => 'Update Profile',
+    'PROFILE' => 'Profile',
     'LAST NAME' => 'Last Name',
     'IN ACTIVE' => 'In Active',
+    'ACTIVE' => 'Active',
     'NATIONALITY' => 'Nationality',
     'DATE OF BIRTH' => 'Date Of Birth',
     'ADDRESS' => 'Address',
@@ -202,6 +206,12 @@ return [
     'UPDATE VACATION REQUEST' => 'Update Vacation Request',
     'UPDATE' => 'Update',
     'SAVE' => 'Save',
+    'INSURANCE VALUE' => 'Insurance Value',
+    'INCOME TAX' => 'Income Tax',
+    'RETIREMENT BENEFITS' => 'Retirement Benefits',
+    'SALARY DEDUCTION' => '(Deducted from monthly salary on Payroll)',
+    'SAVE' => 'Save',
+    'SAVE' => 'Save',
     'ATTENDANCE DEDUCTION' => 'Attendance Deductions',
     'DEDUCTION PERCENTAGE' => 'Percentage',
     'UPDATE DEDUCTION' => 'Update Deduction',
@@ -212,6 +222,7 @@ return [
      'GET DEPARTMENT HEAD' => 'Select Department head',
     'NO DEPARTMENT HEAD' => 'This Department has no employees, please add employees to select head from',
     'ALERT TYPE VALUE' => '(days-amount)',
+    'IMEI'=>'Allow login from new phone (In case of uninstall the application or login from new phone)'
 
 
 
