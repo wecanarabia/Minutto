@@ -165,6 +165,7 @@ return [
 'CREATE BONUS' => 'إنشاء مكافأة',
 'BONUS DATE' => 'تاريخ المكافأة',
 'BONUS TYPE' => 'نوع المكافأة',
+'EDIT BONUS' => 'تعديل المكافأة',
 'BONUS' => 'المكافأت' ,
 'BONUS TYPES VALUE' => 'قيمة نوع المكافأة',
 'ALLOWANCE TYPES' => 'أنواع البدلات' ,
@@ -196,8 +197,17 @@ return [
 'ADD VACATION TYPE' => 'إضافة نوع الإجازة',
 'VACATION REQUESTS' => 'طلبات الإجازة' ,
 'VACATION TYPE' => 'نوع الإجازة',
-'UPDATE VACATION REQUEST' => 'تحديث طلب الإجازة'
-
+'UPDATE VACATION REQUEST' => 'تحديث طلب الإجازة',
+'UPDATE' => 'تحديف',
+'ALERT TYPE VALUE' => '(أيام-مبلغ)',
+'SAVE' => 'حفظ',
+'GET BRANCH HEAD' => 'مدير الفرع',
+'NO BRANCH HEAD' => 'لا يوجد موظفين في هذا الفرع، عليك بإضافة موظفين لهذا الفرع',
+'ATTENDANCE DEDUCTION' => 'خصم الحضور',
+'DEDUCTION PERCENTAGE' => 'الخصم من الراتب بالساعة',
+'UPDATE DEDUCTION' => 'تعديل الخصم',
+'Create Attendance Deduction' => 'إنشاء خصم الحضور',
+'ADD Attendance Deduction' => 'إضافة خصم الحضور',
 
 
 

@@ -4,9 +4,9 @@
             <div class="row align-items-center">
                 <div class="col-12">
                     <a href="{{ route("front.deductions.create") }}" class="btn btn-info float-end">
-                        <i class="ti ti-device-watch-plus text-white me-1 fs-5"></i> Add Attendance Deduction
+                        <i class="ti ti-device-watch-plus text-white me-1 fs-5"></i>@lang('views.ADD ATTENDANCE DEDUCTION')
                       </a>
-                    <h4 class="fw-semibold mb-8">Attendance Deductions</h4>
+                    <h4 class="fw-semibold mb-8">@lang('views.ATTENDANCE DEDUCTION')</h4>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a class="text-muted"
@@ -31,7 +31,7 @@
                         <div class="card-body">
                             <x-front-layouts.messages />
                             <div class="mb-2">
-                                <h5 class="mb-0">Attendance Deductions</h5>
+                                <h5 class="mb-0">@lang('views.DEPARTMENTS')</h5>
                             </div>
                             <div class="table-responsive">
                                 <table id="scroll_hor"
@@ -43,7 +43,7 @@
 
                                         <th>@lang('views.FROM')</th>
                                         <th>@lang('views.TO')</th>
-                                        <th>Percentage</th>
+                                        <th>@lang('views.DEDUCTION PERCENTAGE')</th>
                                         <th>@lang('views.ACTIONS')</th>
 
                                     </tr>

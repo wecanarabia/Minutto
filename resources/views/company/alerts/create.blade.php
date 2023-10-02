@@ -42,7 +42,7 @@
                                         <div class="mb-4">
                                             <label class="form-label">@lang('views.EMPLOYEE')</label>
                                             <select class="default-select form-control" name="user_id">
-                                             <option Selected disabled>Employee</option>
+                                             <option Selected disabled>@lang('views.EMPLOYEE')</option>
                                              @foreach ($employees as $employee)
                                              <option value="{{ $employee->id }}" @selected(old('user_id') == $employee->id)>{{ $employee->name  }}</option>
                                              @endforeach
@@ -74,7 +74,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label">@lang('views.ALERT TYPES VALUE') (days-amount)</label>
+                                            <label class="form-label">@lang('views.ALERT TYPES VALUE') @lang('views.ALERT TYPE VALUE')</label>
                                             <input type="text" class="form-control" name="punishment" value="{{ old('punishment') }}" required>
                                             @error('punishment')
                                             <div class="text-danger">{{ $message }}</div>
@@ -91,7 +91,7 @@
 
 
 
-                                        <input type="submit" value="Save" class="btn btn-primary">
+                                        <input type="submit" value="@lang('views.SAVE')" class="btn btn-primary">
                                     </form>
                                 </div>
                             </div>

@@ -158,6 +158,7 @@ return [
     'ENGLISH NOTE' => 'English Note' ,
     'OFFICIAL VACATIONS' => 'Official Vacations',
     'EDIT SHIFT' => 'Edit Shift',
+    'EDIT BONUS' => 'Edit Bonus',
     'ADD OFFICIAL VACATIONS' => 'Add Official Vacations',
     'BONUS TYPES' => 'Bonus Types' ,
     'CREATE BONUS TYPE' => 'Create Bonus Type' ,
@@ -198,6 +199,17 @@ return [
     'VACATION REQUESTS' => 'Vacation Requests' ,
     'VACATION TYPE' => 'Vacation Type',
     'UPDATE VACATION REQUEST' => 'Update Vacation Request',
+    'UPDATE' => 'Update',
+    'SAVE' => 'Save',
+    'ATTENDANCE DEDUCTION' => 'Attendance Deductions',
+    'DEDUCTION PERCENTAGE' => 'Percentage',
+    'UPDATE DEDUCTION' => 'Update Deduction',
+    'Create Attendance Deduction' => 'Create Attendance Deduction',
+    'ADD Attendance Deduction' => 'Add Attendance Deduction',
+    'GET BRANCH HEAD' => 'Select branch head',
+    'NO BRANCH HEAD' => 'This branch has no employees, please add employees to select head from',
+    'ALERT TYPE VALUE' => '(days-amount)',
+
 
 
 
