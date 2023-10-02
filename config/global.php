@@ -9,7 +9,7 @@ return [
         "departments"=>['en'=>"Departments",'ar'=>'الأقسام'],
         'branches'=>['en'=>'Branches','ar'=>'الفروع'],
         'shifts'=>['en'=>'Shifts','ar'=>'المناوبات'],
-        'leaves'=>['en'=>'Leaves','ar'=>'المغادرات'],
+        'leaves'=>['en'=>'Departures and Breaks','ar'=>'المغادرات والاستراحات'],
         'vacations'=>['en'=>'Vacations','ar'=>'الأجازات'],
         'rewards'=>['en'=>'Allowance','ar'=>'البدلات'],
         'alerts'=>['en'=>'Alerts','ar'=>'الجزاءات'],

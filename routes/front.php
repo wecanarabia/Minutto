@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\LogController;
+use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\RoleController;
 use App\Http\Controllers\Front\AlertController;
 use App\Http\Controllers\Front\ExtraController;
@@ -22,13 +24,14 @@ use App\Http\Controllers\Front\DeductionController;
 use App\Http\Controllers\Front\ExtraTypeController;
 use App\Http\Controllers\Front\LeaveTypeController;
 use App\Http\Controllers\Front\AttendanceController;
+use App\Http\Controllers\Front\BonusController;
+use App\Http\Controllers\Front\BreakController;
 use App\Http\Controllers\Front\DepartmentController;
 use App\Http\Controllers\Front\RewardTypeController;
 use App\Http\Controllers\Front\CompanyAdminController;
 use App\Http\Controllers\Front\NotificationController;
 use App\Http\Controllers\Front\VacationTypeController;
 use App\Http\Controllers\Front\EmployeeVacationController;
-use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\OfficialVacationController;
 
 Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
@@ -68,6 +71,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             Route::resource('allowance-types', RewardTypeController::class)->except(['destroy'])->middleware('can:rewards');
             Route::resource('allowances', RewardController::class)->except(['destroy'])->middleware('can:rewards');
             Route::resource('alerts', AlertController::class)->except(['destroy'])->middleware('can:alerts');
+            Route::resource('bonus', BonusController::class)->except(['destroy'])->middleware('can:bonus');
             Route::resource('workdays', WorkDayController::class)->except(['destroy'])->middleware('can:shifts');
             // Route::resource('extra-types', ExtraTypeController::class)->except(['destroy'])->middleware('can:extra');
             Route::resource('official-vacations', OfficialVacationController::class)->except(['destroy'])->middleware('can:official-vacations');
@@ -80,6 +84,7 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
             //files
             Route::get('rewards/file/{id}', [RewardController::class, 'openFile'])->name('rewards.file')->middleware('can:rewards');
             Route::get('alerts/file/{id}', [AlertController::class, 'openFile'])->name('alerts.file')->middleware('can:alerts');
+            Route::get('bonus/file/{id}', [BonusController::class, 'openFile'])->name('bonus.file')->middleware('can:bonus');
 
             //shift-workdays
             Route::get('shifts/workdays/{id}/edit', [WorkDayController::class, 'editShiftWorkdays'])->name('shifts.workdays.edit')->middleware('can:shifts');
@@ -92,12 +97,20 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::get('attendance/file/{id}', [AttendanceController::class, 'openFile'])->name('attendance.file');
                 Route::put('attendance/update/{id}', [AttendanceController::class, 'update'])->name('attendance.update');
             });
-            //leaves
+            //departures
             Route::group(['middleware' => 'can:leaves'], function () {
                 Route::get('departures', [LeaveController::class, 'index'])->name('leaves.index');
                 Route::get('departures/{id}', [LeaveController::class, 'show'])->name('leaves.show');
                 Route::get('departures/file/{id}', [LeaveController::class, 'openFile'])->name('leaves.file');
                 Route::put('departures/update/{id}', [LeaveController::class, 'update'])->name('leaves.update');
+            });
+
+            //departures
+            Route::group(['middleware' => 'can:leaves'], function () {
+                Route::get('breaks', [BreakController::class, 'index'])->name('breaks.index');
+                Route::get('breaks/{id}', [BreakController::class, 'show'])->name('breaks.show');
+                Route::get('breaks/file/{id}', [BreakController::class, 'openFile'])->name('breaks.file');
+                Route::put('breaks/update/{id}', [BreakController::class, 'update'])->name('breaks.update');
             });
             //vacations
             Route::group(['middleware' => 'can:vacations'], function () {
@@ -120,6 +133,15 @@ Route::group(['prefix' => Mcamara\LaravelLocalization\Facades\LaravelLocalizatio
                 Route::get('extras/{id}', [ExtraController::class, 'show'])->name('extras.show');
                 Route::get('extras/file/{id}', [ExtraController::class, 'openFile'])->name('extras.file');
                 Route::put('extras/update/{id}', [ExtraController::class, 'update'])->name('extras.update');
+            });
+
+            //pages
+            Route::group(['middleware' => 'can:pages'], function () {
+
+                Route::get('pages/internal', [PageController::class, 'showInternal'])->name('pages.internal');
+                Route::get('pages/departure-vacation', [PageController::class, 'showDeparturVacation'])->name('pages.departure-vacation');
+                Route::put('pages/internal/update', [PageController::class, 'updateInternal'])->name('pages.internal.update');
+                Route::put('pages/departure-vacation/update', [PageController::class, 'updateDeparturVacation'])->name('pages.departure-vacation.update');
             });
             //messages
             Route::group(['middleware' => 'can:messages'], function () {

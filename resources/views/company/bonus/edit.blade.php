@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">@lang('views.ALERTS')</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.BONUS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.alerts.index') }}">@lang('views.ALERTS')</a></li>
+                                            href="{{ route('front.bonus.index') }}">@lang('views.BONUS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -27,61 +27,66 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">@lang('views.CREATE ALERT')</h5>
+                                        <h5 class="mb-0">@lang('views.EDIT SHIFT')</h5>
                                     </div>
-                                    <form method="post" action="{{ route('front.alerts.store') }}" enctype="multipart/form-data">
+                                    <form method="post" action="{{ route('front.bonus.update',$bonus->id) }}" enctype="multipart/form-data">
                                         @csrf
-                                        <div class="mb-4">
-                                            <label class="form-label">@lang('views.ALERT DATE')</label>
-                                            <input type="date" class="form-control" name="alert_date" value="{{ old('alert_date') }}" required>
-                                            @error('alert_date')
+                                        @method('PUT')
+                                        <input type="hidden" name="id" value="{{ $bonus->id }}">
+                                        <div class="col-md-10">
+                                            <label class="form-label">@lang('views.BONUS DATE')</label>
+                                            <input type="date" class="form-control" name="date" value="{{ old('date',$bonus->date) }}" required>
+                                            @error('date')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
 
-                                        <div class="mb-4">
+                                        <div class="col-md-10">
                                             <label class="form-label">@lang('views.EMPLOYEE')</label>
                                             <select class="default-select form-control" name="user_id">
                                              <option Selected disabled>Employee</option>
                                              @foreach ($employees as $employee)
-                                             <option value="{{ $employee->id }}" @selected(old('user_id') == $employee->id)>{{ $employee->name  }}</option>
+                                             <option value="{{ $employee->id }}" @selected(old('user_id',$bonus->user_id) == $employee->id)>{{ $employee->name  }}</option>
                                              @endforeach
                                             </select>
                                             @error('user_id')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
-                                        </div>
+                                         </div>
 
-                                        <div class="mb-4">
+                                        <div class="col-md-10">
                                             <label class="form-label">@lang('views.NOTE')</label>
-                                            <textarea  class="form-control" name="note" rows="3">{{ old('note') }}</textarea>
+                                            <textarea  class="form-control" name="note" rows="3">{{ old('note',$bonus->note) }}</textarea>
                                             @error('note')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
-                                        </div>
+                                       </div>
 
-                                        <div class="mb-4">
-                                            <label class="form-label">@lang('views.ALERT TYPE')</label>
+
+
+                                         <div class="col-md-10">
+                                            <label class="form-label">@lang('views.TYPE')</label>
                                             <select class="default-select form-control" name="type">
                                              <option Selected disabled>Type</option>
                                              @foreach ($types as $type)
-                                             <option value="{{ json_encode($type) }}" @selected(old('type') == json_encode($type))>{{ $type[Illuminate\Support\Facades\App::getLocale()]  }}</option>
+                                             <option value="{{ json_encode($type) }}" @selected(old('type',$bonus->getRawOriginal('type')) == json_encode($type))>{{ $type[Illuminate\Support\Facades\App::getLocale()]  }}</option>
                                              @endforeach
                                             </select>
                                             @error('type')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
-                                        </div>
+                                         </div>
 
-                                        <div class="mb-4">
-                                            <label class="form-label">@lang('views.ALERT TYPES VALUE') (days-amount)</label>
-                                            <input type="text" class="form-control" name="punishment" value="{{ old('punishment') }}" required>
-                                            @error('punishment')
+                                         <div class="col-md-10">
+                                            <label class="form-label">@lang('views.TYPES VALUE') (days-amount)</label>
+                                            <input type="text" class="form-control" name="value" value="{{ old('value',$bonus->value) }}" required>
+                                            @error('value')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
 
-                                        <div class="mb-4">
+
+                                         <div class="col-md-10 mb-4">
                                             <label class="form-label">@lang('views.FILE')</label>
                                             <input type="file" class="form-control" name="file">
                                             @error('file')
@@ -91,7 +96,7 @@
 
 
 
-                                        <input type="submit" value="Save" class="btn btn-primary">
+                                        <input type="submit" value="Update" class="btn btn-primary">
                                     </form>
                                 </div>
                             </div>

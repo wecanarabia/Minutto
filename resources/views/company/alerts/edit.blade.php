@@ -77,7 +77,7 @@
 
                                         <div class="mb-4">
                                             <label class="form-label">@lang('views.ALERT TYPES VALUE') (days-amount)</label>
-                                            <input type="number" class="form-control" name="punishment" value="{{ old('punishment',$alert->punishment) }}" required>
+                                            <input type="text" class="form-control" name="punishment" value="{{ old('punishment',$alert->punishment) }}" required>
                                             @error('punishment')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror

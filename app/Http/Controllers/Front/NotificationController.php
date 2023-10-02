@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Models\User;
 use App\Models\Branch;
+use App\Traits\LogTrait;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Traits\NotificationTrait;
@@ -13,6 +14,8 @@ use App\Http\Requests\Company\NotificationRequest;
 
 class NotificationController extends Controller
 {
+    use LogTrait;
+
     use NotificationTrait;
     /**
      * Display a listing of the resource.
@@ -52,7 +55,7 @@ class NotificationController extends Controller
         $FcmToken = User::whereBelongsTo($branches)->whereNotNull('device_token')->pluck('device_token')->toArray();
 
         $this->send($notification->body, $notification->title,$FcmToken);
-
+     
         return redirect()->route('front.notifications.index')
                         ->with('success','Notification has been added successfully');
     }

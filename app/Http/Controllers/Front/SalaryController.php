@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Company\SalaryRequest;
+use App\Models\Bonus;
 
 class SalaryController extends Controller
 {
@@ -42,14 +43,20 @@ class SalaryController extends Controller
                 return $alert;
             })->sum('salary');
             $data['alerts'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', '!=', 'Salary number of working days')->where('type->en', '!=', 'vacation days')->whereBelongsTo($employees)->get()->sum('punishment');
+            $data['bouns'] = Bonus::whereMonth('created_at', Carbon::now()->month)->where('value', '>', 0)->where('type->en', 'amount')->whereBelongsTo($employees)->get()->sum('value');
             $data['salaries'] = Salary::where('month', Carbon::now()->month)->where('year', Carbon::now()->year)->whereBelongsTo($employees)->orderByDesc('year')->orderByDesc('month')->get();
             $data['years'] = Salary::select('year')->distinct()->whereBelongsTo($employees)->pluck('year')??Carbon::now()->year;
+            $data['insurance_value'] = User::active()->hasSalary()->whereBelongsTo($branches)->sum('insurance_value');
+            $data['income_tax'] = User::active()->hasSalary()->whereBelongsTo($branches)->sum('income_tax');
+            $data['retirement_benefits'] = User::active()->hasSalary()->whereBelongsTo($branches)->sum('retirement_benefits');
+
         }else{
             $data['salaries'] = collect([]);
             $data['workhours']=0;
             $data['leaves']=0;
             $data['advances']=0;
             $data['extras']=0;
+            $data['bouns']=0;
             $data['rewards']=0;
             $data['alerts_in_days']=0;
             $data['alerts']=0;
@@ -74,6 +81,7 @@ class SalaryController extends Controller
                     $data['workhours'] = Workhour::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employee)->get()->sum('discount_value')??0;
                     $data['advances'] = Advance::whereMonth('created_at', Carbon::now()->month)->where('value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('value')??0;
                     $data['extras'] = Extra::whereMonth('created_at', Carbon::now()->month)->where('amount', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('amount')??0;
+                    $data['bouns'] = Bonus::whereMonth('created_at', Carbon::now()->month)->where('value', '>', 0)->where('type->en', 'amount')->whereBelongsTo($employee)->get()->sum('value');
                     $data['rewards'] = Reward::whereMonth('created_at', Carbon::now()->month)->where('reward_value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('reward_value')??0;
                     $data['alerts_in_days'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', 'Salary number of working days')->whereBelongsTo($employee)->with('user')
                     ->get()->map(function ($alert) {
@@ -89,7 +97,7 @@ class SalaryController extends Controller
                         'discounts'=>(int)$data['workhours']+(int)$data['leaves']+(int)$data['alerts']+(int)$data['alerts_in_days'],
                         'advances'=>(int)$data['advances'],
                         'incentives_and_extra'=>(int)$data['rewards']+(int)$data['extras'],
-                        'net_salary'=>((int)$data['rewards']+(int)$data['extras']+$employee->monthly_salary)-($data['advances']+(int)$data['workhours']+(int)$data['leaves']+(int)$data['alerts']+(int)$data['alerts_in_days']),
+                        'net_salary'=>((int)$data['rewards']+(int)$data['extras']+(int)$data['bouns']+$employee->monthly_salary)-($data['advances']+(int)$data['workhours']+(int)$data['leaves']+(int)$data['alerts']+(int)$data['alerts_in_days']+$employee->insurance_value+$employee->income_tax+$employee->retirement_benefits),
                     ]);
                     $employee->salary()->save($salary);
                 }
@@ -158,6 +166,7 @@ class SalaryController extends Controller
                     $data['workhours'] = Workhour::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employee)->get()->sum('discount_value')??0;
                     $data['advances'] = Advance::whereMonth('created_at', Carbon::now()->month)->where('value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('value')??0;
                     $data['extras'] = Extra::whereMonth('created_at', Carbon::now()->month)->where('amount', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('amount')??0;
+                    $data['bouns'] = Bonus::whereMonth('created_at', Carbon::now()->month)->where('value', '>', 0)->where('type->en', 'amount')->whereBelongsTo($employee)->get()->sum('value');
                     $data['rewards'] = Reward::whereMonth('created_at', Carbon::now()->month)->where('reward_value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employee)->get()->sum('reward_value')??0;
                     $data['alerts_in_days'] = Alert::whereMonth('created_at', Carbon::now()->month)->where('punishment', '>', 0)->where('type->en', 'Salary number of working days')->whereBelongsTo($employee)->with('user')
                     ->get()->map(function ($alert) {
@@ -173,7 +182,7 @@ class SalaryController extends Controller
                         'discounts'=>(int)$data['workhours']+(int)$data['leaves']+(int)$data['alerts']+(int)$data['alerts_in_days'],
                         'advances'=>(int)$data['advances'],
                         'incentives_and_extra'=>(int)$data['rewards']+(int)$data['extras'],
-                        'net_salary'=>((int)$data['rewards']+(int)$data['extras']+$employee->monthly_salary)-($data['advances']+(int)$data['workhours']+(int)$data['leaves']+(int)$data['alerts']+(int)$data['alerts_in_days']),
+                        'net_salary'=>((int)$data['rewards']+(int)$data['bouns']+(int)$data['extras']+$employee->monthly_salary)-($data['advances']+(int)$data['workhours']+(int)$data['leaves']+(int)$data['alerts']+(int)$data['alerts_in_days']+$employee->insurance_value+$employee->income_tax+$employee->retirement_benefits),
                     ]);
                 }
             }

@@ -82,7 +82,7 @@
 
                                         <div class="mb-4">
                                             <label class="form-label">@lang('views.ALLOWANCE TYPES VALUE') (days-amount)</label>
-                                            <input type="number" class="form-control" name="reward_value" value="{{ old('reward_value') }}" required>
+                                            <input type="text" class="form-control" name="reward_value" value="{{ old('reward_value') }}" required>
                                             @error('reward_value')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
