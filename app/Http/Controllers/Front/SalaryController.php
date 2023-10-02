@@ -59,6 +59,9 @@ class SalaryController extends Controller
             $data['bouns']=0;
             $data['rewards']=0;
             $data['alerts_in_days']=0;
+            $data['insurance_value']=0;
+            $data['income_tax']=0;
+            $data['retirement_benefits']=0;
             $data['alerts']=0;
             $data['years']=(array)Carbon::now()->year;
         }
