@@ -32,6 +32,7 @@ class SalaryController extends Controller
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::active()->hasSalary()->whereBelongsTo($branches)->get();
         if (count($employees)>0) {
+            $this->update();
             $data['leaves'] = Leave::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employees)->get()->sum('discount_value');
             $data['workhours'] = Workhour::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employees)->get()->sum('discount_value');
             $data['advances'] = Advance::whereMonth('created_at', Carbon::now()->month)->where('value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employees)->get()->sum('value');
