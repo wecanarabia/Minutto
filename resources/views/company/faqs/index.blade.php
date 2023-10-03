@@ -4,14 +4,14 @@
             <div class="row align-items-center">
                 <div class="col-12">
                     <a href="{{ route("front.faqs.create") }}" class="btn btn-info float-end">
-                        <i class="ti ti-help-octagon text-white me-1 fs-5"></i> Add Faq
+                        <i class="ti ti-help-octagon text-white me-1 fs-5"></i> @lang('views.ADD FAQ')
                       </a>
-                    <h4 class="fw-semibold mb-8">Faqs</h4>
+                    <h4 class="fw-semibold mb-8">@lang('views.FAQS')</h4>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a class="text-muted"
                                     href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
-                            <li class="breadcrumb-item" aria-current="page">Faqs</li>
+                            <li class="breadcrumb-item" aria-current="page">@lang('views.FAQS')</li>
                         </ol>
                     </nav>
                 </div>
@@ -31,7 +31,7 @@
                         <div class="card-body">
                             <x-front-layouts.messages />
                             <div class="mb-2">
-                                <h5 class="mb-0">Faqs</h5>
+                                <h5 class="mb-0">@lang('views.FAQS')</h5>
                             </div>
                             <div class="table-responsive">
                                 <table id="scroll_hor"
@@ -40,8 +40,8 @@
                                 <thead>
                                     <!-- start row -->
                                     <tr>
-                                        <th>English Question</th>
-                                        <th>Arabic Question</th>
+                                        <th>@lang('views.ENGLISH QUESTION')</th>
+                                        <th>@lang('views.ARABIC QUESTION')</th>
                                         <th>@lang('views.ACTIONS')</th>
 
                                     </tr>

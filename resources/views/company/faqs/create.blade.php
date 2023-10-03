@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Faqs</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.FAQS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.faqs.index') }}">Faqs</a></li>
+                                            href="{{ route('front.faqs.index') }}">@lang('views.FAQS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -27,12 +27,12 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">Create Faq</h5>
+                                        <h5 class="mb-0">@lang('views.CREATE FAQ')</h5>
                                     </div>
                                     <form method="post" action="{{ route('front.faqs.store') }}">
                                         @csrf
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">English Question</label>
+                                            <label class="form-label fw-semibold">@lang('views.ENGLISH QUESTION')</label>
                                             <input type="text" name="question_en" value="{{ old('question_en') }}"
                                                 class="form-control">
                                             @error('question_en')
@@ -43,7 +43,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">Arabic Question</label>
+                                            <label class="form-label fw-semibold">@lang('views.ARABIC QUESTION')</label>
                                             <input type="text" name="question_ar" value="{{ old('question_ar') }}"
                                                 class="form-control">
                                             @error('question_ar')
@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="mb-4">
 
-                                        <label class="form-label fw-semibold">English Answer</label>
+                                        <label class="form-label fw-semibold">@lang('views.ENGLISH ANSWER')</label>
                                         <textarea  class="form-control" name="answer_en" id="addnote" rows="3">{{ old('answer_en') }}</textarea>
                                         @error('answer_en')
                                         <div class="text-danger">{{ $message }}</div>
@@ -64,7 +64,7 @@
 
 
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">Arabic Answer</label>
+                                            <label class="form-label fw-semibold">@lang('views.ARABIC ANSWER')</label>
                                             <textarea  class="form-control" name="answer_ar"  id="addnote" rows="3">{{ old('answer_ar') }}</textarea>
                                             @error('answer_ar')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -73,7 +73,7 @@
 
 
 
-                                        <input type="submit" value="Save" class="btn btn-primary">
+                                        <input type="submit" value="@lang('views.SAVE')" class="btn btn-primary">
                                     </form>
                                 </div>
                             </div>

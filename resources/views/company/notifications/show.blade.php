@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Notifications</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.NOTIFICATIONS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.notifications.index') }}">Notifications</a></li>
+                                            href="{{ route('front.notifications.index') }}">@lang('views.NOTIFICATIONS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -33,24 +33,24 @@
 
                                         <div class="row">
                                             <div class="col-4 mb-7">
-                                                <p class="mb-1 fs-2">English Title</p>
+                                                <p class="mb-1 fs-2">>@lang('views.ENGLISH TITLE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $notification->getTranslation('title', 'en') }}
                                                 </h6>
                                             </div>
                                             <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">Arabic Title</p>
+                                                <p class="mb-1 fs-2">@lang('views.ARABIC TITLE')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $notification->getTranslation('title', 'ar') }}
                                                 </h6>
                                             </div>
 
 
                                             <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">English Body</p>
+                                                <p class="mb-1 fs-2">@lang('views.ENGLISH BODY')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $notification->getTranslation('body', 'en')}}
                                                 </h6>
                                             </div>
                                             <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">Arabic Body</p>
+                                                <p class="mb-1 fs-2">@lang('views.ARABIC BODY')</p>
                                                 <h6 class="fw-semibold mb-0">{{ $notification->getTranslation('body', 'ar')}}
                                                 </h6>
                                             </div>
