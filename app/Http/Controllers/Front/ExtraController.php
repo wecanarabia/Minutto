@@ -70,9 +70,9 @@ class ExtraController extends Controller
         }
         if ($extra->getTranslation('status','en')!==$request['status.en']) {
             if($request['status.en'] == 'approve'){
-                $this->addLog($extra->user->id,'Update extra request','تحديث طلب الإضافي','Extra request has been approved','تم الموافقة على طلب الإضافي',$request['note']);
+                $this->addLog($extra->user->id,'Update overtime request','تحديث طلب الإضافي','Overtime request has been approved','تم الموافقة على طلب الإضافي',$request['note']);
             }else if($request['status.en'] == 'rejected'){
-                $this->addLog($extra->user->id,'Update extra request','تحديث طلب الإضافي','Extra request has been rejected','تم رفض على طلب الإضافي',$request['note']);
+                $this->addLog($extra->user->id,'Update overtime request','تحديث طلب الإضافي','Overtime request has been rejected','تم رفض على طلب الإضافي',$request['note']);
             };
         };
         $extra->update([
@@ -84,6 +84,6 @@ class ExtraController extends Controller
             'amount'=>$mount
         ]);
             return redirect()->route('front.extras.show',$extra->id)
-            ->with('success','Extra Request has been update successfully');
+            ->with('success','Overtime Request has been update successfully');
         }
 }

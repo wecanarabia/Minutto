@@ -163,7 +163,7 @@
                                                             <label for="exampleFormextraStatus" class="form-label">@lang('views.STATUS')</label>
                                                             <select class="form-select" id="exampleFormextraStatus" name="status"
                                                                 aria-label="Default select example">
-                                                                <option disabled selected>Status</option>
+                                                                <option disabled selected>@lang('views.STATUS')</option>
                                                                 @foreach ($allStatus as $status)
                                                                 <option value="{{ json_encode($status) }}" @selected($extra->status==$status[Illuminate\Support\Facades\App::getLocale()])>
                                                                 {{$status[Illuminate\Support\Facades\App::getLocale()] }}</option>
