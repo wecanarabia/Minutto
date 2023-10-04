@@ -31,9 +31,9 @@ class DeductionController extends Controller
     {
         $request['company_id'] = Auth::user()->company_id;
         $deduction = Discount::create($request->all());
-        
+
         return redirect()->route('front.deductions.index')
-                        ->with('success','department has been added successfully');
+                        ->with('success',__('views.CREATED DEDUCTION'));
     }
 
     public function show(String $id){
@@ -44,6 +44,6 @@ class DeductionController extends Controller
         $deduction = Discount::where('company_id',Auth::user()->company_id)->findOrFail($id);
         $deduction->update($request->all());
         return redirect()->route('front.deductions.index')
-        ->with('success','Deduction has been updated successfully');
+        ->with('success',__('views.UPDATED DEDUCTION'));
     }
 }

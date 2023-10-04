@@ -46,7 +46,7 @@ class EmployeeVacationController extends Controller
             }
         }
         return redirect()->route('front.employee-vacations.index')
-        ->with('success','Vacations of this year has been generated successfully');
+        ->with('success',__('views.GENERATED EMPLOYEE VACATION'));
     }
 
 
@@ -75,7 +75,7 @@ class EmployeeVacationController extends Controller
             return redirect()->back();
         }
         return redirect()->route('front.employee-vacations.index')
-                        ->with('success','Employee Vacation has been added successfully');
+                        ->with('success',__('views.CREATED EMPLOYEE VACATION'));
     }
 
     public function show($id)
@@ -101,7 +101,7 @@ class EmployeeVacationController extends Controller
         $this->addLog($vacation->user->id, 'Update Employee vacation', 'تحديث رصيد إجازة لموظف', 'Employee vacations\' balance has been updated', 'تم تحديث رصيد الأجازات لموظف');
         $vacation->update($request->all());
         return redirect()->route('front.employee-vacations.show',$vacation->id)
-        ->with('success','Employee Vacation has been updated successfully');
+        ->with('success',__('views.UPDATED EMPLOYEE VACATION'));
 
     }
 }

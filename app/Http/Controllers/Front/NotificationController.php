@@ -55,9 +55,9 @@ class NotificationController extends Controller
         $FcmToken = User::whereBelongsTo($branches)->whereNotNull('device_token')->pluck('device_token')->toArray();
 
         $this->send($notification->body, $notification->title,$FcmToken);
-     
+
         return redirect()->route('front.notifications.index')
-                        ->with('success','Notification has been added successfully');
+                        ->with('success',__('views.CREATED NOTIFICATION'));
     }
 
     /**

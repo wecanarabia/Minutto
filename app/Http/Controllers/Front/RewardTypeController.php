@@ -41,7 +41,7 @@ class RewardTypeController extends Controller
 
 
         return redirect()->route('front.allowance-types.index')
-                        ->with('success','Allowance type has been added successfully');
+                        ->with('success',__('views.CREATED ALLOWANCE TYPE'));
     }
 
     /**
@@ -86,6 +86,6 @@ class RewardTypeController extends Controller
 
 
         return redirect()->route('front.allowance-types.show',$reward->id)
-                        ->with('success','Allowance type has been updated successfully');
+                        ->with('success',__('views.UPDATED ALLOWANCE TYPE'));
     }
 }

@@ -24,7 +24,7 @@ class RoleController extends Controller
 
             $role = $this->process(new Role, $request);
 
-                return redirect()->route('front.roles.index')->with(['success' => "Role has been created successfully"]);
+                return redirect()->route('front.roles.index')->with(['success' => __('views.CREATED ROLE')]);
 
 
 
@@ -46,7 +46,7 @@ class RoleController extends Controller
 
 
             $role = $this->process($role, $request);
-            return redirect()->route('front.roles.index')->with(['success' => "Role has been updated successfully"]);
+            return redirect()->route('front.roles.index')->with(['success' => __('views.UPDATED ROLE')]);
 
     }
 

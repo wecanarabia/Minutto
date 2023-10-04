@@ -59,7 +59,7 @@ class BonusController extends Controller
 
 
      return redirect()->route('front.bonus.index')
-                     ->with('success','Bonus has been added successfully');
+                     ->with('success',__('views.CREATED BONUS'));
  }
 
  /**
@@ -119,7 +119,7 @@ class BonusController extends Controller
 
       }
      return redirect()->route('front.bonus.show',$bonus->id)
-                     ->with('success','Bonus has been updated successfully');
+                     ->with('success',__('views.UPDATED BONUS'));
  }
 
 

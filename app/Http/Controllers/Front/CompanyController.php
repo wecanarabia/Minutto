@@ -290,7 +290,7 @@ class CompanyController extends Controller
     $request->session()->forget('branch');
     $request->session()->forget('department');
     $request->session()->forget('company');
-        return redirect()->route('front.company-settings.show')->with(['success'=>'Company settings has been added Successfully']);
+        return redirect()->route('front.company-settings.show')->with(['success'=>__('views.CREATED COMPANY SETTINGS')]);
     }
 
 
@@ -331,7 +331,7 @@ class CompanyController extends Controller
             'english_description',
             'arabic_description',
              ]));
-        return redirect()->route('front.company-settings.show')->with(['success'=>'Company settings has been Updated Successfully']);
+        return redirect()->route('front.company-settings.show')->with(['success'=>__('views.UPDATED COMPANY SETTINGS')]);
 
     }
 
@@ -350,6 +350,6 @@ class CompanyController extends Controller
          return $code;
     }
 
-   
+
 
 }

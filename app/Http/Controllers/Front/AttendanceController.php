@@ -79,10 +79,10 @@ class AttendanceController extends Controller
             'time_departure'=>$request['time_departure'],
         ]);
         return redirect()->route('front.attendance.show',$attendance->id)
-        ->with('success','Attendance has been update successfully');
+        ->with('success',__('views.UPDATED ATTENDANCE'));
     }else{
         return redirect()->back()
-        ->with('error','Something has been wrong');
+        ->with('error',__('views.WRONG MSG'));
     }
     }
 

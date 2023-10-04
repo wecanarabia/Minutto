@@ -84,6 +84,6 @@ class ExtraController extends Controller
             'amount'=>$mount
         ]);
             return redirect()->route('front.extras.show',$extra->id)
-            ->with('success','Overtime Request has been update successfully');
+            ->with('success',__('views.UPDATED OVERTIME'));
         }
 }

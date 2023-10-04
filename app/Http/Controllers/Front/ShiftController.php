@@ -87,7 +87,7 @@ class ShiftController extends Controller
 
 
         return redirect()->route('front.shifts.index')
-                        ->with('success','Shift has been added successfully');
+                        ->with('success',__('views.CREATED SHIFT'));
     }
 
     /**
@@ -166,6 +166,6 @@ class ShiftController extends Controller
         }
         DB::commit();
         return redirect()->route('front.shifts.index')
-                        ->with('success','Shift has been updated successfully');
+                        ->with('success',__('views.UPDATED SHIFT'));
     }
 }

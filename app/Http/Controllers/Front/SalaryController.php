@@ -108,7 +108,7 @@ class SalaryController extends Controller
             }
         }
         return redirect()->route('front.salaries.index')
-        ->with('success','Salary of this month has been generated successfully');
+        ->with('success',__('views.GENERATED SALARY'));
     }
 
 
@@ -141,7 +141,7 @@ class SalaryController extends Controller
             return redirect()->back();
         }
         return redirect()->route('company.salaries.index')
-                        ->with('success','Salary has been added successfully');
+                        ->with('success',__('views.CREATED SALARY'));
     }
 
     public function show($id)
@@ -192,7 +192,7 @@ class SalaryController extends Controller
             }
         }
         return redirect()->route('front.salaries.index')
-        ->with('success','Salary of this month has been updated successfully');
+        ->with('success',__('views.UPDATED SALARY'));
     }
     public function filter(Request $request)
     {

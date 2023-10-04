@@ -35,7 +35,7 @@ class PageController extends Controller
             $this->addLog(NULL, 'Update Internal System', 'تعديل النظام الداخلي', ' Internal System has been updated successfully', 'تم تعديل النظام الداخلي  بنجاح');
         }
         return redirect()->route('front.pages.internal')
-        ->with('success','Internal System has been updated successfully');;
+        ->with('success',__('views.UPDATED INTERNAL SYSTEM'));
     }
 
     public function showDeparturVacation(){
@@ -60,6 +60,6 @@ class PageController extends Controller
             $this->addLog(NULL, 'Update Departures And Vacations System', 'تعديل نظام الاجازات والمغادرات', ' Departures And Vacations System has been updated successfully', 'تم تعديل نظام الاجازات والمغادرات  بنجاح');
         }
         return redirect()->route('front.pages.departure-vacation')
-        ->with('success','Departures And Vacations System has been updated successfully');;
+        ->with('success',__('views.UPDATED DEPARTURE VACATION SYSTEM'));
     }
 }

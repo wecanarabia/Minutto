@@ -48,7 +48,7 @@ class MessageController extends Controller
 
 
         return redirect()->route('front.messages.show')
-                        ->with('success','Message has been created successfully');
+                        ->with('success',__('views.CREATED MSG'));
     }
 
     /**
@@ -74,6 +74,6 @@ class MessageController extends Controller
         }
 
         return redirect()->route('front.messages.show')
-                        ->with('success','Message has been updated successfully');
+                        ->with('success',__('views.UPDATED MSG'));
     }
 }

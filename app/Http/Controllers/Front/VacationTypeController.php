@@ -41,7 +41,7 @@ class VacationTypeController extends Controller
 
 
         return redirect()->route('front.vacation-types.index')
-                        ->with('success','Vacation type has been added successfully');
+                        ->with('success',__('views.CREATED VACATION TYPE'));
     }
 
     /**
@@ -86,6 +86,6 @@ class VacationTypeController extends Controller
 
 
         return redirect()->route('front.vacation-types.show',$type->id)
-                        ->with('success','Vacation type has been updated successfully');
+                        ->with('success',__('views.UPDATED VACATION TYPE'));
     }
 }

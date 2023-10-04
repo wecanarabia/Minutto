@@ -59,7 +59,7 @@ class AlertController extends Controller
 
 
        return redirect()->route('front.alerts.index')
-                       ->with('success','Penalty has been added successfully');
+                       ->with('success',__('views.CREATED PENALITY'));
    }
 
    /**
@@ -121,7 +121,7 @@ class AlertController extends Controller
             ->with('warning','Vacation Balance is not enough');
         }
        return redirect()->route('front.alerts.show',$alert->id)
-                       ->with('success','Penalty has been updated successfully');
+                       ->with('success',__('views.UPDATED PENALITY'));
    }
 
 

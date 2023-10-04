@@ -85,6 +85,6 @@ class LeaveController extends Controller
         ]);
 
         return redirect()->route('front.leaves.show',$leave->id)
-        ->with('success','Departure Request has been update successfully');
+        ->with('success',__('views.UPDATED DEPARTURE'));
     }
 }
