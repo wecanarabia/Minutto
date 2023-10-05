@@ -271,7 +271,7 @@ return [
 'ARABIC TITLE' => 'العنوان بالعربية',
 'ENGLISH BODY' => 'نص الإشعار بالإنجليزية',
 'ARABIC BODY' => 'نص الإشعار بالعربية',
-'ADD NOTIFICATION' => 'إضافة إشعار'
+'ADD NOTIFICATION' => 'إضافة إشعار',
 
     'CREATE BONUS TYPE' => 'إنشاء نوع المكافأة',
     'EDIT BONUS TYPE' => 'تعديل نوع المكافأة',

@@ -287,27 +287,6 @@ return [
     ''=>'',
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     'UPDATE' => 'Update',
     'SAVE' => 'Save',
     'INSURANCE VALUE' => 'Insurance Value',
