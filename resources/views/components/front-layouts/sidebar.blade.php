@@ -166,7 +166,7 @@
                             <span>
                                 <i class="ti ti-file-certificate"></i>
                             </span>
-                            <span class="hide-menu">@lang('views.BOUNS')</span>
+                            <span class="hide-menu">@lang('views.BONUS')</span>
                         </a>
                     </li>
                     @endcan
