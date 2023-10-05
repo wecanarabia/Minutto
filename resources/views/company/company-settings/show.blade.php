@@ -10,7 +10,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
                                             href="javascript:void(0);">{{ $company->name }}</a></li>
                                 </ol>
@@ -38,7 +38,7 @@
                                 id="pills-account-tab" data-bs-toggle="pill" data-bs-target="#pills-account"
                                 type="button" role="tab" aria-controls="pills-account" aria-selected="true">
                                 <i class="ti ti-article-filled-filled fs-6"></i>
-                                <span class="d-none d-md-block">General</span>
+                                <span class="d-none d-md-block">@lang('views.GENERAL')</span>
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
@@ -47,7 +47,7 @@
                                 id="pills-notifications-tab" data-bs-toggle="pill" data-bs-target="#pills-notifications"
                                 type="button" role="tab" aria-controls="pills-notifications" aria-selected="false">
                                  <i class="ti ti-device-imac fs-6"></i>
-                                <span class="d-none d-md-block">HR</span>
+                                <span class="d-none d-md-block">@lang('views.HR')</span>
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
@@ -56,7 +56,7 @@
                                 id="pills-bills-tab" data-bs-toggle="pill" data-bs-target="#pills-bills" type="button"
                                 role="tab" aria-controls="pills-bills" aria-selected="false">
                                 <i class="ti ti-devices-check fs-6"></i>
-                                <span class="d-none d-md-block">Subscription</span>
+                                <span class="d-none d-md-block">@lang('views.SUBSCRIPTION')</span>
                             </button>
                         </li>
 
@@ -68,7 +68,7 @@
                                 <div class="row">
 
                                     <div id="profile-data" class="col-lg-12">
-                                        <button id="profile-edit" class="btn btn-success float-end">Edit</button>
+                                        <button id="profile-edit" class="btn btn-success float-end">@lang('views.EDIT')</button>
 
                                         <div class="chat-list chat active-chat" data-user-id="1">
 
@@ -77,36 +77,36 @@
                                             <div class="row">
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">English Name</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ENGLISH NAME')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->getTranslation('name', 'en') }}</h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Arabic Name</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ARABIC NAME')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->getTranslation('name', 'ar') }}</h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Code</p>
+                                                    <p class="mb-1 fs-2">@lang('views.CODE')</p>
                                                     <h6 class="fw-semibold mb-0">
                                                         {{ $company->code }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Timezone</p>
+                                                    <p class="mb-1 fs-2">@lang('views.TIMEZONE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->timezone }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Currenct</p>
+                                                    <p class="mb-1 fs-2">@lang('views.CURRENCY')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->currency }}</h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">English Description</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ENGLISH DESCRIPTION')</p>
                                                     <h6 class="fw-semibold mb-0">
                                                         {{ $company->getTranslation('description', 'en') }}</h6>
                                                 </div>
 
                                                 <div class="col-12 mb-7">
-                                                    <p class="mb-1 fs-2">Arabic Description</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ARABIC DESCRIPTION')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->getTranslation('description', 'ar') }}</h6>
                                                 </div>
 
@@ -123,39 +123,39 @@
                                     <div id="profile-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
-                                                <h5 class="card-title fw-semibold">Update General Info</h5>
+                                                <h5 class="card-title fw-semibold">@lang('views.UPDATE GENERAL INFO')</h5>
                                                 <form method="post" action="{{ route('front.company-settings.update') }}">
                                                     @csrf
                                                     @method('put')
                                                     <input type="hidden" value="{{ Auth::guard('company')->user()->company_id }}">
                                                     <div class="row">
                                                         <div class="mb-4 col-6">
-                                                            <label for="firstname" class="form-label">English Name</label>
+                                                            <label for="firstname" class="form-label">@lang('views.ENGLISH NAME')</label>
                                                             <input type="text" class="form-control" id="firstname" name="english_name" value="{{ old('english_name',$company?->getTranslation('name','en')??"") }}" >
 
 
                                                         </div>
                                                         <div class="mb-4 col-6">
-                                                            <label for="lastname" class="form-label">Arabic Name</label>
+                                                            <label for="lastname" class="form-label">@lang('views.ARABIC NAME')</label>
                                                             <input type="text" class="form-control" name="arabic_name" value="{{ old('arabic_name',$company?->getTranslation('name','ar')??"") }}" id="lastname" >
 
 
                                                         </div>
                                                         <div class="mb-4 col-6">
-                                                            <label for="english_description" class="form-label">English Description</label>
+                                                            <label for="english_description" class="form-label">@lang('views.ENGLISH DESCRIPTION')</label>
                                                             <textarea class="form-control" id="english_description" name="english_description" rows="3">{{ old('english_description',$company?->getTranslation('description','en')??null) }}</textarea>
 
 
                                                         </div>
                                                         <div class="mb-4 col-6">
-                                                            <label for="arabic_description" class="form-label">Arabic Description</label>
+                                                            <label for="arabic_description" class="form-label">@lang('views.ARABIC DESCRIPTION')</label>
                                                              <textarea class="form-control" id="arabic_description" name="arabic_description" rows="3">{{ old('arabic_description',$company?->getTranslation('description','ar')??NULL) }}</textarea>
 
 
                                                         </div>
 
                                                         <div class="mb-4 col-6">
-                                                            <label class="form-label">Timezone</label>
+                                                            <label class="form-label">@lang('views.TIMEZONE')</label>
                                                             <select class="default-select form-control" name="timezone">
                                                                 <option  selected disabled>Timezone</option>
                                                                 @foreach ($timezones as $timezone)
@@ -166,7 +166,7 @@
                                                         </div>
 
                                                         <div class="mb-4 col-6">
-                                                            <label class="form-label">Currency</label>
+                                                            <label class="form-label">@lang('views.CURRENCY')</label>
                                                             <select class="default-select form-control" name="currency">
                                                                 <option  selected disabled>Currency</option>
                                                                 @foreach ($currencies as $currency)
@@ -180,7 +180,7 @@
 
                                                     </div>
                                                     <input type="submit" value="Update" class="btn btn-primary mx-2">
-                                                    <button id="profile-cancel" class="btn btn-dark">Cancel</button>
+                                                    <button id="profile-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>
 
@@ -194,48 +194,48 @@
                                 aria-labelledby="pills-notifications-tab" tabindex="0">
                                 <div class="row">
                                     <div id="identity-data" class="col-lg-12">
-                                        <button id="identity-edit" class="btn btn-success float-end">Edit</button>
+                                        <button id="identity-edit" class="btn btn-success float-end">@lang('views.EDIT')</button>
 
                                         <div class="chat-list chat active-chat" data-user-id="1">
                                             <div class="row">
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Number of Employees</p>
+                                                    <p class="mb-1 fs-2">@lang('views.NUMBER OF EMPLOYEES')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->employees_count }}</h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Number Of allowed leaves (In Hours)</p>
+                                                    <p class="mb-1 fs-2">@lang('views.NUMBER OF ALLOWED DEPARTURES') (In Hours)</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->leaves_count }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Number Of Employee Vacation Balance</p>
+                                                    <p class="mb-1 fs-2">@lang('views.NUMBER OF EMPLOYEE VACATION BALANCE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->holidays_count }} Days</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Allowed Number Of Sick Leaves</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ALLOWED NUMBER OF SICK DEPARTURES')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->sick_leaves }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Percentage Of Advances</p>
+                                                    <p class="mb-1 fs-2">@lang('views.PERCENTAGE OF ADVANCES')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->advances_percentage }}%</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Number of Advances in Month</p>
+                                                    <p class="mb-1 fs-2">@lang('views.NUMBER OF ADVANCES IN MONTH')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->advances_count }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Overtime Rate Per Hour</p>
+                                                    <p class="mb-1 fs-2">@lang('views.OVERTIME RATE PER HOUR')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->extra_rate }}
                                                     </h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Allowed grace period</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ALLOWED GRACE PERIOD')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->grace_period }} Minutes
                                                     </h6>
                                                 </div>
@@ -252,7 +252,7 @@
                                     <div id="identity-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
-                                                <h5 class="card-title fw-semibold">Update HR Info</h5>
+                                                <h5 class="card-title fw-semibold">@lang('views.UPDATE HR INFO')</h5>
                                                 <form method="post" action="{{ route('front.company-settings.update') }}">
                                                     @csrf
                                                     @method('put')
@@ -260,43 +260,43 @@
                                                     <div class="row">
                                                         <div class="mb-4 col-6">
                                                             <label for="exampleFormControlInput1111"
-                                                                class="form-label">Number of Employees</label>
+                                                                class="form-label">@lang('views.NUMBER OF EMPLOYEES')</label>
                                                                 <input type="number" class="form-control" name="employees_count" value="{{ old('employees_count',$company->employees_count??0) }}" >
 
 
                                                         </div>
                                                         <div class="mb-4 col-6">
                                                             <label for="exampleFormControlInput2222"
-                                                                class="form-label">Number Of allowed leave (In Hours)</label>
+                                                                class="form-label">@lang('views.NUMBER OF ALLOWED DEPARTURES') (In Hours)</label>
                                                                 <input type="number" class="form-control" name="leaves_count" value="{{ old('leaves_count',$company?->leaves_count) }}" >
 
                                                         </div>
                                                         <div class="mb-4 col-6">
                                                             <label for="exampleFormControlInput3333"
-                                                                class="form-label">Number Of Employee Vacation Balance (In Days)</label>
+                                                                class="form-label">@lang('views.NUMBER OF EMPLOYEE VACATION BALANCE') (In Days)</label>
                                                                 <input type="number" class="form-control" name="holidays_count" value="{{ old('holidays_count',$company->holidays_count??0) }}" >
                                                             </div>
                                                         <div class="mb-4 col-6">
                                                             <label for="exampleFormControlInput4444"
-                                                                class="form-label">Allowed Number Of Sick Leaves (in days)</label>
+                                                                class="form-label">@lang('views.ALLOWED NUMBER OF SICK DEPARTURES') (in days)</label>
                                                                 <input type="number" class="form-control" name="sick_leaves" value="{{ old('sick_leaves',$company->sick_leaves??0) }}" >
 
                                                         </div>
 
                                                         <div class="mb-4 col-6">
                                                             <label for="exampleFormControlInput5555"
-                                                                class="form-label">Percentage Of Advances(%)</label>
+                                                                class="form-label">@lang('views.PERCENTAGE OF ADVANCES')(%)</label>
                                                                 <input type="number" class="form-control" name="advances_percentage" value="{{ old('advances_percentage',$company->advances_percentage??0) }}" >
                                                         </div>
                                                         <div class="mb-4">
-                                                            <label class="form-label">Number of Advances in Month</label>
+                                                            <label class="form-label">@lang('views.NUMBER OF ADVANCES IN MONTH')</label>
                                                             <input type="number" class="form-control" name="advances_count" value="{{ old('advances_count',$company->advances_count??0) }}" required>
 
                                                         </div>
 
                                                         <div class="mb-4 col-6">
                                                             <label for="exampleFormControlInput6666"
-                                                                class="form-label">Overtime Rate Per Hour(for overtime calculation)</label>
+                                                                class="form-label">@lang('views.OVERTIME RATE PER HOUR')(for overtime calculation)</label>
                                                                 <input type="text" class="form-control" name="extra_rate" value="{{ old('extra_rate',$company->extra_rate??0) }}" required>
 
                                                         </div>
@@ -304,7 +304,7 @@
 
                                                         <div class="mb-4 col-6">
                                                             <label for="exampleFormControlInput7777"
-                                                                class="form-label">Allowed grace period(HH:MM:SS)</label>
+                                                                class="form-label">@lang('views.ALLOWED GRACE PERIOD')(HH:MM:SS)</label>
                                                                 <input type="text" class="form-control" placeholder="HH:MM:SS" name="grace_period" value="{{ old('grace_period',$company?->grace_period??0) }}" required>
 
                                                         </div>
@@ -312,7 +312,7 @@
 
                                                     </div>
                                                     <input type="submit" value="Update" class="btn btn-primary mx-2">
-                                                    <button id="identity-cancel" class="btn btn-dark">Cancel</button>
+                                                    <button id="identity-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>
                                             </div>
@@ -325,17 +325,17 @@
                                 aria-labelledby="pills-bills-tab" tabindex="0">
                                 <div class="row">
                                     <div id="work-data" class="col-lg-12">
-                                        <button id="work-edit" class="btn btn-success float-end">Edit</button>
+                                        <button id="work-edit" class="btn btn-success float-end">@lang('views.EDIT')</button>
 
                                         <div class="chat-list chat active-chat" data-user-id="1">
                                             <div class="row">
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Subscription</p>
+                                                    <p class="mb-1 fs-2">@lang('views.SUBSCRIPTION')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->subscription->name }}</h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Subscription End Date</p>
+                                                    <p class="mb-1 fs-2">@lang('views.SUBSCRIPTION END DATE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->subscription_end_date }}</h6>
                                                 </div>
 
@@ -352,14 +352,14 @@
                                     <div id="work-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
-                                                <h5 class="card-title fw-semibold">Update Subscription Info</h5>
+                                                <h5 class="card-title fw-semibold">@lang('views.UPDATE SUBSCRIPTION INFO')</h5>
                                                 <form method="post" action="{{ route('front.company-settings.update') }}">
                                                     @csrf
                                                     @method('put')
                                                     <input type="hidden" value="{{ Auth::guard('company')->user()->company_id }}">
                                                     <div class="row">
                                                         <div class="mb-4 col-6">
-                                                            <label class="form-label">Subscription</label>
+                                                            <label class="form-label">@lang('views.SUBSCRIPTION')</label>
                                                             <select class="default-select form-control" name="subscription_id">
                                                                 <option  selected disabled>Subscription</option>
                                                                 @foreach ($subscriptions as $subscription)
@@ -374,7 +374,7 @@
 
                                                     </div>
                                                     <input type="submit" value="Update" class="btn btn-primary mx-2">
-                                                    <button id="work-cancel" class="btn btn-dark">Cancel</button>
+                                                    <button id="work-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>
                                             </div>

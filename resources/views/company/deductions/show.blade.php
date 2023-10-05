@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Attendance Deductions </h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.ATTENDANCE DEDUCTIONS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.deductions.index') }}">Attendance Deductions </a></li>
+                                            href="{{ route('front.deductions.index') }}">@lang('views.ATTENDANCE DEDUCTIONS') </a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -56,7 +56,7 @@
                                                 </div>
 
                                                 <div class="col-12 mb-7">
-                                                    <p class="mb-1 fs-2">Percentage</p>
+                                                    <p class="mb-1 fs-2">@lang('views.PERCENTAGE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $deduction->percentage }}</h6>
                                                 </div>
 
@@ -72,7 +72,7 @@
                                     <div id="cat-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
-                                                <h5 class="card-title fw-semibold">Update Deduction</h5>
+                                                <h5 class="card-title fw-semibold">@lang('views.UPDATE DEDUCTION')</h5>
                                                 <form method="post"
                                                     action="{{ route('front.deductions.update',$deduction->id) }}" enctype="multipart/form-data">
                                                     @csrf
@@ -91,7 +91,7 @@
                                                         </div>
 
                                                         <div class="mb-4 col-12">
-                                                            <label for="percentage" class="form-label">Percentage (HH:MM:SS)</label>
+                                                            <label for="percentage" class="form-label">@lang('views.PERCENTAGE') (HH:MM:SS)</label>
                                                             <input type="text" class="form-control" name="percentage" placeholder="HH:MM:SS" value="{{ old('percentage',$deduction?->percentage??"") }}" id="percentage" required>
                                                         </div>
 
