@@ -230,6 +230,79 @@ return [
     'VACATION REQUESTS' => 'Vacation Requests' ,
     'VACATION TYPE' => 'Vacation Type',
     'UPDATE VACATION REQUEST' => 'Update Vacation Request',
+
+    'ADD COMPANY SETTINGS' => 'Add Company Settings' ,
+    'ADD BRANCH SETTINGS' => 'Add Branch Settings' ,
+    'BACK' => 'Back' ,
+    'ADD ATTENDANCE DEDUCTION SETTINGS' => 'Add Attendance Deduction Settings' ,
+    'PERCENTAGE' => 'Percentage' ,
+    'ADD DEPARTMENT SETTINGS' => 'Add Department Settings' ,
+    'ADD SHIFT SETTINGS' => 'Add Shift Settings' ,
+    'ADD WORKDAYS SETTINGS' => 'Add Shift Workdays Settings' ,
+    'ADD GENERAL SETTINGS' => 'Add General Settings' ,
+    'EMPLOYEES COUNT' => 'Employees Count' ,
+    'NUMBER OF ALLOWED DEPARTURES' => 'Number Of Allowed Departures',
+    'NUMBER OF EMPLOYEE VACATION BALANCE' => 'Number Of Employee Vacation Balance' ,
+    'ALLOWED SICK LEAVES' => 'Allowed Sick Leaves' ,
+    'NUMBER OF EMPLOYEE ADVANCES IN MONTH' => 'Number of Advances in Month' ,
+    'PERCENTAGE OF ADVANCES' => 'Percentage of Advances' ,
+    'OVERTIME RATE' => 'Overtime Rate' ,
+    'SUBSCRIPTION' => 'Subscription' ,
+    'TIMEZONE' => 'Timezone',
+    'CURRENCY' => 'Currency' ,
+    'ATTENDANCE GRACE PERIOD' => 'Attendance Grace Period',
+    'GENERAL' => 'General' ,
+    'HR' => 'HR',
+    'CODE' => 'Code',
+    'UPDATE GENERAL INFO' => 'Update General Info' ,
+    'NUMBER OF EMPLOYEES' => 'Number of Employees' ,
+    'ALLOWED NUMBER OF SICK DEPARTURES' => 'Allowed Number Of Sick DEPARTURES',
+    'NUMBER OF ADVANCES IN MONTH' => 'Number of Advances in Month',
+    'OVERTIME RATE PER HOUR' => 'Overtime Rate Per Hour' ,
+    'ALLOWED GRACE PERIOD' => 'Allowed grace period' ,
+    'UPDATE HR INFO' => 'Update HR Info' ,
+    'SUBSCRIPTION END DATE' => 'Subscription End Date' ,
+    'UPDATE SUBSCRIPTION INFO' => 'Update Subscription Info' ,
+    'ATTENDANCE DEDUCTIONS' => 'Attendance Deductions' ,
+    'CREATE ATTENDANCE DEDUCTIONS' => 'Create Attendance Deduction' ,
+    'ADD ATTENDANCE DEDUCTIONS' => 'Add Attendance Deduction' ,
+    'UPDATE DEDUCTION' => 'Update Deduction' ,
+    'NOTIFICATIONS' => 'Notifications' ,
+    'CREATE NOTIFICATION' => 'Create Notification' ,
+    'ENGLISH TITLE' => 'English Title' ,
+    'ARABIC TITLE' => 'ARABIC Title' ,
+    'ENGLISH BODY' => 'Engilsh Body' ,
+    'ARABIC BODY' => 'ARABIC Body' ,
+    'ADD NOTIFICATION' => 'Add Notification' ,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     'UPDATE' => 'Update',
     'SAVE' => 'Save',
     'INSURANCE VALUE' => 'Insurance Value',
@@ -367,6 +440,7 @@ return [
     ''=>'',
     ''=>'',
     ''=>'',
+
 
 
 

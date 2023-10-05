@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Add Company Settings</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.ADD COMPANY SETTINGS')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="javascript:void(0);">Add Company Settings</a></li>
+                                            href="javascript:void(0);">@lang('views.ADD COMPANY SETTINGS')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -29,7 +29,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="mb-2">
-                                            <h5 class="mb-0">Add Attendance Deduction Settings</h5>
+                                            <h5 class="mb-0">@lang('views.ADD ATTENDANCE DEDUCTION SETTINGS')</h5>
                                         </div>
                                         <form method="post" action="{{ route('front.company-settings.deduction.store') }}">
                                             @csrf
@@ -50,7 +50,7 @@
                                                 </div>
 
                                                 <div class="mb-4 col-12">
-                                                    <label for="percentage" class="form-label">Percentage (HH:MM:SS)</label>
+                                                    <label for="percentage" class="form-label">@lang('views.PERCENTAGE') (HH:MM:SS)</label>
                                                     <input type="text" class="form-control" name="percentage" placeholder="HH:MM:SS" value="{{ old('percentage',$deduction?->percentage??"") }}" id="percentage" required>
                                                     @error('percentage')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -63,7 +63,7 @@
 
                                             </div>
 
-                                            <a href="{{ route('front.company-settings.department.create') }}" class="btn btn-dark mt-4">Back</a>
+                                            <a href="{{ route('front.company-settings.department.create') }}" class="btn btn-dark mt-4">@lang('views.BACK')</a>
                                             <input type="submit" value="Submit" class="btn btn-primary mt-4">
                                         </form>
                                     </div>

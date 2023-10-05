@@ -4,7 +4,9 @@
             <div class="row align-items-center">
                 <div class="col-12">
                     <a href="{{ route("front.notifications.create") }}" class="btn btn-info float-end">
+
                         <i class="ti ti-bell-plus text-white me-1 fs-5"></i>@lang('views.ADD NOTIFICATION')
+
                       </a>
                     <h4 class="fw-semibold mb-8">@lang('views.NOTIFICATIONS')</h4>
                     <nav aria-label="breadcrumb">
@@ -31,7 +33,9 @@
                         <div class="card-body">
                             <x-front-layouts.messages />
                             <div class="mb-2">
+
                                 <h5 class="mb-0">@lang('views.NOTIFICATIONS')</h5>
+
                             </div>
                             <div class="table-responsive">
                                 <table id="scroll_hor"
@@ -40,7 +44,9 @@
                                 <thead>
                                     <!-- start row -->
                                     <tr>
+
                                         <th>>@lang('views.ENGLISH TITLE')</th>
+
                                         <th>@lang('views.ARABIC TITLE')</th>
                                         <th>@lang('views.ACTIONS')</th>
 
