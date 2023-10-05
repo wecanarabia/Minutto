@@ -274,12 +274,17 @@ return [
     'ENGLISH BODY' => 'Engilsh Body' ,
     'ARABIC BODY' => 'ARABIC Body' ,
     'ADD NOTIFICATION' => 'Add Notification' ,
-
-
-
-
-
-
+    'NEXT'=>'Next',
+    'PREVIOUS'=>'Back',
+    'OVERTIME CALC'=>'(for overtime calculation)',
+    'IN HOURS'=>'(In Hours)',
+    'IN DAYS'=>'(In Days)',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
 
 
 
@@ -309,7 +314,6 @@ return [
     'INCOME TAX' => 'Income Tax',
     'RETIREMENT BENEFITS' => 'Retirement Benefits',
     'SALARY DEDUCTION' => '(Deducted from monthly salary on Payroll)',
-    'SAVE' => 'Save',
     'SAVE' => 'Save',
     'ATTENDANCE DEDUCTION' => 'Attendance Deductions',
     'DEDUCTION PERCENTAGE' => 'Percentage',

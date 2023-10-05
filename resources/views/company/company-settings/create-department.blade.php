@@ -70,7 +70,7 @@
                                             </div>
 
                                             <a href="{{ route('front.company-settings.branch.create') }}" class="btn btn-dark mt-4">@lang('views.BACK')</a>
-                                            <input type="submit" value="Submit" class="btn btn-primary mt-4">
+                                            <input type="submit" value="@lang('views.NEXT')" class="btn btn-primary mt-4">
                                         </form>
                                     </div>
                                 </div>

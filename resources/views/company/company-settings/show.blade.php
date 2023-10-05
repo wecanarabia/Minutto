@@ -157,7 +157,7 @@
                                                         <div class="mb-4 col-6">
                                                             <label class="form-label">@lang('views.TIMEZONE')</label>
                                                             <select class="default-select form-control" name="timezone">
-                                                                <option  selected disabled>Timezone</option>
+                                                                <option  selected disabled>@lang('views.TIMEZONE')</option>
                                                                 @foreach ($timezones as $timezone)
                                                                 <option value="{{ $timezone }}" @selected(old('timezone',$company?->timezone??'') == $timezone)>{{ $timezone  }}</option>
                                                                 @endforeach
@@ -168,7 +168,7 @@
                                                         <div class="mb-4 col-6">
                                                             <label class="form-label">@lang('views.CURRENCY')</label>
                                                             <select class="default-select form-control" name="currency">
-                                                                <option  selected disabled>Currency</option>
+                                                                <option  selected disabled>@lang('views.CURRENCY')</option>
                                                                 @foreach ($currencies as $currency)
                                                                 <option value="{{ $currency }}" @selected(old('currency',$company?->currency??'') == $currency)>{{ $currency  }}</option>
                                                                 @endforeach
@@ -179,7 +179,7 @@
 
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary mx-2">
                                                     <button id="profile-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>
@@ -204,13 +204,13 @@
                                                     <h6 class="fw-semibold mb-0">{{ $company->employees_count }}</h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">@lang('views.NUMBER OF ALLOWED DEPARTURES') (In Hours)</p>
+                                                    <p class="mb-1 fs-2">@lang('views.NUMBER OF ALLOWED DEPARTURES')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $company->leaves_count }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">@lang('views.NUMBER OF EMPLOYEE VACATION BALANCE')</p>
-                                                    <h6 class="fw-semibold mb-0">{{ $company->holidays_count }} Days</h6>
+                                                    <h6 class="fw-semibold mb-0">{{ $company->holidays_count }} </h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
@@ -267,18 +267,18 @@
                                                         </div>
                                                         <div class="mb-4 col-6">
                                                             <label for="exampleFormControlInput2222"
-                                                                class="form-label">@lang('views.NUMBER OF ALLOWED DEPARTURES') (In Hours)</label>
+                                                                class="form-label">@lang('views.NUMBER OF ALLOWED DEPARTURES') @lang('views.IN HOURS')</label>
                                                                 <input type="number" class="form-control" name="leaves_count" value="{{ old('leaves_count',$company?->leaves_count) }}" >
 
                                                         </div>
                                                         <div class="mb-4 col-6">
                                                             <label for="exampleFormControlInput3333"
-                                                                class="form-label">@lang('views.NUMBER OF EMPLOYEE VACATION BALANCE') (In Days)</label>
+                                                                class="form-label">@lang('views.NUMBER OF EMPLOYEE VACATION BALANCE') @lang('views.IN DAYS')</label>
                                                                 <input type="number" class="form-control" name="holidays_count" value="{{ old('holidays_count',$company->holidays_count??0) }}" >
                                                             </div>
                                                         <div class="mb-4 col-6">
                                                             <label for="exampleFormControlInput4444"
-                                                                class="form-label">@lang('views.ALLOWED NUMBER OF SICK DEPARTURES') (in days)</label>
+                                                                class="form-label">@lang('views.ALLOWED NUMBER OF SICK DEPARTURES') @lang('views.IN DAYS')</label>
                                                                 <input type="number" class="form-control" name="sick_leaves" value="{{ old('sick_leaves',$company->sick_leaves??0) }}" >
 
                                                         </div>
@@ -296,7 +296,7 @@
 
                                                         <div class="mb-4 col-6">
                                                             <label for="exampleFormControlInput6666"
-                                                                class="form-label">@lang('views.OVERTIME RATE PER HOUR')(for overtime calculation)</label>
+                                                                class="form-label">@lang('views.OVERTIME RATE PER HOUR') @lang('views.OVERTIME CALC')</label>
                                                                 <input type="text" class="form-control" name="extra_rate" value="{{ old('extra_rate',$company->extra_rate??0) }}" required>
 
                                                         </div>
@@ -311,7 +311,7 @@
 
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary mx-2">
                                                     <button id="identity-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>
@@ -361,7 +361,7 @@
                                                         <div class="mb-4 col-6">
                                                             <label class="form-label">@lang('views.SUBSCRIPTION')</label>
                                                             <select class="default-select form-control" name="subscription_id">
-                                                                <option  selected disabled>Subscription</option>
+                                                                <option  selected disabled>@lang('views.SUBSCRIPTION')</option>
                                                                 @foreach ($subscriptions as $subscription)
                                                                 <option value="{{ $subscription->id }}" @selected(old('subscription_id',$company?->subscription_id??"") == $subscription->id)>{{ $subscription->name  }}</option>
                                                                 @endforeach
@@ -373,7 +373,7 @@
 
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary mx-2">
                                                     <button id="work-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>

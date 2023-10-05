@@ -71,7 +71,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="mb-4">
-                                                    <label class="form-label">@lang('views.NUMBER OF ALLOWED DEPARTURE') (In Hours)</label>
+                                                    <label class="form-label">@lang('views.NUMBER OF ALLOWED DEPARTURE') @lang('views.IN HOURS')</label>
                                                     <input type="number" class="form-control" name="leaves_count" value="{{ old('leaves_count',$company?->leaves_count) }}" required>
                                                     @error('leaves_count')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -79,14 +79,14 @@
                                                 </div>
 
                                                 <div class="mb-4">
-                                                    <label class="form-label">@lang('views.NUMBER OF EMPLOYEE VACATION BALANCE') (In Days)</label>
+                                                    <label class="form-label">@lang('views.NUMBER OF EMPLOYEE VACATION BALANCE') @lang('views.IN DAYS')</label>
                                                     <input type="number" class="form-control" name="holidays_count" value="{{ old('holidays_count',$company->holidays_count??0) }}" required>
                                                     @error('holidays_count')
                                                     <div class="text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                                 <div class="mb-4">
-                                                    <label class="form-label">@lang('views.ALLOWED SICK LEAVES') (in days)</label>
+                                                    <label class="form-label">@lang('views.ALLOWED SICK LEAVES') @lang('views.IN DAYS')</label>
                                                     <input type="number" class="form-control" name="sick_leaves" value="{{ old('sick_leaves',$company->sick_leaves??0) }}" required>
                                                     @error('sick_leaves')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -108,7 +108,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="mb-4">
-                                                    <label class="form-label">@lang('views.OVERTIME RATE') (for overtime calculation)</label>
+                                                    <label class="form-label">@lang('views.OVERTIME RATE') @lang('views.OVERTIME CALC')</label>
                                                     <input type="text" class="form-control" name="extra_rate" value="{{ old('extra_rate',$company->extra_rate??0) }}" required>
                                                     @error('extra_rate')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -118,7 +118,7 @@
                                                 <div class="mb-4">
                                                     <label class="form-label">@lang('views.SUBSCRIPTION')</label>
                                                     <select class="default-select form-control" name="subscription_id">
-                                                        <option  selected disabled>Subscription</option>
+                                                        <option  selected disabled>@lang('views.SUBSCRIPTION')</option>
                                                         @foreach ($subscriptions as $subscription)
                                                         <option value="{{ $subscription->id }}" @selected(old('subscription_id',$company?->subscription_id??"") == $subscription->id)>{{ $subscription->name  }}</option>
                                                         @endforeach
@@ -130,7 +130,8 @@
                                                 <div class="mb-4">
                                                     <label class="form-label">@lang('views.TIMEZONE')</label>
                                                     <select class="default-select form-control" name="timezone">
-                                                        <option  selected disabled>Timezone</option>
+                                                        <option  selected disabled>
+                                                            <label class="form-label">@lang('views.TIMEZONE')</option>
                                                         @foreach ($timezones as $timezone)
                                                         <option value="{{ $timezone }}" @selected(old('timezone',$company?->timezone??'') == $timezone)>{{ $timezone  }}</option>
                                                         @endforeach
@@ -143,7 +144,7 @@
                                                 <div class="mb-4">
                                                     <label class="form-label">@lang('views.CURRENCY')</label>
                                                     <select class="default-select form-control" name="currency">
-                                                        <option  selected disabled>Currency</option>
+                                                        <option  selected disabled>@lang('views.CURRENCY')</option>
                                                         @foreach ($currencies as $currency)
                                                         <option value="{{ $currency }}" @selected(old('currency',$company?->currency??'') == $currency)>{{ $currency  }}</option>
                                                         @endforeach
@@ -163,7 +164,7 @@
 
                                             </div>
 
-                                            <input type="submit" value="Submit" class="btn btn-primary mt-4">
+                                            <input type="submit" value="@lang('views.NEXT')" class="btn btn-primary mt-4">
                                         </form>
                                     </div>
                                 </div>

@@ -60,7 +60,7 @@
 
 
                                             <a href="{{ route('front.company-settings.shift.create') }}" class="btn btn-dark mt-4">@lang('views.BACK')</a>
-                                            <input type="submit" value="Submit" class="btn btn-primary mt-4">
+                                            <input type="submit" value="@lang('views.SAVE')" class="btn btn-primary mt-4">
                                         </form>
                                     </div>
                                 </div>
