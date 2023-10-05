@@ -7,17 +7,17 @@
                     <div class="row align-items-center">
                         <div class="col-12">
                             <a href="{{ route('front.salaries.export',['month'=>$salaries->first()->month,'year'=>$salaries->first()->year]) }}" class="btn btn-info float-end">
-                                <i class="ti ti-square-letter-x text-white me-1 fs-5"></i> Download Excel
+                                <i class="ti ti-square-letter-x text-white me-1 fs-5"></i> @lang('views.DOWNLOAD EXCEL')
                               </a>
-                            <h4 class="fw-semibold mb-8">Salaries</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.SALARIES')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
 
 
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.salaries.index') }}">Salaries</a></li>
+                                            href="{{ route('front.salaries.index') }}">@lang('views.SALARIES')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -31,12 +31,12 @@
 
               <thead class="header-item">
                 <tr>
-                    <th>Year</th>
-                    <th>Month</th>
-                    <th>Employee</th>
-                    <th>Actual Salary</th>
-                    <th>Net Salary</th>
-                    <th>Action</th>
+                    <th>@lang('views.YEAR')</th>
+                    <th>@lang('views.MONTH')</th>
+                    <th>@lang('views.EMPLOYEE')</th>
+                    <th>@lang('views.ACTUAL SALARY')</th>
+                    <th>@lang('views.NET SALARY')</th>
+                    <th>@lang('views.ACTION')</th>
               </tr>
             </thead>
               <tbody>

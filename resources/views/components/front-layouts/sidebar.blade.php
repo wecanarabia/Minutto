@@ -34,13 +34,13 @@
                 <!-- ============================= -->
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">القائمة الرئيسية</span>
+                    <span class="hide-menu">@lang('views.MAIN LIST')</span>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('front.home') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-aperture"></i>
                         </span>
-                        <span class="hide-menu">الرئيسية</span>
+                        <span class="hide-menu">@lang('views.DASHBOARD')</span>
                     </a>
                 </li>
             @if (Auth::guard('company')->user()->company==null)
@@ -52,7 +52,7 @@
                         <span>
                             <i class="ti ti-settings-plus"></i>
                         </span>
-                        <span class="hide-menu">إضافة إعدادات الشركة</span>
+                        <span class="hide-menu">@lang('views.ADD COMPANY SETTINGS')</span>
                     </a>
                 </li>
                 </li>
@@ -67,7 +67,7 @@
                                 <span>
                                     <i class="ti ti-fingerprint"></i>
                                 </span>
-                                <span class="hide-menu">كشف الحضور والإنصراف</span>
+                                <span class="hide-menu">@lang('views.ATTENDANCE LIST')</span>
                             </a>
                         </li>
                     @endcan
@@ -86,7 +86,7 @@
                           <span>
                             <i class="ti ti-bell-star"></i>
                           </span>
-                          <span class="hide-menu">الإشعارات</span>
+                          <span class="hide-menu">@lang('views.NOTIFICATIONS')</span>
                         </a>
                       </li>
                       @endcan
@@ -107,7 +107,7 @@
 
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                        <span class="hide-menu">الموارد البشرية</span>
+                        <span class="hide-menu">@lang('views.HUMAN RESOURCES')</span>
                     </li>
                     @can('employees')
                     <li class="sidebar-item">
@@ -115,7 +115,7 @@
                             <span>
                                 <i class="ti ti-users"></i>
                             </span>
-                            <span class="hide-menu">بيانات العاملين</span>
+                            <span class="hide-menu">@lang('views.EMPLOYEE DATA')</span>
                         </a>
                     </li>
                     @endcan
@@ -125,7 +125,7 @@
                             <span>
                                 <i class="ti ti-beach"></i>
                             </span>
-                            <span class="hide-menu">طلبات الإجازة</span>
+                            <span class="hide-menu">@lang('views.VACATION REQUESTS')</span>
                         </a>
                     </li>
                     @endcan
@@ -135,7 +135,7 @@
                             <span>
                                 <i class="ti ti-door-exit"></i>
                             </span>
-                            <span class="hide-menu">طلبات المغادرة</span>
+                            <span class="hide-menu">@lang('views.LEAVE REQUESTS')</span>
                         </a>
                     </li>
                     @endcan
@@ -146,7 +146,7 @@
                             <span>
                                 <i class="ti ti-mood-smile-filled"></i>
                             </span>
-                            <span class="hide-menu">طلبات الإستراحة</span>
+                            <span class="hide-menu">@lang('views.BREAK REQUESTS')</span>
                         </a>
                     </li>
                     @endcan
@@ -156,7 +156,7 @@
                             <span>
                                 <i class="ti ti-24-hours"></i>
                             </span>
-                            <span class="hide-menu">العمل الإضافي</span>
+                            <span class="hide-menu">@lang('views.EXTRA REQUESTS')</span>
                         </a>
                     </li>
                     @endcan
@@ -166,7 +166,7 @@
                             <span>
                                 <i class="ti ti-file-certificate"></i>
                             </span>
-                            <span class="hide-menu">الحوافز والمكافئات</span>
+                            <span class="hide-menu">@lang('views.BOUNS')</span>
                         </a>
                     </li>
                     @endcan
@@ -176,7 +176,7 @@
                             <span>
                                 <i class="ti ti-calendar-event"></i>
                             </span>
-                            <span class="hide-menu">الإجازات الرسمية</span>
+                            <span class="hide-menu">@lang('views.OFFICIAL VACATIONS')</span>
                         </a>
                     </li>
                     @endcan
@@ -186,7 +186,7 @@
                             <span>
                                 <i class="ti ti-file-alert"></i>
                             </span>
-                            <span class="hide-menu">الإنذارات</span>
+                            <span class="hide-menu">@lang('views.ALERTS')</span>
                         </a>
                     </li>
                     @endcan
@@ -197,7 +197,7 @@
                             <span class="d-flex">
                                 <i class="ti ti-home-shield"></i>
                             </span>
-                            <span class="hide-menu">الإنظمة والتعليمات</span>
+                            <span class="hide-menu">@lang('views.SYSTEM')</span>
                         </a> -
                         <ul aria-expanded="false" class="collapse first-level">
                             <li class="sidebar-item">
@@ -205,7 +205,7 @@
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
                                     </div>
-                                    <span class="hide-menu">النظام الداخلي</span>
+                                    <span class="hide-menu">@lang('views.INTERNAL SYSTEM')</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
@@ -213,7 +213,7 @@
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
                                     </div>
-                                    <span class="hide-menu">قوانين الإجازات والمغادرات</span>
+                                    <span class="hide-menu">@lang('views.VACATION SYSTEM')</span>
                                 </a>
                             </li>
                         </ul>
@@ -228,7 +228,7 @@
 
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                        <span class="hide-menu">قسم المحاسبة</span>
+                        <span class="hide-menu">@lang('views.ACCOUNTANT SECTION')</span>
                     </li>
                     @can('salaries')
                     <li class="sidebar-item">
@@ -236,7 +236,7 @@
                             <span>
                                 <i class="ti ti-report-money"></i>
                             </span>
-                            <span class="hide-menu">كشوفات الرواتب</span>
+                            <span class="hide-menu">@lang('views.PAYROL')</span>
                         </a>
                     </li>
                     @endcan
@@ -246,7 +246,7 @@
                             <span>
                                 <i class="ti ti-wallet"></i>
                             </span>
-                            <span class="hide-menu">طلبات السلف</span>
+                            <span class="hide-menu">@lang('views.ADVANCE REQUESTS')</span>
                         </a>
                     </li>
                     @endcan
@@ -256,7 +256,7 @@
                             <span>
                                 <i class="ti ti-replace"></i>
                             </span>
-                            <span class="hide-menu">طلبات البدلات</span>
+                            <span class="hide-menu">@lang('views.ALLOWANCE REQUESTS')</span>
                         </a>
                     </li>
                     @endcan
@@ -268,7 +268,7 @@
                     <!-- ============================= -->
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                        <span class="hide-menu">قسم الإدارة</span>
+                        <span class="hide-menu">@lang('views.MANAGEMENT SYSTEM')</span>
                     </li>
                     <!-- =================== -->
                     <!-- UI Elements -->
@@ -279,7 +279,7 @@
                             <span class="d-flex">
                                 <i class="ti ti-home-cog"></i>
                             </span>
-                            <span class="hide-menu">اعدادات الشركة</span>
+                            <span class="hide-menu">@lang('views.COMPANY SETTINGS')</span>
                         </a>
                         <ul aria-expanded="false" class="collapse first-level">
                             @can('company')
@@ -289,7 +289,7 @@
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
                                     </div>
-                                    <span class="hide-menu">ادارة بيانات الشركة</span>
+                                    <span class="hide-menu">@lang('views.COMPANY DATA MANAGE')</span>
                                 </a>
                             </li>
                             @endcan
@@ -301,7 +301,7 @@
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
                                     </div>
-                                    <span class="hide-menu">ادارة خصومات الحضور </span>
+                                    <span class="hide-menu">@lang('views.MANAGE DEDUCTIONS')</span>
                                 </a>
                             </li>
                             @endcan
@@ -312,7 +312,7 @@
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
                                     </div>
-                                    <span class="hide-menu">ادارة الفروع</span>
+                                    <span class="hide-menu">@lang('views.MANAGE BRANCHES')</span>
                                 </a>
                             </li>
                             @endcan
@@ -325,7 +325,7 @@
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
                                     </div>
-                                    <span class="hide-menu">ادارة الورديات</span>
+                                    <span class="hide-menu">@lang('views.MANAGE SHIFTS')</span>
                                 </a>
                             </li>
                             @endcan
@@ -336,7 +336,7 @@
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
                                     </div>
-                                    <span class="hide-menu">ادارة الأقسام</span>
+                                    <span class="hide-menu">@lang('views.MANAGE DEPARTMENTS')</span>
                                 </a>
                             </li>
                             @endcan
@@ -347,7 +347,7 @@
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
                                     </div>
-                                    <span class="hide-menu">تنظيم الأجازات</span>
+                                    <span class="hide-menu">@lang('views.MANAGE VACATIONS')</span>
                                 </a>
                             </li>
                             @endcan
@@ -358,7 +358,7 @@
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
                                     </div>
-                                    <span class="hide-menu">ادارة السجلات</span>
+                                    <span class="hide-menu">@lang('views.MANAGE LOGS')</span>
                                 </a>
                             </li>
                             @endcan
@@ -372,7 +372,7 @@
                             <span>
                                 <i class="ti ti-accessible"></i>
                             </span>
-                            <span class="hide-menu">ادارة الصلاحيات والموظفين</span>
+                            <span class="hide-menu">@lang('views.MANAGE ADMINS')</span>
                         </a>
                     </li>
                     @endcan
@@ -382,7 +382,7 @@
                             <span>
                                 <i class="ti ti-message"></i>
                             </span>
-                            <span class="hide-menu">ادارة الرسائل</span>
+                            <span class="hide-menu">@lang('views.MANAGE MSGS')</span>
                         </a>
                     </li>
                     @endcan
@@ -428,7 +428,7 @@
                             <span class="d-flex">
                                 <i class="ti ti-help-hexagon"></i>
                             </span>
-                            <span class="hide-menu">الأسئلة الشائعة</span>
+                            <span class="hide-menu">@lang('views.FAQS')</span>
                         </a>
                     </li>
                     {{-- <li class="sidebar-item">

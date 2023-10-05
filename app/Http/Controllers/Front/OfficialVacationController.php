@@ -44,7 +44,7 @@ class OfficialVacationController extends Controller
 
 
         return redirect()->route('front.official-vacations.index')
-                        ->with('success','Official Vacation has been added successfully');
+                        ->with('success',__('views.CREATED OFFICIAL VACATION'));
     }
 
     /**
@@ -92,7 +92,7 @@ class OfficialVacationController extends Controller
 
 
         return redirect()->route('front.official-vacations.show',$vacation->id)
-                        ->with('success','Official Vacation has been updated successfully');
+                        ->with('success',__('views.UPDATED OFFICIAL VACATION'));
     }
 
 }

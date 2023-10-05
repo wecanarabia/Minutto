@@ -85,6 +85,6 @@ class BreakController extends Controller
         ]);
 
         return redirect()->route('front.breaks.show',$leave->id)
-        ->with('success','Break Request has been update successfully');
+        ->with('success',__('views.UPDATED BREAK'));
     }
 }

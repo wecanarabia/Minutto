@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Messages</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.MESSAGES')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.messages.index') }}">Messages</a></li>
+                                            href="{{ route('front.messages.index') }}">@lang('views.MESSAGES')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -27,14 +27,14 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">Create Messages</h5>
+                                        <h5 class="mb-0">@lang('views.CREATE MESSAGE')</h5>
                                     </div>
                                     <form method="post" action="{{ route('front.messages.store') }}">
                                         @csrf
 
                                         <div class="mb-4">
 
-                                            <label class="form-label fw-semibold">Endlish Message</label>
+                                            <label class="form-label fw-semibold">@lang('views.ENGLISH MESSAGE')</label>
                                             <textarea  class="form-control" name="english_body" id="addnote" rows="3">{{ old('english_body') }}</textarea>
                                             @error('english_body')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -43,7 +43,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label fw-semibold">Arabic Message</label>
+                                            <label class="form-label fw-semibold">@lang('views.ARABIC MESSAGE')</label>
                                             <textarea  class="form-control" name="arabic_body"  id="addnote" rows="3">{{ old('arabic_body') }}</textarea>
                                             @error('arabic_body')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -52,7 +52,7 @@
                                         </div>
 
 
-                                        <input type="submit" value="Save" class="btn btn-primary">
+                                        <input type="submit" value="@lang('views.SAVE')" class="btn btn-primary">
                                     </form>
                                 </div>
                             </div>

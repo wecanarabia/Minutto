@@ -82,7 +82,7 @@
                                         @endforeach
                                     </div>
 
-                                        <input type="submit" value="Update" class="btn btn-primary">
+                                        <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary">
                                     </form>
                                 </div>
                             </div>

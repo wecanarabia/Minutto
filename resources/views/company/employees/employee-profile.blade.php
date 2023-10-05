@@ -38,7 +38,7 @@
                                 id="pills-account-tab" data-bs-toggle="pill" data-bs-target="#pills-account"
                                 type="button" role="tab" aria-controls="pills-account" aria-selected="true">
                                 <i class="ti ti-user-circle me-2 fs-6"></i>
-                                <span class="d-none d-md-block">Profile</span>
+                                <span class="d-none d-md-block">@lang('views.PROFILE')</span>
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
@@ -115,7 +115,7 @@
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">@lang('views.PROFILE STATUS')</p>
                                                     <h6 class="fw-semibold mb-0">
-                                                        {{ $employee->active == 1 ? 'Active' : 'In Active' }}</h6>
+                                                        {{ $employee->active == 1 ? __('views.ACTIVE') : __('views.IN ACTIVE') }}</h6>
                                                 </div>
 
                                                 <div class="col-12 mb-7">
@@ -199,7 +199,7 @@
                                                                     name="active" id="active" name="status" type="radio"
                                                                     value="1" @checked($employee->active == 1)>
                                                                 <label class="form-check-label" for="active">
-                                                                    Active
+                                                                    @lang('views.ACTIVE')
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
@@ -224,12 +224,13 @@
                                                         <div class="mb-4 col-6">
                                                             <label>
                                                                 <input type="checkbox" class="chk-box" name="is_imei">
-                                                                ) إتاحة التسجبل من جهاز جديد(في حالة تسجيل الموظف من جهاز جديد أو التسجيل بعد إعادة تثبيت التطبيق على الجهاز)                                                            </label>
+                                                                @lang('views.IMEI')
+                                                                                                                            </label>
 
                                                         </div>
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary mx-2">
                                                     <button id="profile-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>
@@ -387,7 +388,7 @@
                                                         </div>
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary mx-2">
                                                     <button id="identity-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>
@@ -458,7 +459,7 @@
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
 
-                                                <h5 class="card-title fw-semibold">@lang('views.UPDATE PROFILE')</h5>
+                                                <h5 class="card-title fw-semibold">@lang('views.UPDATE WORK INFORMATION')</h5>
                                                 <form method="post"
                                                     action="{{ route('front.employees.update', $employee->id) }}">
                                                     @csrf
@@ -478,7 +479,7 @@
                                                                 value="{{ $employee->duration_of_contract }}">
                                                         </div>
                                                         <div class="mb-4 col-6">
-                                                            <label for="exampleFormControlInput33_3" class="form-label">Working Start Date</label>
+                                                            <label for="exampleFormControlInput33_3" class="form-label">@lang('views.WORKING START DATE')</label>
                                                             <input type="date" name="work_start" class="form-control" id="exampleFormControlInput33_3"
                                                                 value="{{ $employee->work_start }}">
                                                         </div>
@@ -492,7 +493,7 @@
                                                             <label for="exampleFormControlInput5535" class="form-label">@lang('views.BRANCH')</label>
                                                             <select class="form-select" name="branch_id" id="exampleFormControlInput5535"
                                                                 aria-label="Default select example">
-                                                                <option disabled selected>Branch</option>
+                                                                <option disabled selected>@lang('views.BRANCH')</option>
                                                                 @foreach ($branches as $branch)
                                                                 <option value="{{ $branch->id }}" @selected($employee->branch_id==$branch->id)>{{
                                                                     $branch->name }}</option>
@@ -504,7 +505,7 @@
                                                             <label for="exampleFormControlInput6636" class="form-label">@lang('views.SHIFT')</label>
                                                             <select class="form-select" name="shift_id" id="exampleFormControlInput6636"
                                                                 aria-label="Default select example">
-                                                                <option disabled selected>Shift</option>
+                                                                <option disabled selected>@lang('views.SHIFT')</option>
                                                                 @foreach ($shifts as $shift)
                                                                 <option value="{{ $shift->id }}" @selected($employee->shift_id==$shift->id)>{{
                                                                     $shift->name }}</option>
@@ -517,7 +518,7 @@
                                                             <label for="exampleFormControlInput7737" class="form-label">@lang('views.DEPARTMENT')</label>
                                                             <select class="form-select" name="department_id" id="exampleFormControlInput7737" name="department_id"
                                                                 aria-label="Default select example">
-                                                                <option disabled selected>department</option>
+                                                                <option disabled selected>@lang('views.DEPARTMENT')</option>
                                                                 @foreach ($departments as $department)
                                                                 <option value="{{ $department->id }}" @selected($employee->
                                                                     department_id==$department->id)>{{ $department->name }}</option>
@@ -530,7 +531,7 @@
 
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary mx-2">
                                                     <button id="work-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>
@@ -591,17 +592,17 @@
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Insurance Value (Deducted from monthly salary on Payroll)</p>
+                                                    <p class="mb-1 fs-2">@lang('views.INSURANCE VALUE') @lang('views.SALARY DEDUCTION')</p>
                                                     <h6 class="fw-semibold mb-0">{{ currency($employee->insurance_value) }}
                                                     </h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Income Tax (Deducted from monthly salary on Payroll)</p>
+                                                    <p class="mb-1 fs-2">@lang('views.INCOME TAX') @lang('views.SALARY DEDUCTION')</p>
                                                     <h6 class="fw-semibold mb-0">{{ currency($employee->income_tax) }}
                                                     </h6>
                                                 </div>
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Retirement Benefits (Deducted from monthly salary on Payroll)</p>
+                                                    <p class="mb-1 fs-2">@lang('views.RETIREMENT BENEFITS') @lang('views.SALARY DEDUCTION')</p>
                                                     <h6 class="fw-semibold mb-0">{{ currency($employee->retirement_benefits) }}
                                                     </h6>
                                                 </div>
@@ -617,7 +618,7 @@
                                     <div id="bank-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
-                                                <h5 class="card-title fw-semibold">@lang('views.UPDATE BANK INFO')</h5>
+                                                <h5 class="card-title fw-semibold">@lang('views.UPDATE SALARY INFORMATION')</h5>
                                                 <form method="post"
                                                     action="{{ route('front.employees.update', $employee->id) }}">
                                                     @csrf
@@ -670,17 +671,17 @@
                                                                 value="{{ $employee->hourly_salary }}">
                                                         </div>
                                                         <div class="mb-4 col-6">
-                                                            <label for="exampleFormControlInput3336" class="form-label">Insurance Value (Deducted from monthly salary on Payroll)</label>
+                                                            <label for="exampleFormControlInput3336" class="form-label">@lang('views.INSURANCE VALUE') @lang('views.SALARY DEDUCTION')</label>
                                                             <input type="text" class="form-control" name="insurance_value" id="exampleFormControlInput3336"
                                                                 value="{{ $employee->insurance_value }}">
                                                         </div>
                                                         <div class="mb-4 col-6">
-                                                            <label for="exampleFormControlInput3337" class="form-label">Income Tax (Deducted from monthly salary on Payroll)</label>
+                                                            <label for="exampleFormControlInput3337" class="form-label">@lang('views.INCOME TAX') @lang('views.SALARY DEDUCTION')</label>
                                                             <input type="text" class="form-control" name="income_tax" id="exampleFormControlInput3337"
                                                                 value="{{ $employee->income_tax }}">
                                                         </div>
                                                         <div class="mb-4 col-6">
-                                                            <label for="exampleFormControlInput3338" class="form-label">Retirement Benefits (Deducted from monthly salary on Payroll)</label>
+                                                            <label for="exampleFormControlInput3338" class="form-label">@lang('views.RETIREMENT BENEFITS') @lang('views.SALARY DEDUCTION')</label>
                                                             <input type="text" class="form-control" name="retirement_benefits" id="exampleFormControlInput3338"
                                                                 value="{{ $employee->retirement_benefits }}">
                                                         </div>
@@ -689,7 +690,7 @@
 
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary mx-2">
                                                     <button id="bank-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>

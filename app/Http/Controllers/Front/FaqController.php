@@ -46,7 +46,7 @@ class FaqController extends Controller
         }
 
         return redirect()->route('front.faqs.index')
-                        ->with('success','Faq has been added successfully');
+                        ->with('success',__('views.CREATED FAQ'));
     }
 
     /**
@@ -84,6 +84,6 @@ class FaqController extends Controller
 
 
         return redirect()->route('front.faqs.index')
-                        ->with('success','Faq has been updated successfully');
+                        ->with('success',__('views.UPDATED FAQ'));
     }
 }

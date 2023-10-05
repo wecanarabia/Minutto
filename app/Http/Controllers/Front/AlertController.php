@@ -50,7 +50,7 @@ class AlertController extends Controller
 
 
        $alert = Alert::create($request->all());
-       $this->addLog($alert->user->id,'Add Alert','إضافة مخالفة','Alert has been added to employee','تم إضافة مخالفة على موظف',$alert->note);
+       $this->addLog($alert->user->id,'Add Penalty','إضافة مخالفة','Penalty has been added to employee','تم إضافة مخالفة على موظف',$alert->note);
        if ($alert->getTranslation('type','en')=='vacation days') {
             if ($alert->user->userVacation->vacation_balance>=$alert->punishment) {
                 $alert->user->userVacation()->update(['vacation_balance'=>($alert->user->userVacation->vacation_balance-$alert->punishment)]);
@@ -59,7 +59,7 @@ class AlertController extends Controller
 
 
        return redirect()->route('front.alerts.index')
-                       ->with('success','Alert has been added successfully');
+                       ->with('success',__('views.CREATED PENALITY'));
    }
 
    /**
@@ -112,7 +112,7 @@ class AlertController extends Controller
 
         }
         $alert->update($request->all());
-        $this->addLog($alert->user->id,'Update Alert','تحديث مخالفة','Alert has been updated on employee','تم تحديث مخالفة على موظف',$alert->note);
+        $this->addLog($alert->user->id,'Update Penalty','تحديث مخالفة','Penalty has been updated on employee','تم تحديث مخالفة على موظف',$alert->note);
        if ($alert->getTranslation('type','en')=='vacation days'&&$alert->user->userVacation->vacation_balance>=$alert->punishment) {
             $alert->user->userVacation()->update(['vacation_balance'=>(int)$sum-(int)$alert->punishment]);
         }else if($alert->getTranslation('type','en')=='vacation days'&&$alert->user->userVacation->vacation_balance<$alert->punishment) {
@@ -121,7 +121,7 @@ class AlertController extends Controller
             ->with('warning','Vacation Balance is not enough');
         }
        return redirect()->route('front.alerts.show',$alert->id)
-                       ->with('success','Alert has been updated successfully');
+                       ->with('success',__('views.UPDATED PENALITY'));
    }
 
 

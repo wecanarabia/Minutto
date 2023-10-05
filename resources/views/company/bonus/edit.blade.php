@@ -27,7 +27,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <h5 class="mb-0">@lang('views.EDIT SHIFT')</h5>
+                                        <h5 class="mb-0">@lang('views.EDIT BONUS')</h5>
                                     </div>
                                     <form method="post" action="{{ route('front.bonus.update',$bonus->id) }}" enctype="multipart/form-data">
                                         @csrf
@@ -44,7 +44,7 @@
                                         <div class="col-md-10">
                                             <label class="form-label">@lang('views.EMPLOYEE')</label>
                                             <select class="default-select form-control" name="user_id">
-                                             <option Selected disabled>Employee</option>
+                                             <option Selected disabled>@lang('views.EMPLOYEE')</option>
                                              @foreach ($employees as $employee)
                                              <option value="{{ $employee->id }}" @selected(old('user_id',$bonus->user_id) == $employee->id)>{{ $employee->name  }}</option>
                                              @endforeach
@@ -65,9 +65,9 @@
 
 
                                          <div class="col-md-10">
-                                            <label class="form-label">@lang('views.TYPE')</label>
+                                            <label class="form-label">@lang('views.BONUS TYPE')</label>
                                             <select class="default-select form-control" name="type">
-                                             <option Selected disabled>Type</option>
+                                             <option Selected disabled>@lang('views.BONUS TYPE')</option>
                                              @foreach ($types as $type)
                                              <option value="{{ json_encode($type) }}" @selected(old('type',$bonus->getRawOriginal('type')) == json_encode($type))>{{ $type[Illuminate\Support\Facades\App::getLocale()]  }}</option>
                                              @endforeach
@@ -78,7 +78,7 @@
                                          </div>
 
                                          <div class="col-md-10">
-                                            <label class="form-label">@lang('views.TYPES VALUE') (days-amount)</label>
+                                            <label class="form-label">@lang('views.TYPES VALUE') @lang('views.ALERT TYPE VALUE')</label>
                                             <input type="text" class="form-control" name="value" value="{{ old('value',$bonus->value) }}" required>
                                             @error('value')
                                             <div class="text-danger">{{ $message }}</div>
@@ -96,7 +96,7 @@
 
 
 
-                                        <input type="submit" value="Update" class="btn btn-primary">
+                                        <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary">
                                     </form>
                                 </div>
                             </div>

@@ -42,7 +42,7 @@
                                         <div class="mb-4">
                                             <label class="form-label">@lang('views.EMPLOYEE')</label>
                                             <select class="default-select form-control" name="user_id">
-                                             <option Selected disabled>Employee</option>
+                                             <option Selected disabled>@lang('views.EMPLOYEE')</option>
                                              @foreach ($employees as $employee)
                                              <option value="{{ $employee->id }}" @selected(old('user_id') == $employee->id)>{{ $employee->name  }}</option>
                                              @endforeach
@@ -51,33 +51,12 @@
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="mb-2">
-                                            <h5 class="mb-0">@lang('views.EMPLOYEE VACATION WORKDAYS')</h5>
-                                        </div>
+                                        
 
 
-                                    <div class="row">
-                                        @foreach ($days as $i => $day)
-                                        <div class="col-md-4">
-                                            <label>
-                                                <input type="checkbox" class="chk-box" name="{{ $day['en'] }}" value="{{ $i+1 }}" @if(collect(old($day['en']))->contains($i+1)) checked @endif>    {{ $day[Illuminate\Support\Facades\App::getLocale()] }}
-                                            </label><br>
-                                        </div>
-                                        <div class="col-md-4">
 
-                                        <label class="form-label">From</label>
-                                        <input type="time" class="form-control" name="{{ $day['en'] }}-from" value="{{ old($day['en'].'-from') }}" >
-                                        </div>
 
-                                        <div class="col-md-4">
-
-                                        <label class="form-label">To</label>
-                                        <input type="time" class="form-control" name="{{ $day['en'] }}-to" value="{{ old($day['en'].'-to') }}" >
-                                        </div>
-                                        @endforeach
-                                    </div>
-
-                                        <input type="submit" value="Save" class="btn btn-primary">
+                                        <input type="submit" value="@lang('views.SAVE')" class="btn btn-primary">
                                     </form>
                                 </div>
                             </div>

@@ -55,7 +55,7 @@ class RewardController extends Controller
        $this->addLog($reward->user->id, 'Add Employee Allownce Request', 'إضافة طلب بدل لموظف', 'Employee Allownce Request has been added', 'تم إضافة طلب بدل لموظف',$request['note']);
 
        return redirect()->route('front.allowances.index')
-                       ->with('success','Allowance Request has been added successfully');
+                       ->with('success',__('views.CREATED ALLOWANCE'));
    }
 
    /**
@@ -118,7 +118,7 @@ class RewardController extends Controller
 
 
        return redirect()->route('front.allowances.show',$reward->id)
-                       ->with('success','Allowance Request has been updated successfully');
+                       ->with('success',__('views.UPDATED ALLOWANCE'));
    }
    public function openFile($id)
    {

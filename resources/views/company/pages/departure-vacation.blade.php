@@ -46,24 +46,24 @@
 
 
                                                 <div class="col-4 mb-7">
-                                                    <p class="mb-1 fs-2">English Title</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ENGLISH TITLE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $page->getTranslation('title', 'en') }}
                                                     </h6>
                                                 </div>
                                                 <div class="col-8 mb-7">
-                                                    <p class="mb-1 fs-2">Arabic Title</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ARABIC TITLE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $page->getTranslation('title', 'ar') }}
                                                     </h6>
                                                 </div>
 
 
                                                 <div class="col-8 mb-7">
-                                                    <p class="mb-1 fs-2">English Content</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ENGLISH CONTENT')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $page->getTranslation('content', 'en')}}
                                                     </h6>
                                                 </div>
                                                 <div class="col-8 mb-7">
-                                                    <p class="mb-1 fs-2">Arabic Content</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ARABIC CONTENT')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $page->getTranslation('content', 'ar')}}
                                                     </h6>
                                                 </div>
@@ -77,7 +77,7 @@
                                     <div id="cat-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
-                                                <h5 class="card-title fw-semibold">Update {{ $page->title }}</h5>
+                                                <h5 class="card-title fw-semibold">@lang('views.EDIT') {{ $page->title }}</h5>
                                                 <form method="post"
                                                     action="{{ route("front.pages.departure-vacation.update") }}" enctype="multipart/form-data">
                                                     @csrf
@@ -85,14 +85,14 @@
                                                     <input type="hidden" name="id" value="{{ $page->id }}">
                                                     <div class="row">
                                                         <div class="mb-4 col-12">
-                                                            <label class="form-label fw-semibold">English Content</label>
+                                                            <label class="form-label fw-semibold">@lang('views.ENGLISH CONTENT')</label>
                                                              <textarea  class="form-control" name="english_content" id="addnote" rows="3">{{ old('english_content',$page->getTranslation('content', 'en')) }}</textarea>
 
 
                                                         </div>
 
                                                         <div class="mb-4 col-12">
-                                                            <label class="form-label fw-semibold">Arabic Content</label>
+                                                            <label class="form-label fw-semibold">@lang('views.ARABIC CONTENT')</label>
                                                             <textarea  class="form-control" name="arabic_content"  id="addnote" rows="3">{{ old('arabic_content',$page->getTranslation('content', 'ar')) }}</textarea>
                                                           </div>
 
@@ -102,7 +102,7 @@
 
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary mx-2">
                                                     <button id="cat-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>

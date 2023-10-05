@@ -4,7 +4,7 @@
             <div class="row align-items-center">
                 <div class="col-12">
                     <a href="{{ route("front.departments.create") }}" class="btn btn-info float-end">
-                        <i class="ti ti-square-rounded-plus text-white me-1 fs-5"></i> Add Department
+                        <i class="ti ti-square-rounded-plus text-white me-1 fs-5"></i> @lang('Add DEPARTMENT')
                       </a>
                     <h4 class="fw-semibold mb-8">@lang('views.DEPARTMENTS')</h4>
                     <nav aria-label="breadcrumb">

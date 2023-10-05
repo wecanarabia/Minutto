@@ -73,7 +73,7 @@ class VacationController extends Controller
                 }
             }
             if ($vacation->user->userVacation->vacation_balance<count($days)) {
-                $errors[]='Something went wrong, please try again';
+                $errors[]=__('views.WRONG MSG');
                 return response()->json([
                     'error' => $errors,
                 ]);
@@ -86,7 +86,7 @@ class VacationController extends Controller
 
 
         if (!in_array($vacation->getTranslation('status','en'),['approve','rejected'])||!in_array($vacation->user->id,$employees)||!in_array($request['status'],$allStatus)) {
-            return redirect()->back()->with("error",'Something went wrong, please try again');
+            return redirect()->back()->with("error",__('views.WRONG MSG'));
 
         }
         if ($vacation->getTranslation('status','en')!==$request['status.en']) {
@@ -105,6 +105,6 @@ class VacationController extends Controller
             'replay'=>$request['replay'],
         ]);
         return redirect()->route('front.vacations.show',$vacation->id)
-        ->with('success','Vacation Request has been update successfully');
+        ->with('success',__('views.UPDATED VACATION'));
     }
 }

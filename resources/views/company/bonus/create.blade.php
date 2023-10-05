@@ -62,9 +62,9 @@
 
 
                                         <div class="mb-4">
-                                            <label class="form-label">@lang('views.ALERT TYPE')</label>
+                                            <label class="form-label">@lang('views.BONUS TYPE')</label>
                                             <select class="default-select form-control" name="type">
-                                             <option Selected disabled>Type</option>
+                                             <option Selected disabled>@lang('views.BONUS TYPE')</option>
                                              @foreach ($types as $type)
                                              <option value="{{ json_encode($type) }}" @selected(old('type') == json_encode($type))>{{ $type[Illuminate\Support\Facades\App::getLocale()]  }}</option>
                                              @endforeach
@@ -75,7 +75,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <label class="form-label">@lang('views.BONUS TYPES VALUE') (days-amount)</label>
+                                            <label class="form-label">@lang('views.BONUS TYPES VALUE') @lang('views.ALERT TYPE VALUE')</label>
                                             <input type="text" class="form-control" name="value" value="{{ old('value') }}" required>
                                             @error('value')
                                             <div class="text-danger">{{ $message }}</div>
@@ -94,7 +94,7 @@
 
 
 
-                                        <input type="submit" value="Save" class="btn btn-primary">
+                                        <input type="submit" value="@lang('views.SAVE')" class="btn btn-primary">
                                     </form>
                                 </div>
                             </div>

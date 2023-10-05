@@ -32,6 +32,7 @@ class SalaryController extends Controller
         $branches = Branch::where('company_id', Auth::user()->company_id)->get();
         $employees = User::active()->hasSalary()->whereBelongsTo($branches)->get();
         if (count($employees)>0) {
+            $this->update();
             $data['leaves'] = Leave::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employees)->get()->sum('discount_value');
             $data['workhours'] = Workhour::whereMonth('created_at', Carbon::now()->month)->where('discount_value', '>', 0)->whereBelongsTo($employees)->get()->sum('discount_value');
             $data['advances'] = Advance::whereMonth('created_at', Carbon::now()->month)->where('value', '>', 0)->where('status->en', 'approve')->whereBelongsTo($employees)->get()->sum('value');
@@ -59,6 +60,9 @@ class SalaryController extends Controller
             $data['bouns']=0;
             $data['rewards']=0;
             $data['alerts_in_days']=0;
+            $data['insurance_value']=0;
+            $data['income_tax']=0;
+            $data['retirement_benefits']=0;
             $data['alerts']=0;
             $data['years']=(array)Carbon::now()->year;
         }
@@ -104,7 +108,7 @@ class SalaryController extends Controller
             }
         }
         return redirect()->route('front.salaries.index')
-        ->with('success','Salary of this month has been generated successfully');
+        ->with('success',__('views.GENERATED SALARY'));
     }
 
 
@@ -137,7 +141,7 @@ class SalaryController extends Controller
             return redirect()->back();
         }
         return redirect()->route('company.salaries.index')
-                        ->with('success','Salary has been added successfully');
+                        ->with('success',__('views.CREATED SALARY'));
     }
 
     public function show($id)
@@ -188,7 +192,7 @@ class SalaryController extends Controller
             }
         }
         return redirect()->route('front.salaries.index')
-        ->with('success','Salary of this month has been updated successfully');
+        ->with('success',__('views.UPDATED SALARY'));
     }
     public function filter(Request $request)
     {

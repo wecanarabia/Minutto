@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Messages</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.MESSAGES')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.messages.index') }}">Messages</a></li>
+                                            href="{{ route('front.messages.index') }}">@lang('views.MESSAGES')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -46,17 +46,17 @@
 
 
                                                 <div class="col-12 mb-7">
-                                                    <p class="mb-1 fs-2">English Message</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ENGLISH MESSAGE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $message->created_at }}</h6>
                                                 </div>
 
                                                 <div class="col-12 mb-7">
-                                                    <p class="mb-1 fs-2">Arabic Message</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ARABIC MESSAGE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $message->getTranslation('body', 'en') }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Created At</p>
+                                                    <p class="mb-1 fs-2">@lang('views.CREATED AT')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $message->getTranslation('body', 'ar') }}</h6>
                                                 </div>
 
@@ -72,7 +72,7 @@
                                     <div id="cat-form" class="col-lg-12 d-flex align-items-stretch d-none">
                                         <div class="card w-100 position-relative overflow-hidden">
                                             <div class="card-body p-4">
-                                                <h5 class="card-title fw-semibold">Update Message</h5>
+                                                <h5 class="card-title fw-semibold">@lang('views.EDIT MESSAGE')</h5>
                                                 <form method="post"
                                                     action="{{ route('front.messages.update') }}" enctype="multipart/form-data">
                                                     @csrf
@@ -80,13 +80,13 @@
                                                     <input type="hidden" name="id" value="{{ $message->id }}">
                                                     <div class="row">
                                                         <div class="mb-4 col-12">
-                                                            <label class="form-label fw-semibold">Endlish Message</label>
+                                                            <label class="form-label fw-semibold">@lang('views.ENGLISH MESSAGE')</label>
                                                             <textarea  class="form-control" name="english_body" id="addnote" rows="3">{{ old('english_body',$message->getTranslation('body', 'en')) }}</textarea>
 
                                                         </div>
 
                                                         <div class="mb-4 col-12">
-                                                            <label class="form-label fw-semibold">Arabic Message</label>
+                                                            <label class="form-label fw-semibold">@lang('views.ARABIC MESSAGE')</label>
                                                             <textarea  class="form-control" name="arabic_body"  id="addnote" rows="3">{{ old('arabic_body',$message->getTranslation('body', 'ar')) }}</textarea>
                                                         </div>
 
@@ -96,7 +96,7 @@
 
 
                                                     </div>
-                                                    <input type="submit" value="Update" class="btn btn-primary mx-2">
+                                                    <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary mx-2">
                                                     <button id="cat-cancel" class="btn btn-dark">@lang('views.CANCEL')</button>
 
                                                 </form>

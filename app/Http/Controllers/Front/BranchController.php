@@ -45,7 +45,7 @@ class BranchController extends Controller
         $branch->shifts()->attach($request['shifts']);
 
         return redirect()->route('front.branches.index')
-                        ->with('success','Branch has been added successfully');
+                        ->with('success',__('views.CREATED BRANCH'));
     }
 
     /**
@@ -94,6 +94,6 @@ class BranchController extends Controller
 
 
         return redirect()->route('front.branches.show',$branch->id)
-                        ->with('success','Branch has been updated successfully');
+                        ->with('success',__('views.UPDATED BRANCH'));
     }
 }

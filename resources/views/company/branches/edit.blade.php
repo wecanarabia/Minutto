@@ -77,9 +77,11 @@
                                             <select class="form-select" name="branch_head">
                                                 <option data-display="Select">
                                                     @if($employees->count()==0)
-                                                    This branch has <b>no</b> employees, please add employees to select head from
+                                                    @lang('views.NO BRANCH HEAD')
+
                                                     @else
-                                                    Select branch head
+
+                                                    @lang('views.GET BRANCH HEAD')
                                                     @endif</option>
                                                 @foreach ($employees as $employee)
                                                 <option value="{{ $employee->id }}" @selected(old('branch_head',$branch->branch_head) == $employee->id)>{{ $employee->name  }}</option>
@@ -104,7 +106,7 @@
                                             @enderror
                                         </div>
 
-                                        <input type="submit" value="Update" class="btn btn-primary">
+                                        <input type="submit" value="@lang('views.UPDATE')" class="btn btn-primary">
                                     </form>
                                 </div>
                             </div>

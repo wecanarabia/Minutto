@@ -45,7 +45,7 @@ class DepartmentController extends Controller
 
 
         return redirect()->route('front.departments.index')
-                        ->with('success','department has been added successfully');
+                        ->with('success',__('views.CREATED DEPARTMENT'));
     }
 
     /**
@@ -94,7 +94,7 @@ class DepartmentController extends Controller
 
 
         return redirect()->route('front.departments.show',$department->id)
-                        ->with('success','department has been updated successfully');
+                        ->with('success',__('views.UPDATED DEPARTMENT'));
     }
 
 

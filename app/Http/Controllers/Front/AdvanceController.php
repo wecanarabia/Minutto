@@ -78,10 +78,10 @@ class AdvanceController extends Controller
             'req_date'=>$request['req_date'],
         ]);
             return redirect()->route('front.advances.show',$advance->id)
-            ->with('success','Advance has been update successfully');
+            ->with('success',__('views.UPDATED ADVANCE'));
         }else{
             return redirect()->back()
-            ->with('error','Something has been wrong');
+            ->with('error',__('views.WRONG MSG'));
         }
     }
 }

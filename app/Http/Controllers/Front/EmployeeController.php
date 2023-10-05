@@ -123,7 +123,7 @@ class EmployeeController extends Controller
         }
 
         return redirect()->route('front.employees.show',$user->id)
-        ->with('success','Employeet of this year has been update successfully');
+        ->with('success',__('views.PDATED EMPLOYEE'));
 
     }
 

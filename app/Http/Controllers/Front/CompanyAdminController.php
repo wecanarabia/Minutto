@@ -41,7 +41,7 @@ class CompanyAdminController extends Controller
 
 
         return redirect()->route('company.admins.index')
-                        ->with('success','Admin has been added successfully');
+                        ->with('success',__('views.CREATED ADMIN'));
     }
 
     /**
@@ -82,7 +82,7 @@ class CompanyAdminController extends Controller
 
 
         return redirect()->route('front.admins.index')
-                        ->with('success','Company Admin has been updated successfully');
+                        ->with('success',__('views.UPDATED ADMIN'));
     }
 
 }

@@ -6,13 +6,17 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">@lang('views.ATTENDANCE DEDUCTIONS')</h4>
+
+                            <h4 class="fw-semibold mb-8">@lang('views.ATTENDANCE DEDUCTION')</h4>
+
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
                                             href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="javascript:void(0);">@lang('views.ATTENDANCE DEDUCTIONS')</a></li>
+
+                                            href="javascript:void(0);">@lang('views.ATTENDANCE DEDUCTION')</a></li>
+
                                 </ol>
                             </nav>
                         </div>
@@ -29,7 +33,9 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="mb-2">
+
                                             <h5 class="mb-0">@lang('views.CREATE ATTENDANCE DEDUCTIONS')</h5>
+
                                         </div>
                                         <form method="post" action="{{ route('front.deductions.store') }}">
                                             @csrf
@@ -50,7 +56,9 @@
                                                 </div>
 
                                                 <div class="mb-4 col-12">
-                                                    <label for="percentage" class="form-label">@lang('views.PERCENTAGE') (HH:MM:SS)</label>
+
+                                                    <label for="percentage" class="form-label">@lang('views.DEDUCTION PERCENTAGE') (HH:MM:SS)</label>
+
                                                     <input type="text" class="form-control" name="percentage" placeholder="HH:MM:SS" value="{{ old('percentage') }}" id="percentage" required>
                                                     @error('percentage')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -63,7 +71,7 @@
 
                                             </div>
 
-                                            <input type="submit" value="Submit" class="btn btn-primary mt-4">
+                                            <input type="submit" value="@lang('views.SAVE')" class="btn btn-primary mt-4">
                                         </form>
                                     </div>
                                 </div>

@@ -6,13 +6,13 @@
                 <div class="card-body px-4 py-3">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <h4 class="fw-semibold mb-8">Salaries</h4>
+                            <h4 class="fw-semibold mb-8">@lang('views.SALARIES')</h4>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a class="text-muted"
-                                            href="{{ route('front.home') }}">Dashboard</a></li>
+                                            href="{{ route('front.home') }}">@lang('views.DASHBOARD')</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a class="text-muted"
-                                            href="{{ route('front.salaries.index') }}">Salaries</a></li>
+                                            href="{{ route('front.salaries.index') }}">@lang('views.SALARIES')</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -67,32 +67,32 @@
 
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Salary</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ACTUAL SALARY')</p>
                                                     <h6 class="fw-semibold mb-0">{{ currency($salary->actual_salary) }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Net Salary</p>
+                                                    <p class="mb-1 fs-2">@lang('views.SALARIES')</p>
                                                     <h6 class="fw-semibold mb-0">{{ currency($salary->net_salary) }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Month</p>
+                                                    <p class="mb-1 fs-2">@lang('views.MONTH')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $salary->month }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Year</p>
+                                                    <p class="mb-1 fs-2">@lang('views.YEAR')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $salary->year }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Deduction</p>
+                                                    <p class="mb-1 fs-2">@lang('views.DEDUCTION')</p>
                                                     <h6 class="fw-semibold mb-0">{{ currency($salary->discounts) }}</h6>
                                                 </div>
 
                                                 <div class="col-6 mb-7">
-                                                    <p class="mb-1 fs-2">Allowances</p>
+                                                    <p class="mb-1 fs-2">@lang('views.ALLOWANCE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ currency($salary->incentives_and_extra) }}</h6>
                                                 </div>
 

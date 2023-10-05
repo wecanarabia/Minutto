@@ -33,7 +33,9 @@
 
                                         <div class="row">
                                             <div class="col-4 mb-7">
-                                                <p class="mb-1 fs-2">@lang('views.ENGLISH TITLE')</p>
+
+                                                <p class="mb-1 fs-2">>@lang('views.ENGLISH TITLE')</p>
+
                                                 <h6 class="fw-semibold mb-0">{{ $notification->getTranslation('title', 'en') }}
                                                 </h6>
                                             </div>
@@ -50,7 +52,9 @@
                                                 </h6>
                                             </div>
                                             <div class="col-8 mb-7">
-                                                <p class="mb-1 fs-2">@lang('views.ENGLISH BODY')</p>
+
+                                                <p class="mb-1 fs-2">@lang('views.ARABIC BODY')</p>
+
                                                 <h6 class="fw-semibold mb-0">{{ $notification->getTranslation('body', 'ar')}}
                                                 </h6>
                                             </div>
