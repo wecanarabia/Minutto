@@ -216,7 +216,7 @@ return [
         'slug'                  => ' ',
         'value' => 'القيمة',
         'note' => 'ملاحظة',
-        'replay' => 'إعادة',
+        'replay' => 'الرد',
         'req_date' => 'تاريخ الطلب',
         'status.en' => 'الحالة',
         'alert_date' => 'تاريخ الجزاء',

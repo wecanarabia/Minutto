@@ -182,7 +182,7 @@ return [
     'attributes' => [
         'value'=>'Amount',
         'note'=>'Note',
-        'replay'=>'Replay',
+        'replay'=>'Reply',
         'req_date'=>'Request Date',
         'status.en'=>'Status',
         'alert_date'=>'Penality Date',
