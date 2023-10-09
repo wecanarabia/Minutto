@@ -22,6 +22,18 @@
             <div class="widget-content searchable-container list">
                 <x-front-layouts.messages />
                 @if ($errors->any())
+
+
+
+                @if($errors->has('english_name')||$errors->has('arabic_name')||$errors->has('english_description')||$errors->has('arabic_description')||$errors->has('timezone')||$errors->has('currency'))
+                <input type="hidden" id="generalErrors" value="1">
+                @endif
+                @if($errors->has('employees_count')||$errors->has('leaves_count')||$errors->has('holidays_count')||$errors->has('sick_leaves')||$errors->has('advances_percentage')||$errors->has('advances_count')||$errors->has('extra_rate')||$errors->has('grace_period'))
+                <input type="hidden" id="hrErrors" value="1">
+                @endif
+                @if($errors->has('subscription_id'))
+                <input type="hidden" id="subscriptionErrors" value="1">
+                @endif
                 <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                         @foreach ($errors->all() as $error)
@@ -522,4 +534,33 @@
     </div>
     </div>
     </div>
+    @push('javasc')
+<script>
+if(document.getElementById('generalErrors')&&document.getElementById('generalErrors').value=='1'){
+    $('#profile-data').hide();
+    $('#profile-form').removeClass('d-none');
+}else if(document.getElementById('hrErrors')&&document.getElementById('hrErrors').value=='1'){
+  $("#pills-account-tab").removeClass('active');
+  $("#pills-account-tab").attr('aria-selected', false);
+  $("#pills-account").removeClass(['active','show']);
+  $("#pills-notifications-tab").addClass('active');
+  $("#pills-notifications-tab").attr('aria-selected', true);
+  $("#pills-notifications-tab").removeAttr('tabindex');
+  $("#pills-notifications").addClass(['active','show']);
+  $('#identity-data').hide();
+  $('#identity-form').removeClass('d-none');
+}else if(document.getElementById('subscriptionErrors')&&document.getElementById('subscriptionErrors').value=='1'){
+    $("#pills-account-tab").removeClass('active');
+  $("#pills-account-tab").attr('aria-selected', false);
+  $("#pills-account").removeClass(['active','show']);
+  $("#pills-bills-tab").addClass('active');
+  $("#pills-bills-tab").attr('aria-selected', true);
+  $("#pills-bills-tab").removeAttr('tabindex');
+  $("#pills-bills").addClass(['active','show']);
+    $('#work-data').hide();
+    $('#work-form').removeClass('d-none');
+}
+</script>
+
+@endpush
 </x-front-layouts.app>

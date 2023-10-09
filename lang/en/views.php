@@ -403,7 +403,7 @@ return [
     'UPDATED OFFICIAL VACATION'=>'Official Vacation has been updated successfully',
     'UPDATED INTERNAL SYSTEM'=>'Internal System has been updated successfully',
     'UPDATED DEPARTURE VACATION SYSTEM'=>'Departures And Vacations System has been updated successfully',
-    ''=>'',
+    'JOB NUMBER'=>'Job Number',
     ''=>'',
     ''=>'',
     ''=>'',

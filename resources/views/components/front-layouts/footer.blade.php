@@ -370,8 +370,8 @@
 <script src="{{ asset('dist/libs/simplebar/dist/simplebar.min.js') }}"></script>
 <script src="{{ asset('dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initialize" async defer></script>
-
 <!--  core files -->
+@stack('javasc')
 <script src="{{ asset('assets/js/map.js') }}"></script>
 <script src="{{ asset('dist/js/app.min.js') }}"></script>
 <script src="{{ asset('dist/js/app.init.js') }}"></script>

@@ -22,13 +22,25 @@
             <div class="widget-content searchable-container list">
                 <x-front-layouts.messages />
                 @if ($errors->any())
+                @if($errors->has('name')||$errors->has('last_name')||$errors->has('phone')||$errors->has('email')||$errors->has('password')||$errors->has('image')||$errors->has('active')||$errors->has('description')||$errors->has('is_imei'))
+                <input type="hidden" id="profileErrors" value="1">
+                @endif
+                @if($errors->has('nationality')||$errors->has('gender')||$errors->has('marital_status')||$errors->has('date_of_birth')||$errors->has('passport_identity')||$errors->has('national_identity')||$errors->has('emergency_contact')||$errors->has('address'))
+                <input type="hidden" id="identityErrors" value="1">
+                @endif
+                @if($errors->has('career')||$errors->has('job_number')||$errors->has('duration_of_contract')||$errors->has('work_start')||$errors->has('contract_expire')||$errors->has('branch_id')||$errors->has('shift_id')||$errors->has('department_id'))
+                <input type="hidden" id="workErrors" value="1">
+                @endif
+                @if($errors->has('bank_name')||$errors->has('account_number')||$errors->has('bank_branch')||$errors->has('ipan')||$errors->has('swift_number')||$errors->has('monthly_salary')||$errors->has('daily_salary')||$errors->has('hourly_salary')||$errors->has('insurance_value')||$errors->has('income_tax')||$errors->has('retirement_benefits'))
+                <input type="hidden" id="salaryErrors" value="1">
+                @endif
                 <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                         @foreach ($errors->all() as $error)
                             <p>{{ $error }}</p>
                         @endforeach
                 </div>
-            @endif
+                @endif
                 <!-- start profile -->
                 <div class="card">
                     <ul class="nav nav-pills user-profile-tab" id="pills-tab" role="tablist">
@@ -411,6 +423,11 @@
                                                     <p class="mb-1 fs-2">@lang('views.JOP')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $employee->career }}</h6>
                                                 </div>
+
+                                                <div class="col-6 mb-7">
+                                                    <p class="mb-1 fs-2">@lang('views.JOB NUMBER')</p>
+                                                    <h6 class="fw-semibold mb-0">{{ $employee->job_number }}</h6>
+                                                </div>
                                                 <div class="col-6 mb-7">
                                                     <p class="mb-1 fs-2">@lang('views.WORKING START DATE')</p>
                                                     <h6 class="fw-semibold mb-0">{{ $employee->work_start }}</h6>
@@ -470,6 +487,13 @@
                                                             <label for="exampleFormControlInput1131" class="form-label">@lang('views.CAREER')</label>
                                                             <input type="text" name="career" class="form-control" id="exampleFormControlInput1131"
                                                                 value="{{ $employee->career }}">
+
+
+                                                        </div>
+                                                        <div class="mb-4 col-6">
+                                                            <label for="exampleFormControlInput11313" class="form-label">@lang('views.JOB NUMBER')</label>
+                                                            <input type="text" name="career" class="form-control" id="exampleFormControlInput11313"
+                                                                value="{{ $employee->job_number }}">
 
 
                                                         </div>
@@ -711,4 +735,47 @@
     </div>
     </div>
     </div>
+
+
+
+
+@push('javasc')
+<script>
+if(document.getElementById('profileErrors')&&document.getElementById('profileErrors').value=='1'){
+    $('#profile-data').hide();
+    $('#profile-form').removeClass('d-none');
+}else if(document.getElementById('identityErrors')&&document.getElementById('identityErrors').value=='1'){
+  $("#pills-account-tab").removeClass('active');
+  $("#pills-account-tab").attr('aria-selected', false);
+  $("#pills-account").removeClass(['active','show']);
+  $("#pills-notifications-tab").addClass('active');
+  $("#pills-notifications-tab").attr('aria-selected', true);
+  $("#pills-notifications-tab").removeAttr('tabindex');
+  $("#pills-notifications").addClass(['active','show']);
+  $('#identity-data').hide();
+  $('#identity-form').removeClass('d-none');
+}else if(document.getElementById('workErrors')&&document.getElementById('workErrors').value=='1'){
+    $("#pills-account-tab").removeClass('active');
+  $("#pills-account-tab").attr('aria-selected', false);
+  $("#pills-account").removeClass(['active','show']);
+  $("#pills-bills-tab").addClass('active');
+  $("#pills-bills-tab").attr('aria-selected', true);
+  $("#pills-bills-tab").removeAttr('tabindex');
+  $("#pills-bills").addClass(['active','show']);
+    $('#work-data').hide();
+    $('#work-form').removeClass('d-none');
+}else if(document.getElementById('salaryErrors')&&document.getElementById('salaryErrors').value=='1'){
+    $("#pills-account-tab").removeClass('active');
+  $("#pills-account-tab").attr('aria-selected', false);
+  $("#pills-account").removeClass(['active','show']);
+  $("#pills-security-tab").addClass('active');
+  $("#pills-security-tab").attr('aria-selected', true);
+  $("#pills-security-tab").removeAttr('tabindex');
+  $("#pills-security").addClass(['active','show']);
+    $('#bank-data').hide();
+    $('#bank-form').removeClass('d-none');
+}
+</script>
+
+@endpush
 </x-front-layouts.app>

@@ -22,13 +22,14 @@
             <div class="widget-content searchable-container list">
                 <x-front-layouts.messages />
                 @if ($errors->any())
-                <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-                        @foreach ($errors->all() as $error)
-                            <p>{{ $error }}</p>
-                        @endforeach
-                </div>
-            @endif
+                <input type="hidden" id="validationErrors" value="1">
+                    <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                    </div>
+                @endif
                 <div class="card card-body">
                     <div class="row">
                         <div class="col-12">
@@ -179,4 +180,14 @@
             </div>
         </div>
     </div>
+    @push('javasc')
+<script>
+if(document.getElementById('validationErrors').value=='1'){
+    $('#cat-data').hide();
+    $('#cat-form').removeClass('d-none');
+}
+</script>
+
+@endpush
 </x-front-layouts.app>
+

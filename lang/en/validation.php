@@ -270,6 +270,7 @@ return [
         'last_name'=>'Last Name',
         'active'=>'STATUS',
         'address'=>'Address',
+        'job_number'=>'Job Number',
     ],
 
 ];

@@ -31,6 +31,7 @@
             class="table border table-striped table-bordered display nowrap"
             style="width: 100%">
             <thead class="header-item">
+                <th>@lang('views.JOB NUMBER')</th>
                 <th>@lang('views.NAME')</th>
                 <th>@lang('views.EMAIL')</th>
                 <th>@lang('views.PHONE')</th>
@@ -42,6 +43,9 @@
                 <!-- start row -->
                 @foreach ($employees as $employee)
                 <tr class="search-items" style="">
+                    <td>
+                        {{ $employee->job_number }}
+                       </td>
                   <td>
                     <div class="d-flex align-items-center">
                         @if ($employee->image==null)

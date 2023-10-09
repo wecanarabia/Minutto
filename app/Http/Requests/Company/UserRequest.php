@@ -49,6 +49,7 @@ class UserRequest extends FormRequest
             'shift_id'=>'sometimes|exists:shifts,id',
             'work_start'=>'sometimes|date',
             'address'=>'sometimes|min:4|max:255',
+            'job_number'=>'sometimes|min:4|max:255',
             'name'=>'sometimes|min:4|max:255',
             'last_name'=>'sometimes|min:4|max:255',
             'phone' => 'sometimes|min:9|regex:/^([0-9\s\-\+\(\)]*)$/|unique:users,phone,'.$this->id,
