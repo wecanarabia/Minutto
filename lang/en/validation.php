@@ -272,5 +272,42 @@ return [
         'address'=>'Address',
         'job_number'=>'Job Number',
     ],
+    'values' => [
+        'gender' => [
+            'male'=>'Male',
+            'female'=>'Female',
+        ],
 
+        'active' => [
+            '0'=>'Inactive',
+            '1'=>'Aactive',
+        ],
+        'status' => [
+            '0'=>'Inactive',
+            '1'=>'Aactive',
+            'en'=>[
+                'waiting' => 'Waiting',
+                'approve' => 'Approve',
+                'rejected' => 'Rejected',
+                'amount'=>'Amount',
+                'attention'=>'Attention',
+                'vacation days'=>'Vacation Days',
+                'Salary number of working days'=>'Salary number of working days',
+                'late'=>'Late',
+                'absence'=>'Absence',
+                'vacation'=>'Vacation',
+                'disciplined'=>'Disciplined',
+                ''=>'',
+            ]
+        ],
+
+        'type' => [
+            'en'=>[
+                'amount'=>'Amount',
+                'days'=>'Salary for number of Days',
+                'vacation'=>'Vacation days',
+                ''=>'',
+            ]
+        ],
+    ],
 ];
