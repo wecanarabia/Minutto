@@ -10,7 +10,7 @@ return [
     'REQUEST DATE' => 'Request Date',
     'AMOUNT' => 'Amount',
     'NOTE' => 'Note',
-    'REPLAY' => 'Replay',
+    'REPLAY' => 'Reply',
     'STATUS' => 'Status',
     'FILE' => 'File',
     'UPDATE ADVANCE REQUEST' => 'Update Advance Request',
